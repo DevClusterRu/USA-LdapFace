@@ -1,0 +1,47 @@
+version: '3'
+services:
+
+  nginx:
+    image: nginx
+    ports:
+      - "85:80"
+    volumes:
+      - ./hosts:/etc/nginx/conf.d
+      - ./www:/var/www/html
+      - ./logs:/var/log/nginx
+    links:
+      - php
+
+  php:
+    container_name: cid
+    build: ./php
+    links:
+      - composer-service
+      - db
+    volumes:
+      - ./www:/var/www/html
+
+  composer-service:
+    image: composer
+    volumes:
+      - ./www:/var/www/html
+    working_dir: /var/www/html
+    command: ["composer", "install"]
+
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ldap
+    ports:
+      - "3366:3306"
+  pma:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "8080:80"

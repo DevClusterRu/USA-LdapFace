@@ -1,0 +1,15 @@
+.dropdown-item:hover{
+    color: #505050 !important;
+}
+
+.ava_holder > div > div{
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+}
+
+.task_description{
+    margin: 10px 0;
+    color: #2b2b2b;
+}
+
