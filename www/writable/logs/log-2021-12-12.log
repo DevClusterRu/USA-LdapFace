@@ -1,0 +1,183 @@
+ERROR - 2021-12-12 02:20:39 --> Table 'ldap.users' doesn't exist
+ERROR - 2021-12-12 02:20:39 --> Table 'ldap.users' doesn't exist
+ERROR - 2021-12-12 02:20:39 --> Table 'ldap.users' doesn't exist
+ERROR - 2021-12-12 02:20:39 --> Table 'ldap.users' doesn't exist
+CRITICAL - 2021-12-12 02:20:39 --> Call to a member function getFirstRow() on bool
+#0 /var/www/html/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
+#1 /var/www/html/app/Controllers/HomeController.php(77): CodeIgniter\BaseModel->first()
+#2 /var/www/html/app/Controllers/HomeController.php(64): App\Controllers\HomeController->tryAuth(Object(CodeIgniter\HTTP\IncomingRequest))
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->tryRegister()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-12-12 02:21:58 --> Unknown column 'lifelesov@gmail.com' in 'field list'
+ERROR - 2021-12-12 02:21:58 --> Unknown column 'name' in 'field list'
+ERROR - 2021-12-12 02:23:13 --> Unknown column 'lifelesov@gmail.com' in 'field list'
+CRITICAL - 2021-12-12 04:39:53 --> 7 : Failed to connect to localhost port 8085: Connection refused
+#0 /var/www/html/system/HTTP/CURLRequest.php(656): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('7', 'Failed to conne...')
+#1 /var/www/html/system/HTTP/CURLRequest.php(364): CodeIgniter\HTTP\CURLRequest->sendRequest(Array)
+#2 /var/www/html/system/HTTP/CURLRequest.php(140): CodeIgniter\HTTP\CURLRequest->send('POST', 'http://localhos...')
+#3 /var/www/html/app/Controllers/Workspace.php(23): CodeIgniter\HTTP\CURLRequest->request('POST', 'http://localhos...', Array)
+#4 /var/www/html/system/CodeIgniter.php(824): App\Controllers\Workspace->index()
+#5 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Workspace))
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-12-12 04:40:53 --> 7 : Failed to connect to localhost port 8085: Connection refused
+#0 /var/www/html/system/HTTP/CURLRequest.php(656): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('7', 'Failed to conne...')
+#1 /var/www/html/system/HTTP/CURLRequest.php(364): CodeIgniter\HTTP\CURLRequest->sendRequest(Array)
+#2 /var/www/html/system/HTTP/CURLRequest.php(140): CodeIgniter\HTTP\CURLRequest->send('POST', 'http://localhos...')
+#3 /var/www/html/app/Controllers/Workspace.php(23): CodeIgniter\HTTP\CURLRequest->request('POST', 'http://localhos...', Array)
+#4 /var/www/html/system/CodeIgniter.php(824): App\Controllers\Workspace->index()
+#5 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Workspace))
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-12-12 04:42:03 --> 6 : Could not resolve host: ldap
+#0 /var/www/html/system/HTTP/CURLRequest.php(656): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('6', 'Could not resol...')
+#1 /var/www/html/system/HTTP/CURLRequest.php(364): CodeIgniter\HTTP\CURLRequest->sendRequest(Array)
+#2 /var/www/html/system/HTTP/CURLRequest.php(140): CodeIgniter\HTTP\CURLRequest->send('POST', 'http://ldap:808...')
+#3 /var/www/html/app/Controllers/Workspace.php(23): CodeIgniter\HTTP\CURLRequest->request('POST', 'http://ldap:808...', Array)
+#4 /var/www/html/system/CodeIgniter.php(824): App\Controllers\Workspace->index()
+#5 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Workspace))
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-12-12 04:42:52 --> 6 : Could not resolve host: app
+#0 /var/www/html/system/HTTP/CURLRequest.php(656): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('6', 'Could not resol...')
+#1 /var/www/html/system/HTTP/CURLRequest.php(364): CodeIgniter\HTTP\CURLRequest->sendRequest(Array)
+#2 /var/www/html/system/HTTP/CURLRequest.php(140): CodeIgniter\HTTP\CURLRequest->send('POST', 'http://app:8085...')
+#3 /var/www/html/app/Controllers/Workspace.php(23): CodeIgniter\HTTP\CURLRequest->request('POST', 'http://app:8085...', Array)
+#4 /var/www/html/system/CodeIgniter.php(824): App\Controllers\Workspace->index()
+#5 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Workspace))
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-12-12 04:42:53 --> 6 : Could not resolve host: app
+#0 /var/www/html/system/HTTP/CURLRequest.php(656): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('6', 'Could not resol...')
+#1 /var/www/html/system/HTTP/CURLRequest.php(364): CodeIgniter\HTTP\CURLRequest->sendRequest(Array)
+#2 /var/www/html/system/HTTP/CURLRequest.php(140): CodeIgniter\HTTP\CURLRequest->send('POST', 'http://app:8085...')
+#3 /var/www/html/app/Controllers/Workspace.php(23): CodeIgniter\HTTP\CURLRequest->request('POST', 'http://app:8085...', Array)
+#4 /var/www/html/system/CodeIgniter.php(824): App\Controllers\Workspace->index()
+#5 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Workspace))
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-12-12 04:43:07 --> 6 : Could not resolve host: app
+#0 /var/www/html/system/HTTP/CURLRequest.php(656): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('6', 'Could not resol...')
+#1 /var/www/html/system/HTTP/CURLRequest.php(364): CodeIgniter\HTTP\CURLRequest->sendRequest(Array)
+#2 /var/www/html/system/HTTP/CURLRequest.php(140): CodeIgniter\HTTP\CURLRequest->send('POST', 'http://app:8085...')
+#3 /var/www/html/app/Controllers/Workspace.php(23): CodeIgniter\HTTP\CURLRequest->request('POST', 'http://app:8085...', Array)
+#4 /var/www/html/system/CodeIgniter.php(824): App\Controllers\Workspace->index()
+#5 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Workspace))
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-12-12 04:44:06 --> 6 : Could not resolve host: app
+#0 /var/www/html/system/HTTP/CURLRequest.php(656): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('6', 'Could not resol...')
+#1 /var/www/html/system/HTTP/CURLRequest.php(364): CodeIgniter\HTTP\CURLRequest->sendRequest(Array)
+#2 /var/www/html/system/HTTP/CURLRequest.php(140): CodeIgniter\HTTP\CURLRequest->send('POST', 'http://app:9000...')
+#3 /var/www/html/app/Controllers/Workspace.php(23): CodeIgniter\HTTP\CURLRequest->request('POST', 'http://app:9000...', Array)
+#4 /var/www/html/system/CodeIgniter.php(824): App\Controllers\Workspace->index()
+#5 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Workspace))
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-12-12 04:55:49 --> 6 : Could not resolve host: app
+#0 /var/www/html/system/HTTP/CURLRequest.php(656): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('6', 'Could not resol...')
+#1 /var/www/html/system/HTTP/CURLRequest.php(364): CodeIgniter\HTTP\CURLRequest->sendRequest(Array)
+#2 /var/www/html/system/HTTP/CURLRequest.php(140): CodeIgniter\HTTP\CURLRequest->send('POST', 'http://app:8085...')
+#3 /var/www/html/app/Controllers/Workspace.php(23): CodeIgniter\HTTP\CURLRequest->request('POST', 'http://app:8085...', Array)
+#4 /var/www/html/system/CodeIgniter.php(824): App\Controllers\Workspace->index()
+#5 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Workspace))
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-12-12 04:55:50 --> 6 : Could not resolve host: app
+#0 /var/www/html/system/HTTP/CURLRequest.php(656): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('6', 'Could not resol...')
+#1 /var/www/html/system/HTTP/CURLRequest.php(364): CodeIgniter\HTTP\CURLRequest->sendRequest(Array)
+#2 /var/www/html/system/HTTP/CURLRequest.php(140): CodeIgniter\HTTP\CURLRequest->send('POST', 'http://app:8085...')
+#3 /var/www/html/app/Controllers/Workspace.php(23): CodeIgniter\HTTP\CURLRequest->request('POST', 'http://app:8085...', Array)
+#4 /var/www/html/system/CodeIgniter.php(824): App\Controllers\Workspace->index()
+#5 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Workspace))
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-12-12 04:55:50 --> 6 : Could not resolve host: app
+#0 /var/www/html/system/HTTP/CURLRequest.php(656): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('6', 'Could not resol...')
+#1 /var/www/html/system/HTTP/CURLRequest.php(364): CodeIgniter\HTTP\CURLRequest->sendRequest(Array)
+#2 /var/www/html/system/HTTP/CURLRequest.php(140): CodeIgniter\HTTP\CURLRequest->send('POST', 'http://app:8085...')
+#3 /var/www/html/app/Controllers/Workspace.php(23): CodeIgniter\HTTP\CURLRequest->request('POST', 'http://app:8085...', Array)
+#4 /var/www/html/system/CodeIgniter.php(824): App\Controllers\Workspace->index()
+#5 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Workspace))
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-12-12 04:55:51 --> 6 : Could not resolve host: app
+#0 /var/www/html/system/HTTP/CURLRequest.php(656): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('6', 'Could not resol...')
+#1 /var/www/html/system/HTTP/CURLRequest.php(364): CodeIgniter\HTTP\CURLRequest->sendRequest(Array)
+#2 /var/www/html/system/HTTP/CURLRequest.php(140): CodeIgniter\HTTP\CURLRequest->send('POST', 'http://app:8085...')
+#3 /var/www/html/app/Controllers/Workspace.php(23): CodeIgniter\HTTP\CURLRequest->request('POST', 'http://app:8085...', Array)
+#4 /var/www/html/system/CodeIgniter.php(824): App\Controllers\Workspace->index()
+#5 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Workspace))
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-12-12 04:55:51 --> 6 : Could not resolve host: app
+#0 /var/www/html/system/HTTP/CURLRequest.php(656): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('6', 'Could not resol...')
+#1 /var/www/html/system/HTTP/CURLRequest.php(364): CodeIgniter\HTTP\CURLRequest->sendRequest(Array)
+#2 /var/www/html/system/HTTP/CURLRequest.php(140): CodeIgniter\HTTP\CURLRequest->send('POST', 'http://app:8085...')
+#3 /var/www/html/app/Controllers/Workspace.php(23): CodeIgniter\HTTP\CURLRequest->request('POST', 'http://app:8085...', Array)
+#4 /var/www/html/system/CodeIgniter.php(824): App\Controllers\Workspace->index()
+#5 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Workspace))
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-12-12 04:55:51 --> 6 : Could not resolve host: app
+#0 /var/www/html/system/HTTP/CURLRequest.php(656): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('6', 'Could not resol...')
+#1 /var/www/html/system/HTTP/CURLRequest.php(364): CodeIgniter\HTTP\CURLRequest->sendRequest(Array)
+#2 /var/www/html/system/HTTP/CURLRequest.php(140): CodeIgniter\HTTP\CURLRequest->send('POST', 'http://app:8085...')
+#3 /var/www/html/app/Controllers/Workspace.php(23): CodeIgniter\HTTP\CURLRequest->request('POST', 'http://app:8085...', Array)
+#4 /var/www/html/system/CodeIgniter.php(824): App\Controllers\Workspace->index()
+#5 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Workspace))
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-12-12 04:58:46 --> 6 : Could not resolve host: app
+#0 /var/www/html/system/HTTP/CURLRequest.php(656): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('6', 'Could not resol...')
+#1 /var/www/html/system/HTTP/CURLRequest.php(364): CodeIgniter\HTTP\CURLRequest->sendRequest(Array)
+#2 /var/www/html/system/HTTP/CURLRequest.php(140): CodeIgniter\HTTP\CURLRequest->send('POST', 'http://app:8085...')
+#3 /var/www/html/app/Controllers/Workspace.php(23): CodeIgniter\HTTP\CURLRequest->request('POST', 'http://app:8085...', Array)
+#4 /var/www/html/system/CodeIgniter.php(824): App\Controllers\Workspace->index()
+#5 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Workspace))
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-12-12 04:59:08 --> 52 : Empty reply from server
+#0 /var/www/html/system/HTTP/CURLRequest.php(656): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('52', 'Empty reply fro...')
+#1 /var/www/html/system/HTTP/CURLRequest.php(364): CodeIgniter\HTTP\CURLRequest->sendRequest(Array)
+#2 /var/www/html/system/HTTP/CURLRequest.php(140): CodeIgniter\HTTP\CURLRequest->send('POST', 'http://192.168....')
+#3 /var/www/html/app/Controllers/Workspace.php(23): CodeIgniter\HTTP\CURLRequest->request('POST', 'http://192.168....', Array)
+#4 /var/www/html/system/CodeIgniter.php(824): App\Controllers\Workspace->index()
+#5 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Workspace))
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-12-12 05:02:39 --> Too few arguments to function CodeIgniter\HTTP\Message::appendBody(), 0 passed in /var/www/html/app/Controllers/Workspace.php on line 29 and exactly 1 expected
+#0 /var/www/html/app/Controllers/Workspace.php(29): CodeIgniter\HTTP\Message->appendBody()
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\Workspace->index()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Workspace))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-12-12 06:05:15 --> 7 : Failed to connect to 10.200.88.200 port 8085: No route to host
+#0 /var/www/html/system/HTTP/CURLRequest.php(656): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('7', 'Failed to conne...')
+#1 /var/www/html/system/HTTP/CURLRequest.php(364): CodeIgniter\HTTP\CURLRequest->sendRequest(Array)
+#2 /var/www/html/system/HTTP/CURLRequest.php(140): CodeIgniter\HTTP\CURLRequest->send('POST', 'http://10.200.8...')
+#3 /var/www/html/app/Controllers/Workspace.php(23): CodeIgniter\HTTP\CURLRequest->request('POST', 'http://10.200.8...', Array)
+#4 /var/www/html/system/CodeIgniter.php(824): App\Controllers\Workspace->index()
+#5 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Workspace))
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}

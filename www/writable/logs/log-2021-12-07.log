@@ -1,0 +1,52 @@
+CRITICAL - 2021-12-07 19:54:10 --> The framework needs the following extension(s) installed and loaded: intl.
+#0 /var/www/html/system/CodeIgniter.php(219): CodeIgniter\Exceptions\FrameworkException::forMissingExtension('intl')
+#1 /var/www/html/system/CodeIgniter.php(177): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+#2 /var/www/html/system/bootstrap.php(150): CodeIgniter\CodeIgniter->initialize()
+#3 /var/www/html/public/index.php(31): require('/var/www/html/s...')
+#4 {main}
+CRITICAL - 2021-12-07 19:54:10 --> Uncaught ErrorException: Cannot modify header information - headers already sent by (output started at /var/www/html/public/index.php:4) in /var/www/html/system/Debug/Exceptions.php:107
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', '/var/www/html/s...', 107, Array)
+#1 /var/www/html/system/Debug/Exceptions.php(107): header('HTTP/1.1 500 In...', true, 500)
+#2 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Exceptions\FrameworkException))
+#3 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-12-07 19:54:26 --> The framework needs the following extension(s) installed and loaded: intl.
+#0 /var/www/html/system/CodeIgniter.php(219): CodeIgniter\Exceptions\FrameworkException::forMissingExtension('intl')
+#1 /var/www/html/system/CodeIgniter.php(177): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+#2 /var/www/html/system/bootstrap.php(150): CodeIgniter\CodeIgniter->initialize()
+#3 /var/www/html/public/index.php(28): require('/var/www/html/s...')
+#4 {main}
+CRITICAL - 2021-12-07 19:55:01 --> The framework needs the following extension(s) installed and loaded: intl.
+#0 /var/www/html/system/CodeIgniter.php(219): CodeIgniter\Exceptions\FrameworkException::forMissingExtension('intl')
+#1 /var/www/html/system/CodeIgniter.php(177): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+#2 /var/www/html/system/bootstrap.php(150): CodeIgniter\CodeIgniter->initialize()
+#3 /var/www/html/public/index.php(28): require('/var/www/html/s...')
+#4 {main}
+CRITICAL - 2021-12-07 20:02:49 --> The framework needs the following extension(s) installed and loaded: intl.
+#0 /var/www/html/system/CodeIgniter.php(219): CodeIgniter\Exceptions\FrameworkException::forMissingExtension('intl')
+#1 /var/www/html/system/CodeIgniter.php(177): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+#2 /var/www/html/system/bootstrap.php(150): CodeIgniter\CodeIgniter->initialize()
+#3 /var/www/html/public/index.php(28): require('/var/www/html/s...')
+#4 {main}
+CRITICAL - 2021-12-07 20:02:51 --> The framework needs the following extension(s) installed and loaded: intl.
+#0 /var/www/html/system/CodeIgniter.php(219): CodeIgniter\Exceptions\FrameworkException::forMissingExtension('intl')
+#1 /var/www/html/system/CodeIgniter.php(177): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+#2 /var/www/html/system/bootstrap.php(150): CodeIgniter\CodeIgniter->initialize()
+#3 /var/www/html/public/index.php(28): require('/var/www/html/s...')
+#4 {main}
+ERROR - 2021-12-07 14:08:04 --> Error connecting to the database: Call to undefined function CodeIgniter\Database\Postgre\pg_connect()
+CRITICAL - 2021-12-07 14:08:04 --> Unable to connect to the database.
+Main connection [Postgre]: Call to undefined function CodeIgniter\Database\Postgre\pg_connect()
+#0 /var/www/html/system/Database/BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 /var/www/html/system/Database/BaseBuilder.php(1443): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM "...', Array, false)
+#2 /var/www/html/system/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#3 /var/www/html/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
+#4 /var/www/html/app/Controllers/HomeController.php(77): CodeIgniter\BaseModel->first()
+#5 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->tryAuth()
+#6 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#7 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /var/www/html/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
