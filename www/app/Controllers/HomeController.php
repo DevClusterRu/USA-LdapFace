@@ -71,7 +71,7 @@ class HomeController extends BaseController
         if (!$request){
             $request = service('request');
         }
-        echo $request->getPost('username');
+//        echo $request->getPost('username');
         $users = new \App\Models\User();
         $u = $users->where("username",$request->getPost('username'))->first();
         if (password_verify($request->getPost('password'),$u["password"])){

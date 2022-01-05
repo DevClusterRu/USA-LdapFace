@@ -15,7 +15,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <form method="post" enctype="application/x-www-form-urlencoded" action="/deluser">
+                                    <form method="post" enctype="application/x-www-form-urlencoded" action="/delroles">
                                     <table class="table">
                                         <thead>
                                         <tr>
@@ -44,15 +44,15 @@
                                             <td><?php echo $element["created_at"] ?></td>
                                             <td><?php echo $element["updated_at"] ?></td>
                                             <td>
-                                                <button type="submit" class="btn btn-gradient-primary me-2">
+                                                <button type="button" class="btn btn-gradient-primary me-2">
                                                     Редактировать
                                                 </button>
                                             </td>
                                             <td>
                                                 <div class="form-check">
                                                     <label class="form-check-label">
-                                                        <input value="<?php echo $element["id"] ?>" type="checkbox" class="form-check-input" name="checkboxDel[]">Удалить<i
-                                                                class="input-helper"></i>
+                                                        <input value="<?php echo $element["id"] ?>" type="checkbox" class="form-check-input" name="checkboxDel[]">Удалить
+                                                        <i class="input-helper"></i>
                                                     </label>
                                                 </div>
                                             </td>

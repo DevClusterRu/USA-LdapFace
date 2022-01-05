@@ -2,34 +2,51 @@
 
 use CodeIgniter\HTTP\RequestInterface;
 
-class RolesController extends BaseController {
+class RolesController extends BaseController
+{
 
-    public function index(){
+
+    private function getAllRoles() //получение из бд всех ролей
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('roles');
+        $builder->select('roles.id, roles.role_name, roles.created_at, roles.updated_at');
+        return $builder->get()->getResultArray();
+    }
+
+
+    public function index()
+    {
 
         if (!session()->get("userId")) {
             header("Location: /roles");
             exit();
         }
 
-
-        $db      = \Config\Database::connect();
-        $builder = $db->table('roles');
-//        $builder->select('*');
-        $builder->select('roles.id, roles.role_name, roles.created_at, roles.updated_at');
-        $query = $builder->get()->getResultArray();
-
-
         $data = [
-            "usersAll"=>$query
-        ];  //
+            "usersAll" => $this->getAllRoles()
+        ];  //передача переменной юзерсОл во вью
 
-        return view('dashboard/roles',$data);
+        return view('dashboard/roles', $data);
     }
 
-public function delUser(){
-    $request = service('request');
+    public function delRoles()
+    {
+        $request = service('request');//c вью на контроллер . чекбоксы который выделе пользователь
+        $items = $request->getPost("checkboxDel");
 
-        var_dump($request->getPost("checkboxDel"));
-}
+        $db = \Config\Database::connect();
+        $builder = $db->table('roles');
+        foreach ($items as $item) {
+            $builder->delete(["id" => $item]);
+
+        }
+        $data = [
+            "usersAll" => $this->getAllRoles()
+        ];  //передача переменной юзерсОл во вью
+
+        return view('dashboard/roles', $data);
+    }
+
 
 }

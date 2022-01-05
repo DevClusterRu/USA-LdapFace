@@ -22,7 +22,7 @@
 <!--                                            text-align: right;-->
 <!--                                        }-->
 <!--                                    </style>-->
-
+                                    <form method="post" enctype="application/x-www-form-urlencoded" action="/delusers">
                                     <table class="table">
                                         <thead>
                                         <tr>
@@ -55,14 +55,14 @@
                                                 <td><?php echo $element["created_at"] ?></td>
                                                 <td><?php echo $element["updated_at"] ?></td>
                                                 <td>
-                                                    <button type="submit" class="btn btn-gradient-primary me-2">
+                                                    <button type="button" class="btn btn-gradient-primary me-2">
                                                         Редактировать
                                                     </button>
                                                 </td>
                                                 <td>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input">Удалить<i
+                                                            <input value="<?php echo $element["id"] ?>" type="checkbox" class="form-check-input" name="checkboxDel[]">Удалить<i
                                                                     class="input-helper"></i>
                                                         </label>
                                                     </div>
@@ -81,7 +81,7 @@
                                             </tr>
 
                                         </tbody>
-                                    </table>
+                                    </table></form>
 
 
                                 </div>

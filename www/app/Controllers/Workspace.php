@@ -12,10 +12,6 @@ class Workspace extends BaseController
             exit();
         }
 
-        if (!session()->get("userId")) {
-            header("Location: /");
-            exit();
-        }
 
         $client = \Config\Services::curlrequest();
 //        $response = $client->request('POST', 'http://10.200.88.200:8085/ldap', [

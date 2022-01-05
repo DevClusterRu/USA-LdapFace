@@ -44,10 +44,7 @@ class Role extends Migration
             array('role_name' => "Администартор ИТЛ", 'role_id' => "3"),
             array('role_name' => "Суперадминистратор", 'role_id' => "4"),
         );
-        //$this->db->insert('user_group', $data); I tried both
-        $x=$this->db->table("roles")->insertBatch($data);
-
-        var_dump($x);
+        $this->db->table("roles")->insertBatch($data);
 
     }
 
