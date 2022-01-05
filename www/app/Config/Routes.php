@@ -30,6 +30,7 @@ $routes->get('/users', 'UsersController::index'); //
 $routes->get('/logout', 'HomeController::logout');
 $routes->get('/roles', 'RolesController::index');
 $routes->post('/delroles', 'RolesController::delRoles');
+$routes->post('/delusers', 'UsersController::delUsers');
 $routes->get('/user/(:any)', 'User::index/$1');
 $routes->post('/user/(:any)', 'User::index/$1');
 $routes->match(['get', 'post'], 'avatar/(:segment)', 'ImageRender::index/$1');

@@ -32,7 +32,7 @@ class RolesController extends BaseController
 
     public function delRoles()
     {
-        $request = service('request');//c вью на контроллер
+        $request = service('request');//c вью на контроллер . чекбоксы который выделе пользователь
         $items = $request->getPost("checkboxDel");
 
         $db = \Config\Database::connect();
@@ -41,7 +41,6 @@ class RolesController extends BaseController
             $builder->delete(["id" => $item]);
 
         }
-
         $data = [
             "usersAll" => $this->getAllRoles()
         ];  //передача переменной юзерсОл во вью
