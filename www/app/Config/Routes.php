@@ -23,14 +23,15 @@ $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->setAutoRoute(true);
 
-$routes->add('register', 'HomeController::register');
+//$routes->add('register', 'HomeController::register');
 $routes->post('register', 'HomeController::tryRegister');
 $routes->post('/', 'HomeController::tryAuth');
 $routes->get('/users', 'UsersController::index'); //
 $routes->get('/logout', 'HomeController::logout');
 $routes->get('/roles', 'RolesController::index');
 $routes->post('/delroles', 'RolesController::delRoles');
-$routes->post('/delusers', 'UsersController::delUsers');
+$routes->post('/usersOperation', 'UsersController::usersOperation');
+//$routes->post('/usersOperation', 'UsersController::passwordReset');
 $routes->get('/user/(:any)', 'User::index/$1');
 $routes->post('/user/(:any)', 'User::index/$1');
 $routes->match(['get', 'post'], 'avatar/(:segment)', 'ImageRender::index/$1');

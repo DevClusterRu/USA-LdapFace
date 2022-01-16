@@ -22,17 +22,18 @@
 <!--                                            text-align: right;-->
 <!--                                        }-->
 <!--                                    </style>-->
-                                    <form method="post" enctype="application/x-www-form-urlencoded" action="/delusers">
+                                    <form method="post" enctype="application/x-www-form-urlencoded" action="/usersOperation">
                                     <table class="table">
                                         <thead>
                                         <tr>
                                             <th> Пользователь</th>
                                             <th> Роль</th>
                                             <!--                                            <th> Статус</th>-->
-                                            <th> Дата регистрации</th>
-                                            <th> Последний вход</th>
-                                            <th> Редактирование</th>
-                                            <th> Удаление</th>
+                                            <th>Дата регистрации</th>
+                                            <th>Последний вход</th>
+                                            <th>Редактирование</th>
+                                            <th>Удаление</th>
+                                            <th>Сброс пароля</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -67,6 +68,13 @@
                                                         </label>
                                                     </div>
                                                 </td>
+                                                <td>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input value="<?php echo $element["id"] ?>" type="checkbox" class="form-check-input" name="checkboxRes[]">Сбросить пароль<i
+                                                                    class="input-helper"></i>
+                                                        </label>
+                                                    </div>
                                             </tr>
                                         <?php endforeach; ?>
                                             <tr>
@@ -76,8 +84,11 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td> <div class="butDelUsers">
-                                                        <button type="submit" class="btn btn-gradient-primary me-2 ">Удалить</button>
+                                                        <button type="submit" value="del" name="delBut" class="btn btn-gradient-primary me-2 ">Удалить</button>
                                                     </div></td>
+                                                <td> <div class="butDelUsers">
+                                                    <button type="submit" value="res" name="resBut" class="btn btn-gradient-primary me-2 ">Сбросить пароль</button>
+                                                </div></td>
                                             </tr>
 
                                         </tbody>

@@ -39,6 +39,19 @@ class UsersController extends BaseController {
         return view('dashboard/users',$data);
     }
 
+    public function usersOperation(){
+
+
+        $request = service('request');
+        if($request->getPost("delBut")){
+            $this->delUsers();
+        } elseif ($request->getPost("resBut")){
+            $this->passwordReset();
+        }
+
+    }
+
+
         public function delUsers() //при нажатии кнопки удаления
     {
         $request = service('request');//c вью на контроллер
@@ -57,7 +70,26 @@ class UsersController extends BaseController {
         return view('dashboard/users',$data);
     }
 
+    public function passwordReset() {
 
+//        $request = service('request');//c вью на контроллер
+//        $items = $request->getPost("checkboxRes");
+//        $response = $client->request('PUT', '/put', ['json' => ['foo' => 'bar']]);
+
+
+//        foreach ($items as $item) {
+//            echo $item;
+//        }
+
+
+
+
+//        $data = [
+//            "usersAll"=>$this->getAllUsers()
+//        ];  //
+//        return view('dashboard/users',$data);
+
+    }
 
 
 
