@@ -23,7 +23,7 @@ $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->setAutoRoute(true);
 
-//$routes->add('register', 'HomeController::register');
+$routes->add('register', 'HomeController::register');
 $routes->post('register', 'HomeController::tryRegister');
 $routes->post('/', 'HomeController::tryAuth');
 $routes->get('/users', 'UsersController::index'); //
