@@ -31,6 +31,12 @@
                 <i class="mdi mdi-tag-faces menu-icon"></i>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/serverlist">
+                <span class="menu-title">ServerList</span>
+                <i class="mdi mdi-dns menu-icon"></i>
+            </a>
+        </li>
 <!--        --><?php //if (session()->get("userRole")=="admin"):?>
 <!--            <li class="nav-item">-->
 <!--                <a class="nav-link" href="/addproject">-->
