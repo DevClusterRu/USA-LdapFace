@@ -31,17 +31,14 @@
                     </div>
                 </a>
                 <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item" href="/profile">//
+                    <a class="dropdown-item" href="/profile">
                         <i class="mdi mdi-account-details mr-2 text-success"></i> <?php echo lang('Main.profile') ?>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log
-                    </a>
-                    <div class="dropdown-divider"></div>
+
 
                     <a class="dropdown-item" href="/logout">
-                        <i class="mdi mdi-logout mr-2 text-primary"></i> Signout
+                        <i class="mdi mdi-logout mr-2 text-primary"></i> Выход
                     </a>
                 </div>
             </li>

@@ -10,7 +10,15 @@ class HomeController extends BaseController
             header("Location: /login");
             exit();
         }
-        return view('dashboard/profile');
+
+
+            return view('dashboard/profile');
+
+
+    }
+
+    public function login(){
+        return view('login');
     }
 
     public function logout()

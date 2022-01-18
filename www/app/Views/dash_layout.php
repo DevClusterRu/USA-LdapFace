@@ -30,7 +30,7 @@
 <body>
 
 
-<?= $this->renderSection('content') ?>
+<?php echo  $this->renderSection('content') ?>
 
 
 <!-- plugins:js -->

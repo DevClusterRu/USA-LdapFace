@@ -14,8 +14,8 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/workspace">
-                <span class="menu-title">Workspace</span>
+            <a class="nav-link" href="/profile">
+                <span class="menu-title">Профиль</span>
                 <i class="mdi mdi-animation menu-icon"></i>
             </a>
         </li>
