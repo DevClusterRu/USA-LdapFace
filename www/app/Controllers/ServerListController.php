@@ -2,8 +2,8 @@
 
 use CodeIgniter\HTTP\RequestInterface;
 
-class ServerListController extends BaseController {
-
+class ServerListController extends BaseController
+{
 
 
     private function getAllServersList() //получение из бд всех серверов
@@ -14,9 +14,10 @@ class ServerListController extends BaseController {
         return $builder->get()->getResultArray();
     }
 
-    public function index() {
+    public function index()
+    {
         if (!session()->get("userId")) {
-            header("Location: /serverlist");
+            header("Location: /login");
             exit();
         }
         $data = [
@@ -25,25 +26,113 @@ class ServerListController extends BaseController {
         return view('dashboard/serverlist', $data);
     }
 
+    public function serverlistOperation1()
+    {
 
-        public function delServersList()
-        {
-            $request = service('request');//c вью на контроллер . чекбоксы который выделе пользователь
-            $items = $request->getPost("checkboxDel");
+        $data = [
+            "serverAll" => $this->getAllServersList()
+        ];
 
-            $db = \Config\Database::connect();
-            $builder = $db->table('serverList');
-            foreach ($items as $item) {
-                $builder->delete(["id" => $item]);
-
-            }
-            $data = [
-                "serverAll" => $this->getAllServersList()
-            ];  //передача переменной из списка серверов во вью
-
+        $request = service('request');
+        if ($request->getPost("delBut")) {
+            $this->delServersList();
+            $data["serverAll"] = $this->getAllServersList();
             return view('dashboard/serverlist', $data);
+        } elseif ($request->getPost("updating")) {
+            $this->editServersList();
         }
 
-
-
     }
+
+    public function serverlistOperation2()
+    {
+
+        $data = [
+            "serverAll" => $this->getAllServersList()
+        ];
+
+        //    return view('dashboard/serverlist', $data);
+
+
+        $request = service('request');
+        if ($request->getPost("submit")) {
+            $this->addServersList();
+            $data["serverAll"] = $this->getAllServersList();
+            return view('dashboard/serverlist', $data);
+        } elseif ($request->getPost("cancel")) {
+            header("Location: /serverlist");
+            // return view('dashboard/serverlist', $data);
+        }
+    }
+
+    public function delServersList()
+    {
+        $request = service('request');//c вью на контроллер . чекбоксы который выделе пользователь
+        $items = $request->getPost("checkboxDel");
+
+        $db = \Config\Database::connect();
+        $builder = $db->table('serverList');
+        foreach ($items as $item) {
+            $builder->delete(["id" => $item]);
+        }
+        $data = [
+            "serverAll" => $this->getAllServersList()
+        ];  //передача переменной из списка серверов во вью
+
+        return view('dashboard/serverlist', $data);
+    }
+
+    public function addServersList()
+    {
+
+        $request = service('request');//c вью на контроллер . чекбоксы который выделе пользователь
+        //    $items = $request->getPost("checkboxDel");
+
+        $db = \Config\Database::connect();
+        $builder = $db->table('serverList');
+        //    foreach ($items as $item) {
+        //$builder->delete(["id" => $item]);
+        $data = [
+            'domain' => $request->getPost("domain"),
+            'ip' => $request->getPost("ip"),
+            'login' => $request->getPost("login"),
+            'password' => $request->getPost("password"),
+        ];
+
+        $builder->insert($data);     // Produces: INSERT INTO mytable (title, name, date) VALUES ('My title', 'My name', 'My date')
+
+        // }
+        $data = [
+            "serverAll" => $this->getAllServersList()
+        ];  //передача переменной из списка серверов во вью
+
+        return view('dashboard/serverlist', $data);
+    }
+
+    public function editServersList()
+    {
+        $request = service('request');//c вью на контроллер . чекбоксы который выделе пользователь
+
+        $domain_id = $request->getPost("updating");
+
+        $db = \Config\Database::connect();
+        $builder = $db->table('serverList');
+        $row = $builder->getWhere(['id' => $domain_id])->getFirstRow();
+        //   $editBut = $request->getPost("updating");
+
+        //    var_dump($row);  Вывод на экран
+        //   die();
+
+
+        $data = [
+            "serverAll" => $this->getAllServersList(),
+            "curDom" => $row
+        ];  //передача переменной из списка серверов во вью
+
+
+        return view('dashboard/serverlist', $data);
+
+        
+    }
+
+}
