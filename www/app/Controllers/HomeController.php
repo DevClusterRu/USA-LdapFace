@@ -6,11 +6,11 @@ class HomeController extends BaseController
 {
     public function index()
     {
-        if (session()->get("user_id")) {
-            header("Location: /workspace");
+        if (!session()->get("userId")) {
+            header("Location: /login");
             exit();
         }
-        return view('login');
+        return view('dashboard/profile');
     }
 
     public function logout()
@@ -35,7 +35,7 @@ class HomeController extends BaseController
             'userAvatar' => $auth[0]->avatar,
             'userName' => self::shortName($auth["username"]),
         ]);
-        header("Location: /workspace");
+        header("Location: /profile");
         exit();
     }
 

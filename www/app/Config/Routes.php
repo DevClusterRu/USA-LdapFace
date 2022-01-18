@@ -23,13 +23,15 @@ $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->setAutoRoute(true);
 
+$routes->post('/', 'HomeController::tryAuth');
 $routes->add('register', 'HomeController::register');
 $routes->post('register', 'HomeController::tryRegister');
-$routes->post('/', 'HomeController::tryAuth');
 $routes->get('/users', 'UsersController::index'); //
 $routes->get('/serverlist', 'ServerListController::index');
+$routes->get('/profile', 'ProfileController::index');
 $routes->get('/logout', 'HomeController::logout');
 $routes->get('/roles', 'RolesController::index');
+$routes->get('/invoice', 'InvoiceController::index');
 $routes->post('/delroles', 'RolesController::delRoles');
 $routes->post('/delServersList', 'ServerListController::delServersList');
 $routes->post('/usersOperation', 'UsersController::usersOperation');

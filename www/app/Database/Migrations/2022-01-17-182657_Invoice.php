@@ -14,10 +14,7 @@ class Invoice extends Migration
                 'unsigned' => true,
                 'auto_increment' => true
             ],
-            'invoice_kind' => [
-                'type' => 'INT',
-                'unsigned' => true,
-            ],
+
             'invoice_num' => [
                 'type' => 'INT',
                 'unsigned' => true,

@@ -21,19 +21,25 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/users">
-                <span class="menu-title">Users</span>
+                <span class="menu-title">Пользователи</span>
                 <i class="mdi mdi-account-multiple menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/roles">
-                <span class="menu-title">Roles</span>
+                <span class="menu-title">Роли</span>
                 <i class="mdi mdi-tag-faces menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/serverlist">
-                <span class="menu-title">ServerList</span>
+                <span class="menu-title">Список серверов</span>
+                <i class="mdi mdi-dns menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/invoice">
+                <span class="menu-title">Оплата</span>
                 <i class="mdi mdi-dns menu-icon"></i>
             </a>
         </li>

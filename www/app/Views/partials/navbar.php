@@ -31,7 +31,7 @@
                     </div>
                 </a>
                 <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item" href="/user">
+                    <a class="dropdown-item" href="/profile">//
                         <i class="mdi mdi-account-details mr-2 text-success"></i> <?php echo lang('Main.profile') ?>
                     </a>
                     <div class="dropdown-divider"></div>
