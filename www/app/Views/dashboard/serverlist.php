@@ -1,10 +1,6 @@
-
-
-
 <?php echo $this->extend('dash_layout') ?>
 
 <?php echo $this->section('content') ?>
-
 
 <div class="container-scroller">
     <?= $this->include('partials/navbar') ?>
@@ -99,24 +95,24 @@
        <!--                           <p class="card-description"> Basic form layout </p>
        -->                            <form class="forms-sample">
                                         <div class="form-group">
-                                           <input name="id" type="hidden" class="form-control" id="exampleInputUsername1" placeholder="ID">
+                                           <input name="id" value="<?php echo $curServer->id ?>" type="hidden" class="form-control" id="exampleInputUsername1" placeholder="ID">
                                         </div>
                                    <form class="forms-sample">
                                         <div class="form-group">
                                             <label for="exampleInputUsername1">Domain</label>
-                                            <input name="domain" value="123" type="text" class="form-control" id="exampleInputUsername1" placeholder="Domain">
+                                            <input name="domain" value="<?php echo $curServer->domain ?>" type="text" class="form-control" id="exampleInputUsername1" placeholder="Domain">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputUsername1">IP</label>
-                                            <input name="ip" type="text" class="form-control" id="exampleInputUsername1" placeholder="IP">
+                                            <input name="ip" value="<?php echo $curServer->ip ?>" type="text" class="form-control" id="exampleInputUsername1" placeholder="IP">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputUsername1">Login</label>
-                                            <input name="login" type="text" class="form-control" id="exampleInputUsername1" placeholder="Login">
+                                            <input name="login" value="<?php echo $curServer->login ?>" type="text" class="form-control" id="exampleInputUsername1" placeholder="Login">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputUsername1">Password</label>
-                                            <input name="password" type="text" class="form-control" id="exampleInputUsername1" placeholder="Password">
+                                            <input name="password" value="<?php echo $curServer->password ?>" type="text" class="form-control" id="exampleInputUsername1" placeholder="Password">
                                         </div>
         <!--                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Password</label>
@@ -150,5 +146,3 @@
 </div>
 
 <?php echo $this->endSection() ?>
-
-

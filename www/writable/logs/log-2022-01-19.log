@@ -1,0 +1,8 @@
+ERROR - 2022-01-19 00:37:02 --> Unknown column 'fornicator@qwe' in 'field list'
+ERROR - 2022-01-19 01:14:05 --> Duplicate entry '54' for key 'serverList.PRIMARY'
+ERROR - 2022-01-19 01:14:17 --> Duplicate entry '54' for key 'serverList.PRIMARY'
+ERROR - 2022-01-19 01:15:35 --> Duplicate entry '21' for key 'serverList.PRIMARY'
+ERROR - 2022-01-19 04:57:27 --> Duplicate entry '21' for key 'serverList.PRIMARY'
+ERROR - 2022-01-19 04:58:23 --> Duplicate entry '54' for key 'serverList.PRIMARY'
+ERROR - 2022-01-19 04:58:36 --> Duplicate entry '54' for key 'serverList.PRIMARY'
+ERROR - 2022-01-19 05:16:45 --> Duplicate entry '60' for key 'serverList.PRIMARY'

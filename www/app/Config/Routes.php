@@ -31,7 +31,6 @@ $routes->get('/serverlist', 'ServerListController::index');
 $routes->get('/logout', 'HomeController::logout');
 $routes->get('/roles', 'RolesController::index');
 $routes->post('/delroles', 'RolesController::delRoles');
-//$routes->post('/editServersList', 'ServerListController::editServersList');
 $routes->post('/serverlistOperation1', 'ServerListController::serverlistOperation1');
 $routes->post('/serverlistOperation2', 'ServerListController::serverlistOperation2');
 $routes->post('/usersOperation', 'UsersController::usersOperation');
