@@ -30,6 +30,8 @@ $routes->get('/login', 'HomeController::login'); //
 $routes->get('/users', 'UsersController::index'); //
 $routes->get('/serverlist', 'ServerListController::index');
 $routes->get('/profile', 'ProfileController::index');
+$routes->post('/profile/update', 'ProfileController::changeUserInfo');
+$routes->post('/profile/passwordreset', 'ProfileController::changeUserPassword');
 $routes->get('/logout', 'HomeController::logout');
 $routes->get('/roles', 'RolesController::index');
 $routes->get('/invoice', 'InvoiceController::index');

@@ -22,6 +22,14 @@ class User extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
+            'email' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'phone' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
             'role_id' => [
                 'type' => 'SMALLINT',
                 'unsigned' => true,
@@ -40,13 +48,13 @@ class User extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-       // $this->forge->addForeignKey('role_id','user_roles','id');
+        // $this->forge->addForeignKey('role_id','user_roles','id');
         $this->forge->createTable('users');
     }
 
     public function down()
     {
-      //  $this->forge->dropForeignKey('users','role_id');
+        //  $this->forge->dropForeignKey('users','role_id');
         $this->forge->dropTable('users');
     }
 }
