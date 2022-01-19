@@ -246,3 +246,24 @@ CRITICAL - 2022-01-17 06:08:41 --> Invalid file: dashboard/serverslist.php
 #5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
 #7 {main}
+ERROR - 2022-01-17 08:19:58 --> Unknown column 'acme13@ya.ru' in 'field list'
+CRITICAL - 2022-01-17 09:38:27 --> syntax error, unexpected 'public' (T_PUBLIC)
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-01-17 09:38:32 --> syntax error, unexpected 'public' (T_PUBLIC)
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
