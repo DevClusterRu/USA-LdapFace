@@ -16,6 +16,11 @@ class ProfileController extends BaseController
 
         return view('dashboard/profile', $data);
 
+        $dataPay = [
+            "usersAllPayInfo"=>$this->getPaymentPersInfo()
+        ];  //
+
+        return view('dashboard/profile',$dataPay);
 
     }
 
@@ -59,6 +64,17 @@ class ProfileController extends BaseController
             }
         $user->update(session()->get("userId"), $dataPassword);
         header("Location: /profile");
+
+    }
+
+    function getPaymentPersInfo (){
+        $db = \Config\Database::connect();
+        $builder = $db->table('PaymentPers');
+        $builder->select('type_of_service, current_service, price, get_bills, payment_before');
+        return $builder->get()->getResultArray();
+
+
+
 
     }
 
