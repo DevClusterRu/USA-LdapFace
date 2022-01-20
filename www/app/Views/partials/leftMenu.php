@@ -43,6 +43,12 @@
                 <i class="mdi mdi-dns menu-icon"></i>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/services">
+                <span class="menu-title">Услуги</span>
+                <i class="mdi mdi-view-headline menu-icon"></i>
+            </a>
+        </li>
 <!--        --><?php //if (session()->get("userRole")=="admin"):?>
 <!--            <li class="nav-item">-->
 <!--                <a class="nav-link" href="/addproject">-->

@@ -85,7 +85,8 @@ class ServerListController extends BaseController
             "serverAll" => $this->getAllServersList()
         ];  //передача переменной из списка серверов во вью
 
-        return view('dashboard/serverlist', $data);
+        header("Location: /serverlist");
+    //    return view('dashboard/serverlist', $data);
 
     }
 
