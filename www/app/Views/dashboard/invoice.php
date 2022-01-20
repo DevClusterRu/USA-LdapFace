@@ -16,12 +16,6 @@
                             <div class="card-body">
                                 <div class="table-responsive">
 
-                                    <!--                                    <style>-->
-                                    <!--                                        .butDelUsers {-->
-                                    <!--                                            width: 100%;-->
-                                    <!--                                            text-align: right;-->
-                                    <!--                                        }-->
-                                    <!--                                    </style>-->
                                     <form method="post" enctype="application/x-www-form-urlencoded" action="/usersOperation">
                                         <table class="table">
                                             <thead>
