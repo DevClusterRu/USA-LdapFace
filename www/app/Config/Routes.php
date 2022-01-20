@@ -29,6 +29,7 @@ $routes->post('register', 'HomeController::tryRegister');
 $routes->get('/login', 'HomeController::login'); //
 $routes->get('/users', 'UsersController::index'); //
 $routes->get('/serverlist', 'ServerListController::index');
+$routes->get('/companies', 'CompaniesController::index');
 $routes->get('/services', 'ServicesController::index');
 $routes->get('/profile', 'ProfileController::index');
 $routes->post('/profile/update', 'ProfileController::changeUserInfo');
@@ -39,7 +40,10 @@ $routes->get('/invoice', 'InvoiceController::index');
 $routes->post('/delroles', 'RolesController::delRoles');
 $routes->post('/serverlistOperation1', 'ServerListController::serverlistOperation1');
 $routes->post('/serverlistOperation2', 'ServerListController::serverlistOperation2');
-$routes->post('/usersOperation', 'UsersController::usersOperation');
+$routes->post('/companiesOperation1', 'CompaniesController::companiesOperation1');
+$routes->post('/companiesOperation2', 'CompaniesController::companiesOperation2');
+$routes->post('/usersOperation1', 'UsersController::usersOperation1');
+$routes->post('/usersOperation2', 'UsersController::usersOperation2');
 //$routes->post('/usersOperation', 'UsersController::passwordReset');
 $routes->get('/user/(:any)', 'User::index/$1');
 $routes->post('/user/(:any)', 'User::index/$1');

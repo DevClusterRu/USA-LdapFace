@@ -12,9 +12,17 @@ class UsersController extends BaseController {
         $builder = $db->table('users');
         $builder->select('users.id, users.username, users.created_at, users.updated_at, roles.role_name');
         $builder->join('roles', 'users.role_id = roles.id');
+     //   $builder->join('company', 'users.name = company.id');
         return $builder->get()->getResultArray();
     }
 
+    private function getCompanys() //получение из бд всех ролей
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('company');
+        $builder->select('id, name');
+        return $builder->get()->getResultArray();
+    }
 
     public function index()
     {
@@ -33,13 +41,41 @@ class UsersController extends BaseController {
 //        die();
 
         $data = [
-            "usersAll"=>$this->getAllUsers()
+            "usersAll"=>$this->getAllUsers(),
+            "companys" => $this->getCompanys(),
         ];  //
 
         return view('dashboard/users',$data);
     }
 
-    public function usersOperation(){
+
+    public function usersOperation1()
+    {
+
+        $data = [
+            "serverAll" => $this->getAllUsers()
+        ];
+
+        //   return view('dashboard/serverlist', $data);
+
+
+        $request = service('request');
+        if ($request->getPost("submit") && $request->getPost("id")) {
+            $this->getAllUsers();
+            $data["serverAll"] = $this->getAllUsers();
+            return view('dashboard/serverlist', $data);
+        }elseif ($request->getPost("submit")) {
+            $this->getAllUsers();
+            $data["serverAll"] = $this->getAllUsers();
+            return view('dashboard/serverlist', $data);
+        }elseif ($request->getPost("cancel")) {
+            header("Location: /serverlist");
+            //  return view('dashboard/serverlist', $data);
+        }
+        return view('dashboard/serverlist', $data);
+    }
+
+    public function usersOperation2(){
 
 
         $request = service('request');

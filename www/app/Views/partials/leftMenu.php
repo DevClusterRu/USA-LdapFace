@@ -34,7 +34,7 @@
         <li class="nav-item">
             <a class="nav-link" href="/serverlist">
                 <span class="menu-title">Список серверов</span>
-                <i class="mdi mdi-dns menu-icon"></i>
+                <i class=" mdi mdi-server menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
@@ -49,6 +49,12 @@
                 <i class="mdi mdi-view-headline menu-icon"></i>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/companies">
+                <span class="menu-title">Юридические лица</span>
+                <i class="mdi mdi-houzz-box menu-icon"></i>
+            </a>
+        </li
 <!--        --><?php //if (session()->get("userRole")=="admin"):?>
 <!--            <li class="nav-item">-->
 <!--                <a class="nav-link" href="/addproject">-->
