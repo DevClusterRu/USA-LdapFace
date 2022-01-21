@@ -28,10 +28,10 @@ class HomeController extends BaseController
         exit();
     }
 
-    public function register()
-    {
-        return view('register');
-    }
+//    public function register()
+//    {
+//        return view('register');
+//    }
 
     private static function fillSession($auth)
     {
@@ -47,32 +47,32 @@ class HomeController extends BaseController
         exit();
     }
 
-    public function tryRegister()
-    {
-        $request = service('request');
-        if ($request->getMethod() == 'post') {
-
-            $username = $request->getPost('username');
-            $password = $request->getPost('password');
-            $users = new \App\Models\User();
-            $exists = $users->select(["username" => $username])->get();
-            if ($exists) {
-                //TODO Need baloon, info about duplicate name
-                return view('register');
-            }
-
-            $u = [
-                "username" => $username,
-                "password"=>password_hash($password,PASSWORD_BCRYPT),
-            ];
-            $users->save($u);
-
-
-            return self::tryAuth($request);
-
-        }
-        return view('register');
-    }
+//    public function tryRegister()
+//    {
+//        $request = service('request');
+//        if ($request->getMethod() == 'post') {
+//
+//            $username = $request->getPost('username');
+//            $password = $request->getPost('password');
+//            $users = new \App\Models\User();
+//            $exists = $users->select(["username" => $username])->get();
+//            if ($exists) {
+//                //TODO Need baloon, info about duplicate name
+//                return view('register');
+//            }
+//
+//            $u = [
+//                "username" => $username,
+//                "password"=>password_hash($password,PASSWORD_BCRYPT),
+//            ];
+//            $users->save($u);
+//
+//
+//            return self::tryAuth($request);
+//
+//        }
+//        return view('register');
+//    }
 
     public function tryAuth($request = false)
     {

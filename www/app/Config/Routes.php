@@ -24,8 +24,8 @@ $routes->set404Override();
 $routes->setAutoRoute(true);
 
 $routes->post('/', 'HomeController::tryAuth');
-$routes->add('register', 'HomeController::register');
-$routes->post('register', 'HomeController::tryRegister');
+//$routes->add('register', 'HomeController::register');
+//$routes->post('register', 'HomeController::tryRegister');
 $routes->get('/login', 'HomeController::login'); //
 $routes->get('/users', 'UsersController::index'); //
 $routes->get('/serverlist', 'ServerListController::index');

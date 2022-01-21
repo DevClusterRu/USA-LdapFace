@@ -14,7 +14,7 @@
                         <h6 class="font-weight-light"><?php echo lang('Auth.signAndGo')?></h6>
                         <form action="/" class="pt-3" method="post">
                             <div class="form-group">
-                                <input name="username" type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="<?php echo lang('Auth.username')?>">
+                                <input name="username" type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="<?php echo lang('Auth.usernamelogin')?>">
                             </div>
                             <div class="form-group">
                                 <input name="password" type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="<?php echo lang('Auth.password')?>">
@@ -29,7 +29,7 @@
                                 </div>
                                 <a href="#" class="auth-link text-black"><?php echo lang('Auth.forgotPassword')?></a>
                             </div>
-                            <div class="text-center mt-4 font-weight-light"> <?php echo lang('Auth.dontHaveAcc')?> <a href="/register" class="text-primary"><?php echo lang('Auth.create')?></a>
+<!--                            <div class="text-center mt-4 font-weight-light"> --><?php //echo lang('Auth.dontHaveAcc')?><!-- <a href="/register" class="text-primary">--><?php //echo lang('Auth.create')?><!--</a>-->
                             </div>
                         </form>
                     </div>

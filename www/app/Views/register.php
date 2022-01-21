@@ -17,7 +17,7 @@
                               oninput='password2.setCustomValidity(password.value != password2.value ? "Passwords do not match." : "")'>
 
                             <div class="form-group">
-                                <input required name="username" type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="<?php echo lang('Auth.username')?>">
+                                <input required name="username" type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="<?php echo lang('Auth.usernamelogin')?>">
                                 <div class="invalid-feedback">
                                     <?php echo lang('Auth.needMail')?>
                                 </div>
