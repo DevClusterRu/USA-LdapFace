@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use CodeIgniter\HTTP\RequestInterface;
+use LdapChannelLibrary;
 
 class HomeController extends BaseController
 {
@@ -10,16 +11,14 @@ class HomeController extends BaseController
             header("Location: /login");
             exit();
         }
-
-
-            return view('dashboard/profile');
-
-
+          return view('dashboard/profile');
     }
 
     public function login(){
-        return view('login');
+
+return view('login');
     }
+
 
     public function logout()
     {
