@@ -50,8 +50,8 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/companies">
-                <span class="menu-title">Юридические лица</span>
+            <a class="nav-link" href="/companys">
+                <span class="menu-title">Компании</span>
                 <i class="mdi mdi-houzz-box menu-icon"></i>
             </a>
         </li

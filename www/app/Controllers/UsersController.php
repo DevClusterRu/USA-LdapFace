@@ -19,7 +19,7 @@ class UsersController extends BaseController {
     private function getCompanys() //получение из бд всех ролей
     {
         $db = \Config\Database::connect();
-        $builder = $db->table('company');
+        $builder = $db->table('companys');
         $builder->select('id, name');
         return $builder->get()->getResultArray();
     }

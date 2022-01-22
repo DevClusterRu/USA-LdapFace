@@ -42,11 +42,11 @@ class Company extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->createTable('company');
+        $this->forge->createTable('companys');
     }
 
     public function down()
     {
-        $this->forge->dropTable('company');
+        $this->forge->dropTable('companys');
     }
 }

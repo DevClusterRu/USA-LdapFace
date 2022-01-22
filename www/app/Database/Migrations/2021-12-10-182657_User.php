@@ -50,6 +50,18 @@ class User extends Migration
         $this->forge->addKey('id', true);
         // $this->forge->addForeignKey('role_id','user_roles','id');
         $this->forge->createTable('users');
+
+        $data = array(
+            array(
+                'username' => "superadmin",
+                'password' => password_hash("123",PASSWORD_BCRYPT),
+                'email' => "mail@mail.ru",
+                'phone' => "+7",
+                'role_id' => 4,
+            ),
+        );
+        $this->db->table("users")->insertBatch($data);
+
     }
 
     public function down()

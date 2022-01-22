@@ -22,18 +22,9 @@ class InvoiceController extends BaseController {
             header("Location: /login");
             exit();
         }
-
-//        $users = new \App\Models\User(); //объект модели юзер. общение с бд через модель
-//        $usersList = $users->select([])->findAll();//выборка из бд
-
-//        echo '<pre>';
-//        var_dump($query);
-//        die();
-
         $data = [
             "invoiceAll"=>$this->getAllinvoice()
-        ];  //
-
+        ];
         return view('dashboard/invoice',$data);
     }
 

@@ -29,7 +29,7 @@ $routes->post('/', 'HomeController::tryAuth');
 $routes->get('/login', 'HomeController::login'); //
 $routes->get('/users', 'UsersController::index'); //
 $routes->get('/serverlist', 'ServerListController::index');
-$routes->get('/companies', 'CompaniesController::index');
+$routes->get('/companys', 'CompanysController::index');
 $routes->get('/services', 'ServicesController::index');
 $routes->get('/profile', 'ProfileController::index');
 $routes->post('/profile/update', 'ProfileController::changeUserInfo');
@@ -40,8 +40,7 @@ $routes->get('/invoice', 'InvoiceController::index');
 $routes->post('/delroles', 'RolesController::delRoles');
 $routes->post('/serverlistOperation1', 'ServerListController::serverlistOperation1');
 $routes->post('/serverlistOperation2', 'ServerListController::serverlistOperation2');
-$routes->post('/companiesOperation1', 'CompaniesController::companiesOperation1');
-$routes->post('/companiesOperation2', 'CompaniesController::companiesOperation2');
+$routes->post('/companysOperation', 'CompanysController::operation');
 $routes->post('/usersOperation1', 'UsersController::usersOperation1');
 $routes->post('/usersOperation2', 'UsersController::usersOperation2');
 //$routes->post('/usersOperation', 'UsersController::passwordReset');
