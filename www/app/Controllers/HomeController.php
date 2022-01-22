@@ -18,6 +18,7 @@ class HomeController extends BaseController
         return view('login');
     }
 
+
     public function logout()
     {
         session()->destroy();
