@@ -12,8 +12,7 @@
 
                 <div class="card">
                     <div class="card-body">
-<h4>Добавить / отредактировать пользователя<div class="hidder" object="addForm">-</div></h4>
-
+                        <h4>Добавить / отредактировать пользователя<div class="hidder" object="addForm">-</div></h4>
 
                         <div class="hidden addForm">
                             <form method="post" enctype="application/x-www-form-urlencoded" action="/usersOperation">
