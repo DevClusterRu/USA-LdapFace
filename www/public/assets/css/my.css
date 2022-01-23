@@ -13,3 +13,21 @@
     color: #2b2b2b;
 }
 
+.form-control{
+    color: #495057 !important;
+}
+
+.hidden{
+    display: none;
+}
+
+.hidder{
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 20px;
+    border: 1px solid #b79bdd;
+    padding: 0 10px;
+    border-radius: 5px;
+    color: #c0a3e7;
+    cursor: pointer;
+}

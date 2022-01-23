@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Services extends Migration
+class Debets extends Migration
 {
     public function up()
     {
@@ -14,15 +14,17 @@ class Services extends Migration
                 'unsigned' => true,
                 'auto_increment' => true
             ],
-            'name' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-
-            ],
-            'cost' => [
+            'user_id' => [
                 'type' => 'INT',
                 'unsigned' => true,
-
+            ],
+            'invoice_id' => [
+                'type' => 'INT',
+                'unsigned' => true,
+            ],
+            'amount' => [
+                'type' => 'INT',
+                'unsigned' => true,
             ],
             'created_at' => [
                 'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP'
@@ -33,17 +35,16 @@ class Services extends Migration
             'deleted_at' => [
                 'type' => 'TIMESTAMP',
                 'null' => true
-            ],
+            ]
         ]);
 
         $this->forge->addKey('id', true);
         // $this->forge->addForeignKey('role_id','user_roles','id');
-        $this->forge->createTable('services');
+        $this->forge->createTable('debets');
     }
 
     public function down()
     {
-        //  $this->forge->dropForeignKey('users','role_id');
-        $this->forge->dropTable('services');
+        $this->forge->dropTable('debets');
     }
 }

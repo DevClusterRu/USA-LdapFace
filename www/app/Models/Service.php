@@ -4,13 +4,14 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class User extends Model
+class Service extends Model
 {
-    protected $table = 'users';
+    protected $table = 'services';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['username', 'email', 'phone', 'company_id', 'role_id', 'password'];
+    protected $allowedFields = ['name', 'cost'];
     protected $useSoftDeletes = true;
+
     // Dates
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';

@@ -23,24 +23,28 @@ $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->setAutoRoute(true);
 
-$routes->post('/', 'HomeController::tryAuth');
-//$routes->add('register', 'HomeController::register');
-//$routes->post('register', 'HomeController::tryRegister');
+$routes->get('/', 'HomeController::index');
 $routes->get('/login', 'HomeController::login'); //
-$routes->get('/users', 'UsersController::index'); //
-$routes->get('/serverlist', 'ServerListController::index');
-$routes->get('/companys', 'CompanysController::index');
-$routes->get('/services', 'ServicesController::index');
+$routes->get('/logout', 'HomeController::logout');
+$routes->get('/users', 'UserController::index'); //
+$routes->get('/servers', 'ServerController::index');
+$routes->get('/companys', 'CompanyController::index');
+$routes->get('/services', 'ServiceController::index');
 $routes->get('/profile', 'ProfileController::index');
+$routes->get('/roles', 'RoleController::index');
+$routes->get('/invoices', 'InvoiceController::index');
+
+$routes->post('/companysOperation', 'CompanyController::operation');
+$routes->post('/serversOperation', 'ServerController::operation');
+$routes->post('/usersOperation', 'UserController::operation');
+
+$routes->post('/', 'HomeController::tryAuth');
 $routes->post('/profile/update', 'ProfileController::changeUserInfo');
 $routes->post('/profile/passwordreset', 'ProfileController::changeUserPassword');
-$routes->get('/logout', 'HomeController::logout');
-$routes->get('/roles', 'RolesController::index');
-$routes->get('/invoice', 'InvoiceController::index');
+
+
 $routes->post('/delroles', 'RolesController::delRoles');
-$routes->post('/serverlistOperation1', 'ServerListController::serverlistOperation1');
 $routes->post('/serverlistOperation2', 'ServerListController::serverlistOperation2');
-$routes->post('/companysOperation', 'CompanysController::operation');
 $routes->post('/usersOperation1', 'UsersController::usersOperation1');
 $routes->post('/usersOperation2', 'UsersController::usersOperation2');
 //$routes->post('/usersOperation', 'UsersController::passwordReset');
@@ -56,7 +60,6 @@ $routes->match(['get', 'post'], 'avatar/(:segment)', 'ImageRender::index/$1');
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'HomeController::index');
 $routes->get('/migrate', 'MigrateController::index');
 //$routes->get('/migrate-rollback', 'HomeController::index2');
 

@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Services extends Migration
+class Servers extends Migration
 {
     public function up()
     {
@@ -14,15 +14,24 @@ class Services extends Migration
                 'unsigned' => true,
                 'auto_increment' => true
             ],
-            'name' => [
+            'domain' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
 
             ],
-            'cost' => [
-                'type' => 'INT',
-                'unsigned' => true,
+            'url' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
 
+            ],
+            'login' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+
+            ],
+            'password' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
             ],
             'created_at' => [
                 'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP'
@@ -38,12 +47,12 @@ class Services extends Migration
 
         $this->forge->addKey('id', true);
         // $this->forge->addForeignKey('role_id','user_roles','id');
-        $this->forge->createTable('services');
+        $this->forge->createTable('servers');
     }
 
     public function down()
     {
         //  $this->forge->dropForeignKey('users','role_id');
-        $this->forge->dropTable('services');
+        $this->forge->dropTable('servers');
     }
 }

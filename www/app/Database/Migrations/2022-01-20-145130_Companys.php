@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Services extends Migration
+class Companys extends Migration
 {
     public function up()
     {
@@ -19,9 +19,14 @@ class Services extends Migration
                 'constraint' => 255,
 
             ],
-            'cost' => [
-                'type' => 'INT',
-                'unsigned' => true,
+            'inn' => [
+                'type' => 'VARCHAR',
+                'constraint' => 12,
+
+            ],
+            'kpp' => [
+                'type' => 'VARCHAR',
+                'constraint' => 9,
 
             ],
             'created_at' => [
@@ -37,13 +42,23 @@ class Services extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        // $this->forge->addForeignKey('role_id','user_roles','id');
-        $this->forge->createTable('services');
+        $this->forge->createTable('companys');
+
+        $data = array(
+            array(
+                'id' => 1,
+                'name' => "ITL",
+                'inn' => "1",
+                'kpp' => "1",
+            ),
+        );
+        $this->db->table("companys")->insertBatch($data);
+
+
     }
 
     public function down()
     {
-        //  $this->forge->dropForeignKey('users','role_id');
-        $this->forge->dropTable('services');
+        $this->forge->dropTable('companys');
     }
 }

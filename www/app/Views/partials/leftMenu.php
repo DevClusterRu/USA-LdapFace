@@ -32,13 +32,13 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/serverlist">
+            <a class="nav-link" href="/servers">
                 <span class="menu-title">Список серверов</span>
                 <i class=" mdi mdi-server menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/invoice">
+            <a class="nav-link" href="/invoices">
                 <span class="menu-title">Оплата</span>
                 <i class="mdi mdi-dns menu-icon"></i>
             </a>
