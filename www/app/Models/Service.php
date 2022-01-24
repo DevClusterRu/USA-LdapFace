@@ -9,7 +9,7 @@ class Service extends Model
     protected $table = 'services';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['name', 'cost'];
+    protected $allowedFields = ['name','type_service', 'cost'];
     protected $useSoftDeletes = true;
 
     // Dates

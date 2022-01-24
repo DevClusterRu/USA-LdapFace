@@ -19,6 +19,10 @@ class Services extends Migration
                 'constraint' => 255,
 
             ],
+            'type_service' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
             'cost' => [
                 'type' => 'INT',
                 'unsigned' => true,

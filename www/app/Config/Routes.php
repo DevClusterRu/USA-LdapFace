@@ -37,6 +37,7 @@ $routes->get('/invoices', 'InvoiceController::index');
 $routes->post('/companysOperation', 'CompanyController::operation');
 $routes->post('/serversOperation', 'ServerController::operation');
 $routes->post('/usersOperation', 'UserController::operation');
+$routes->post('/servicesOperation', 'ServiceController::operation');
 
 $routes->post('/', 'HomeController::tryAuth');
 $routes->post('/profile/update', 'ProfileController::changeUserInfo');
