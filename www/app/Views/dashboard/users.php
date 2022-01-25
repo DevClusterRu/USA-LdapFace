@@ -38,7 +38,7 @@
                                            value="<?php if (isset($curUser)) echo $curUser["email"] ?>"
                                            type="email" class="form-control"
                                            id="exampleInputUsername1"
-                                           placeholder="Пользователь">
+                                           placeholder="E-Mail">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Контактный номер
@@ -47,7 +47,7 @@
                                            value="<?php if (isset($curUser)) echo $curUser["phone"] ?>"
                                            type="text" class="form-control"
                                            id="exampleInputUsername1"
-                                           placeholder="Пользователь">
+                                           placeholder="Контактный номер">
                                 </div>
 
                                 <div class="form-group">
@@ -92,6 +92,7 @@
                                         <th>Редактирование</th>
                                         <th>Удаление</th>
                                         <th>Сброс пароля</th>
+                                        <th>Пригласить</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -129,6 +130,16 @@
                                                                 class="input-helper"></i>
                                                     </label>
                                                 </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input value="<?php echo $element["id"] ?>" type="checkbox"
+                                                               class="form-check-input" name="checkboxInvite[]">Пригласить<i
+                                                                class="input-helper"></i>
+                                                    </label>
+                                                </div>
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
                                     <tr>
@@ -149,6 +160,13 @@
                                             <div class="butDelUsers">
                                                 <button type="button" value="res" name="resBut"
                                                         class="btn btn-gradient-primary me-2 ">Сбросить пароль
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="butDelUsers">
+                                                <button type="submit" value="hash" name="inv"
+                                                        class="btn btn-gradient-primary me-2 ">Пригласить
                                                 </button>
                                             </div>
                                         </td>

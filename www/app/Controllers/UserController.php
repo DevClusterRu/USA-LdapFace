@@ -27,7 +27,7 @@ class UserController extends BaseController
             "users" => $this->users
                 ->join('roles', 'users.role_id = roles.id')
                 ->join('companys', 'users.company_id = companys.id')
-                ->select('users.id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name')
+                ->select('users.id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name, invite_hash')
                 ->where('users.deleted_at IS NULL')
                 ->get()
                 ->getResultArray(),
@@ -98,10 +98,58 @@ class UserController extends BaseController
             ];
             return view('dashboard/users', $data);
         }
+
+
+        if ($this->request->getPost("inv")) {
+            if (!$this->request->getPost("checkboxInvite")) {
+                header("Location: /users");
+                exit();
+            }
+
+            foreach ($this->request->getPost("checkboxInvite") as $item) {
+
+                while (true) {
+
+                    $StrDate = date("Y-m-d h:m:s");
+                    $StrDate .= $item;
+                    $hash = md5($StrDate);
+
+//              var_dump($hash);
+//              die();
+
+                    $exists = $this->users->where('invite_hash', $hash)->countAll();
+                    if ($exists == 0) {
+                        $this->users
+                            ->update($this->request->getPost("id"), [
+                                'invite_hash' => $this->request->getPost("invite_hash"),
+                            ]);
+                        header("Location: /users");
+                        break;
+                    }
+                }
+            }
+
+
+        }
+
+
+        header("Location: /users");
     }
 
-    public function passwordReset()
+
+    public  function passwordReset()
     {
+    }
+
+
+    public function invite($hash="none")
+    {
+
+
+        //Написать функцию разового входа пользователя, если вошел - авторизуем его и отправляем на страницу сброса пароля. Сразу после этого удаляем хэш из базы, т.к. он одноразовый
+
+
+
     }
 
 }

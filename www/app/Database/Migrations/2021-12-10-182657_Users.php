@@ -39,6 +39,10 @@ class Users extends Migration
                 'type' => 'INT',
                 'unsigned' => true,
             ],
+            'invite_hash' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
             'created_at' => [
                 'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP'
             ],
@@ -63,6 +67,7 @@ class Users extends Migration
                 'phone' => "+7",
                 'role_id' => 4,
                 'company_id' => 1,
+                'invite_hash' => "NULL",
             ),
         );
         $this->db->table("users")->insertBatch($data);
