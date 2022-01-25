@@ -71,5 +71,10 @@ class CompanyController extends BaseController
             ];
             return view('dashboard/companys', $data);
         }
+
+        if ($this->request->getPost("cancel")) {
+
+            header("Location: /companys");
+        }
     }
 }
