@@ -1,9 +1,21 @@
 <?php namespace App\Controllers;
 
+use App\Models\Service;
+use App\Models\User;
 use CodeIgniter\HTTP\RequestInterface;
 
 class ProfileController extends BaseController
 {
+    protected $userModel;
+    protected $serviceModel;
+
+
+    public function __construct()
+    {
+        $this->userModel = new User();
+        $this->serviceModel=new Service();
+    }
+
     function index()
     {
         if (!session()->get("userId")) {
@@ -11,25 +23,16 @@ class ProfileController extends BaseController
             exit();
         }
         $data = [
-            "userInfo" => $this->curentUserInfo(),
+            "userInfo" => $this->userModel->find(session()->get("userId")),
+            "userServicesList"=>$this->serviceModel->findAll(),
         ];
 
         return view('dashboard/profile', $data);
 
-        $dataPay = [
-            "usersAllPayInfo"=>$this->getPaymentPersInfo()
-        ];  //
 
-        return view('dashboard/profile',$dataPay);
 
     }
 
-    function curentUserInfo()
-    {
-        $user = new \App\Models\User();
-        $info = $user->find(session()->get("userId"));
-        return $info;
-    }
 
     function changeUserInfo()
     {
@@ -72,6 +75,7 @@ class ProfileController extends BaseController
         $builder = $db->table('PaymentPers');
         $builder->select('type_of_service, current_service, price, get_bills, payment_before');
         return $builder->get()->getResultArray();
+
 
 
 

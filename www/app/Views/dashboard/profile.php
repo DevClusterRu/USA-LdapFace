@@ -86,38 +86,50 @@
                     </div>
                 </div>
 
+                <!-- Здесь начало второй таблицы-->
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-
-                            <!--                                    <style>-->
-                            <!--                                        .butDelUsers {-->
-                            <!--                                            width: 100%;-->
-                            <!--                                            text-align: right;-->
-                            <!--                                        }-->
-                            <!--                                    </style>-->
                             <form method="post" enctype="application/x-www-form-urlencoded" action="/usersOperation">
                                 <table class="table">
                                     <thead>
                                     <tr>
+                                        <th>Название услуги</th>
                                         <th>Тип услуги</th>
-                                        <th>Текущая услуга</th>
-
                                         <th>Стоимость, руб.</th>
-                                        <th>Получить счет</th>
+                                        <th>Текущая услуга</th>
                                         <th>Оплачено до</th>
 
                                     </tr>
                                     </thead>
                                     <tbody>
 
+                                    <?php foreach ($userServicesList as $element) { ?>
+
                                     <tr>
-                                        <td>Базовая</td>
-                                        <td> Тут галочки</td>
-                                        <td>5000</td>
-                                        <td>Здесь кнопка получения счета</td>
+                                        <td><?php echo $element["name"] ?></td>
+                                        <td><?php
+                                            if ($element["type_service"]== "once")
+                                                echo "Разовая оплата";
+                                            else
+                                                echo "Абониментская оплата";
+                                            ?></td>
+                                        <td><?php echo $element["cost"] ?></td>
+                                        <td>
+                                            <div class="form-check" style="margin-top: 0">
+                                                <label class="form-check-label">
+                                                    <input value="1" type="checkbox"
+                                                           class="form-check-input" name="checkboxRes[]"><i
+                                                            class="input-helper"></i>
+                                                </label>
+                                            </div>
+
+                                        </td>
                                         <td>2022-01-19 09:41:54</td>
                                     </tr>
+
+                                    <?php  } ?>
+
                                     </tbody>
                                 </table>
                             </form>

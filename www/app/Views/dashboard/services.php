@@ -63,6 +63,7 @@
                     </div>
                 </div>
 
+
                 <div class="card" style="margin-top: 20px">
                     <div class="card-body">
                         <div class="table-responsive">
@@ -75,7 +76,7 @@
                                         <th>Стоимость</th>
                                         <th>Редактирование</th>
                                         <th>Удаление</th>
-                                        <th>Сброс пароля</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -84,10 +85,13 @@
                                     <?php foreach ($services as $element): ?>
                                         <tr>
                                             <td><?php echo $element["name"] ?></td>
-                                            <td><?php echo $element["type_service"] ?></td>
+                                            <td><?php
+                                                if ($element["type_service"]== "once")
+                                                echo "Разовая оплата";
+                                                else
+                                                    echo "Абониментская оплата";
+                                                ?></td>
                                             <td><?php echo $element["cost"] ?></td>
-                                            <td><?php echo $element["created_at"] ?></td>
-                                            <td><?php echo $element["updated_at"] ?></td>
                                             <td>
                                                 <button name="updating" type="submit"
                                                         value="<?php echo $element["id"] ?>"
@@ -104,20 +108,9 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        <input value="<?php echo $element["id"] ?>" type="checkbox"
-                                                               class="form-check-input" name="checkboxRes[]">Сбросить
-                                                        пароль<i
-                                                                class="input-helper"></i>
-                                                    </label>
-                                                </div>
-                                        </tr>
+
                                     <?php endforeach; ?>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -129,13 +122,7 @@
                                                 </button>
                                             </div>
                                         </td>
-                                        <td>
-                                            <div class="butDelUsers">
-                                                <button type="button" value="res" name="resBut"
-                                                        class="btn btn-gradient-primary me-2 ">Сбросить пароль
-                                                </button>
-                                            </div>
-                                        </td>
+
                                     </tr>
 
                                     </tbody>
