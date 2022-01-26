@@ -108,28 +108,32 @@ class UserController extends BaseController
 
             foreach ($this->request->getPost("checkboxInvite") as $item) {
 
+
                 while (true) {
 
                     $StrDate = date("Y-m-d h:m:s");
                     $StrDate .= $item;
                     $hash = md5($StrDate);
 
+
 //              var_dump($hash);
 //              die();
 
-                    $exists = $this->users->where('invite_hash', $hash)->countAll();
+                    $exists = $this->users->where('invite_hash', $hash)->countAllResults();
+
+
                     if ($exists == 0) {
+
                         $this->users
-                            ->update($this->request->getPost("id"), [
-                                'invite_hash' => $this->request->getPost("invite_hash"),
+                            ->update($item, [
+                                'invite_hash' => $hash,
                             ]);
+
                         header("Location: /users");
                         break;
                     }
                 }
             }
-
-
         }
 
 
@@ -137,18 +141,36 @@ class UserController extends BaseController
     }
 
 
-    public  function passwordReset()
+    public function passwordReset()
     {
     }
 
 
-    public function invite($hash="none")
+    public function invite($hash = "none")
     {
-
 
         //Написать функцию разового входа пользователя, если вошел - авторизуем его и отправляем на страницу сброса пароля. Сразу после этого удаляем хэш из базы, т.к. он одноразовый
 
+        //http://localhost:85/invite/8f3a61740ad5b1b95713c09399947bc1
+        $hash = "8f3a61740ad5b1b95713c09399947bc1";
+        $vhod = $this->users->where('invite_hash', $hash)->first();
 
+        var_dump($vhod ["id"]);
+
+        if ($vhod ["id"] !== NULL) {
+            $this->users
+                ->update($vhod ["id"], [
+                    'invite_hash' => "",
+                ]);
+        }
+
+        session()->set([
+            'userId' => $vhod["id"],
+            'userRole' => $vhod["role"],
+            'userName' => self::shortName($vhod["username"]),
+        ]);
+        header("Location: /profile");
+        exit();
 
     }
 
