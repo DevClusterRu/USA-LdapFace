@@ -36,8 +36,10 @@ $routes->get('/companys', 'CompanyController::index');
 $routes->get('/services', 'ServiceController::index');
 $routes->get('/profile', 'ProfileController::index');
 $routes->get('/profile/invite', 'ProfileController::passwordChangeNeed');
+$routes->post('/profile/bindToUser', 'ServiceController::bindToUser');
 $routes->get('/roles', 'RoleController::index');
 $routes->get('/invoices', 'InvoiceController::index');
+
 
 $routes->post('/companysOperation', 'CompanyController::operation');
 $routes->post('/serversOperation', 'ServerController::operation');

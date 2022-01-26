@@ -2,18 +2,21 @@
 
 use App\Models\Service;
 use App\Models\User;
+use App\Models\UserSelectedService;
 use CodeIgniter\HTTP\RequestInterface;
 
 class ProfileController extends BaseController
 {
     protected $userModel;
     protected $serviceModel;
+    protected $userSelectedService;
 
 
     public function __construct()
     {
         $this->userModel = new User();
         $this->serviceModel=new Service();
+        $this->userSelectedService = new UserSelectedService();
     }
 
     function index()
@@ -24,9 +27,16 @@ class ProfileController extends BaseController
         }
         $data = [
             "userInfo" => $this->userModel->find(session()->get("userId")),
-            "userServicesList"=>$this->serviceModel->findAll(),
+            "userServicesList"=>$this->serviceModel
+                ->join('user_selected_services', 'user_selected_services.service_id = services.id','left')
+                ->select('services.id, services.name, services.type_service, services.cost, user_selected_services.service_id')
+                ->get()
+            ->getResultArray()
         ];
 
+//        "selectedServices"=>$this->userSelectedService->where([
+//        "user_id"=>session()->get("userId")
+//    ])->get()->getResultArray()
         return view('dashboard/profile', $data);
 
 

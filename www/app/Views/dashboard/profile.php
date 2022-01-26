@@ -117,9 +117,14 @@
                                         <td><?php echo $element["cost"] ?></td>
                                         <td>
                                             <div class="form-check" style="margin-top: 0">
-                                                <label class="form-check-label">
-                                                    <input value="1" type="checkbox"
-                                                           class="form-check-input" name="checkboxRes[]"><i
+                                                <checked="checked" class="form-check-label">
+                                                    <input value="<?php echo $element["id"] ?>" type="checkbox"
+                                                           <?php
+if ($element["service_id"]) {
+    echo "checked";
+}
+                                                           ?>
+                                                           class="form-check-input servicesSelector" name="checkboxService"><i
                                                             class="input-helper"></i>
                                                 </label>
                                             </div>
@@ -159,6 +164,27 @@
 
 
 <script>
+
+    $(".servicesSelector").click(function (){ //класс и событие
+        doCheckbox="set";
+        if (!$(this).prop("checked")) doCheckbox="unset";
+
+        servicesSel=$(this).val(); //вэлью от чекбокса хтмл
+        $.ajax({
+            url: '/profile/bindToUser', //роут незаметный
+            method: 'post',
+            // dataType: 'html',
+            data: {checkboxService:  servicesSel, doCheckbox: doCheckbox}// ключ-нейм необязательный ,значение -вэлью от чекбокса
+            // success: function(data){ //вывод результата от контроллера через роут
+            //     alert(data);
+            // }
+        });
+
+
+    })
+
+
+
 
     $(".pass_change").click(function () {
         $('[name="password1"]').removeClass("is-invalid");

@@ -10,7 +10,7 @@ class UserSelectedService extends Model
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $allowedFields = ['user_id', 'service_id'];
-    protected $useSoftDeletes = true;
+    protected $useSoftDeletes = false;
     // Dates
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
