@@ -106,7 +106,8 @@ class UserController extends BaseController
                 exit();
             }
 
-            foreach ($this->request->getPost("checkboxInvite") as $item) {
+            foreach ($this->request->getPost("checkboxInvite") as $item) { //переменная в которую передается id user
+
 
                 while (true) {
 
@@ -114,22 +115,25 @@ class UserController extends BaseController
                     $StrDate .= $item;
                     $hash = md5($StrDate);
 
+
 //              var_dump($hash);
 //              die();
 
-                    $exists = $this->users->where('invite_hash', $hash)->countAll();
+                    $exists = $this->users->where('invite_hash', $hash)->countAllResults(); //число совпадений
+
+
                     if ($exists == 0) {
+
                         $this->users
-                            ->update($this->request->getPost("id"), [
-                                'invite_hash' => $this->request->getPost("invite_hash"),
+                            ->update($item, [
+                                'invite_hash' => $hash,
                             ]);
+
                         header("Location: /users");
                         break;
                     }
                 }
             }
-
-
         }
 
 
@@ -137,19 +141,39 @@ class UserController extends BaseController
     }
 
 
-    public  function passwordReset()
+    public function passwordReset()
     {
     }
 
 
-    public function invite($hash="none")
+    public function invite($hash = "none")
     {
-
 
         //Написать функцию разового входа пользователя, если вошел - авторизуем его и отправляем на страницу сброса пароля. Сразу после этого удаляем хэш из базы, т.к. он одноразовый
 
+        //   http://localhost:85/invite/8f3a61740ad5b1b95713c09399947bc1
+        //$hash = "8f3a61740ad5b1b95713c09399947bc1";
+        $entranceUs = $this->users->where('invite_hash', $hash)->first(); //Возвращает строку из бд
 
+//        var_dump($entrance ["id"]);
 
+        if ($entranceUs ["id"] !== NULL) {
+            $this->users
+                ->update($entranceUs ["id"], [
+                    'invite_hash' => "",
+                ]);
+
+            session()->set([
+                'userId' => $entranceUs["id"],
+                'userRole' => $entranceUs["role"],
+                'userName' => self::shortName($entranceUs["username"]),
+            ]);
+            header("Location: /profile");
+            exit();
+        }
+
+        header("Location: /login");
+        exit();
     }
 
 }
