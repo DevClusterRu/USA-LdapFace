@@ -106,7 +106,7 @@ class UserController extends BaseController
                 exit();
             }
 
-            foreach ($this->request->getPost("checkboxInvite") as $item) {
+            foreach ($this->request->getPost("checkboxInvite") as $item) { //переменная в которую передается id user
 
 
                 while (true) {
@@ -119,7 +119,7 @@ class UserController extends BaseController
 //              var_dump($hash);
 //              die();
 
-                    $exists = $this->users->where('invite_hash', $hash)->countAllResults();
+                    $exists = $this->users->where('invite_hash', $hash)->countAllResults(); //число совпадений
 
 
                     if ($exists == 0) {
@@ -151,27 +151,29 @@ class UserController extends BaseController
 
         //Написать функцию разового входа пользователя, если вошел - авторизуем его и отправляем на страницу сброса пароля. Сразу после этого удаляем хэш из базы, т.к. он одноразовый
 
-        //http://localhost:85/invite/8f3a61740ad5b1b95713c09399947bc1
-        $hash = "8f3a61740ad5b1b95713c09399947bc1";
-        $vhod = $this->users->where('invite_hash', $hash)->first();
+        //   http://localhost:85/invite/8f3a61740ad5b1b95713c09399947bc1
+        //$hash = "8f3a61740ad5b1b95713c09399947bc1";
+        $entranceUs = $this->users->where('invite_hash', $hash)->first(); //Возвращает строку из бд
 
-        var_dump($vhod ["id"]);
+//        var_dump($entrance ["id"]);
 
-        if ($vhod ["id"] !== NULL) {
+        if ($entranceUs ["id"] !== NULL) {
             $this->users
-                ->update($vhod ["id"], [
+                ->update($entranceUs ["id"], [
                     'invite_hash' => "",
                 ]);
+
+            session()->set([
+                'userId' => $entranceUs["id"],
+                'userRole' => $entranceUs["role"],
+                'userName' => self::shortName($entranceUs["username"]),
+            ]);
+            header("Location: /profile");
+            exit();
         }
 
-        session()->set([
-            'userId' => $vhod["id"],
-            'userRole' => $vhod["role"],
-            'userName' => self::shortName($vhod["username"]),
-        ]);
-        header("Location: /profile");
+        header("Location: /login");
         exit();
-
     }
 
 }
