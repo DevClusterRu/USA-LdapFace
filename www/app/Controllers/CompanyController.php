@@ -10,6 +10,11 @@ class CompanyController extends BaseController
     //Метод __construct() - это конструктор класса, этот метод вызывается 1 раз при обращении к классу (при создании объекта класса)
     public function __construct()
     {
+
+        if(session()->get("userRole")<4) { //условия для ограничения просмотра роута, запрет
+            header("Location: /");
+            exit();
+        }
         //Заполняем companys объектом таблицы
         $this->companys = new Company();
     }

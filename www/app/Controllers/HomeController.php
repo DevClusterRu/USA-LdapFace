@@ -10,7 +10,8 @@ class HomeController extends BaseController
             header("Location: /login");
             exit();
         }
-        return view('dashboard/profile');
+        header("Location: /profile");
+        exit();
     }
 
     public function login()
@@ -30,7 +31,7 @@ class HomeController extends BaseController
     {
         session()->set([
             'userId' => $auth["id"],
-            'userRole' => $auth["role"],
+            'userRole' => $auth["role_id"],
             'userName' => self::shortName($auth["username"]),
         ]);
         header("Location: /profile");

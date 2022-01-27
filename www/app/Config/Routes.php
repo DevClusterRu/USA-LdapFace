@@ -56,7 +56,7 @@ $routes->post('/serverlistOperation2', 'ServerListController::serverlistOperatio
 $routes->post('/usersOperation1', 'UsersController::usersOperation1');
 $routes->post('/usersOperation2', 'UsersController::usersOperation2');
 //$routes->post('/usersOperation', 'UsersController::passwordReset');
-$routes->get('/user/(:any)', 'User::index/$1');
+$routes->get('/user/(:any)', 'UserController::index/$1');
 $routes->post('/user/(:any)', 'User::index/$1');
 $routes->match(['get', 'post'], 'avatar/(:segment)', 'ImageRender::index/$1');
 

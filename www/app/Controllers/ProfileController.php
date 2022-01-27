@@ -14,6 +14,8 @@ class ProfileController extends BaseController
 
     public function __construct()
     {
+
+
         $this->userModel = new User();
         $this->serviceModel=new Service();
         $this->userSelectedService = new UserSelectedService();

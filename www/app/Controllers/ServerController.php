@@ -9,6 +9,10 @@ class ServerController extends BaseController
 
     public function __construct()
     {
+        if(session()->get("userRole")<3) { //условия для ограничения просмотра роута
+            header("Location: /");
+            exit();
+        }
         $this->servers = new Server();
     }
 

@@ -86,7 +86,8 @@
                     </div>
                 </div>
 
-                <!-- Здесь начало второй таблицы-->
+                <?php if(session()->get("userRole")>1){?>  <!--условие для ограничения просмотров, разрешение-->
+                <!-- Здесь начало третей таблицы-->
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
@@ -143,7 +144,7 @@ if ($element["service_id"]) {
                         </div>
                     </div>
                 </div>
-
+                <?php } ?> <!--конец условия для ограничения просмотров-->
 
             </div>
             <?php echo $this->include('partials/footer') ?>

@@ -4,6 +4,13 @@ use CodeIgniter\HTTP\RequestInterface;
 
 class InvoiceController extends BaseController {
 
+    public function __construct()
+    {
+        if (session()->get("userRole") < 4) { //условия для ограничения просмотра роута
+            header("Location: /");
+            exit();
+        }
+    }
 
 
     private function getAllinvoice() //получение из бд всех оплат

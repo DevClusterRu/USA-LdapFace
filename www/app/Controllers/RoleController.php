@@ -5,6 +5,13 @@ use CodeIgniter\HTTP\RequestInterface;
 class RoleController extends BaseController
 {
 
+    public function __construct()
+    {
+        if (session()->get("userRole") < 4) { //условия для ограничения просмотра роута, запретить
+            header("Location: /");
+            exit();
+        }
+    }
 
     private function getAllRoles() //получение из бд всех ролей
     {

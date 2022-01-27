@@ -50,6 +50,7 @@
                                            placeholder="Контактный номер">
                                 </div>
 
+                                <?php if(session()->get("userRole")>2){?>  <!--условие для ограничения просмотров, разрешение-->
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Компания</label>
                                     <select name="company" class="form-control">
@@ -58,6 +59,9 @@
                                         <?php } ?>
                                     </select>
                                 </div>
+                                <?php } ?> <!--конец условия для ограничения просмотров-->
+
+
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Роль</label>
                                     <select name="role" class="form-control">

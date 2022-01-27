@@ -12,6 +12,11 @@ class ServiceController extends BaseController
 
     public function __construct()
     {
+
+        if(session()->get("userRole")<3) { //условия для ограничения просмотра роута,запретить
+            header("Location: /");
+            exit();
+        }
         $this->services = new Service();
         $this->userSelectedService= new UserSelectedService();
 

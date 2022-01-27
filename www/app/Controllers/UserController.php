@@ -12,6 +12,10 @@ class UserController extends BaseController
 
     public function __construct()
     {
+        if(session()->get("userRole")<2) { //условия для ограничения просмотра роута, запретить
+            header("Location: /");
+            exit();
+        }
         $this->users = new User();
         $this->companys = new Company();
         $this->allroles = new Role();

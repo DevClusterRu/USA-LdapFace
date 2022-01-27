@@ -19,42 +19,62 @@
                 <i class="mdi mdi-animation menu-icon"></i>
             </a>
         </li>
+
+        <?php if(session()->get("userRole")>1){?>  <!--условие для ограничения просмотров, разрешение-->
         <li class="nav-item">
             <a class="nav-link" href="/users">
                 <span class="menu-title">Пользователи</span>
                 <i class="mdi mdi-account-multiple menu-icon"></i>
             </a>
         </li>
+        <?php } ?> <!--конец условия для ограничения просмотров-->
+
+        <?php if(session()->get("userRole")>3){?>  <!--условие для ограничения просмотров, разрешение-->
         <li class="nav-item">
             <a class="nav-link" href="/roles">
                 <span class="menu-title">Роли</span>
                 <i class="mdi mdi-tag-faces menu-icon"></i>
             </a>
         </li>
+        <?php } ?> <!--конец условия для ограничения просмотров-->
+
+        <?php if(session()->get("userRole")>2){?>  <!--условие для ограничения просмотров-->
         <li class="nav-item">
             <a class="nav-link" href="/servers">
                 <span class="menu-title">Список серверов</span>
                 <i class=" mdi mdi-server menu-icon"></i>
             </a>
         </li>
+
+        <?php } ?> <!--конец условия для ограничения просмотров-->
+
+        <?php if(session()->get("userRole")>3){?>  <!--условие для ограничения просмотров, разрешение-->
         <li class="nav-item">
             <a class="nav-link" href="/invoices">
                 <span class="menu-title">Оплата</span>
                 <i class="mdi mdi-dns menu-icon"></i>
             </a>
         </li>
+        <?php } ?> <!--конец условия для ограничения просмотров-->
+
+        <?php if(session()->get("userRole")>2){?>  <!--условие для ограничения просмотров, разрешение-->
         <li class="nav-item">
             <a class="nav-link" href="/services">
                 <span class="menu-title">Услуги</span>
                 <i class="mdi mdi-view-headline menu-icon"></i>
             </a>
         </li>
+        <?php } ?> <!--конец условия для ограничения просмотров-->
+
+        <?php if(session()->get("userRole")>3){?>  <!--условие для ограничения просмотров, разрешение-->
         <li class="nav-item">
             <a class="nav-link" href="/companys">
                 <span class="menu-title">Компании</span>
                 <i class="mdi mdi-houzz-box menu-icon"></i>
             </a>
         </li
+            <?php } ?> <!--конец условия для ограничения просмотров-->
+
 <!--        --><?php //if (session()->get("userRole")=="admin"):?>
 <!--            <li class="nav-item">-->
 <!--                <a class="nav-link" href="/addproject">-->
