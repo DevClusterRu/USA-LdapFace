@@ -103,8 +103,10 @@
 
 
                                     <?php foreach ($users as $element): ?>
+                                    <?php if ($element["role_id"]==4) continue; ?>
                                         <tr>
-                                            <td><?php echo $element["username"] ?></td>
+<!--                                            формируем ссылку для зумирования, туда попадет айди пользователя-->
+                                            <td><a href="/zoom/<?php echo $element["id"] ?>"><?php echo $element["username"] ?></a></td>
                                             <td><?php echo $element["role_name"] ?></td>
                                             <td><?php echo $element["company_name"] ?></td>
                                             <td><?php echo $element["created_at"] ?></td>

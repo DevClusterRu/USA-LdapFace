@@ -50,6 +50,9 @@ $routes->post('/', 'HomeController::tryAuth');
 $routes->post('/profile/update', 'ProfileController::changeUserInfo');
 $routes->post('/profile/passwordreset', 'ProfileController::changeUserPassword');
 
+//zoom
+$routes->get('/zoom/(:any)', 'UserController::zoom/$1');
+
 
 $routes->post('/delroles', 'RolesController::delRoles');
 $routes->post('/serverlistOperation2', 'ServerListController::serverlistOperation2');

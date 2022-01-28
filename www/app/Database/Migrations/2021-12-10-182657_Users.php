@@ -69,6 +69,33 @@ class Users extends Migration
                 'company_id' => 1,
                 'invite_hash' => "NULL",
             ),
+            array(
+                'username' => "admin",
+                'password' => password_hash("123",PASSWORD_BCRYPT),
+                'email' => "mail@mail.ru",
+                'phone' => "+7",
+                'role_id' => 3,
+                'company_id' => 1,
+                'invite_hash' => "NULL",
+            ),
+            array(
+                'username' => "director",
+                'password' => password_hash("123",PASSWORD_BCRYPT),
+                'email' => "mail@mail.ru",
+                'phone' => "+7",
+                'role_id' => 2,
+                'company_id' => 1,
+                'invite_hash' => "NULL",
+            ),
+            array(
+                'username' => "worker",
+                'password' => password_hash("123",PASSWORD_BCRYPT),
+                'email' => "mail@mail.ru",
+                'phone' => "+7",
+                'role_id' => 1,
+                'company_id' => 1,
+                'invite_hash' => "NULL",
+            ),
         );
         $this->db->table("users")->insertBatch($data);
 

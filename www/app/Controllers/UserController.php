@@ -31,7 +31,7 @@ class UserController extends BaseController
             "users" => $this->users
                 ->join('roles', 'users.role_id = roles.id')
                 ->join('companys', 'users.company_id = companys.id')
-                ->select('users.id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name, invite_hash')
+                ->select('users.id, users.role_id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name, invite_hash')
                 ->where('users.deleted_at IS NULL')
                 ->get()
                 ->getResultArray(),
@@ -41,6 +41,28 @@ class UserController extends BaseController
 
         return view('dashboard/users', $data);
     }
+
+
+    public function zoom($user_id=0){
+        if ($user_id==session()->get("userId")){
+            header("Location: /profile");
+            exit();
+        }
+$infoUserZoom=$this->users->find($user_id);
+
+
+        session()->set([
+            'userId' =>$user_id,
+            'userRole' =>$infoUserZoom["role_id"],
+            'userName' => $infoUserZoom["username"],
+            'zoom_id'=>session()->get("userId"),
+        ]);
+        header("Location: /profile");
+        exit();
+
+
+    }
+
 
 
     public function operation()
