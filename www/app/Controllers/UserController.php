@@ -1,5 +1,6 @@
 <?php namespace App\Controllers;
 
+use App\Models\MailBuffer;
 use App\Models\User;
 use App\Models\Company;
 use App\Models\Role;
@@ -9,16 +10,18 @@ class UserController extends BaseController
     protected $users;
     protected $companys;
     protected $allroles;
+    protected $mail_buffers;
 
     public function __construct()
     {
-        if(session()->get("userRole")<2) { //условия для ограничения просмотра роута, запретить
+        if (session()->get("userRole") < 2) { //условия для ограничения просмотра роута, запретить
             header("Location: /");
             exit();
         }
         $this->users = new User();
         $this->companys = new Company();
         $this->allroles = new Role();
+        $this->mail_buffers = new MailBuffer();
     }
 
     public function index()
@@ -37,6 +40,7 @@ class UserController extends BaseController
                 ->getResultArray(),
             "companys" => $this->companys->findAll(),
             "roles" => $this->allroles->findAll(),
+            "mail_buffers" => $this->mail_buffers->findAll(),
         ];
 
         return view('dashboard/users', $data);
@@ -126,18 +130,38 @@ class UserController extends BaseController
                     $exists = $this->users->where('invite_hash', $hash)->countAllResults(); //число совпадений
 
 
-                    if ($exists == 0) {
-
-                        $this->users
-                            ->update($item, [
-                                'invite_hash' => $hash,
-                            ]);
-
-                        header("Location: /users");
-                        break;
-                    }
+                    if ($exists == "0") break;
                 }
+
+                $this->users
+                    ->update($item, [
+                        'invite_hash' => $hash,
+                    ]);
+
+                $dfg = $this->users->find($item);
+
+                $existsMail = $this->mail_buffers->where('email_buff', $dfg["email"])->countAllResults();
+//                        var_dump($existsMail);
+//             die();
+
+                if ($existsMail == "0") {
+                    $this->mail_buffers
+                        ->insert([
+                            'email_buff' => $dfg["email"],
+                            'letter' => 'localhost:85/invite/' . $hash,
+
+                        ]);
+                } else {
+                    $this->mail_buffers
+                        ->update($this->mail_buffers->where('email_buff', $dfg["email"]), [
+                            'email_buff' => $dfg["email"],
+                            'letter' => 'localhost:85/invite/' . $hash,
+                        ]);
+                }
+                header("Location: /users");
+                //  break;
             }
+
         }
 
 
