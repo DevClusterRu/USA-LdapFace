@@ -91,8 +91,8 @@
                                         <th> Пользователь</th>
                                         <th> Роль</th>
                                         <th> Компания</th>
-                                        <th>Дата регистрации</th>
-                                        <th>Последний вход</th>
+<!--                                        <th>Дата регистрации</th>-->
+<!--                                        <th>Последний вход</th>-->
                                         <th>Редактирование</th>
                                         <th>Удаление</th>
                                         <th>Сброс пароля</th>
@@ -109,8 +109,8 @@
                                             <td><a href="/zoom/<?php echo $element["id"] ?>"><?php echo $element["username"] ?></a></td>
                                             <td><?php echo $element["role_name"] ?></td>
                                             <td><?php echo $element["company_name"] ?></td>
-                                            <td><?php echo $element["created_at"] ?></td>
-                                            <td><?php echo $element["updated_at"] ?></td>
+<!--                                            <td>--><?php //echo $element["created_at"] ?><!--</td>-->
+<!--                                            <td>--><?php //echo $element["updated_at"] ?><!--</td>-->
                                             <td>
                                                 <button name="updating" type="submit"
                                                         value="<?php echo $element["id"] ?>"
@@ -153,9 +153,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
+                                    <td>
                                             <div class="butDelUsers">
                                                 <button type="submit" value="del" name="delete"
                                                         class="btn btn-gradient-primary me-2 ">Удалить

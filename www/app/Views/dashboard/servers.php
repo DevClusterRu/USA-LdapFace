@@ -34,11 +34,11 @@
                                                        placeholder="Domain">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputUsername1">URL</label>
+                                                <label for="exampleInputUsername1">URLs: перечислите через запятую</label>
                                                 <input name="url"
                                                        value="<?php if (isset($curServer)) echo $curServer["url"] ?>"
                                                        type="text" class="form-control" id="exampleInputUsername1"
-                                                       placeholder="IP">
+                                                       placeholder="URLs: перечислите через запятую">
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputUsername1">Login</label>
