@@ -48,7 +48,7 @@
 
         <?php } ?> <!--конец условия для ограничения просмотров-->
 
-        <?php if(session()->get("userRole")>3){?>  <!--условие для ограничения просмотров, разрешение-->
+        <?php if(session()->get("userRole")>1){?>  <!--условие для ограничения просмотров, разрешение-->
         <li class="nav-item">
             <a class="nav-link" href="/invoices">
                 <span class="menu-title">Оплата</span>

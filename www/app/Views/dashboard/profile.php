@@ -95,14 +95,39 @@
                         </div>
 
                     </div>
-
                 </div>
 
-                <?php if(session()->get("userRole")>1 && session()->get("userRole")<3 ){?> <!--условие для ограничения просмотров, разрешение-->
-                    <!-- Здесь начало третей таблицы-->
+                <?php if(session()->get("userRole")>1 && session()->get("userRole")<3 ){?>  <!--условие для ограничения просмотров, разрешение-->
+                <!-- Здесь начало третей таблицы-->
 
 
-                    <div class="card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Пополнить баланс счета <div class="hidder" object="addForm2">-</div></h4>
+
+                        <div class="hidden addForm2">
+                            <form method="post" enctype="application/x-www-form-urlencoded" action="/аddInvoice">
+
+                                <div class="form-group">
+<!--                                    <label for="exampleInputUsername1">Пополнить баланс счета</label>-->
+                                    <input name="amount"
+                                           value="<?php  ?>"
+                                           type="text" class="form-control"
+                                           id="exampleInputUsername1"
+                                           placeholder="Сумма пополнения">
+                                </div>
+                                <button name="addButton" value="1" type="submit"
+                                        class="btn btn-gradient-primary me-2">Пополнить баланс
+                                </button>
+                                <button name="cancel" value="2" class="btn btn-light">Очистить
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <?php //if(session()->get("userRole")>1 && session()->get("userRole")<3 ){?>
+
+                    <div class="card" style="margin-top: 20px">
                         <div class="card-body">
                             <div class="table-responsive">
                                 <form method="post" enctype="application/x-www-form-urlencoded"
@@ -162,6 +187,8 @@
                             </div>
                         </div>
                     </div>
+
+
                 <?php } ?> <!--конец условия для ограничения просмотров-->
 
             </div>
