@@ -16,12 +16,14 @@
                             <div class="card-body">
                                 <div class="table-responsive">
 
-                                    <form method="post" enctype="application/x-www-form-urlencoded" action="/usersOperation">
+                                    <form method="post" enctype="application/x-www-form-urlencoded" action="/invoicesOperation">
                                         <table class="table">
                                             <thead>
                                             <tr>
                                                 <th>Номер счета</th>
+                                                <th>Юридическое лицо</th>
                                                 <th>Имя пользователя</th>
+                                                <th>Сумма платежа</th>
                                                 <th>Статус счета</th>
 
                                             </tr>
@@ -29,24 +31,30 @@
                                             <tbody>
 
 
-                                            <?php foreach ($invoiceAll as $element): ?>
+                                            <?php foreach ($invoices as $element): ?>
                                                 <tr>
                                                     <td>
 
                                                         <?php echo $element["invoice_num"] ?>
                                                     </td>
-                                                    <!--                                           <td>-->
+
                                                     <?php //echo session()->get("userRoleTitle")?><!--</td>-->
-                                                    <td><?php echo $element["user_id"] ?></td>
+                                                    <td><?php echo $element["company_name"] ?></td>
+                                                    <td><?php echo $element["username"] ?></td>
 
                                                     <!--                                            <td>-->
                                                     <!--                                                <label class="badge badge-gradient-success">-->
                                                     <?php //echo $element->status?><!--</label>-->
                                                     <!--                                            </td>-->
-                                                    <td><?php echo $element["status"] ?></td>
-
-
-                                            </tr>
+                                                    <td><?php echo $element["amount"] ?></td>
+                                                <?php if ($element["status"]== "new") { ?>
+                                                            <td class="text-danger">не оплачен</td>
+                                                    <?php }elseif  ($element["status"]== "paid"){ ?>
+                                                            <td class="text-success">оплачен</td>
+                                                      <?php }  else { ?>
+                                                            <td class="text-warning">частично оплачен</td>
+                                                    <?php } ?>
+                                                </tr>
                                             <?php endforeach; ?>
                                             </tbody>
                                         </table></form>

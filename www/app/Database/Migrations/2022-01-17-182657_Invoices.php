@@ -22,6 +22,10 @@ class Invoices extends Migration
                 'type' => 'INT',
                 'unsigned' => true,
             ],
+            'amount' => [
+                'type' => 'INT',
+                'unsigned' => true,
+            ],
             'status' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,

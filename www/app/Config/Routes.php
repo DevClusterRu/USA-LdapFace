@@ -37,6 +37,7 @@ $routes->get('/services', 'ServiceController::index');
 $routes->get('/profile', 'ProfileController::index');
 $routes->get('/profile/invite', 'ProfileController::passwordChangeNeed');
 $routes->post('/profile/bindToUser', 'ServiceController::bindToUser');
+$routes->post('/аddInvoice', 'ProfileController::аddInvoice');
 $routes->get('/roles', 'RoleController::index');
 $routes->get('/invoices', 'InvoiceController::index');
 

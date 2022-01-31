@@ -7,7 +7,7 @@ class Invoice extends Model
     protected $table = 'invoices';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['name', 'username', 'email', 'password', 'role_id','phone'];
+    protected $allowedFields = ['invoice_num', 'user_id', 'amount', 'status'];
     protected $useSoftDeletes = true;
 
     // Dates

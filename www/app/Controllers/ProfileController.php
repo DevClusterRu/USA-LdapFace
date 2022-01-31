@@ -3,6 +3,7 @@
 use App\Models\Service;
 use App\Models\User;
 use App\Models\UserSelectedService;
+use App\Models\Invoice;
 use CodeIgniter\HTTP\RequestInterface;
 
 class ProfileController extends BaseController
@@ -10,6 +11,7 @@ class ProfileController extends BaseController
     protected $userModel;
     protected $serviceModel;
     protected $userSelectedService;
+    protected $invoices;
 
 
     public function __construct()
@@ -19,6 +21,7 @@ class ProfileController extends BaseController
         $this->userModel = new User();
         $this->serviceModel=new Service();
         $this->userSelectedService = new UserSelectedService();
+        $this->invoices = new Invoice();
     }
 
     function index()
@@ -33,9 +36,9 @@ class ProfileController extends BaseController
                 ->join('user_selected_services', 'user_selected_services.service_id = services.id','left')
                 ->select('services.id, services.name, services.type_service, services.cost, user_selected_services.service_id')
                 ->get()
-            ->getResultArray()
+            ->getResultArray(),
+            "invoices" => $this->invoices->findAll(),
         ];
-
 //        "selectedServices"=>$this->userSelectedService->where([
 //        "user_id"=>session()->get("userId")
 //    ])->get()->getResultArray()
@@ -58,6 +61,7 @@ class ProfileController extends BaseController
             'phone' => $phone,//в левой части мы указываем имя поля таблицы, в правой переменную нового значения поля
             'email' => $email,
         ];
+
 
         $user->update(session()->get("userId"), $dataInfo); //обвновляет бд
         header("Location: /profile");
@@ -82,16 +86,35 @@ class ProfileController extends BaseController
 
     }
 
+   function аddInvoice()
+    { if ($this->request->getPost("addButton")) {
+
+        $user = session()->get("userId");
+
+        $this->invoices
+            ->insert([
+                'invoice_num' => "0",
+                'user_id' => $user,
+                'amount' => $this->request->getPost("amount"),
+                'status' => "new",
+
+            ]);
+
+        header("Location: /profile");
+    } elseif ($this->request->getPost("cancel")) {
+            header("Location: /profile");
+//           //  return view('dashboard/serverlist', $data);
+        }
+    }
+
     function getPaymentPersInfo (){
         $db = \Config\Database::connect();
         $builder = $db->table('PaymentPers');
         $builder->select('type_of_service, current_service, price, get_bills, payment_before');
         return $builder->get()->getResultArray();
 
-
-
-
-
     }
+
+
 
 }
