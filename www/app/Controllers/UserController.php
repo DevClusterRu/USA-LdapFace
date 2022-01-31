@@ -47,26 +47,41 @@ class UserController extends BaseController
     }
 
 
-    public function zoom($user_id=0){
-        if ($user_id==session()->get("userId")){
+    public function zoom($user_id = 0) //айди приходит с роута от зумирования
+    {
+        //условия для разрешения зумирование и проверка двойного зумирования для запрета
+        if(session()->get("userRole")<3 || session()->get("zoom_id")) {
             header("Location: /profile");
             exit();
         }
-$infoUserZoom=$this->users->find($user_id);
 
+        if ($user_id == session()->get("userId")) {
+            header("Location: /profile");
+            exit();
+        }
+        $infoUserZoom = $this->users->find($user_id);
 
         session()->set([
-            'userId' =>$user_id,
-            'userRole' =>$infoUserZoom["role_id"],
+            'userId' => $user_id,
+            'userRole' => $infoUserZoom["role_id"],
             'userName' => $infoUserZoom["username"],
-            'zoom_id'=>session()->get("userId"),
+            'zoom_id' => session()->get("userId"),// айди предыдущего пользователя
         ]);
         header("Location: /profile");
         exit();
-
-
     }
 
+    public function zoomOut(){
+        $infoUserZoom = $this->users->find(session()->get("zoom_id"));
+        session()->set([
+            'userId' => session()->get("zoom_id"),
+            'userRole' =>$infoUserZoom["role_id"],
+            'userName' => $infoUserZoom["username"],
+            ]);
+        session()->remove("zoom_id");
+        header("Location: /profile");
+        exit();
+    }
 
 
     public function operation()

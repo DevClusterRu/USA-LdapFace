@@ -26,8 +26,13 @@
                         <img src="assets/images/faces/img.png" alt="profile">
                         <span class="availability-status online"></span>
                     </div>
+<!--                  условие для выделения цвета, переменная как стиль -->
+                     <?php
+                    $colorZoom="";
+                    if (session()->get('zoom_id'))  $colorZoom='style="color: orangered"';
+                    ?>
                     <div class="nav-profile-text">
-                        <p class="mb-1 text-black"><?php echo session()->get("userName")?></p>
+                        <p class="mb-1 text-black" <?php echo $colorZoom ?> ><?php echo session()->get("userName")?></p>
                     </div>
                 </a>
                 <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
@@ -35,6 +40,17 @@
                         <i class="mdi mdi-account-details mr-2 text-success"></i> <?php echo lang('Main.profile') ?>
                     </a>
                     <div class="dropdown-divider"></div>
+
+
+<!--выпадашка выхода зумирования-->
+                    <?php
+                    $dropMenuZoom="";
+                    if (session()->get('zoom_id')) echo $dropMenuZoom='<a class="dropdown-item" href="/zoomout">
+                        <i class="mdi mdi-eye-off mr-2 text-primary"></i>Зум выход</a>
+                    <div class="dropdown-divider"></div><!--черта-->';
+                    ?>
+
+
 
 
                     <a class="dropdown-item" href="/logout">

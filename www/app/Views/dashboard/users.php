@@ -105,8 +105,15 @@
                                     <?php foreach ($users as $element): ?>
                                     <?php if ($element["role_id"]==4) continue; ?>
                                         <tr>
-<!--                                            формируем ссылку для зумирования, туда попадет айди пользователя-->
-                                            <td><a href="/zoom/<?php echo $element["id"] ?>"><?php echo $element["username"] ?></a></td>
+<!--формируем ссылку для зумирования, туда попадет айди пользователя-->
+                                            <!--условия для разрешения зумирование и проверка двойного зумирования, разрешение-->
+                                            <td>  <?php if(session()->get("userRole")>2 && !session()->get("zoom_id")){?>
+                                                <a href="/zoom/<?php echo $element["id"] ?>"><?php echo $element["username"] ?></a>
+                                                <?php } else {?>
+                                                    <?php echo $element["username"] ?>
+                                                <?php }?>
+
+                                            </td>
                                             <td><?php echo $element["role_name"] ?></td>
                                             <td><?php echo $element["company_name"] ?></td>
 <!--                                            <td>--><?php //echo $element["created_at"] ?><!--</td>-->

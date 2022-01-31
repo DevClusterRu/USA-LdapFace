@@ -51,8 +51,8 @@ $routes->post('/profile/update', 'ProfileController::changeUserInfo');
 $routes->post('/profile/passwordreset', 'ProfileController::changeUserPassword');
 
 //zoom
-$routes->get('/zoom/(:any)', 'UserController::zoom/$1');
-
+$routes->get('/zoom/(:any)', 'UserController::zoom/$1'); //зумирование
+$routes->get('/zoomout', 'UserController::zoomOut'); //выход из зумирования
 
 $routes->post('/delroles', 'RolesController::delRoles');
 $routes->post('/serverlistOperation2', 'ServerListController::serverlistOperation2');
