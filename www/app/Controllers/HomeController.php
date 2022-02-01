@@ -23,19 +23,18 @@ class HomeController extends BaseController
     public function logout()
     {
         session()->destroy();
+        $this->logMessage("Пользователь ". session()->get("userName")." вышел"); // в лог выход
         header("Location: /");
         exit();
     }
 
     private static function fillSession($auth)
     {
-        session()->set([
+        session()->set([ // в сессию обращаемся по ключам слева
             'userId' => $auth["id"],
             'userRole' => $auth["role_id"],
             'userName' => self::shortName($auth["username"]),
         ]);
-        header("Location: /profile");
-        exit();
     }
 
     public function tryAuth()
@@ -44,6 +43,11 @@ class HomeController extends BaseController
         $u = $users->where("username", $this->request->getPost('username'))->first();
         if (password_verify($this->request->getPost('password'), $u["password"])) {
             self::fillSession($u);
+
+            $this->logMessage("Пользователь ".$u["username"]." авторизовался"); //обращаюсь к методу который действует в рамках объекта в котором нахолжусь( а он- объект от хом контролелра невидемый)
+
+            header("Location: /profile");
+            exit();
         } else {
             return view('login');
         }

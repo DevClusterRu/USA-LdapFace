@@ -4,6 +4,7 @@ use App\Models\Service;
 use App\Models\User;
 use App\Models\UserSelectedService;
 use App\Models\Invoice;
+use App\Libraries\LdapChannelLibrary;
 use CodeIgniter\HTTP\RequestInterface;
 
 class ProfileController extends BaseController
@@ -26,6 +27,10 @@ class ProfileController extends BaseController
 
     function index()
     {
+        //TODO curl
+//         var_dump(LdapChannelLibrary::curlRequest()); //курл ,вставить после приглашения
+//        die();
+
         if (!session()->get("userId")) {
             header("Location: /login");
             exit();

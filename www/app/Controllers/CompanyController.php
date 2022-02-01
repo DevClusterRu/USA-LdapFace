@@ -17,6 +17,7 @@ class CompanyController extends BaseController
         }
         //Заполняем companys объектом таблицы
         $this->companys = new Company();
+
     }
 
     public function index()

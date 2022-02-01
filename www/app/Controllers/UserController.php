@@ -14,10 +14,7 @@ class UserController extends BaseController
 
     public function __construct()
     {
-        if (session()->get("userRole") < 2) { //условия для ограничения просмотра роута, запретить
-            header("Location: /");
-            exit();
-        }
+
         $this->users = new User();
         $this->companys = new Company();
         $this->allroles = new Role();
@@ -26,6 +23,11 @@ class UserController extends BaseController
 
     public function index()
     {
+        if (session()->get("userRole") < 2) { //условия для ограничения просмотра роута, запретить
+            header("Location: /");
+            exit();
+        }
+
         if (!session()->get("userId")) {
             header("Location: /login");
             exit();
@@ -49,6 +51,12 @@ class UserController extends BaseController
 
     public function zoom($user_id = 0) //айди приходит с роута от зумирования
     {
+        if (session()->get("userRole") < 2) { //условия для ограничения просмотра роута, запретить
+            header("Location: /");
+            exit();
+        }
+
+
         //условия для разрешения зумирование и проверка двойного зумирования для запрета
         if(session()->get("userRole")<3 || session()->get("zoom_id")) {
             header("Location: /profile");
@@ -59,7 +67,9 @@ class UserController extends BaseController
             header("Location: /profile");
             exit();
         }
-        $infoUserZoom = $this->users->find($user_id);
+        $infoUserZoom = $this->users->find($user_id); // зумирование
+
+        $oldName= session()->get("userName"); //получили оригинальное имя пользователя до перезаписи сессии для зума
 
         session()->set([
             'userId' => $user_id,
@@ -67,11 +77,17 @@ class UserController extends BaseController
             'userName' => $infoUserZoom["username"],
             'zoom_id' => session()->get("userId"),// айди предыдущего пользователя
         ]);
+
+        $this->logMessage("Пользователь ".  $oldName." зашел под пользователем ". session()->get("userName") ); // в лог зумирования
+
         header("Location: /profile");
         exit();
     }
 
     public function zoomOut(){
+
+        $oldName= session()->get("userName"); //получили оригинальное имя пользователя до перезаписи сессии для зума
+
         $infoUserZoom = $this->users->find(session()->get("zoom_id"));
         session()->set([
             'userId' => session()->get("zoom_id"),
@@ -79,6 +95,9 @@ class UserController extends BaseController
             'userName' => $infoUserZoom["username"],
             ]);
         session()->remove("zoom_id");
+
+        $this->logMessage("Пользователь ". session()->get("userName")." вышел из под пользователя ". $oldName ); // в лог  выход зумирования
+
         header("Location: /profile");
         exit();
     }
