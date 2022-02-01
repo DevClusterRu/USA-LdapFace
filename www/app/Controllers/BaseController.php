@@ -15,6 +15,8 @@ namespace App\Controllers;
  */
 
 use CodeIgniter\Controller;
+use App\Models\Debet;
+use App\Models\Credit;
 use http\Url;
 use \CodeIgniter\HTTP;
 
@@ -79,6 +81,34 @@ class BaseController extends Controller
         echo "<pre>";
         var_dump($var);
         die();
+    }
+
+    public function debitcredit()
+    {
+        $this->debets = new Debet();
+        $this->credits = new Credit();
+
+        $user = session()->get("userId");
+
+        $deb = $this->debets
+            ->select("SUM(amount) AS total")
+            ->where("user_id", $user)
+            ->first();
+        if ($deb == NULL) {
+            $deb = "0";
+        }
+        $cred = $this->credits
+            ->select("SUM(amount) AS total")
+            ->where("user_id", $user)
+            //->selectSum("amount")
+            ->first();
+        if ($cred["total"] == NULL) {
+            $cred["total"] = "0";
+        }
+        $balance = $deb["total"] - $cred["total"];
+
+        session()->set("balance", $balance);
+
     }
 
 }

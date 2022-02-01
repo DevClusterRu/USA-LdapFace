@@ -67,6 +67,7 @@ class UserController extends BaseController
             'userName' => $infoUserZoom["username"],
             'zoom_id' => session()->get("userId"),// айди предыдущего пользователя
         ]);
+        $this->debitcredit();
         header("Location: /profile");
         exit();
     }

@@ -4,6 +4,7 @@ use App\Models\Service;
 use App\Models\User;
 use App\Models\UserSelectedService;
 use App\Models\Invoice;
+
 use CodeIgniter\HTTP\RequestInterface;
 
 class ProfileController extends BaseController
@@ -14,6 +15,7 @@ class ProfileController extends BaseController
     protected $invoices;
 
 
+
     public function __construct()
     {
 
@@ -22,6 +24,7 @@ class ProfileController extends BaseController
         $this->serviceModel=new Service();
         $this->userSelectedService = new UserSelectedService();
         $this->invoices = new Invoice();
+
     }
 
     function index()
@@ -38,13 +41,15 @@ class ProfileController extends BaseController
                 ->get()
             ->getResultArray(),
             "invoices" => $this->invoices->findAll(),
+
+//            "debets" => $this->debets->findAll(),
+//            "credits" => $this->credits->findAll(),
+
         ];
 //        "selectedServices"=>$this->userSelectedService->where([
 //        "user_id"=>session()->get("userId")
 //    ])->get()->getResultArray()
         return view('dashboard/profile', $data);
-
-
 
     }
 
@@ -90,16 +95,17 @@ class ProfileController extends BaseController
     { if ($this->request->getPost("addButton")) {
 
         $user = session()->get("userId");
+        if ($this->request->getPost("amount")!=="0") {
 
-        $this->invoices
+            $this->invoices
             ->insert([
                 'invoice_num' => "0",
                 'user_id' => $user,
                 'amount' => $this->request->getPost("amount"),
                 'status' => "new",
-
-            ]);
-
+                ]);
+        header("Location: /profile");
+        }
         header("Location: /profile");
     } elseif ($this->request->getPost("cancel")) {
             header("Location: /profile");
@@ -114,7 +120,6 @@ class ProfileController extends BaseController
         return $builder->get()->getResultArray();
 
     }
-
 
 
 }

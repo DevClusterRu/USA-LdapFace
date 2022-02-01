@@ -112,7 +112,7 @@
 <!--                                    <label for="exampleInputUsername1">Пополнить баланс счета</label>-->
                                     <input name="amount"
                                            value="<?php  ?>"
-                                           type="text" class="form-control"
+                                           type="number" class="form-control"
                                            id="exampleInputUsername1"
                                            placeholder="Сумма пополнения">
                                 </div>
