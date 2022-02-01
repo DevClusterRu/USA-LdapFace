@@ -29,8 +29,6 @@ $routes->get('/logout', 'HomeController::logout');
 $routes->get('/users', 'UserController::index'); //
 $routes->get('/invite/(:any)', 'UserController::invite/$1'); //
 
-
-
 $routes->get('/servers', 'ServerController::index');
 $routes->get('/companys', 'CompanyController::index');
 $routes->get('/services', 'ServiceController::index');

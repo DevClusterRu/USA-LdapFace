@@ -61,7 +61,8 @@
 
             <?php if(session()->get("userRole")>1 && session()->get("userRole")<3 ){?>  <!--условие для ограничения просмотров, полное условие-->
             <li class="nav-item ">
-                    <div><i class="mdi mdi-currency-rub">10000</i>
+                    <div><i class="mdi mdi-currency-rub"><?php echo session()->get("balance") ?></i>
+<!--                        <div><i class="mdi mdi-currency-rub">10000</i>-->
                        </div>
             </li>
             <?php } ?> <!--конец условия для ограничения просмотров-->

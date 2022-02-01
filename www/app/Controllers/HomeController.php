@@ -2,8 +2,10 @@
 
 use \App\Models\User;
 
+
 class HomeController extends BaseController
 {
+
     public function index()
     {
         if (!session()->get("userId")) {
@@ -52,5 +54,6 @@ class HomeController extends BaseController
             return view('login');
         }
     }
+
 
 }

@@ -79,6 +79,7 @@ class UserController extends BaseController
         ]);
 
         $this->logMessage("Пользователь ".  $oldName." зашел под пользователем ". session()->get("userName") ); // в лог зумирования
+        $this->debitcredit();
 
         header("Location: /profile");
         exit();

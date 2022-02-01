@@ -1,0 +1,454 @@
+CRITICAL - 2022-02-01 01:35:03 --> syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$'
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-01 01:41:05 --> Use of undefined constant company_id - assumed 'company_id' (this will throw an Error in a future version of PHP)
+#0 /var/www/html/app/Controllers/InvoiceController.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefine...', '/var/www/html/a...', 44, Array)
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-01 01:42:15 --> Use of undefined constant company_id - assumed 'company_id' (this will throw an Error in a future version of PHP)
+#0 /var/www/html/app/Controllers/InvoiceController.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefine...', '/var/www/html/a...', 44, Array)
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-01 01:43:43 --> Use of undefined constant company_id - assumed 'company_id' (this will throw an Error in a future version of PHP)
+#0 /var/www/html/app/Controllers/InvoiceController.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefine...', '/var/www/html/a...', 44, Array)
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-01 01:44:10 --> Use of undefined constant company_id - assumed 'company_id' (this will throw an Error in a future version of PHP)
+#0 /var/www/html/app/Controllers/InvoiceController.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefine...', '/var/www/html/a...', 44, Array)
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-01 01:45:00 --> syntax error, unexpected 'var_dump' (T_STRING)
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-01 01:48:17 --> syntax error, unexpected ';', expecting ')'
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-01 01:48:19 --> syntax error, unexpected ';', expecting ')'
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-01 01:48:20 --> syntax error, unexpected ';', expecting ')'
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-01 01:51:22 --> Object of class App\Controllers\InvoiceController could not be converted to string
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 01:51:24 --> Object of class App\Controllers\InvoiceController could not be converted to string
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 01:58:13 --> Use of undefined constant company_id - assumed 'company_id' (this will throw an Error in a future version of PHP)
+#0 /var/www/html/app/Controllers/InvoiceController.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefine...', '/var/www/html/a...', 44, Array)
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2022-02-01 01:59:18 --> Operand should contain 1 column(s)
+CRITICAL - 2022-02-01 01:59:18 --> Call to a member function getResultArray() on bool
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-02-01 01:59:46 --> Unknown column 'company_name' in 'where clause'
+CRITICAL - 2022-02-01 01:59:46 --> Call to a member function getResultArray() on bool
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-02-01 02:00:10 --> Operand should contain 1 column(s)
+CRITICAL - 2022-02-01 02:00:10 --> Call to a member function getResultArray() on bool
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 06:43:21 --> syntax error, unexpected ')', expecting ']'
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-01 06:43:31 --> syntax error, unexpected ')', expecting ']'
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-01 06:54:08 --> syntax error, unexpected ')', expecting ']'
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-01 08:18:08 --> syntax error, unexpected '}', expecting end of file
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-01 08:18:35 --> Call to a member function where() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->debitcredit()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 08:19:16 --> Call to a member function where() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->debitcredit()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 08:19:46 --> Call to a member function where() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->debitcredit()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 08:21:29 --> Call to a member function where() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->debitcredit()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 08:22:52 --> Call to a member function where() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->debitcredit()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 08:22:53 --> Call to a member function where() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->debitcredit()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 08:26:18 --> Call to a member function where() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->debitcredit()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 08:29:40 --> syntax error, unexpected '}'
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-01 08:30:04 --> syntax error, unexpected '}'
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-01 08:30:35 --> syntax error, unexpected ','
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-01 09:32:31 --> syntax error, unexpected 'if' (T_IF)
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-01 09:36:15 --> Too few arguments to function CodeIgniter\BaseModel::findColumn(), 0 passed in /var/www/html/app/Controllers/ProfileController.php on line 153 and exactly 1 expected
+#0 /var/www/html/app/Controllers/ProfileController.php(153): CodeIgniter\BaseModel->findColumn()
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->debitcredit()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2022-02-01 09:52:14 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AS debSum) AS balance
+FROM `debets`
+LEFT JOIN `credits` ON `debets`.`user_id` = ' at line 1
+CRITICAL - 2022-02-01 09:52:14 --> Call to a member function getFirstRow() on bool
+#0 /var/www/html/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
+#1 /var/www/html/app/Controllers/ProfileController.php(158): CodeIgniter\BaseModel->first()
+#2 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->debitcredit()
+#3 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#4 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-02-01 10:17:04 --> Call to a member function select() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->debitcredit()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 10:19:19 --> Call to a member function select() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->debitcredit()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 10:19:20 --> Call to a member function select() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->debitcredit()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 10:21:35 --> Call to a member function select() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->debitcredit()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 10:22:48 --> Call to a member function select() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->debitcredit()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 10:22:50 --> Call to a member function select() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->debitcredit()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 10:26:05 --> Call to a member function select() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->debitcredit()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 10:29:20 --> Call to a member function select() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->debitcredit()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 10:30:31 --> Class 'App\Controllers\Service' not found
+#0 /var/www/html/system/CodeIgniter.php(801): App\Controllers\HomeController->__construct()
+#1 /var/www/html/system/CodeIgniter.php(401): CodeIgniter\CodeIgniter->createController()
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 10:33:07 --> Too few arguments to function App\Controllers\HomeController::fillSession(), 1 passed in /var/www/html/app/Controllers/HomeController.php on line 81 and exactly 2 expected
+#0 /var/www/html/app/Controllers/HomeController.php(81): App\Controllers\HomeController::fillSession(Array)
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->tryAuth()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-01 10:35:10 --> Too few arguments to function App\Controllers\HomeController::fillSession(), 1 passed in /var/www/html/app/Controllers/HomeController.php on line 81 and exactly 2 expected
+#0 /var/www/html/app/Controllers/HomeController.php(81): App\Controllers\HomeController::fillSession(Array)
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->tryAuth()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-01 10:35:21 --> Too few arguments to function App\Controllers\HomeController::fillSession(), 1 passed in /var/www/html/app/Controllers/HomeController.php on line 81 and exactly 2 expected
+#0 /var/www/html/app/Controllers/HomeController.php(81): App\Controllers\HomeController::fillSession(Array)
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->tryAuth()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-01 10:49:28 --> Too few arguments to function App\Controllers\HomeController::fillSession(), 1 passed in /var/www/html/app/Controllers/HomeController.php on line 80 and exactly 2 expected
+#0 /var/www/html/app/Controllers/HomeController.php(80): App\Controllers\HomeController::fillSession(Array)
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->tryAuth()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-01 10:51:29 --> Too few arguments to function App\Controllers\HomeController::fillSession(), 1 passed in /var/www/html/app/Controllers/HomeController.php on line 80 and exactly 2 expected
+#0 /var/www/html/app/Controllers/HomeController.php(80): App\Controllers\HomeController::fillSession(Array)
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->tryAuth()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-01 10:52:39 --> Too few arguments to function App\Controllers\HomeController::fillSession(), 1 passed in /var/www/html/app/Controllers/HomeController.php on line 80 and exactly 2 expected
+#0 /var/www/html/app/Controllers/HomeController.php(80): App\Controllers\HomeController::fillSession(Array)
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->tryAuth()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-01 10:52:54 --> Too few arguments to function App\Controllers\HomeController::fillSession(), 1 passed in /var/www/html/app/Controllers/HomeController.php on line 80 and exactly 2 expected
+#0 /var/www/html/app/Controllers/HomeController.php(80): App\Controllers\HomeController::fillSession(Array)
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->tryAuth()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-01 10:53:04 --> Too few arguments to function App\Controllers\HomeController::fillSession(), 1 passed in /var/www/html/app/Controllers/HomeController.php on line 80 and exactly 2 expected
+#0 /var/www/html/app/Controllers/HomeController.php(80): App\Controllers\HomeController::fillSession(Array)
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->tryAuth()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-01 11:39:21 --> syntax error, unexpected 'header' (T_STRING)
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-01 11:40:07 --> Call to a member function findAll() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 11:41:03 --> Call to a member function findAll() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 11:41:06 --> Call to a member function findAll() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 11:42:48 --> Class 'App\Controllers\Role' not found
+#0 /var/www/html/app/Controllers/UserController.php(70): App\Controllers\BaseController->debitcredit()
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserController->zoom('3')
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-01 11:45:10 --> Class 'App\Controllers\Debet' not found
+#0 /var/www/html/app/Controllers/UserController.php(70): App\Controllers\BaseController->debitcredit()
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserController->zoom('3')
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-01 11:46:19 --> Call to a member function findAll() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 11:46:37 --> Call to a member function findAll() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 11:47:06 --> Call to a member function findAll() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-01 11:51:37 --> syntax error, unexpected ']'
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-01 11:52:10 --> syntax error, unexpected ']'
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-01 11:55:07 --> Call to a member function find() on null
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\HomeController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}

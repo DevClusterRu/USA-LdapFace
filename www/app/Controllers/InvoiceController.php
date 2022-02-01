@@ -35,10 +35,12 @@ class InvoiceController extends BaseController {
             exit();
         }
 
-  //TODO    $userid = session()->get("userId");
-//        $exists = $this->users->where($compan, );
-//        company_id
 
+
+        $userid = session()->get("userId");
+      $compan = $this->users->find($userid);
+//        var_dump ($compan['company_id']);
+//             die();
 
 //        if (session()->get("userId") < 2) {
 
@@ -48,7 +50,7 @@ class InvoiceController extends BaseController {
                 ->join('companys', 'users.company_id = companys.id')
                 ->select('invoices.id, invoices.invoice_num, invoices.amount, invoices.status, invoices.created_at, invoices.updated_at, users.username, companys.name as company_name')
                 ->where('invoices.deleted_at IS NULL')
-             //   ->where('invoices.user_id', $userid)
+                ->where('users.company_id', $compan['company_id']) // user
                 ->get()
                 ->getResultArray(),
             "users" => $this->users->findAll(),
