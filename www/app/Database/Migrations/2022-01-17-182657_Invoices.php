@@ -14,10 +14,10 @@ class Invoices extends Migration
                 'unsigned' => true,
                 'auto_increment' => true
             ],
-            'invoice_num' => [
-                'type' => 'INT',
-                'unsigned' => true,
-            ],
+//            'invoice_num' => [
+//                'type' => 'VARCHAR',
+//                'constraint' => 255,
+//            ],
             'user_id' => [
                 'type' => 'INT',
                 'unsigned' => true,

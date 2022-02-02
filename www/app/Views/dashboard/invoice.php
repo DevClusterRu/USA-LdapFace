@@ -35,7 +35,7 @@
                                                 <tr>
                                                     <td>
 
-                                                        <?php echo $element["invoice_num"] ?>
+                                                        С_<?php echo $element["id"] ?>
                                                     </td>
 
                                                     <?php //echo session()->get("userRoleTitle")?><!--</td>-->
