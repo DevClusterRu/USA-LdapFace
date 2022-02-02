@@ -1,0 +1,137 @@
+ERROR - 2022-02-02 01:28:06 --> Table 'ldap.logs' doesn't exist
+ERROR - 2022-02-02 01:28:12 --> Table 'ldap.logs' doesn't exist
+ERROR - 2022-02-02 01:28:15 --> Table 'ldap.logs' doesn't exist
+ERROR - 2022-02-02 01:29:44 --> Table 'ldap.logs' doesn't exist
+ERROR - 2022-02-02 01:29:47 --> Table 'ldap.logs' doesn't exist
+ERROR - 2022-02-02 01:31:25 --> Table 'ldap.logs' doesn't exist
+ERROR - 2022-02-02 01:31:28 --> Table 'ldap.logs' doesn't exist
+ERROR - 2022-02-02 01:31:29 --> Table 'ldap.logs' doesn't exist
+ERROR - 2022-02-02 01:56:11 --> Table 'ldap.logs' doesn't exist
+ERROR - 2022-02-02 02:02:04 --> Table 'ldap.logs' doesn't exist
+ERROR - 2022-02-02 02:04:29 --> Table 'ldap.logs' doesn't exist
+ERROR - 2022-02-02 02:05:47 --> Table 'ldap.logs' doesn't exist
+ERROR - 2022-02-02 06:56:55 --> Table 'ldap.logs' doesn't exist
+ERROR - 2022-02-02 07:04:44 --> Table 'ldap.logs' doesn't exist
+ERROR - 2022-02-02 07:04:47 --> Table 'ldap.logs' doesn't exist
+CRITICAL - 2022-02-02 07:04:54 --> syntax error, unexpected '}', expecting ']'
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-02 07:31:38 --> Call to undefined method App\Models\Invoice::getPost
+#0 /var/www/html/app/Controllers/ProfileController.php(107): CodeIgniter\Model->__call('getPost', Array)
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->аddInvoice()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-02 07:59:57 --> Argument 1 passed to CodeIgniter\Database\BaseBuilder::get() must be of the type int or null, string given, called in /var/www/html/system/Model.php on line 723
+#0 /var/www/html/system/Model.php(723): CodeIgniter\Database\BaseBuilder->get('id')
+#1 /var/www/html/app/Controllers/ProfileController.php(107): CodeIgniter\Model->__call('get', Array)
+#2 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->аddInvoice()
+#3 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#4 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-02-02 08:05:34 --> Object of class App\Models\Invoice could not be converted to string
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->аddInvoice()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-02 08:11:27 --> Object of class App\Models\Invoice could not be converted to string
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->аddInvoice()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-02 08:15:01 --> Call to undefined method App\Models\Invoice::were
+#0 /var/www/html/app/Controllers/ProfileController.php(107): CodeIgniter\Model->__call('were', Array)
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->аddInvoice()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-02 08:20:14 --> Function name must be a string
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->аddInvoice()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-02 08:20:57 --> Function name must be a string
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->аddInvoice()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-02 08:21:01 --> Function name must be a string
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->аddInvoice()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-02 08:23:02 --> Cannot use object of type App\Models\Invoice as array
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->аddInvoice()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-02 08:57:21 --> syntax error, unexpected 'table_name' (T_STRING), expecting ')'
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-02 08:57:23 --> syntax error, unexpected 'table_name' (T_STRING), expecting ')'
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-02 09:06:17 --> Argument 1 passed to CodeIgniter\Database\BaseConnection::prepare() must be an instance of Closure, string given, called in /var/www/html/system/Model.php on line 721
+#0 /var/www/html/system/Model.php(721): CodeIgniter\Database\BaseConnection->prepare('id')
+#1 /var/www/html/app/Controllers/ProfileController.php(107): CodeIgniter\Model->__call('prepare', Array)
+#2 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->аddInvoice()
+#3 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#4 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-02-02 09:52:57 --> Argument 1 passed to CodeIgniter\BaseModel::findAll() must be of the type int, string given, called in /var/www/html/app/Controllers/InvoiceController.php on line 92
+#0 /var/www/html/app/Controllers/InvoiceController.php(92): CodeIgniter\BaseModel->findAll('amount')
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->statusInv('3_3_6000')
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-02 09:57:35 --> Call to undefined method App\Models\Debet::getFirstRow
+#0 /var/www/html/app/Controllers/InvoiceController.php(92): CodeIgniter\Model->__call('getFirstRow', Array)
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->statusInv('3_3_6000')
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-02 10:03:22 --> Unsupported operand types
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->statusInv('3_3_6000')
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-02 10:04:30 --> Unsupported operand types
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->statusInv('3_3_6000')
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}

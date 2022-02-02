@@ -101,10 +101,10 @@ class ProfileController extends BaseController
 
         $user = session()->get("userId");
         if ($this->request->getPost("amount")!=="0") {
-
+        $namIn = "S_";
             $this->invoices
             ->insert([
-                'invoice_num' => "0",
+//                'invoice_num' => $this->invoices->   ( 'id'),
                 'user_id' => $user,
                 'amount' => $this->request->getPost("amount"),
                 'status' => "new",
