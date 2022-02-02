@@ -61,6 +61,7 @@ class Users extends Migration
 
         $data = array(
             array(
+                'id'=>1,
                 'username' => "superadmin",
                 'password' => password_hash("123",PASSWORD_BCRYPT),
                 'email' => "mail@mail.ru",
@@ -70,6 +71,7 @@ class Users extends Migration
                 'invite_hash' => "NULL",
             ),
             array(
+                'id'=>2,
                 'username' => "admin",
                 'password' => password_hash("123",PASSWORD_BCRYPT),
                 'email' => "mail@mail.ru",
@@ -79,6 +81,7 @@ class Users extends Migration
                 'invite_hash' => "NULL",
             ),
             array(
+                'id' => 100,
                 'username' => "director",
                 'password' => password_hash("123",PASSWORD_BCRYPT),
                 'email' => "mail@mail.ru",
@@ -88,7 +91,49 @@ class Users extends Migration
                 'invite_hash' => "NULL",
             ),
             array(
+                'id' => 102,
+                'username' => "director2",
+                'password' => password_hash("123",PASSWORD_BCRYPT),
+                'email' => "mail@mail.ru",
+                'phone' => "+7",
+                'role_id' => 2,
+                'company_id' => 1,
+                'invite_hash' => "NULL",
+            ),
+            array(
+                'id' => 103,
+                'username' => "director3",
+                'password' => password_hash("123",PASSWORD_BCRYPT),
+                'email' => "mail@mail.ru",
+                'phone' => "+7",
+                'role_id' => 2,
+                'company_id' => 1,
+                'invite_hash' => "NULL",
+            ),
+            array(
+                'id' => 104,
+                'username' => "director4",
+                'password' => password_hash("123",PASSWORD_BCRYPT),
+                'email' => "mail@mail.ru",
+                'phone' => "+7",
+                'role_id' => 2,
+                'company_id' => 1,
+                'invite_hash' => "NULL",
+            ),
+            array(
+                'id'=>4,
                 'username' => "worker",
+                'password' => password_hash("123",PASSWORD_BCRYPT),
+                'email' => "mail@mail.ru",
+                'phone' => "+7",
+                'role_id' => 1,
+                'company_id' => 1,
+                'invite_hash' => "NULL",
+            ),
+
+            array(
+                'id'=>5,
+                'username' => "worker2",
                 'password' => password_hash("123",PASSWORD_BCRYPT),
                 'email' => "mail@mail.ru",
                 'phone' => "+7",

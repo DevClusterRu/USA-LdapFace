@@ -41,6 +41,30 @@ class Debets extends Migration
         $this->forge->addKey('id', true);
         // $this->forge->addForeignKey('role_id','user_roles','id');
         $this->forge->createTable('debets');
+
+
+        $data = array(
+            array(
+                'user_id' => 100,
+                'invoice_id' => 1,
+                'amount' => 10000,
+
+            ),
+            array(
+                'user_id' => 3,
+                'invoice_id' => 2,
+                'amount' => 10000,
+
+            ),
+            array(
+                'user_id' => 102,
+                'invoice_id' => 3,
+                'amount' => 10000,
+
+            ),
+
+        );
+        $this->db->table("debets")->insertBatch($data);
     }
 
     public function down()

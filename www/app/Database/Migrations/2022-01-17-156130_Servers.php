@@ -48,6 +48,41 @@ class Servers extends Migration
         $this->forge->addKey('id', true);
         // $this->forge->addForeignKey('role_id','user_roles','id');
         $this->forge->createTable('servers');
+
+
+        $data = array(
+
+            array(
+                'domain' => "server2",
+                'url' => "https//server1",
+                'login' => "login1",
+                'password' => "password",
+
+            ),
+            array(
+                'domain' => "server2",
+                'url' => "https//server2",
+                'login' => "login2",
+                'password' => "password",
+
+            ),
+            array(
+                'domain' => "server3",
+                'url' => "https//server3",
+                'login' => "login3",
+                'password' => "password",
+
+            ),
+            array(
+                'domain' => "server4",
+                'url' => "https//server4",
+                'login' => "login4",
+                'password' => "password",
+
+            ),
+        );
+        $this->db->table("servers")->insertBatch($data); //вставка данных в бд
+
     }
 
     public function down()

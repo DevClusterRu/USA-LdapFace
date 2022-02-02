@@ -1628,6 +1628,7 @@ class BaseBuilder
                 $this->setInsertBatch(array_slice($set, $i, $batchSize), '', $escape);
                 $QBSet = $this->QBSet;
             }
+
             $sql = $this->_insertBatch($this->db->protectIdentifiers($table, true, null, false), $this->QBKeys, $QBSet);
 
             if ($this->testMode) {

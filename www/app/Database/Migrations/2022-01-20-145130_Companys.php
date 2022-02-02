@@ -51,6 +51,25 @@ class Companys extends Migration
                 'inn' => "1",
                 'kpp' => "1",
             ),
+
+            array(
+                'id' => 2,
+                'name' => "Audi",
+                'inn' => "1",
+                'kpp' => "1",
+            ),
+            array(
+                'id' => 3,
+                'name' => "Sosiski",
+                'inn' => "1",
+                'kpp' => "1",
+            ),
+            array(
+                'id' => 4,
+                'name' => "ItTech",
+                'inn' => "1",
+                'kpp' => "1",
+            ),
         );
         $this->db->table("companys")->insertBatch($data);
 

@@ -43,6 +43,34 @@ class Services extends Migration
         $this->forge->addKey('id', true);
         // $this->forge->addForeignKey('role_id','user_roles','id');
         $this->forge->createTable('services');
+
+        $data = array(
+            array(
+                'name' => "Переустановить систему",
+                'type_service' => "once",
+                'cost' => "2000",
+
+            ),
+            array(
+                'name' => "Обжать провода",
+                'type_service' => "once",
+                'cost' => "1500",
+
+            ),
+            array(
+                'name' => "Переустановить систему",
+                'type_service' => "once",
+                'cost' => "390",
+
+            ),
+            array(
+                'name' => "Базовое обслуживание",
+                'type_service' => "notonce",
+                'cost' => "3000",
+
+            ),
+        );
+        $this->db->table("services")->insertBatch($data);
     }
 
     public function down()

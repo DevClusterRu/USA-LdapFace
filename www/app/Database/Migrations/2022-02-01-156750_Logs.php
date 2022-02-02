@@ -32,6 +32,20 @@ class Logs extends Migration
 
         $this->forge->addKey('id', true);
         $this->forge->createTable('logs');
+
+        $data = array(
+
+            array(
+                'log' => "пользователь worker1 зашел в систему",
+        ),
+        array(
+            'log' => "пользователь worker2 вышел из системы",
+        ),
+            array(
+                'log' => "пользователь admin зумировался под worker",
+            ),
+        );
+        $this->db->table("logs")->insertBatch($data);
     }
 
     public function down()

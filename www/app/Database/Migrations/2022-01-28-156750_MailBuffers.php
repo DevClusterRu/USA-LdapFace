@@ -37,6 +37,26 @@ class MailBuffers extends Migration
 
         $this->forge->addKey('id', true);
               $this->forge->createTable('mail_buffers');
+
+        $data = array(
+            array(
+                'email_buff' => "superadmin@qwe.ru",
+                'letter' => "localhost:85/invite/e9f85eac0c22aeedd7ac6d2b6555f9da",
+
+        ),
+
+        array(
+            'email_buff' => "superadmin1@qwe.ru",
+            'letter' => "localhost:85/invite/e9f85eac0c22aeedd7ac6d2b6555f9da",
+
+        ),
+        array(
+            'email_buff' => "superadmin3@qwe.ru",
+            'letter' => "localhost:85/invite/e9f85eac0c22aeedd7ac6d2b6555f9da",
+
+        ),
+    );
+        $this->db->table("mail_buffers")->insertBatch($data);
     }
 
     public function down()

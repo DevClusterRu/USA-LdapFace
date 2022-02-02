@@ -42,9 +42,51 @@ class Invoices extends Migration
             ]
         ]);
 
+
         $this->forge->addKey('id', true);
         // $this->forge->addForeignKey('role_id','user_roles','id');
         $this->forge->createTable('invoices');
+
+        $data = array(
+            array(
+
+                'invoice_num' => 1,
+                'user_id' => 3,
+                'amount' => 300,
+                'status' => "new",
+
+            ),
+            array(
+                'invoice_num' => 1,
+                'user_id' => 100,
+                'amount' => 9000,
+                'status' => "paid",
+
+            ),
+            array(
+                'invoice_num' => 1,
+                'user_id' =>102,
+                'amount' => 3000,
+                'status' => "partially paid",
+
+            ),
+            array(
+                'invoice_num' => 1,
+                'user_id' => 103,
+                'amount' => 4000,
+                'status' => "paid",
+
+            ),
+            array(
+                'invoice_num' => 1,
+                'user_id' => 104,
+                'amount' => 4000,
+                'status' => "new",
+
+            ),
+
+        );
+        $this->db->table("invoices")->insertBatch($data);
     }
 
     public function down()
