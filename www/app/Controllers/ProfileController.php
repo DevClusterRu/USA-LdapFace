@@ -100,8 +100,12 @@ class ProfileController extends BaseController
     { if ($this->request->getPost("addButton")) {
 
         $user = session()->get("userId");
-        if ($this->request->getPost("amount")!=="0") {
-        $namIn = "S_";
+        if ( $this->request->getPost("amount")!=="0" && $this->request->getPost("amount")!== 0 && $this->request->getPost("amount")!== "" ) {
+
+//        $namIn = $this->request->getPost("amount");
+//        var_dump($namIn);
+//        die();
+
             $this->invoices
             ->insert([
 //                'invoice_num' => $this->invoices->   ( 'id'),
@@ -109,9 +113,9 @@ class ProfileController extends BaseController
                 'amount' => $this->request->getPost("amount"),
                 'status' => "new",
                 ]);
-        header("Location: /profile");
+//        header("Location: /invoices");
         }
-        header("Location: /profile");
+        header("Location: /invoices");
     } elseif ($this->request->getPost("cancel")) {
             header("Location: /profile");
 //           //  return view('dashboard/serverlist', $data);

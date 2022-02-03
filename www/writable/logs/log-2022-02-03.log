@@ -1,0 +1,109 @@
+ERROR - 2022-02-03 01:37:59 --> Unknown column 'invoice_num' in 'field list'
+ERROR - 2022-02-03 01:40:42 --> Unknown column 'invoices.invoice_num' in 'field list'
+CRITICAL - 2022-02-03 01:40:42 --> Call to a member function getResultArray() on bool
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-02-03 01:40:56 --> Unknown column 'invoices.invoice_num' in 'field list'
+CRITICAL - 2022-02-03 01:40:56 --> Call to a member function getResultArray() on bool
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-02-03 01:40:59 --> Unknown column 'invoices.invoice_num' in 'field list'
+CRITICAL - 2022-02-03 01:40:59 --> Call to a member function getResultArray() on bool
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-02-03 01:41:29 --> Unknown column 'invoices.invoice_num' in 'field list'
+CRITICAL - 2022-02-03 01:41:29 --> Call to a member function getResultArray() on bool
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-02-03 01:42:05 --> Unknown column 'invoices.invoice_num' in 'field list'
+CRITICAL - 2022-02-03 01:42:05 --> Call to a member function getResultArray() on bool
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-03 02:12:46 --> syntax error, unexpected 'if' (T_IF)
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-03 02:13:59 --> syntax error, unexpected 'if' (T_IF)
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-03 02:15:53 --> syntax error, unexpected 'if' (T_IF)
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-03 02:16:22 --> syntax error, unexpected 'if' (T_IF)
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-03 02:22:13 --> header() expects parameter 2 to be bool, array given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'header() expect...', '/var/www/html/a...', 62, Array)
+#1 /var/www/html/app/Controllers/InvoiceController.php(62): header('Location: /invo...', Array)
+#2 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#3 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#4 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-02-03 02:22:17 --> header() expects parameter 2 to be bool, array given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'header() expect...', '/var/www/html/a...', 62, Array)
+#1 /var/www/html/app/Controllers/InvoiceController.php(62): header('Location: /invo...', Array)
+#2 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#3 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#4 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-02-03 02:22:40 --> header() expects parameter 2 to be bool, array given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'header() expect...', '/var/www/html/a...', 62, Array)
+#1 /var/www/html/app/Controllers/InvoiceController.php(62): header('Location: /Invo...', Array)
+#2 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#3 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#4 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-02-03 02:22:42 --> header() expects parameter 2 to be bool, array given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'header() expect...', '/var/www/html/a...', 62, Array)
+#1 /var/www/html/app/Controllers/InvoiceController.php(62): header('Location: /Invo...', Array)
+#2 /var/www/html/system/CodeIgniter.php(824): App\Controllers\InvoiceController->index()
+#3 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InvoiceController))
+#4 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#6 {main}
+ERROR - 2022-02-03 03:11:40 --> Unknown column 'invoice_num' in 'field list'

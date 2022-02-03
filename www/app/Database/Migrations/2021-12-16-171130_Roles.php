@@ -41,7 +41,7 @@ class Roles extends Migration
         $data = array(
             array('role_name' => "Клиент", 'role_id' => "1"),
             array('role_name' => "Супервайзер", 'role_id' => "2"),
-            array('role_name' => "Администартор ИТЛ", 'role_id' => "3"),
+            array('role_name' => "Администратор ИТЛ", 'role_id' => "3"),
             array('role_name' => "Суперадминистратор", 'role_id' => "4"),
         );
         $this->db->table("roles")->insertBatch($data);

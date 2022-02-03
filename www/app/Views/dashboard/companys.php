@@ -52,7 +52,7 @@
                                         class="btn btn-gradient-primary me-2">Принять
                                 </button>
                                 <button name="cancel" value="2" type="submit"
-                                        class="btn btn-light">Очистить
+                                        class="btn btn-light">Отмена
                                 </button>
                             </form>
                         </div>

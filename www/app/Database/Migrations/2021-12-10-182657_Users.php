@@ -97,7 +97,7 @@ class Users extends Migration
                 'email' => "mail@mail.ru",
                 'phone' => "+7",
                 'role_id' => 2,
-                'company_id' => 1,
+                'company_id' => 2,
                 'invite_hash' => "NULL",
             ),
             array(
@@ -107,7 +107,7 @@ class Users extends Migration
                 'email' => "mail@mail.ru",
                 'phone' => "+7",
                 'role_id' => 2,
-                'company_id' => 1,
+                'company_id' => 3,
                 'invite_hash' => "NULL",
             ),
             array(
@@ -117,7 +117,7 @@ class Users extends Migration
                 'email' => "mail@mail.ru",
                 'phone' => "+7",
                 'role_id' => 2,
-                'company_id' => 1,
+                'company_id' => 4,
                 'invite_hash' => "NULL",
             ),
             array(
@@ -138,7 +138,7 @@ class Users extends Migration
                 'email' => "mail@mail.ru",
                 'phone' => "+7",
                 'role_id' => 1,
-                'company_id' => 1,
+                'company_id' => 2,
                 'invite_hash' => "NULL",
             ),
         );

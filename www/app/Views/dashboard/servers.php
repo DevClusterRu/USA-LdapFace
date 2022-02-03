@@ -57,9 +57,8 @@
                                             <button name="addEdit" value="1" type="submit"
                                                     class="btn btn-gradient-primary me-2">Принять
                                             </button>
-                                            <button name="cancel" value="2" class="btn btn-light">Очистить</button>
-                                        </form>
-
+                                            <button type="button" onClick='location.href="/servers"' name="cancel" value="2" class="btn btn-light">Отмена <!--событие он клик-->
+                                            </form>
                                     </form>
                             </div>
                         </div>
