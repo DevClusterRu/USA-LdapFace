@@ -178,7 +178,15 @@
                                             </tr>
 
                                         <?php } ?>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
 
+                                            <td> <div class="butDelUsers">
+                                                    <button type="submit" class="btn btn-gradient-primary me-2 ">Заказать</button>
+                                                </div></td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </form>
