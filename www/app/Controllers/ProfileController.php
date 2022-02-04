@@ -20,7 +20,6 @@ class ProfileController extends BaseController
     public function __construct()
     {
 
-
         $this->userModel = new User();
         $this->serviceModel=new Service();
         $this->userSelectedService = new UserSelectedService();
@@ -40,17 +39,15 @@ class ProfileController extends BaseController
         }
         $data = [
             "userInfo" => $this->userModel->find(session()->get("userId")),
-            "userServicesList"=>$this->serviceModel
-                ->join('user_selected_services', 'user_selected_services.service_id = services.id','left')
-                ->select('services.id, services.name, services.type_service, services.cost, user_selected_services.service_id')
-                ->get()
-            ->getResultArray(),
+            "servicesAll" => $this->serviceModel->get()->getResultArray(),
+            "userServicesList"=>$this->userSelectedService->where("user_id", session()->get("userId"))->get()->getResultArray(),
             "invoices" => $this->invoices->findAll(),
 
 //            "debets" => $this->debets->findAll(),
 //            "credits" => $this->credits->findAll(),
 
         ];
+
 //        "selectedServices"=>$this->userSelectedService->where([
 //        "user_id"=>session()->get("userId")
 //    ])->get()->getResultArray()

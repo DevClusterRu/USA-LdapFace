@@ -50,6 +50,9 @@ $routes->post('/', 'HomeController::tryAuth');
 $routes->post('/profile/update', 'ProfileController::changeUserInfo');
 $routes->post('/profile/passwordreset', 'ProfileController::changeUserPassword');
 
+//director
+$routes->get('/profileOrder', 'ProfileController::аddInvoice');
+$routes->post('/profile/autoUpdateToUser', 'ServiceController::autoUpdateToUser');
 //zoom
 $routes->get('/zoom/(:any)', 'UserController::zoom/$1'); //зумирование
 $routes->get('/zoomout', 'UserController::zoomOut'); //выход из зумирования
