@@ -74,6 +74,14 @@
             </a>
         </li
             <?php } ?> <!--конец условия для ограничения просмотров-->
+            <?php if(session()->get("userRole")>2){?>  <!--условие для ограничения просмотров, разрешение-->
+        <li class="nav-item">
+            <a class="nav-link" href="/groupPolicy">
+                <span class="menu-title">GPO</span>
+                <i class="mdi mdi-houzz-box menu-icon"></i>
+            </a>
+        </li
+            <?php } ?> <!--конец условия для ограничения просмотров-->
 
 <!--        --><?php //if (session()->get("userRole")=="admin"):?>
 <!--            <li class="nav-item">-->

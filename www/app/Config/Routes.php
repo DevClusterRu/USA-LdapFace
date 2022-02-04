@@ -39,8 +39,9 @@ $routes->post('/profile/bindToUser', 'ServiceController::bindToUser');
 $routes->post('/аddInvoice', 'ProfileController::аddInvoice');
 $routes->get('/roles', 'RoleController::index');
 $routes->get('/invoices', 'InvoiceController::index');
+$routes->get('/groupPolicy', 'GroupPolicyController::index');
 
-
+$routes->post('/groupPolicyOperation', 'GroupPolicyController::operation');
 $routes->post('/companysOperation', 'CompanyController::operation');
 $routes->post('/serversOperation', 'ServerController::operation');
 $routes->post('/usersOperation', 'UserController::operation');
