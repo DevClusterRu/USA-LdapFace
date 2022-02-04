@@ -48,7 +48,7 @@ class InvoiceController extends BaseController
             "invoices" => $this->invoices
                 ->join('users', 'invoices.user_id = users.id')
                 ->join('companys', 'users.company_id = companys.id')
-                ->select('invoices.id, invoices.invoice_num, invoices.amount, invoices.status, invoices.created_at, invoices.updated_at, users.username, companys.name as company_name')
+                ->select('invoices.id, invoices.amount, invoices.status, invoices.created_at, invoices.updated_at, users.username, companys.name as company_name')
                 ->where('invoices.deleted_at IS NULL')
                 ->where('users.company_id', $compan['company_id']) // user
                 ->get()
