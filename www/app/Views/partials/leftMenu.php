@@ -80,7 +80,13 @@
                 <span class="menu-title">GPO</span>
                 <i class="mdi mdi-houzz-box menu-icon"></i>
             </a>
-        </li
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/gp">
+                <span class="menu-title">Групповые политики</span>
+                <i class="mdi mdi-houzz-box menu-icon"></i>
+            </a>
+        </li>
             <?php } ?> <!--конец условия для ограничения просмотров-->
 
 <!--        --><?php //if (session()->get("userRole")=="admin"):?>
@@ -91,6 +97,9 @@
 <!--                </a>-->
 <!--            </li>-->
 <!--        --><?php //endif?>
+
+
+
 
     </ul>
 </nav>

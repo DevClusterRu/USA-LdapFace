@@ -35,16 +35,13 @@ class BaseController extends Controller
     protected $helpers = [];
     protected $log;
 
-
     /**
      * Constructor.
      */
-
     public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger)
     {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
-
     }
 
     public static function shortName($name)
@@ -53,14 +50,6 @@ class BaseController extends Controller
         if (strlen($name) > 15) $name = mb_substr($name, 0, 15) . "...";
         return $name;
     }
-
-    public static function ddd($var)
-    {
-        echo "<pre>";
-        var_dump($var);
-        die();
-    }
-
 
     public function logMessage($logStroke = "")
     {
@@ -91,10 +80,9 @@ class BaseController extends Controller
             $cred["total"] = "0";
         }
         $balance = $deb["total"] - $cred["total"];
-
         session()->set("balance", $balance);
-
-
     }
+
+
 
 }

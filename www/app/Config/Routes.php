@@ -40,6 +40,8 @@ $routes->post('/аddInvoice', 'ProfileController::аddInvoice');
 $routes->get('/roles', 'RoleController::index');
 $routes->get('/invoices', 'InvoiceController::index');
 $routes->get('/groupPolicy', 'GroupPolicyController::index');
+$routes->get('/gp', 'GpController::index');
+
 
 $routes->post('/groupPolicyOperation', 'GroupPolicyController::operation');
 $routes->post('/companysOperation', 'CompanyController::operation');
