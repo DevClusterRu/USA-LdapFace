@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class UserSelectedServices extends Migration
+class UserAutoUpdateServices extends Migration
 {
     public function up()
     {
@@ -22,10 +22,7 @@ class UserSelectedServices extends Migration
                 'type' => 'INT',
                 'unsigned' => true,
             ],
-            'active' => [
-                'type' => 'INT',
-                'unsigned' => true,
-            ],
+
             'created_at' => [
                 'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP'
             ],
@@ -40,31 +37,13 @@ class UserSelectedServices extends Migration
 
         $this->forge->addKey('id', true);
         // $this->forge->addForeignKey('role_id','user_roles','id');
-        $this->forge->createTable('user_selected_services');
+        $this->forge->createTable('user_auto_update_services');
 
-        $data = array(
-            array(
-                'user_id' => 3,
-                'service_id' => 1,
-                'active'=>1,
-            ),
-            array(
-                'user_id' => 102,
-                'service_id' => 2,
-                'active'=>0,
 
-            ),
-            array(
-                'user_id' => 103,
-                'service_id' => 3,
-                'active'=>1,
-            ),
-        );
-        $this->db->table("user_selected_services")->insertBatch($data);
     }
 
     public function down()
     {
-        $this->forge->dropTable('user_selected_services');
+        $this->forge->dropTable('user_auto_update_services');
     }
 }

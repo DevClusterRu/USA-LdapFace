@@ -14,7 +14,7 @@ class InvoiceController extends BaseController
     protected $users;
     protected $companys;
     protected $allroles;
-    protected $debets;
+
 
 
     public function __construct()
@@ -55,6 +55,7 @@ class InvoiceController extends BaseController
                     ->getResultArray(),
                 "users" => $this->users->findAll(),
                 "companys" => $this->companys->findAll(),
+
 //                ->findAll(), // будующая переменная -> берет из свойства класса (равно объекту модели) , метод выбирает все записи из таблицы ивозвращает их в виде массива
 //            $data = [
 //            "invoiceAll"=>$this->getAllinvoice()

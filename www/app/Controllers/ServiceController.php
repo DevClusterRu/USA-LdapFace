@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Models\Service;
+use App\Models\UserAutoUpdateService;
 use App\Models\UserSelectedService;
 
 class ServiceController extends BaseController
@@ -8,17 +9,22 @@ class ServiceController extends BaseController
 
     protected $services;
     protected $userSelectedService;
+    protected $userAutoUpdateService;
 
 
     public function __construct()
     {
 
-        if(session()->get("userRole")<3) { //условия для ограничения просмотра роута,запретить
+        $request = \Config\Services::request();
+
+        if (session()->get("userRole") == 1 || (session()->get("userRole") == 2 && !$request->isAJAX())) { //условия для ограничения просмотра роута,запретить
             header("Location: /");
             exit();
         }
+
         $this->services = new Service();
-        $this->userSelectedService= new UserSelectedService();
+        $this->userSelectedService = new UserSelectedService();
+        $this->userAutoUpdateService = new UserAutoUpdateService();
 
     }
 
@@ -85,22 +91,37 @@ class ServiceController extends BaseController
         }
     }
 
-function bindToUser(){ //привязка сервиса к юзеру
-$checkboxSelected=$this->request->getPost("checkboxService");//получаем айди сервиса ( номер строчки)
-$checkboxSelectedDo=$this->request->getPost("doCheckbox");//получаем вид действия, строку сет или ансет
 
-if ($checkboxSelectedDo=="set"){
-    $this->userSelectedService->insert(["user_id"=>session()->get("userId"),"service_id"=>$checkboxSelected	]);
-}
-else {
-    $this->userSelectedService
-        ->where(["user_id"=>session()->get("userId"),"service_id"=>$checkboxSelected])
-        ->delete();
-}
+    function bindToUser()
+    { //привязка сервиса к юзеру
+        $checkboxSelected = $this->request->getPost("checkboxService");//получаем айди сервиса ( номер строчки)
+        $checkboxSelectedDo = $this->request->getPost("doCheckbox");//получаем вид действия, строку сет или ансет
+
+        if ($checkboxSelectedDo == "set") {
+            $this->userSelectedService->insert(["user_id" => session()->get("userId"), "service_id" => $checkboxSelected]);
+        } else {
+            $this->userSelectedService
+                ->where(["user_id" => session()->get("userId"), "service_id" => $checkboxSelected])
+                ->delete();
+        }
+    }
+
+    function autoUpdateToUser(){ //связь автообновления с пользователем
+        { //привязка сервиса к юзеру
+            $checkboxAutoUpdateSelector = $this->request->getPost("checkboxAutoUpdateSelector");//получаем айди сервиса ( номер строчки)
+            $checkboxAutoUpdateSelectorDo = $this->request->getPost("doCheckbox");//получаем вид действия, строку сет или ансет
+
+            if ($checkboxAutoUpdateSelectorDo == "set") {
+                $this->userAutoUpdateService->insert(["user_id" => session()->get("userId"), "service_id" => $checkboxAutoUpdateSelector]);
+            } else {
+                $this->userAutoUpdateService
+                    ->where(["user_id" => session()->get("userId"), "service_id" => $checkboxAutoUpdateSelector])
+                    ->delete();
+            }
+        }
 
 
-}
 
-
+    }
 
 }

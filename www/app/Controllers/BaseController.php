@@ -34,7 +34,7 @@ class BaseController extends Controller
      */
     protected $helpers = [];
     protected $log;
-
+    protected $debets;
 
     /**
      * Constructor.

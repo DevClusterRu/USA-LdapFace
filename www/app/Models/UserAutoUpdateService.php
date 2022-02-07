@@ -4,12 +4,12 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserSelectedService extends Model
+class UserAutoUpdateService extends Model
 {
-    protected $table = 'user_selected_services';
+    protected $table = 'user_auto_update_services';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['user_id', 'service_id','active'];
+    protected $allowedFields = ['user_id', 'service_id'];
     protected $useSoftDeletes = false;
     // Dates
     protected $useTimestamps = true;

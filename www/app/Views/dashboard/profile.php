@@ -131,7 +131,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <form method="post" enctype="application/x-www-form-urlencoded"
-                                      action="/usersOperation">
+                                      action="/profileOrder">
                                     <table class="table" style="margin-top: 20px">
                                         <thead>
                                         <tr>
@@ -139,13 +139,14 @@
                                             <th>Тип услуги</th>
                                             <th>Стоимость, руб.</th>
                                             <th>Текущая услуга</th>
+                                            <th>Активна</th>
                                             <th>Оплачено до</th>
 
                                         </tr>
                                         </thead>
                                         <tbody>
 
-                                        <?php foreach ($userServicesList as $element) { ?>
+                                        <?php foreach ($servicesAll as $element) { ?>
 
                                             <tr>
                                                 <td><?php echo $element["name"] ?></td>
@@ -156,10 +157,39 @@
                                                         echo "Абониментская оплата";
                                                     ?></td>
                                                 <td><?php echo $element["cost"] ?></td>
+
                                                 <td>
                                                     <div class="form-check" style="margin-top: 0">
-                                                        <checked
-                                                        ="checked" class="form-check-label">
+                                                        <label class="form-check-label">
+                                                        <input value="<?php echo $element["id"] ?>"
+                                                               type="checkbox"
+                                                            <?php
+                                                            $checked = "";
+                                                            //Перебор всех нажатых услуг этого пользователя
+                                                            foreach ($userServicesList as $selected){
+                                                                //Нашли совпадение - чекед
+                                                                if ($element["id"] == $selected["service_id"]){
+                                                                    $checked = "checked ";
+
+                                                                    if ($selected["active"]>0){
+                                                                        $checked.="disabled ";
+                                                                    }
+                                                                }
+                                                            }
+                                                            echo $checked
+                                                            ?>
+
+                                                               class="form-check-input servicesSelector"
+                                                               name="checkboxService"><i
+                                                                class="input-helper"></i>
+                                                        </label>
+                                                    </div>
+                                                </td>
+
+                                               <!--подтянуть данные с другой т бд-->
+                                                <td>
+                                                    <div class="form-check" style="margin-top: 0">
+                                                        <checked ="checked" class="form-check-label">
                                                         <input value="<?php echo $element["id"] ?>"
                                                                type="checkbox"
                                                             <?php
@@ -167,8 +197,8 @@
                                                                 echo "checked";
                                                             }
                                                             ?>
-                                                               class="form-check-input servicesSelector"
-                                                               name="checkboxService"><i
+                                                               class="form-check-input autoUpdateSelector"
+                                                               name="checkboxAutoUpdateSelector"><i
                                                                 class="input-helper"></i>
                                                         </label>
                                                     </div>
@@ -178,7 +208,15 @@
                                             </tr>
 
                                         <?php } ?>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
 
+                                            <td> <div class="butDelUsers">
+                                                    <button type="submit" class="btn btn-gradient-primary me-2 ">Заказать</button>
+                                                </div></td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </form>
@@ -221,12 +259,27 @@
             method: 'post',
             // dataType: 'html',
             data: {checkboxService: servicesSel, doCheckbox: doCheckbox}// ключ-нейм необязательный ,значение -вэлью от чекбокса
+             // success: function(data){ //вывод результата от контроллера через роут
+             //     alert(data);
+             // }
+        });
+    })
+
+
+    $(".autoUpdateSelector").click(function () { //класс и событие
+        doCheckbox = "set";
+        if (!$(this).prop("checked")) doCheckbox = "unset";
+
+        servicesSel = $(this).val(); //вэлью от чекбокса хтмл
+        $.ajax({
+            url: '/profile/autoUpdateToUser', //роут незаметный
+            method: 'post',
+            // dataType: 'html',
+            data: {checkboxAutoUpdateSelector: servicesSel, doCheckbox: doCheckbox}// ключ-нейм необязательный ,значение -вэлью от чекбокса
             // success: function(data){ //вывод результата от контроллера через роут
             //     alert(data);
             // }
         });
-
-
     })
 
 
