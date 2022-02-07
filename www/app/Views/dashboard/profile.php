@@ -8,7 +8,7 @@
         <?php echo $this->include('partials/leftMenu') ?>
         <div class="main-panel">
             <div class="content-wrapper">
-                <!--                --><?php //= $this->include('partials/pageHeader') ?>
+                <?php echo $this->include('partials/pageHeader') ?>
                 <div class="row">
                     <div class="col-md-12 grid-margin stretch-card">
 
@@ -18,8 +18,8 @@
                                     <div class="hidder" object="addForm">-</div>
                                 </h4>
                                 <div class="hidden addForm">
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
 
                                             <!--                                                                <p class="card-description"> Horizontal form layout </p>-->
                                             <form class="forms-sample" method="post"
@@ -53,43 +53,43 @@
                                                 <button class="btn btn-light">Отмена</button>
                                             </form>
 
-                                    </div>
+                                        </div>
 
-                                    <div class="col-md-6">
-                                        <form id="password_changer" class="forms-sample" method="post"
-                                              enctype="application/x-www-form-urlencoded"
-                                              action="/profile/passwordreset">
+                                        <div class="col-md-6">
+                                            <form id="password_changer" class="forms-sample" method="post"
+                                                  enctype="application/x-www-form-urlencoded"
+                                                  action="/profile/passwordreset">
 
-                                            <div class="form-group row">
-                                                <label for="exampleInputPassword2"
-                                                       class="col-sm-3 col-form-label">Пароль</label>
-                                                <div class="col-sm-9">
-                                                    <input name="password1" type="password" class="form-control"
-                                                           id="exampleInputPassword2" placeholder="Password">
-                                                    <div class="invalid-feedback pass_feedback">
+                                                <div class="form-group row">
+                                                    <label for="exampleInputPassword2"
+                                                           class="col-sm-3 col-form-label">Пароль</label>
+                                                    <div class="col-sm-9">
+                                                        <input name="password1" type="password" class="form-control"
+                                                               id="exampleInputPassword2" placeholder="Password">
+                                                        <div class="invalid-feedback pass_feedback">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="exampleInputConfirmPassword2"
-                                                       class="col-sm-3 col-form-label">Введите
-                                                    повторно пароль</label>
-                                                <div class="col-sm-9">
-                                                    <input name="password2" type="password" class="form-control"
-                                                           id="exampleInputConfirmPassword2" placeholder="Password">
-                                                    <div class="invalid-feedback pass_feedback">
+                                                <div class="form-group row">
+                                                    <label for="exampleInputConfirmPassword2"
+                                                           class="col-sm-3 col-form-label">Введите
+                                                        повторно пароль</label>
+                                                    <div class="col-sm-9">
+                                                        <input name="password2" type="password" class="form-control"
+                                                               id="exampleInputConfirmPassword2" placeholder="Password">
+                                                        <div class="invalid-feedback pass_feedback">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <button type="button" class="btn btn-gradient-primary me-2 pass_change">
-                                                Изменить
-                                                пароль
-                                            </button>
-                                            <button class="btn btn-light">Отмена</button>
-                                        </form>
+                                                <button type="button" class="btn btn-gradient-primary me-2 pass_change">
+                                                    Изменить
+                                                    пароль
+                                                </button>
+                                                <button class="btn btn-light">Отмена</button>
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
                                 </div>
                             </div>
                         </div>
@@ -97,35 +97,37 @@
                     </div>
                 </div>
 
-                <?php if(session()->get("userRole")>1 && session()->get("userRole")<3 ){?>  <!--условие для ограничения просмотров, разрешение-->
-                <!-- Здесь начало третей таблицы-->
+                <?php if (session()->get("userRole") > 1 && session()->get("userRole") < 3) { ?>  <!--условие для ограничения просмотров, разрешение-->
+                    <!-- Здесь начало третей таблицы-->
 
 
-                <div class="card">
-                    <div class="card-body">
-                        <h4>Пополнить баланс счета <div class="hidder" object="addForm2">-</div></h4>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Пополнить баланс счета
+                                <div class="hidder" object="addForm2">-</div>
+                            </h4>
 
-                        <div class="hidden addForm2">
-                            <form method="post" enctype="application/x-www-form-urlencoded" action="/аddInvoice">
+                            <div class="hidden addForm2">
+                                <form method="post" enctype="application/x-www-form-urlencoded" action="/аddInvoice">
 
-                                <div class="form-group">
-<!--                                    <label for="exampleInputUsername1">Пополнить баланс счета</label>-->
-                                    <input name="amount"
-                                           value="<?php  ?>"
-                                           type="number" class="form-control"
-                                           id="exampleInputUsername1"
-                                           placeholder="Сумма пополнения">
-                                </div>
-                                <button name="addButton" value="1" type="submit"
-                                        class="btn btn-gradient-primary me-2">Пополнить баланс
-                                </button>
-                                <button name="cancel" value="2" class="btn btn-light">Очистить
-                                </button>
-                            </form>
+                                    <div class="form-group">
+                                        <!--                                    <label for="exampleInputUsername1">Пополнить баланс счета</label>-->
+                                        <input name="amount"
+                                               value="<?php ?>"
+                                               type="number" class="form-control"
+                                               id="exampleInputUsername1"
+                                               placeholder="Сумма пополнения">
+                                    </div>
+                                    <button name="addButton" value="1" type="submit"
+                                            class="btn btn-gradient-primary me-2">Пополнить баланс
+                                    </button>
+                                    <button name="cancel" value="2" class="btn btn-light">Очистить
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <?php //if(session()->get("userRole")>1 && session()->get("userRole")<3 ){?>
+                    <?php //if(session()->get("userRole")>1 && session()->get("userRole")<3 ){?>
 
                     <div class="card" style="margin-top: 20px">
                         <div class="card-body">
@@ -161,35 +163,36 @@
                                                 <td>
                                                     <div class="form-check" style="margin-top: 0">
                                                         <label class="form-check-label">
-                                                        <input value="<?php echo $element["id"] ?>"
-                                                               type="checkbox"
-                                                            <?php
-                                                            $checked = "";
-                                                            //Перебор всех нажатых услуг этого пользователя
-                                                            foreach ($userServicesList as $selected){
-                                                                //Нашли совпадение - чекед
-                                                                if ($element["id"] == $selected["service_id"]){
-                                                                    $checked = "checked ";
+                                                            <input value="<?php echo $element["id"] ?>"
+                                                                   type="checkbox"
+                                                                <?php
+                                                                $checked = "";
+                                                                //Перебор всех нажатых услуг этого пользователя
+                                                                foreach ($userServicesList as $selected) {
+                                                                    //Нашли совпадение - чекед
+                                                                    if ($element["id"] == $selected["service_id"]) {
+                                                                        $checked = "checked ";
 
-                                                                    if ($selected["active"]>0){
-                                                                        $checked.="disabled ";
+                                                                        if ($selected["active"] > 0) {
+                                                                            $checked .= "disabled ";
+                                                                        }
                                                                     }
                                                                 }
-                                                            }
-                                                            echo $checked
-                                                            ?>
+                                                                echo $checked
+                                                                ?>
 
-                                                               class="form-check-input servicesSelector"
-                                                               name="checkboxService"><i
-                                                                class="input-helper"></i>
+                                                                   class="form-check-input servicesSelector"
+                                                                   name="checkboxService"><i
+                                                                    class="input-helper"></i>
                                                         </label>
                                                     </div>
                                                 </td>
 
-                                               <!--подтянуть данные с другой т бд-->
+                                                <!--подтянуть данные с другой т бд-->
                                                 <td>
                                                     <div class="form-check" style="margin-top: 0">
-                                                        <checked ="checked" class="form-check-label">
+                                                        <checked
+                                                        ="checked" class="form-check-label">
                                                         <input value="<?php echo $element["id"] ?>"
                                                                type="checkbox"
                                                             <?php
@@ -213,9 +216,13 @@
                                             <td></td>
                                             <td></td>
 
-                                            <td> <div class="butDelUsers">
-                                                    <button type="submit" class="btn btn-gradient-primary me-2 ">Заказать</button>
-                                                </div></td>
+                                            <td>
+                                                <div class="butDelUsers">
+                                                    <button type="submit" class="btn btn-gradient-primary me-2 ">
+                                                        Заказать
+                                                    </button>
+                                                </div>
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -259,9 +266,9 @@
             method: 'post',
             // dataType: 'html',
             data: {checkboxService: servicesSel, doCheckbox: doCheckbox}// ключ-нейм необязательный ,значение -вэлью от чекбокса
-             // success: function(data){ //вывод результата от контроллера через роут
-             //     alert(data);
-             // }
+            // success: function(data){ //вывод результата от контроллера через роут
+            //     alert(data);
+            // }
         });
     })
 
