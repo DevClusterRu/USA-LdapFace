@@ -11,41 +11,39 @@ class UserController extends BaseController
     protected $companys;
     protected $allroles;
     protected $mail_buffers;
+    protected $data;
 
     public function __construct()
     {
-
         $this->users = new User();
         $this->companys = new Company();
         $this->allroles = new Role();
         $this->mail_buffers = new MailBuffer();
+        $this->data["page_name"] = "Пользователи";
+        $this->data["companys"] = $this->companys->findAll();
+        $this->data["roles"] = $this->allroles->findAll();
     }
 
     public function index()
     {
-        if (session()->get("userRole") < 2) { //условия для ограничения просмотра роута, запретить
+        if ($this->isClient()) { //условия для ограничения просмотра роута, запретить
             header("Location: /");
             exit();
         }
 
-        if (!session()->get("userId")) {
-            header("Location: /login");
-            exit();
-        }
-        $data = [
-            "users" => $this->users
-                ->join('roles', 'users.role_id = roles.id')
-                ->join('companys', 'users.company_id = companys.id')
-                ->select('users.id, users.role_id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name, invite_hash')
-                ->where('users.deleted_at IS NULL')
-                ->get()
-                ->getResultArray(),
-            "companys" => $this->companys->findAll(),
-            "roles" => $this->allroles->findAll(),
-            "mail_buffers" => $this->mail_buffers->findAll(),
-        ];
+        $this->isAuth();
 
-        return view('dashboard/users', $data);
+        $this->data["users"] = $this->users
+            ->join('roles', 'users.role_id = roles.id')
+            ->join('companys', 'users.company_id = companys.id')
+            ->select('users.id, users.role_id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name, invite_hash')
+            ->where('users.deleted_at IS NULL')
+            ->get()
+            ->getResultArray();
+        $this->data["mail_buffers"] = $this->mail_buffers->findAll();
+
+
+        return view('dashboard/users', $this->data);
     }
 
 
@@ -58,7 +56,7 @@ class UserController extends BaseController
 
 
         //условия для разрешения зумирование и проверка двойного зумирования для запрета
-        if(session()->get("userRole")<3 || session()->get("zoom_id")) {
+        if (session()->get("userRole") < 3 || session()->get("zoom_id")) {
             header("Location: /profile");
             exit();
         }
@@ -69,7 +67,7 @@ class UserController extends BaseController
         }
         $infoUserZoom = $this->users->find($user_id); // зумирование
 
-        $oldName= session()->get("userName"); //получили оригинальное имя пользователя до перезаписи сессии для зума
+        $oldName = session()->get("userName"); //получили оригинальное имя пользователя до перезаписи сессии для зума
 
         session()->set([
             'userId' => $user_id,
@@ -78,26 +76,27 @@ class UserController extends BaseController
             'zoom_id' => session()->get("userId"),// айди предыдущего пользователя
         ]);
 
-        $this->logMessage("Пользователь ".  $oldName." зашел под пользователем ". session()->get("userName") ); // в лог зумирования
+        $this->logMessage("Пользователь " . $oldName . " зашел под пользователем " . session()->get("userName")); // в лог зумирования
         $this->debitcredit();
 
         header("Location: /profile");
         exit();
     }
 
-    public function zoomOut(){
+    public function zoomOut()
+    {
 
-        $oldName= session()->get("userName"); //получили оригинальное имя пользователя до перезаписи сессии для зума
+        $oldName = session()->get("userName"); //получили оригинальное имя пользователя до перезаписи сессии для зума
 
         $infoUserZoom = $this->users->find(session()->get("zoom_id"));
         session()->set([
             'userId' => session()->get("zoom_id"),
-            'userRole' =>$infoUserZoom["role_id"],
+            'userRole' => $infoUserZoom["role_id"],
             'userName' => $infoUserZoom["username"],
-            ]);
+        ]);
         session()->remove("zoom_id");
 
-        $this->logMessage("Пользователь ". session()->get("userName")." вышел из под пользователя ". $oldName ); // в лог  выход зумирования
+        $this->logMessage("Пользователь " . session()->get("userName") . " вышел из под пользователя " . $oldName); // в лог  выход зумирования
 
         header("Location: /profile");
         exit();
@@ -149,19 +148,16 @@ class UserController extends BaseController
                 ->where(["id" => $this->request->getPost("updating")])
                 ->first();
 
-            $data = [
-                "users" => $this->users
-                    ->join('roles', 'users.role_id = roles.id')
-                    ->join('companys', 'users.company_id = companys.id')
-                    ->select('users.id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name')
-                    ->where('users.deleted_at IS NULL')
-                    ->get()
-                    ->getResultArray(),
-                "companys" => $this->companys->findAll(),
-                "roles" => $this->allroles->findAll(),
-                "curUser" => $row,
-            ];
-            return view('dashboard/users', $data);
+            $this->data["users"] = $this->users
+                ->join('roles', 'users.role_id = roles.id')
+                ->join('companys', 'users.company_id = companys.id')
+                ->select('users.id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name')
+                ->where('users.deleted_at IS NULL')
+                ->get()
+                ->getResultArray();
+            $this->data["curUser"] = $row; //Роли и компании уже находятся в $this->data (через констракт)
+
+            return view('dashboard/users', $this->data);
         }
 
 
@@ -224,12 +220,6 @@ class UserController extends BaseController
 
         header("Location: /users");
     }
-
-
-    public function passwordReset()
-    {
-    }
-
 
     public function invite($hash = "none")
     {

@@ -93,8 +93,56 @@ class BaseController extends Controller
         $balance = $deb["total"] - $cred["total"];
 
         session()->set("balance", $balance);
-
-
     }
+
+
+    //////////////////////////////////////// Методы - хэлперы для определения уровня доступа ///////////////////////
+    ///
+
+    public function isAdmin():bool
+    {
+        if (session()->get("userRole") < 3)
+        return false;
+        else return true;
+    }
+
+    public function isSuper():bool
+    {
+        if (session()->get("userRole") != 4)
+            return false;
+        else return true;
+    }
+
+    public function isDirector():bool
+    {
+        if (session()->get("userRole") != 2)
+            return false;
+        else return true;
+    }
+
+    public function isClient():bool
+    {
+        if (session()->get("userRole") != 1)
+            return false;
+        else return true;
+    }
+
+
+    public function isAuth():bool
+    {
+        if (!session()->get("userId")) {
+            header("Location: /login");
+            exit();
+        }
+        return true;
+    }
+
+    ///
+    /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
 
 }
