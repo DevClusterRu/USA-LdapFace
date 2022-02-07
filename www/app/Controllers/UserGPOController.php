@@ -16,6 +16,7 @@ class UserGPOController extends BaseController
     protected $groupPolicy;
     protected $usersSelectedGroup;
     protected $allroles;
+    protected $data;
 
     protected static $companys;
 
@@ -32,7 +33,7 @@ class UserGPOController extends BaseController
         $this->allroles = new Role();
         $this->groupPolicy = new Group();
         $this->usersSelectedGroup = new UserSelectedGroup();
-
+        $this->data["page_name"] = "Политики";
 
         $this->companys = new Company();
     }
@@ -44,19 +45,19 @@ class UserGPOController extends BaseController
             exit();
         }
         //Не используем билдер, подключаемся к модели Companys и применяем метод findAll() (все записи)
-        $data = [
-            "usersSelectedGroup" => $this->usersSelectedGroup
+        $this->data ["usersSelectedGroup"] =
+              $this->usersSelectedGroup
                 ->join('users', 'user_selected_group.user_id = users.id')
                 ->join('group_policy', 'user_selected_group.group_id = group_policy.id')
                 ->select('user_selected_group.id, user_selected_group.user_id, user_selected_group.group_id,users.username as username,group_policy.group_name as groupname')   //
                 ->where('user_selected_group.deleted_at IS NULL')
                 ->get()
-                ->getResultArray(),
-            "groupPolicy" => $this->groupPolicy ->findAll(),
-            "users" => $this->users->findAll(),
-            "companys" => $this->companys->findAll(),
-        ];
-        return view('dashboard/usersGPO', $data);
+                ->getResultArray();
+        $this->data ["groupPolicy"] = $this->groupPolicy ->findAll();
+        $this->data ["users"] = $this->users->findAll();
+        $this->data ["companys"] = $this->companys->findAll();
+
+        return view('dashboard/usersGPO', $this->data);
     }
 
     //Теперь у нас всего 1 метод управления страницей, он умеет обрабатывать все нужные нам ПОСТ запросы

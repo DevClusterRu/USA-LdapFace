@@ -10,82 +10,99 @@
             <div class="content-wrapper">
                 <?php echo $this->include('partials/pageHeader') ?>
 
-                 <div class="card" style="margin-top: 20px">
+                <div class="card" style="margin-top: 20px">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <form method="post" enctype="application/x-www-form-urlencoded" action="/usersGPOOperation">
-                                <table class="table" style="margin-top: 20px">
-                                    <?php foreach ($groupPolicy as $element): ?>
+                            <form method="post" enctype="application/x-www-form-urlencoded" action="/groupPolicyOperation">
+
+
+                                <style>
+                                    .form-check1 {
+                                        position: relative;
+                                        display: block;
+                                        margin-top: -10px;
+                                    }
+                                </style>
+
+                                <table class="table">
                                     <thead>
                                     <tr>
-                                        <th style="writing-mode: vertical-rl"> Сотрудник </th>
-                                        <th style="writing-mode: vertical-rl" > <?php echo $element["group_name"] ?> </th>
-
+                                        <th>Сотрудник</th>
+                                        <?php foreach ($groupPolicy as $element): ?>
+                                        <th style="writing-mode: vertical-rl"><?php echo $element["group_name"] ?></th>
+                                        <?php endforeach; ?>
+<!--                                        <th style="writing-mode: vertical-rl">Группа 2</th>-->
+<!--                                        <th style="writing-mode: vertical-rl">Группа 3</th>-->
+<!--                                        <th style="writing-mode: vertical-rl">Группа 4</th>-->
+<!--                                        <th style="writing-mode: vertical-rl">Группа 5</th>-->
                                     </tr>
-                                    <?php endforeach; ?>
                                     </thead>
                                     <tbody>
-                                    <?php foreach ($users as $elements): ?>
-                                        <tr>
-                                            <td><?php echo $elements["username"] ?></td>
-<!--                                            <td>--><?php //echo $elements["name"] ?><!--</td>-->
-<!--                                            <td>--><?php //echo $elements["inn"] ?><!--</td>-->
-<!--                                            <td>--><?php //echo $elements["kpp"] ?><!--</td>-->
-<!--                                            <td>-->
-<!--                                                <button name="updating" type="submit"-->
-<!--                                                        value="--><?php //echo $element["id"] ?><!--"-->
-<!--                                                        class="btn btn-gradient-primary me-2">-->
-<!--                                                    Редактировать-->
-<!--                                                </button>-->
-<!--                                            </td>-->
+                                    <!-- Foreach place -->
+                                    <?php foreach ($users as $element2): ?>
+                                    <tr>
 
-                                            <td>
-                                                <div class="form-check" style="margin-top: 0">
-                                                    <checked
-                                                    ="checked" class="form-check-label">
-                                                    <input value="<?php echo $element["id"] ?>"
-                                                           type="checkbox"
-                                                        <?php
-                                                        if ($element["service_id"]) {
-                                                            echo "checked";
-                                                        }
-                                                        ?>
-                                                           class="form-check-input servicesSelector"
-                                                           name="checkboxService"><i
-                                                            class="input-helper"></i>
-                                                    </label>
-                                                </div>
+                                        <td><?php echo $element2["username"] ?></td>
 
-                                            </td>
-<!--                                            <td>-->
-<!--                                                <div class="form-check">-->
-<!--                                                    <label class="form-check-label">-->
-<!--                                                        <input value="--><?php //echo $element["id"] ?><!--" type="checkbox"-->
-<!--                                                               class="form-check-input" name="checkboxDel[]">Удалить<i-->
-<!--                                                                class="input-helper"></i>-->
-<!--                                                    </label>-->
-<!--                                                </div>-->
-<!--                                            </td>-->
-                                        </tr>
-                                    <?php endforeach; ?>
-<!--                                    <tr>-->
-<!--                                        <td></td>-->
-<!--                                        <td></td>-->
-<!--                                        <td></td>-->
-<!--                                        <td></td>-->
-<!--                                        <td></td>-->
 <!--                                        <td>-->
-<!--                                            <div class="butDelUsers">-->
-<!--                                                <button type="submit" value="del" name="delete"-->
-<!--                                                        class="btn btn-gradient-primary me-2 ">Удалить-->
-<!--                                                </button>-->
+<!--                                            <div class="form-check form-check1">-->
+<!--                                                <label class="form-check-label">-->
+<!--                                                    <input checked value="--><?php //echo $users["id"]."_"$groups["id"]?><!--" type="checkbox" class="form-check-input" name="checkboxDel[]"><i class="input-helper"></i>-->
+<!--                                                    <i class="input-helper"></i></label>-->
 <!--                                            </div>-->
 <!--                                        </td>-->
-<!--                                    </tr>-->
+                                            <?php foreach ($groupPolicy as $element): ?>
+                                        <td>
+                                            <div class="form-check form-check1">
+                                                <label class="form-check-label">
+                                                    <input value="<?php echo $users["id"]."_".$groupPolicy["id"]?>" <?php  $element["group_name"] ?> type="checkbox" class="form-check-input" name="checkboxGP[]"><i class="input-helper"></i>
+                                                    <i class="input-helper"></i></label>
+                                            </div>
+                                        </td>
+                                        <?php endforeach; ?>
+                                        <?php endforeach; ?>
+<!--                                        <td>-->
+<!--                                            <div class="form-check form-check1">-->
+<!--                                                <label class="form-check-label">-->
+<!--                                                    <input value="2" type="checkbox" class="form-check-input" name="checkboxDel[]"><i class="input-helper"></i>-->
+<!--                                                    <i class="input-helper"></i></label>-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+<!--                                        <td>-->
+<!--                                            <div class="form-check form-check1">-->
+<!--                                                <label class="form-check-label">-->
+<!--                                                    <input value="2" type="checkbox" class="form-check-input" name="checkboxDel[]"><i class="input-helper"></i>-->
+<!--                                                    <i class="input-helper"></i></label>-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+<!--                                        <td>-->
+<!--                                            <div class="form-check form-check1">-->
+<!--                                                <label class="form-check-label">-->
+<!--                                                    <input value="2" type="checkbox" class="form-check-input" name="checkboxDel[]"><i class="input-helper"></i>-->
+<!--                                                    <i class="input-helper"></i></label>-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+<!--                                        <td>-->
+<!--                                            <div class="form-check form-check1">-->
+<!--                                                <label class="form-check-label">-->
+<!--                                                    <input value="2" type="checkbox" class="form-check-input" name="checkboxDel[]"><i class="input-helper"></i>-->
+<!--                                                    <i class="input-helper"></i></label>-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+
+                                    </tr>
                                     </tbody>
                                 </table>
+
+
+
                             </form>
                         </div>
+                    </div>
+                    <div style="text-align: right; margin: 20px">
+                        <button type="submit" value="set" name="set"
+                                class="btn btn-gradient-primary me-2 ">Установить
+                        </button>
                     </div>
                 </div>
             </div>
