@@ -14,17 +14,16 @@ class ProfileController extends BaseController
     protected $serviceModel;
     protected $userSelectedService;
     protected $invoices;
-
+    protected $data;
 
 
     public function __construct()
     {
-
         $this->userModel = new User();
-        $this->serviceModel=new Service();
+        $this->serviceModel = new Service();
         $this->userSelectedService = new UserSelectedService();
         $this->invoices = new Invoice();
-
+        $this->data["page_name"] = "Профайл";
     }
 
     function index()
@@ -37,21 +36,12 @@ class ProfileController extends BaseController
             header("Location: /login");
             exit();
         }
-        $data = [
-            "userInfo" => $this->userModel->find(session()->get("userId")),
-            "servicesAll" => $this->serviceModel->get()->getResultArray(),
-            "userServicesList"=>$this->userSelectedService->where("user_id", session()->get("userId"))->get()->getResultArray(),
-            "invoices" => $this->invoices->findAll(),
+        $this->data["userInfo"] = $this->userModel->find(session()->get("userId"));
+        $this->data["servicesAll"] = $this->serviceModel->get()->getResultArray();
+        $this->data["userServicesList"] = $this->userSelectedService->where("user_id", session()->get("userId"))->get()->getResultArray();
+        $this->data["invoices"] = $this->invoices->findAll();
 
-//            "debets" => $this->debets->findAll(),
-//            "credits" => $this->credits->findAll(),
-
-        ];
-
-//        "selectedServices"=>$this->userSelectedService->where([
-//        "user_id"=>session()->get("userId")
-//    ])->get()->getResultArray()
-        return view('dashboard/profile', $data);
+        return view('dashboard/profile', $this->data);
 
     }
 
@@ -69,7 +59,6 @@ class ProfileController extends BaseController
             'email' => $email,
         ];
 
-
         $user->update(session()->get("userId"), $dataInfo); //обвновляет бд
         header("Location: /profile");
     }
@@ -77,49 +66,44 @@ class ProfileController extends BaseController
     function changeUserPassword()
     {
         $request = service('request');//c вью на контроллер
-        $password1= $request->getPost("password1");//переменная из вью (из объекта реквест)
-        $password2= $request->getPost("password2");
+        $password1 = $request->getPost("password1");//переменная из вью (из объекта реквест)
+        $password2 = $request->getPost("password2");
 
         $user = new \App\Models\User(); //объект таблицы бд юзер
 
 
-        if ($password1==$password2) {
+        if ($password1 == $password2) {
             $dataPassword = [
-                'password' => password_hash($password1,PASSWORD_BCRYPT) //запись в бд значения переменной
+                'password' => password_hash($password1, PASSWORD_BCRYPT) //запись в бд значения переменной
             ];
-            }
+        }
         $user->update(session()->get("userId"), $dataPassword);
         header("Location: /profile");
 
     }
 
-   function аddInvoice()
-    { if ($this->request->getPost("addButton")) {
+    function аddInvoice()
+    {
+        if ($this->request->getPost("addButton")) {
 
-        $user = session()->get("userId");
-        if ( $this->request->getPost("amount")!=="0" && $this->request->getPost("amount")!== 0 && $this->request->getPost("amount")!== "" ) {
+            $user = session()->get("userId");
+            if ($this->request->getPost("amount") !== "0" && $this->request->getPost("amount") !== 0 && $this->request->getPost("amount") !== "") {
 
-//        $namIn = $this->request->getPost("amount");
-//        var_dump($namIn);
-//        die();
-
-            $this->invoices
-            ->insert([
-//                'invoice_num' => $this->invoices->   ( 'id'),
-                'user_id' => $user,
-                'amount' => $this->request->getPost("amount"),
-                'status' => "new",
-                ]);
-//        header("Location: /invoices");
-        }
-        header("Location: /invoices");
-    } elseif ($this->request->getPost("cancel")) {
+                $this->invoices
+                    ->insert([
+                        'user_id' => $user,
+                        'amount' => $this->request->getPost("amount"),
+                        'status' => "new",
+                    ]);
+            }
+            header("Location: /invoices");
+        } elseif ($this->request->getPost("cancel")) {
             header("Location: /profile");
-//           //  return view('dashboard/serverlist', $data);
         }
     }
 
-    function getPaymentPersInfo (){
+    function getPaymentPersInfo()
+    {
         $db = \Config\Database::connect();
         $builder = $db->table('PaymentPers');
         $builder->select('type_of_service, current_service, price, get_bills, payment_before');
