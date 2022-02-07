@@ -34,6 +34,7 @@ $routes->get('/servers', 'ServerController::index');
 $routes->get('/companys', 'CompanyController::index');
 $routes->get('/services', 'ServiceController::index');
 $routes->get('/profile', 'ProfileController::index');
+$routes->get('/usersGPO', 'UserGPOController::index');
 $routes->get('/profile/invite', 'ProfileController::passwordChangeNeed');
 $routes->post('/profile/bindToUser', 'ServiceController::bindToUser');
 $routes->post('/аddInvoice', 'ProfileController::аddInvoice');
@@ -43,6 +44,7 @@ $routes->get('/groupPolicy', 'GroupPolicyController::index');
 
 $routes->post('/groupPolicyOperation', 'GroupPolicyController::operation');
 $routes->post('/companysOperation', 'CompanyController::operation');
+$routes->post('/usersGPOOperation', 'UserGPOController::operation');
 $routes->post('/serversOperation', 'ServerController::operation');
 $routes->post('/usersOperation', 'UserController::operation');
 $routes->post('/servicesOperation', 'ServiceController::operation');

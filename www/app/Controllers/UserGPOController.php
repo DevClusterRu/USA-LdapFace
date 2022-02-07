@@ -1,0 +1,112 @@
+<?php namespace App\Controllers;
+
+use \App\Models\User;
+use \App\Models\Group;
+use \App\Models\UserSelectedGroup;
+use App\Models\Role;
+use \App\Models\Company;
+
+
+
+class UserGPOController extends BaseController
+{
+    //Здесь мы создаем свойство класса companys  оно будет содержать модель таблицы companys
+
+    protected $users;
+    protected $groupPolicy;
+    protected $usersSelectedGroup;
+    protected $allroles;
+
+    protected static $companys;
+
+    //Метод __construct() - это конструктор класса, этот метод вызывается 1 раз при обращении к классу (при создании объекта класса)
+    public function __construct()
+    {
+
+        if(session()->get("userRole")<4) { //условия для ограничения просмотра роута, запрет
+            header("Location: /");
+            exit();
+        }
+        //Заполняем свойство класса объектом таблицы
+        $this->users = new User();
+        $this->allroles = new Role();
+        $this->groupPolicy = new Group();
+        $this->usersSelectedGroup = new UserSelectedGroup();
+
+
+        $this->companys = new Company();
+    }
+
+    public function index()
+    {
+        if (!session()->get("userId")) {
+            header("Location: /login");
+            exit();
+        }
+        //Не используем билдер, подключаемся к модели Companys и применяем метод findAll() (все записи)
+        $data = [
+            "usersSelectedGroup" => $this->usersSelectedGroup
+                ->join('users', 'user_selected_group.user_id = users.id')
+                ->join('group_policy', 'user_selected_group.group_id = group_policy.id')
+                ->select('user_selected_group.id, user_selected_group.user_id, user_selected_group.group_id,users.username as username,group_policy.group_name as groupname')   //
+                ->where('user_selected_group.deleted_at IS NULL')
+                ->get()
+                ->getResultArray(),
+            "groupPolicy" => $this->groupPolicy ->findAll(),
+            "users" => $this->users->findAll(),
+            "companys" => $this->companys->findAll(),
+        ];
+        return view('dashboard/usersGPO', $data);
+    }
+
+    //Теперь у нас всего 1 метод управления страницей, он умеет обрабатывать все нужные нам ПОСТ запросы
+    public function operation()
+    {
+        //Из контроллера можно напрямую обращаться в $this->request, не инициализируя его
+        if ($this->request->getPost("delete")) {
+            if (!$this->request->getPost("checkboxDel")){
+                header("Location: /usersGPO");
+            }
+            foreach ($this->request->getPost("checkboxDel") as $item) {
+                $this->companys->delete($item);
+            }
+            header("Location: /usersGPO");
+        }
+
+        if ($this->request->getPost("addEdit")) {
+            if ($this->request->getPost("id")) {
+                $this->companys
+                    ->update($this->request->getPost("id"), [
+                        'name' => $this->request->getPost("name"),
+                        'inn' => $this->request->getPost("inn"),
+                        'kpp' => $this->request->getPost("kpp"),
+                    ]);
+                header("Location: /usersGPO");
+            } else {
+                $this->companys
+                    ->insert([
+                        'name' => $this->request->getPost("name"),
+                        'inn' => $this->request->getPost("inn"),
+                        'kpp' => $this->request->getPost("kpp"),
+                    ]);
+                header("Location: /usersGPO");
+            }
+        }
+
+        if ($this->request->getPost("updating")) {
+            $row = $this->companys
+                ->where(["id" => $this->request->getPost("updating")])
+                ->first();
+            $data = [
+                "companys" => $this->companys->findAll(),
+                "curCompany" => $row,
+            ];
+            return view('dashboard/usersGPO', $data);
+        }
+
+        if ($this->request->getPost("cancel")) {
+
+            header("Location: /usersGPO");
+        }
+    }
+}
