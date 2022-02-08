@@ -30,7 +30,7 @@ $routes->get('/users', 'UserController::index'); //
 $routes->get('/invite/(:any)', 'UserController::invite/$1'); //
 $routes->get('/statusInv/(:any)', 'InvoiceController::statusInv/$1'); //
 
-$routes->get('/servers', 'ServerController::index');
+$routes->get('/serversV', 'ServerController::index');                         //  menu highlight
 $routes->get('/companys', 'CompanyController::index');
 $routes->get('/services', 'ServiceController::index');
 $routes->get('/profile', 'ProfileController::index');
@@ -45,7 +45,8 @@ $routes->get('/groupPolicy', 'GroupPolicyController::index');
 $routes->post('/groupPolicyOperation', 'GroupPolicyController::operation');
 $routes->post('/companysOperation', 'CompanyController::operation');
 $routes->post('/usersGPOOperation', 'UserGPOController::operation');
-$routes->post('/serversOperation', 'ServerController::operation');
+//$routes->post('/serversOperation', 'ServerController::operation');
+$routes->post('/servers', 'ServerController::operation');                   //  menu highlight
 $routes->post('/usersOperation', 'UserController::operation');
 $routes->post('/servicesOperation', 'ServiceController::operation');
 

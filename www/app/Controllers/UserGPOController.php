@@ -7,7 +7,6 @@ use App\Models\Role;
 use \App\Models\Company;
 
 
-
 class UserGPOController extends BaseController
 {
     //Здесь мы создаем свойство класса companys  оно будет содержать модель таблицы companys
@@ -24,7 +23,7 @@ class UserGPOController extends BaseController
     public function __construct()
     {
 
-        if(session()->get("userRole")<4) { //условия для ограничения просмотра роута, запрет
+        if (session()->get("userRole") < 2) { //условия для ограничения просмотра роута, запрет
             header("Location: /");
             exit();
         }
@@ -44,20 +43,53 @@ class UserGPOController extends BaseController
             header("Location: /login");
             exit();
         }
-        //Не используем билдер, подключаемся к модели Companys и применяем метод findAll() (все записи)
-        $this->data ["usersSelectedGroup"] =
-              $this->usersSelectedGroup
-                ->join('users', 'user_selected_group.user_id = users.id')
-                ->join('group_policy', 'user_selected_group.group_id = group_policy.id')
-                ->select('user_selected_group.id, user_selected_group.user_id, user_selected_group.group_id,users.username as username,group_policy.group_name as groupname')   //
-                ->where('user_selected_group.deleted_at IS NULL')
+
+        $userid = session()->get("userId");
+        $compan = $this->users->find($userid);
+
+        if ($userid !== '1' && $userid !== '2') {
+            //Не используем билдер, подключаемся к модели Companys и применяем метод findAll() (все записи)
+            $this->data ["usersSelectedGroup"] =
+                $this->usersSelectedGroup
+                    ->join('users', 'user_selected_group.user_id = users.id')
+                    ->join('group_policy', 'user_selected_group.group_id = group_policy.id')
+                    ->select('user_selected_group.id, user_selected_group.user_id, user_selected_group.group_id,users.username as username,group_policy.group_name as groupname')
+                    ->where('users.company_id', $compan['company_id'])//
+                    ->where('user_selected_group.deleted_at IS NULL')
+                    ->get()
+                    ->getResultArray();
+            $this->data ["groupPolicy"] = $this->groupPolicy
+                ->join('companys', 'group_policy.company_id = companys.id')
+                ->select('group_policy.id, group_policy.group_name, group_policy.group_description, companys.name as company_name')
+                ->where('group_policy.deleted_at IS NULL')
+                ->where('group_policy.company_id', $compan['company_id'])
                 ->get()
                 ->getResultArray();
-        $this->data ["groupPolicy"] = $this->groupPolicy ->findAll();
-        $this->data ["users"] = $this->users->findAll();
-        $this->data ["companys"] = $this->companys->findAll();
-
-        return view('dashboard/usersGPO', $this->data);
+            $this->data ["users"] = $this->users
+                ->join('roles', 'users.role_id = roles.id')
+                ->join('companys', 'users.company_id = companys.id')
+                ->select('users.id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name')
+                ->where('users.deleted_at IS NULL')
+                ->where('users.company_id', $compan['company_id'])
+                ->get()
+                ->getResultArray();
+            $this->data ["companys"] = $this->companys->findAll();
+            return view('dashboard/usersGPO', $this->data);
+        } else {
+            $this->data ["usersSelectedGroup"] =
+                $this->usersSelectedGroup
+                    ->join('users', 'user_selected_group.user_id = users.id')
+                    ->join('group_policy', 'user_selected_group.group_id = group_policy.id')
+                    ->select('user_selected_group.id, user_selected_group.user_id, user_selected_group.group_id,users.username as username,group_policy.group_name as groupname')   //
+                    ->where('user_selected_group.deleted_at IS NULL')
+                    ->get()
+                    ->getResultArray();
+            $this->data ["groupPolicy"] = $this->groupPolicy->findAll();
+            $this->data ["users"] = $this->users->findAll();
+            $this->data ["companys"] = $this->companys->findAll();
+            return view('dashboard/usersGPO', $this->data);
+        }
+//        return view('dashboard/usersGPO', $this->data);
     }
 
     //Теперь у нас всего 1 метод управления страницей, он умеет обрабатывать все нужные нам ПОСТ запросы
@@ -65,7 +97,7 @@ class UserGPOController extends BaseController
     {
         //Из контроллера можно напрямую обращаться в $this->request, не инициализируя его
         if ($this->request->getPost("delete")) {
-            if (!$this->request->getPost("checkboxDel")){
+            if (!$this->request->getPost("checkboxDel")) {
                 header("Location: /usersGPO");
             }
             foreach ($this->request->getPost("checkboxDel") as $item) {

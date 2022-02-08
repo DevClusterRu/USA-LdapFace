@@ -41,8 +41,9 @@
                                     <!-- Foreach place -->
                                     <?php foreach ($users as $element2): ?>
                                     <tr>
-
+                                        <?php if ($element2["role_id"]>=3) continue; ?>
                                         <td><?php echo $element2["username"] ?></td>
+
 
 <!--                                        <td>-->
 <!--                                            <div class="form-check form-check1">-->

@@ -40,7 +40,7 @@
 
         <?php if(session()->get("userRole")>2){?>  <!--условие для ограничения просмотров-->
         <li class="nav-item">
-            <a class="nav-link" href="/servers">
+            <a class="nav-link" href="/serversV">
                 <span class="menu-title">Список серверов</span>
                 <i class=" mdi mdi-server menu-icon"></i>
             </a>

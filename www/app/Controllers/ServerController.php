@@ -25,7 +25,7 @@ class ServerController extends BaseController
         $data = [
             "servers" => $this->servers->findAll(),
         ];
-        return view('dashboard/servers', $data);
+        return view('dashboard/serversV', $data);
     }
 
 
@@ -40,7 +40,7 @@ class ServerController extends BaseController
             foreach ($this->request->getPost("checkboxDel") as $item) {
                 $this->servers->delete($item);
             }
-            header("Location: /servers");
+            header("Location: /serversV");
         }
 
         if ($this->request->getPost("addEdit")) {
@@ -52,7 +52,7 @@ class ServerController extends BaseController
                         'login' => $this->request->getPost("login"),
                         'password' => $this->request->getPost("password"),
                     ]);
-                header("Location: /servers");
+                header("Location: /serversV");
             } else {
                 $this->servers
                     ->insert([
@@ -61,7 +61,7 @@ class ServerController extends BaseController
                         'login' => $this->request->getPost("login"),
                         'password' => $this->request->getPost("password"),
                     ]);
-                header("Location: /servers");
+                header("Location: /serversV");
             }
         }
 
@@ -73,7 +73,7 @@ class ServerController extends BaseController
                 "servers" => $this->servers->findAll(),
                 "curServer" => $row,
             ];
-            return view('dashboard/servers', $data);
+            return view('dashboard/serversV', $data);
         }
     }
 
