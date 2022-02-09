@@ -9,13 +9,11 @@ use CodeIgniter\HTTP\RequestInterface;
 
 class InvoiceController extends BaseController
 {
-
     protected $invoices;
     protected $users;
     protected $companys;
     protected $allroles;
-
-
+    protected $data;
 
     public function __construct()
     {
@@ -28,6 +26,9 @@ class InvoiceController extends BaseController
         $this->companys = new Company();
         $this->allroles = new Role();
         $this->debets = new Debet();
+        $this->data["page_name"] = "Список счетов";
+        $this->data["users"] = $this->users->findAll();
+        $this->data["companys"] = $this->companys->findAll();
     }
 
     public function index()
@@ -39,52 +40,37 @@ class InvoiceController extends BaseController
 
         $userid = session()->get("userId");
         $compan = $this->users->find($userid);
-//        var_dump ($compan['company_id']);
-//             die();
 
-//        if (session()->get("userId") < 2) {
         if($userid!== '1' && $userid!=='2') {
-            $data = [
-                "invoices" => $this->invoices
+
+            $this->data["invoices"]=
+                $this->invoices
                     ->join('users', 'invoices.user_id = users.id')
                     ->join('companys', 'users.company_id = companys.id')
                     ->select('invoices.id, invoices.amount, invoices.status, invoices.created_at, invoices.updated_at, users.username, companys.name as company_name')
                     ->where('invoices.deleted_at IS NULL')
                     ->where('users.company_id', $compan['company_id']) // user
                     ->get()
-                    ->getResultArray(),
-                "users" => $this->users->findAll(),
-                "companys" => $this->companys->findAll(),
+                    ->getResultArray();
+
 
 //                ->findAll(), // будующая переменная -> берет из свойства класса (равно объекту модели) , метод выбирает все записи из таблицы ивозвращает их в виде массива
 //            $data = [
 //            "invoiceAll"=>$this->getAllinvoice()
-            ];
+
                } else {
-            $data = [
-                "invoices" => $this->invoices
+            $this->data["invoices"]=
+                $this->invoices
                     ->join('users', 'invoices.user_id = users.id')
                     ->join('companys', 'users.company_id = companys.id')
                     ->select('invoices.id, invoices.amount, invoices.status, invoices.created_at, invoices.updated_at, users.username, companys.name as company_name')
                     ->where('invoices.deleted_at IS NULL')
                     ->get()
-                    ->getResultArray(),
-                "users" => $this->users->findAll(),
-                "companys" => $this->companys->findAll(),
-//                ->findAll(), // будующая переменная -> берет из свойства класса (равно объекту модели) , метод выбирает все записи из таблицы ивозвращает их в виде массива
-//            $data = [
-//            "invoiceAll"=>$this->getAllinvoice()
-            ];
+                    ->getResultArray();
         }
-        return view('dashboard/invoice', $data);
-
-//        }
+        return view('dashboard/invoice', $this->data);
     }
 
-    private function invoicesOperation() //
-    {
-
-    }
 
     public function statusInv($pay = "none")
     {
@@ -102,8 +88,6 @@ class InvoiceController extends BaseController
             ->where('user_id', $usID)
             ->first(); //Возвращает строку из бд
 
-//        var_dump($entrancePay ["id"]);
-//        die();
 
         $deb = $this->debets
             ->select("SUM(amount) AS total")
@@ -148,19 +132,5 @@ class InvoiceController extends BaseController
         header("Location: /login");
         exit();
     }
-
-//        var_dump($data);
-////             die();
-
-//
-//    private function getAllinvoice() //получение из бд всех оплат
-//    {
-//        $db = \Config\Database::connect();
-//        $builder = $db->table('invoices');
-//        $builder->select('invoices.invoice_num, users.username, invoices.status');
-//        $builder->join('users', 'users.id = invoices.user_id');
-//        return $builder->get()->getResultArray();
-//    }
-
 
 }

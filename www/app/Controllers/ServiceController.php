@@ -10,6 +10,7 @@ class ServiceController extends BaseController
     protected $services;
     protected $userSelectedService;
     protected $userAutoUpdateService;
+    protected $data;
 
 
     public function __construct()
@@ -21,10 +22,11 @@ class ServiceController extends BaseController
             header("Location: /");
             exit();
         }
-
         $this->services = new Service();
         $this->userSelectedService = new UserSelectedService();
         $this->userAutoUpdateService = new UserAutoUpdateService();
+        $this->data["page_name"] = "Список услуг";
+        $this->data["services"]=$this->services->findAll();
 
     }
 
@@ -34,12 +36,9 @@ class ServiceController extends BaseController
             header("Location: /login");
             exit();
         }
-        $data = [
-            "services" => $this->services->findAll(), // будующая переменная -> берет из свойства класса (равно объекту модели) , метод выбирает все записи из таблицы ивозвращает их в виде массива
 
-        ];
-
-        return view('dashboard/services', $data);
+         // будующая переменная -> берет из свойства класса (равно объекту модели) , метод выбирает все записи из таблицы ивозвращает их в виде массива
+      return view('dashboard/services', $this->data);
     }
 
     public function operation()
@@ -83,11 +82,9 @@ class ServiceController extends BaseController
                 ->where(["id" => $this->request->getPost("updating")])//запрос прилетевший с формы
                 ->first();
 
-            $data = [
-                "services" => $this->services->findAll(),//на вью переменная сервисес равно списку всех элементов
-                "curService" => $row,// строчка которая пришла в форму при нажатии апдейтинг
-            ];
-            return view('dashboard/services', $data);
+            $this->data["curService"]=$row;// строчка которая пришла в форму при нажатии апдейтинг
+           //на вью переменная сервисес равно списку всех элементов
+           return view('dashboard/services', $this->data);
         }
     }
 

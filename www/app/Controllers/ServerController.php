@@ -6,6 +6,7 @@ class ServerController extends BaseController
 {
 
     protected $servers;
+    protected $data;
 
     public function __construct()
     {
@@ -14,6 +15,7 @@ class ServerController extends BaseController
             exit();
         }
         $this->servers = new Server();
+        $this->data["page_name"] = "Список серверов";
     }
 
     public function index()
@@ -22,10 +24,8 @@ class ServerController extends BaseController
             header("Location: /login");
             exit();
         }
-        $data = [
-            "servers" => $this->servers->findAll(),
-        ];
-        return view('dashboard/servers', $data);
+        $this->data["servers"]=$this->servers->findAll();
+        return view('dashboard/servers', $this->data);
     }
 
 
@@ -69,11 +69,11 @@ class ServerController extends BaseController
             $row = $this->servers
                 ->where(["id" => $this->request->getPost("updating")])
                 ->first();
-            $data = [
-                "servers" => $this->servers->findAll(),
-                "curServer" => $row,
-            ];
-            return view('dashboard/servers', $data);
+
+            $this->data["servers"]=$this->servers->findAll();
+            $this->data["curServer"]=$row;
+
+            return view('dashboard/servers', $this->data);
         }
     }
 

@@ -5,12 +5,16 @@ use CodeIgniter\HTTP\RequestInterface;
 class RoleController extends BaseController
 {
 
+    protected $data;
+
     public function __construct()
     {
         if (session()->get("userRole") < 4) { //условия для ограничения просмотра роута, запретить
             header("Location: /");
             exit();
         }
+        $this->data["page_name"] = "Список ролей";
+
     }
 
     private function getAllRoles() //получение из бд всех ролей
@@ -48,11 +52,9 @@ class RoleController extends BaseController
             $builder->delete(["id" => $item]);
 
         }
-        $data = [
-            "usersAll" => $this->getAllRoles()
-        ];  //передача переменной юзерсОл во вью
+        $this->data["usersAll"]=$this->getAllRoles(); //передача переменной юзерсОл во вью
 
-        return view('dashboard/roles', $data);
+        return view('dashboard/roles', $this->data);
     }
 
 
