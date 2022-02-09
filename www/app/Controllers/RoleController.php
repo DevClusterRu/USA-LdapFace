@@ -34,11 +34,10 @@ class RoleController extends BaseController
             exit();
         }
 
-        $data = [
-            "usersAll" => $this->getAllRoles()
-        ];  //передача переменной юзерсОл во вью
+        $this->data["usersAll"]=$this->getAllRoles();
+       //передача переменной юзерсОл во вью
 
-        return view('dashboard/roles', $data);
+        return view('dashboard/roles', $this->data);
     }
 
     public function delRoles()
