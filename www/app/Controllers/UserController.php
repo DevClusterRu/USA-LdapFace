@@ -49,7 +49,7 @@ class UserController extends BaseController
 
     public function zoom($user_id = 0) //айди приходит с роута от зумирования
     {
-        if (session()->get("userRole") < 2) { //условия для ограничения просмотра роута, запретить
+        if ($this->isClient)  { //условия для ограничения просмотра роута, запретить
             header("Location: /");
             exit();
         }
