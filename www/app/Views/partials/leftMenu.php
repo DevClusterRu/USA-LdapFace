@@ -40,7 +40,7 @@
 
         <?php if(session()->get("userRole")>2){?>  <!--условие для ограничения просмотров-->
         <li class="nav-item">
-            <a class="nav-link" href="/servers">
+            <a class="nav-link" href="/serversV">
                 <span class="menu-title">Список серверов</span>
                 <i class=" mdi mdi-server menu-icon"></i>
             </a>
@@ -78,6 +78,14 @@
         <li class="nav-item">
             <a class="nav-link" href="/groupPolicy">
                 <span class="menu-title">GPO</span>
+                <i class="mdi mdi-houzz-box menu-icon"></i>
+            </a>
+        </li
+            <?php } ?> <!--конец условия для ограничения просмотров-->
+            <?php if(session()->get("userRole")>1){?>  <!--условие для ограничения просмотров, разрешение-->
+        <li class="nav-item">
+            <a class="nav-link" href="/usersGPO">
+                <span class="menu-title">Права сотрудников</span>
                 <i class="mdi mdi-houzz-box menu-icon"></i>
             </a>
         </li

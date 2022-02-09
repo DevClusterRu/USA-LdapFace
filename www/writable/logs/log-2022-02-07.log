@@ -1,0 +1,280 @@
+ERROR - 2022-02-07 00:43:34 --> Unknown column 'invoice_num' in 'field list'
+ERROR - 2022-02-07 01:59:54 --> Unknown column 'group_policy.id' in 'field list'
+CRITICAL - 2022-02-07 01:59:54 --> Call to a member function getResultArray() on bool
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-07 02:19:55 --> syntax error, unexpected end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(65): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 02:20:39 --> syntax error, unexpected end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(65): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 02:20:40 --> syntax error, unexpected end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(65): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 02:20:40 --> syntax error, unexpected end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(65): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 02:20:41 --> syntax error, unexpected end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(65): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 02:20:42 --> syntax error, unexpected end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(65): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2022-02-07 02:49:36 --> Unknown column 'usersSelectedGroup.group_id' in 'on clause'
+CRITICAL - 2022-02-07 02:49:36 --> Call to a member function getResultArray() on bool
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-02-07 02:51:11 --> Unknown column 'usersSelectedGroup.group_id' in 'on clause'
+CRITICAL - 2022-02-07 02:51:11 --> Call to a member function getResultArray() on bool
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-02-07 02:51:12 --> Unknown column 'usersSelectedGroup.group_id' in 'on clause'
+CRITICAL - 2022-02-07 02:51:12 --> Call to a member function getResultArray() on bool
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-02-07 02:51:46 --> Unknown column 'usersSelectedGroup.user_id' in 'on clause'
+CRITICAL - 2022-02-07 02:51:46 --> Call to a member function getResultArray() on bool
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-02-07 07:01:48 --> syntax error, unexpected '$groups' (T_VARIABLE), expecting ';' or ','
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(59): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 07:08:35 --> syntax error, unexpected end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(59): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 07:20:55 --> syntax error, unexpected end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(59): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 07:20:57 --> syntax error, unexpected end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(59): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 07:20:58 --> syntax error, unexpected end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(59): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 07:20:58 --> syntax error, unexpected end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(59): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 07:20:58 --> syntax error, unexpected end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(59): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 07:20:59 --> syntax error, unexpected end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(59): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 07:20:59 --> syntax error, unexpected end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(59): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 07:22:21 --> syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(59): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 07:27:44 --> syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(59): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 07:27:46 --> syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(59): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 07:27:46 --> syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(59): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 07:27:47 --> syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(59): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 07:27:47 --> syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(59): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 07:27:48 --> syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(59): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-07 07:27:48 --> syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/users...', Array, true)
+#2 /var/www/html/app/Controllers/UserGPOController.php(59): view('dashboard/users...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2022-02-07 09:44:57 --> Unknown column 'users.company_id' in 'where clause'
+CRITICAL - 2022-02-07 09:44:57 --> Call to a member function getResultArray() on bool
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-02-07 09:45:01 --> Unknown column 'users.company_id' in 'where clause'
+CRITICAL - 2022-02-07 09:45:01 --> Call to a member function getResultArray() on bool
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-02-07 09:46:02 --> Unknown column 'users.company_id' in 'where clause'
+CRITICAL - 2022-02-07 09:46:02 --> Call to a member function getResult() on bool
+#0 /var/www/html/system/BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#1 /var/www/html/app/Controllers/UserGPOController.php(65): CodeIgniter\BaseModel->findAll()
+#2 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#3 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#4 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#6 {main}
+ERROR - 2022-02-07 09:50:47 --> Unknown column 'users.company_id' in 'where clause'
+CRITICAL - 2022-02-07 09:50:47 --> Call to a member function getResultArray() on bool
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-02-07 09:50:48 --> Unknown column 'users.company_id' in 'where clause'
+CRITICAL - 2022-02-07 09:50:48 --> Call to a member function getResultArray() on bool
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\UserGPOController->index()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserGPOController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}

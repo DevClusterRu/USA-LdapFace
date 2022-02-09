@@ -17,7 +17,8 @@
                             </h4>
                             <div class="hidden addForm">
                                 <form method="post" enctype="application/x-www-form-urlencoded"
-                                      action="/serversOperation">
+                                      action="/servers">
+<!--                                    action="/serversOperation">-->
                                     <form class="forms-sample">
                                         <div class="form-group">
                                             <input name="id"
@@ -68,7 +69,8 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <form method="post" enctype="application/x-www-form-urlencoded"
-                                      action="/serversOperation">
+                                      action="/servers">
+<!--                                    action="/serversOperation">-->
                                     <table class="table">
                                         <thead>
                                         <tr>

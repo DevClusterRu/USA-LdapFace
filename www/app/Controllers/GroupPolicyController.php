@@ -15,14 +15,15 @@ class GroupPolicyController extends BaseController
 
     public function __construct()
     {
-
         $this->users = new User();
         $this->companys = new Company();
         $this->allroles = new Role();
         $this->groupPolicy = new Group();
         $this->data["page_name"] = "Групповые политики";
-        $this->data["users"]=$this->users->findAll();
-        $this->data["companys"]=$this->companys->findAll();
+
+        $this->data["users"] = $this->users->findAll();
+        $this->data["companys"] = $this->companys->findAll();
+
     }
 
     public function index()
@@ -37,15 +38,13 @@ class GroupPolicyController extends BaseController
             exit();
         }
 
-        $this->data["groupPolicy"]=$this->groupPolicy
+
+        $this->data["groupPolicy"] = $this->groupPolicy
             ->join('companys', 'group_policy.company_id = companys.id')
             ->select('group_policy.id, group_policy.group_name, group_policy.group_description, companys.name as company_name')
             ->where('group_policy.deleted_at IS NULL')
             ->get()
             ->getResultArray();
-
-
-
 
         return view('dashboard/groupPolicy', $this->data);
     }
@@ -90,15 +89,16 @@ class GroupPolicyController extends BaseController
                 ->first();
 
 
-            $this->data["groupPolicy"]=$this->groupPolicy
-                ->join('companys', 'group_policy.company_id = companys.id')
-                ->select('group_policy.id, group_policy.group_name, group_policy.group_description, companys.name as company_name')
-                ->where('group_policy.deleted_at IS NULL')
-                ->get()
-                ->getResultArray();
-            $this->data["curGroup"]=$row;
+            $this->data ["groupPolicy"] =
+                $this->groupPolicy
+                    ->join('companys', 'group_policy.company_id = companys.id')
+                    ->select('group_policy.id, group_policy.group_name, group_policy.group_description, companys.name as company_name')
+                    ->where('group_policy.deleted_at IS NULL')
+                    ->get()
+                    ->getResultArray();
+            $this->data ["curGroup"] = $row;
 
-            return view('dashboard/groupPolicy', $this->data);
+            return view('dashboard/groupPolicy',  $this->data);
         }
         header("Location: /groupPolicy");
     }
