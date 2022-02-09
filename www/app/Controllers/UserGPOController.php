@@ -47,7 +47,7 @@ class UserGPOController extends BaseController
         $userid = session()->get("userId");
         $compan = $this->users->find($userid);
 
-        if ($userid !== '1' && $userid !== '2') {
+        if ($userid != '1' && $userid != '2') {
             //Не используем билдер, подключаемся к модели Companys и применяем метод findAll() (все записи)
             $this->data ["usersSelectedGroup"] =
                 $this->usersSelectedGroup
@@ -68,11 +68,12 @@ class UserGPOController extends BaseController
             $this->data ["users"] = $this->users
                 ->join('roles', 'users.role_id = roles.id')
                 ->join('companys', 'users.company_id = companys.id')
-                ->select('users.id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name')
+                ->select('users.id, users.username, users.created_at, users.updated_at, roles.role_id, roles.role_name, companys.name as company_name')
                 ->where('users.deleted_at IS NULL')
                 ->where('users.company_id', $compan['company_id'])
                 ->get()
                 ->getResultArray();
+            $this->data ["usersSelectedGroupTotal"] =  $this->usersSelectedGroup->findAll();
             $this->data ["companys"] = $this->companys->findAll();
             return view('dashboard/usersGPO', $this->data);
         } else {
@@ -84,62 +85,27 @@ class UserGPOController extends BaseController
                     ->where('user_selected_group.deleted_at IS NULL')
                     ->get()
                     ->getResultArray();
+            $this->data ["usersSelectedGroupTotal"] =  $this->usersSelectedGroup->findAll();
+
             $this->data ["groupPolicy"] = $this->groupPolicy->findAll();
             $this->data ["users"] = $this->users->findAll();
             $this->data ["companys"] = $this->companys->findAll();
             return view('dashboard/usersGPO', $this->data);
         }
-//        return view('dashboard/usersGPO', $this->data);
     }
 
-    //Теперь у нас всего 1 метод управления страницей, он умеет обрабатывать все нужные нам ПОСТ запросы
-    public function operation()
+    function bindGPtoUser()
     {
-        //Из контроллера можно напрямую обращаться в $this->request, не инициализируя его
-        if ($this->request->getPost("delete")) {
-            if (!$this->request->getPost("checkboxDel")) {
-                header("Location: /usersGPO");
-            }
-            foreach ($this->request->getPost("checkboxDel") as $item) {
-                $this->companys->delete($item);
-            }
-            header("Location: /usersGPO");
-        }
+        $checkboxSelected = $this->request->getPost("checkboxGP");//получаем айди сервиса ( номер строчки)
+        $checkboxSelectedDo = $this->request->getPost("doCheckbox");//получаем вид действия, строку сет или ансет
+        $arr = explode("_", $checkboxSelected);
+        if ($checkboxSelectedDo == "set") {
 
-        if ($this->request->getPost("addEdit")) {
-            if ($this->request->getPost("id")) {
-                $this->companys
-                    ->update($this->request->getPost("id"), [
-                        'name' => $this->request->getPost("name"),
-                        'inn' => $this->request->getPost("inn"),
-                        'kpp' => $this->request->getPost("kpp"),
-                    ]);
-                header("Location: /usersGPO");
-            } else {
-                $this->companys
-                    ->insert([
-                        'name' => $this->request->getPost("name"),
-                        'inn' => $this->request->getPost("inn"),
-                        'kpp' => $this->request->getPost("kpp"),
-                    ]);
-                header("Location: /usersGPO");
-            }
-        }
-
-        if ($this->request->getPost("updating")) {
-            $row = $this->companys
-                ->where(["id" => $this->request->getPost("updating")])
-                ->first();
-            $data = [
-                "companys" => $this->companys->findAll(),
-                "curCompany" => $row,
-            ];
-            return view('dashboard/usersGPO', $data);
-        }
-
-        if ($this->request->getPost("cancel")) {
-
-            header("Location: /usersGPO");
+            $this->usersSelectedGroup->insert(["user_id" => $arr[0], "group_id" => $arr[1]]);
+        } else {
+                        $this->usersSelectedGroup
+                ->where(["user_id" => $arr[0], "group_id" => $arr[1]])
+                ->delete();
         }
     }
 }
