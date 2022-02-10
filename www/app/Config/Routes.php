@@ -34,7 +34,7 @@ $routes->get('/serversV', 'ServerController::index');                         //
 $routes->get('/companys', 'CompanyController::index');
 $routes->get('/services', 'ServiceController::index');
 $routes->get('/profile', 'ProfileController::index');
-$routes->get('/usersGPO', 'UserGPOController::index');
+$routes->get('/gPOUsers', 'UserGPOController::index');
 $routes->get('/profile/invite', 'ProfileController::passwordChangeNeed');
 $routes->post('/profile/bindToUser', 'ServiceController::bindToUser');
 $routes->post('/аddInvoice', 'ProfileController::аddInvoice');
@@ -48,7 +48,7 @@ $routes->post('/companysOperation', 'CompanyController::operation');
 $routes->post('/servers', 'ServerController::operation');                   //  menu highlight
 $routes->post('/usersOperation', 'UserController::operation');
 $routes->post('/servicesOperation', 'ServiceController::operation');
-$routes->post('/usersGPO/bindGPtoUser', 'UserGPOController::bindGPtoUser');///
+$routes->post('/gPOUsers/bindGPtoUser', 'UserGPOController::bindGPtoUser');///
 
 $routes->post('/', 'HomeController::tryAuth');
 $routes->post('/profile/update', 'ProfileController::changeUserInfo');

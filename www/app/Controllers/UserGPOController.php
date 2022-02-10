@@ -75,7 +75,7 @@ class UserGPOController extends BaseController
                 ->getResultArray();
             $this->data ["usersSelectedGroupTotal"] =  $this->usersSelectedGroup->findAll();
             $this->data ["companys"] = $this->companys->findAll();
-            return view('dashboard/usersGPO', $this->data);
+            return view('dashboard/gPOUsers', $this->data);
         } else {
             $this->data ["usersSelectedGroup"] =
                 $this->usersSelectedGroup
@@ -90,7 +90,7 @@ class UserGPOController extends BaseController
             $this->data ["groupPolicy"] = $this->groupPolicy->findAll();
             $this->data ["users"] = $this->users->findAll();
             $this->data ["companys"] = $this->companys->findAll();
-            return view('dashboard/usersGPO', $this->data);
+            return view('dashboard/gPOUsers', $this->data);
         }
     }
 

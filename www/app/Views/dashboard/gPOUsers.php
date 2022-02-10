@@ -90,7 +90,7 @@
 
         userGPSet = $(this).val(); //вэлью от чекбокса хтмл
         $.ajax({
-            url: '/usersGPO/bindGPtoUser', //роут незаметный
+            url: '/gPOUsers/bindGPtoUser', //роут незаметный
             method: 'post',
             // dataType: 'html',
             data: {checkboxGP: userGPSet, doCheckbox: doCheckbox}// ключ-нейм необязательный ,значение -вэлью от чекбокса

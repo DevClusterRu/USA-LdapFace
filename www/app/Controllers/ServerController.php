@@ -26,14 +26,14 @@ class ServerController extends BaseController
         }
 
         $this->data["servers"]=$this->servers->findAll();
-        return view('dashboard/servers', $this->data);
+        return view('dashboard/serversV', $this->data);
     }
     public function operation()
     {
         //Из контроллера можно напрямую обращаться в $this->request, не инициализируя его
         if ($this->request->getPost("delete")) {
             if (!$this->request->getPost("checkboxDel")){
-                header("Location: /servers");
+                header("Location: /serversV");
                 exit();
             }
             foreach ($this->request->getPost("checkboxDel") as $item) {
@@ -70,7 +70,7 @@ class ServerController extends BaseController
                 ->first();
             $this->data["servers"]=$this->servers->findAll();
             $this->data["curServer"]=$row;
-            return view('dashboard/servers', $this->data);
+            return view('dashboard/serversV', $this->data);
         }
     }
 }
