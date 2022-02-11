@@ -27,14 +27,12 @@ class GroupPolicyController extends BaseController
 
     public function index()
     {
-        if (session()->get("userRole") < 3) { //условия для ограничения просмотра роута, запретить
-            header("Location: /groupPolicy");
+        if (!$this->isAdmin()) { //условия для ограничения просмотра роута, запретить
+            header("Location: /");
             exit();
         }
 
         $this->isAuth();
-
-
         $this->data["groupPolicy"] = $this->groupPolicy
             ->join('companys', 'group_policy.company_id = companys.id')
             ->select('group_policy.id, group_policy.group_name, group_policy.group_description, companys.name as company_name')
