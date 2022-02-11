@@ -66,7 +66,6 @@ class CompanyController extends BaseController
             $row = $this->companys
                 ->where(["id" => $this->request->getPost("updating")])
                 ->first();
-
             $this->data["companys"]= $this ->companys->findAll();
             $this->data["curCompany"]= $row;
 
@@ -74,7 +73,6 @@ class CompanyController extends BaseController
         }
 
         if ($this->request->getPost("cancel")) {
-
             header("Location: /companys");
         }
     }
