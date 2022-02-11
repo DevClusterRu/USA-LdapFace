@@ -17,7 +17,7 @@ class InvoiceController extends BaseController
 
     public function __construct()
     {
-        if (session()->get("userRole") < 2) { //условия для ограничения просмотра роута
+        if ($this->isClient()) { //условия для ограничения просмотра роута
             header("Location: /");
             exit();
         }
@@ -33,11 +33,7 @@ class InvoiceController extends BaseController
 
     public function index()
     {
-        if (!session()->get("userId")) {
-            header("Location: /login");
-            exit();
-        }
-
+        $this->isAuth();
         $userid = session()->get("userId");
         $compan = $this->users->find($userid);
 
@@ -52,11 +48,6 @@ class InvoiceController extends BaseController
                     ->where('users.company_id', $compan['company_id']) // user
                     ->get()
                     ->getResultArray();
-
-
-//                ->findAll(), // будующая переменная -> берет из свойства класса (равно объекту модели) , метод выбирает все записи из таблицы ивозвращает их в виде массива
-//            $data = [
-//            "invoiceAll"=>$this->getAllinvoice()
 
                } else {
             $this->data["invoices"]=
@@ -74,9 +65,7 @@ class InvoiceController extends BaseController
 
     public function statusInv($pay = "none")
     {
-
         //Написать функцию одтверждения оплаты и перерасчета баланса
-
         //   http://localhost:85/statusInv/idInvoice_userID_actualPaymentAmount
         //   http://localhost:85/statusInv/3_3_6000
 
@@ -95,11 +84,6 @@ class InvoiceController extends BaseController
             ->first();
 
         $paymentVerif = $sumIn + current($deb);
-
-//        var_dump($sumIn, current($deb), $x);
-//        var_dump($sumIn,current($deb));
-//        die();
-
         if ($entrancePay ["id"] !== NULL) {
             if ($entrancePay ["amount"] <= $paymentVerif) {
                 $this->invoices
@@ -122,13 +106,10 @@ class InvoiceController extends BaseController
 
             session()->set([
                 'userId' => $entrancePay["user_id"],
-//                'userRole' => $entranceUs["role"],
-//                'userName' => self::shortName($entranceUs["username"]),
             ]);
             header("Location: /profile");
             exit();
         }
-
         header("Location: /login");
         exit();
     }
