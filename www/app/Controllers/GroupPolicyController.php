@@ -20,7 +20,6 @@ class GroupPolicyController extends BaseController
         $this->allroles = new Role();
         $this->groupPolicy = new Group();
         $this->data["page_name"] = "Групповые политики";
-
         $this->data["users"] = $this->users->findAll();
         $this->data["companys"] = $this->companys->findAll();
 
@@ -33,10 +32,7 @@ class GroupPolicyController extends BaseController
             exit();
         }
 
-        if (!session()->get("userId")) {
-            header("Location: /login");
-            exit();
-        }
+        $this->isAuth();
 
 
         $this->data["groupPolicy"] = $this->groupPolicy
