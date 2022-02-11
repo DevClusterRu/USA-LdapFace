@@ -16,14 +16,12 @@ class UserGPOController extends BaseController
     protected $usersSelectedGroup;
     protected $allroles;
     protected $data;
-
     protected static $companys;
 
     //Метод __construct() - это конструктор класса, этот метод вызывается 1 раз при обращении к классу (при создании объекта класса)
     public function __construct()
     {
-
-        if (session()->get("userRole") < 2) { //условия для ограничения просмотра роута, запрет
+        if ($this->isClient()) { //условия для ограничения просмотра роута, запрет
             header("Location: /");
             exit();
         }
@@ -39,11 +37,7 @@ class UserGPOController extends BaseController
 
     public function index()
     {
-        if (!session()->get("userId")) {
-            header("Location: /login");
-            exit();
-        }
-
+        $this->isAuth();
         $userid = session()->get("userId");
         $compan = $this->users->find($userid);
 
