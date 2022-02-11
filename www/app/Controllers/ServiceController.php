@@ -17,8 +17,7 @@ class ServiceController extends BaseController
     {
 
         $request = \Config\Services::request();
-
-        if (session()->get("userRole") == 1 || (session()->get("userRole") == 2 && !$request->isAJAX())) { //условия для ограничения просмотра роута,запретить
+        if (!$this->isAdmin() && !$request->isAJAX()) { //условия для ограничения просмотра роута,запретить
             header("Location: /");
             exit();
         }
@@ -27,16 +26,11 @@ class ServiceController extends BaseController
         $this->userAutoUpdateService = new UserAutoUpdateService();
         $this->data["page_name"] = "Список услуг";
         $this->data["services"]=$this->services->findAll();
-
     }
 
     public function index()
     {
-        if (!session()->get("userId")) {
-            header("Location: /login");
-            exit();
-        }
-
+       $this->isAuth();
          // будующая переменная -> берет из свойства класса (равно объекту модели) , метод выбирает все записи из таблицы ивозвращает их в виде массива
       return view('dashboard/services', $this->data);
     }
@@ -62,7 +56,6 @@ class ServiceController extends BaseController
                         'name' => $this->request->getPost("name"),
                         'type_service' => $this->request->getPost("typeservice"),
                         'cost' => $this->request->getPost("cost"),
-
                     ]);
                 header("Location: /services");
             } else { //создание
@@ -116,8 +109,6 @@ class ServiceController extends BaseController
                     ->delete();
             }
         }
-
-
 
     }
 
