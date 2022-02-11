@@ -11,25 +11,19 @@ class CompanyController extends BaseController
     //Метод __construct() - это конструктор класса, этот метод вызывается 1 раз при обращении к классу (при создании объекта класса)
     public function __construct()
     {
-
-        if (session()->get("userRole") < 4) { //условия для ограничения просмотра роута, запрет
+        if (!$this->isSuper()) { //условия для ограничения просмотра роута, запрет
             header("Location: /");
             exit();
         }
         //Заполняем companys объектом таблицы
         $this->companys = new Company();
         $this->data["page_name"] = "Компании";
-
     }
 
     public function index()
     {
-        if (!session()->get("userId")) {
-            header("Location: /login");
-            exit();
-        }
+        $this->isAuth();
         //Не используем билдер, подключаемся к модели Companys и применяем метод findAll() (все записи)
-
         $this->data ["companys"] = $this->companys->findAll();
         return view('dashboard/companys', $this->data);
     }

@@ -127,7 +127,6 @@ class BaseController extends Controller
         else return true;
     }
 
-
     public function isAuth():bool
     {
         if (!session()->get("userId")) {
@@ -137,12 +136,12 @@ class BaseController extends Controller
         return true;
     }
 
+    public function isZoom():bool{
+       if (session()->get("zoom_id")) return true;
+       else return false;
+    }
+
     ///
     /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
 
 }
