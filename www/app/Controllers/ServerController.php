@@ -10,7 +10,7 @@ class ServerController extends BaseController
 
     public function __construct()
     {
-        if(session()->get("userRole")<3) { //условия для ограничения просмотра роута
+        if(!$this->isAdmin()) { //условия для ограничения просмотра роута
             header("Location: /");
             exit();
         }
@@ -20,11 +20,7 @@ class ServerController extends BaseController
 
     public function index()
     {
-        if (!session()->get("userId")) {
-            header("Location: /login");
-            exit();
-        }
-
+        $this->isAuth();
         $this->data["servers"]=$this->servers->findAll();
         return view('dashboard/serversV', $this->data);
     }
