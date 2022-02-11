@@ -33,6 +33,7 @@ class HomeController extends BaseController
             'userId' => $auth["id"],
             'userRole' => $auth["role_id"],
             'userName' => self::shortName($auth["username"]),
+            'userCompany'=>$auth["company_id"],
         ]);
     }
 

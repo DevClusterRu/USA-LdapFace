@@ -32,13 +32,31 @@ class UserController extends BaseController
         }
 
         $this->isAuth();
-        $this->data["users"] = $this->users
-            ->join('roles', 'users.role_id = roles.id')
-            ->join('companys', 'users.company_id = companys.id')
-            ->select('users.id, users.role_id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name, invite_hash')
-            ->where('users.deleted_at IS NULL')
-            ->get()
-            ->getResultArray();
+
+        if ($this->isAdmin()){
+            $this->data["users"] = $this->users
+                ->join('roles', 'users.role_id = roles.id')
+                ->join('companys', 'users.company_id = companys.id')
+                ->select('users.id, users.role_id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name, invite_hash')
+                ->where('users.deleted_at IS NULL')
+                ->where('users.role_id < 4')
+                ->get()
+                ->getResultArray();
+        } elseif ( $this->isDirector()){
+            $this->data["users"] = $this->users
+                ->join('roles', 'users.role_id = roles.id')
+                ->join('companys', 'users.company_id = companys.id')
+                ->select('users.id, users.role_id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name, invite_hash')
+                ->where('users.deleted_at IS NULL')
+                ->where('users.role_id < 2')
+                ->where('users.company_id = ',session()->get("userCompany"))
+                ->get()
+                ->getResultArray();
+        }
+
+
+
+
         $this->data["mail_buffers"] = $this->mail_buffers->findAll();
 
         return view('dashboard/users', $this->data);
@@ -149,6 +167,7 @@ class UserController extends BaseController
                 ->join('companys', 'users.company_id = companys.id')
                 ->select('users.id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name')
                 ->where('users.deleted_at IS NULL')
+                ->where('users.role_id < 4')
                 ->get()
                 ->getResultArray();
             $this->data["curUser"] = $row; //Роли и компании уже находятся в $this->data (через констракт)
