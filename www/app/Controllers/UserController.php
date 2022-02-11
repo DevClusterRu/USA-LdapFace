@@ -32,7 +32,6 @@ class UserController extends BaseController
         }
 
         $this->isAuth();
-
         $this->data["users"] = $this->users
             ->join('roles', 'users.role_id = roles.id')
             ->join('companys', 'users.company_id = companys.id')
@@ -41,7 +40,6 @@ class UserController extends BaseController
             ->get()
             ->getResultArray();
         $this->data["mail_buffers"] = $this->mail_buffers->findAll();
-
 
         return view('dashboard/users', $this->data);
     }
@@ -53,7 +51,6 @@ class UserController extends BaseController
             header("Location: /");
             exit();
         }
-
 
         //условия для разрешения зумирование и проверка двойного зумирования для запрета
         if (session()->get("userRole") < 3 || session()->get("zoom_id")) {
@@ -87,7 +84,6 @@ class UserController extends BaseController
     {
 
         $oldName = session()->get("userName"); //получили оригинальное имя пользователя до перезаписи сессии для зума
-
         $infoUserZoom = $this->users->find(session()->get("zoom_id"));
         session()->set([
             'userId' => session()->get("zoom_id"),
@@ -169,19 +165,11 @@ class UserController extends BaseController
 
             foreach ($this->request->getPost("checkboxInvite") as $item) { //переменная в которую передается id user
 
-
                 while (true) {
-
                     $StrDate = date("Y-m-d h:m:s");
                     $StrDate .= $item;
                     $hash = md5($StrDate);
-
-
-//              var_dump($hash);
-//              die();
-
                     $exists = $this->users->where('invite_hash', $hash)->countAllResults(); //число совпадений
-
 
                     if ($exists == "0") break;
                 }
@@ -190,19 +178,14 @@ class UserController extends BaseController
                     ->update($item, [
                         'invite_hash' => $hash,
                     ]);
-
                 $dfg = $this->users->find($item);
-
                 $existsMail = $this->mail_buffers->where('email_buff', $dfg["email"])->countAllResults();
-//                        var_dump($existsMail);
-//             die();
 
                 if ($existsMail == "0") {
                     $this->mail_buffers
                         ->insert([
                             'email_buff' => $dfg["email"],
                             'letter' => 'localhost:85/invite/' . $hash,
-
                         ]);
                 } else {
                     $this->mail_buffers
@@ -214,7 +197,6 @@ class UserController extends BaseController
                 header("Location: /users");
                 //  break;
             }
-
         }
 
 
@@ -223,14 +205,11 @@ class UserController extends BaseController
 
     public function invite($hash = "none")
     {
-
         //Написать функцию разового входа пользователя, если вошел - авторизуем его и отправляем на страницу сброса пароля. Сразу после этого удаляем хэш из базы, т.к. он одноразовый
 
         //   http://localhost:85/invite/8f3a61740ad5b1b95713c09399947bc1
         //$hash = "8f3a61740ad5b1b95713c09399947bc1";
         $entranceUs = $this->users->where('invite_hash', $hash)->first(); //Возвращает строку из бд
-
-//        var_dump($entrance ["id"]);
 
         if ($entranceUs ["id"] !== NULL) {
             $this->users
@@ -246,7 +225,6 @@ class UserController extends BaseController
             header("Location: /profile");
             exit();
         }
-
         header("Location: /login");
         exit();
     }
