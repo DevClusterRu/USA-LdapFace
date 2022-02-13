@@ -95,6 +95,7 @@ class UserController extends BaseController
         $this->debitcredit();
 
         header("Location: /profile");
+
         exit();
 
     }
