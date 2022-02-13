@@ -99,4 +99,10 @@ class ProfileController extends BaseController
         return $builder->get()->getResultArray();
     }
 
+    function activateServices(){ //кнопка активировать сервисы у директора
+
+
+    }
+
+
 }

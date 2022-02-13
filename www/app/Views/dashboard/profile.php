@@ -133,7 +133,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <form method="post" enctype="application/x-www-form-urlencoded"
-                                      action="/profileOrder">
+                                      action="/activateServices">
                                     <table class="table" style="margin-top: 20px">
                                         <thead>
                                         <tr>
@@ -141,7 +141,7 @@
                                             <th>Тип услуги</th>
                                             <th>Стоимость, руб.</th>
                                             <th>Текущая услуга</th>
-                                            <th>Активна</th>
+                                            <th>Автопродление</th>
                                             <th>Оплачено до</th>
 
                                         </tr>
