@@ -35,6 +35,7 @@ class RoleController extends BaseController
 
     public function delRoles()
     {
+        //TODO К новому виду (в конструктор модель...)
         $request = service('request');//c вью на контроллер . чекбоксы который выделе пользователь
         $items = $request->getPost("checkboxDel");
 

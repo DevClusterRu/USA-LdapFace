@@ -34,6 +34,7 @@ class InvoiceController extends BaseController
     public function index()
     {
         $this->isAuth();
+        //TODO Что это?
         $userid = session()->get("userId");
         $compan = $this->users->find($userid);
 
@@ -58,6 +59,7 @@ class InvoiceController extends BaseController
                     ->where('invoices.deleted_at IS NULL')
                     ->get()
                     ->getResultArray();
+
         }
         return view('dashboard/invoice', $this->data);
     }
@@ -65,6 +67,8 @@ class InvoiceController extends BaseController
 
     public function statusInv($pay = "none")
     {
+        //TODO Эта функция - что делает и почему нигде не вызывается?
+
         //Написать функцию одтверждения оплаты и перерасчета баланса
         //   http://localhost:85/statusInv/idInvoice_userID_actualPaymentAmount
         //   http://localhost:85/statusInv/3_3_6000

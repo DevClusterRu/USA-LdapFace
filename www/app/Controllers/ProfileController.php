@@ -77,7 +77,7 @@ class ProfileController extends BaseController
     {
         if ($this->request->getPost("addButton")) {
             $user = session()->get("userId");
-            if ($this->request->getPost("amount") !== "0" && $this->request->getPost("amount") !== 0 && $this->request->getPost("amount") !== "") {
+            if ($this->request->getPost("amount") != 0 && $this->request->getPost("amount") !== "") {
                 $this->invoices
                     ->insert([
                         'user_id' => $user,
@@ -91,13 +91,13 @@ class ProfileController extends BaseController
         }
     }
 
-    function getPaymentPersInfo()
-    {
-        $db = \Config\Database::connect();
-        $builder = $db->table('PaymentPers');
-        $builder->select('type_of_service, current_service, price, get_bills, payment_before');
-        return $builder->get()->getResultArray();
-    }
+//    function getPaymentPersInfo()
+//    {
+//        $db = \Config\Database::connect();
+//        $builder = $db->table('PaymentPers');
+//        $builder->select('type_of_service, current_service, price, get_bills, payment_before');
+//        return $builder->get()->getResultArray();
+//    }
 
     function activateServices(){ //кнопка активировать сервисы у директора
 

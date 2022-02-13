@@ -96,6 +96,7 @@ class UserController extends BaseController
 
         header("Location: /profile");
         exit();
+
     }
 
     public function zoomOut()
