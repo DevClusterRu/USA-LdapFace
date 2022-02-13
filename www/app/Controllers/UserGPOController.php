@@ -41,6 +41,8 @@ class UserGPOController extends BaseController
         $userid = session()->get("userId");
         $compan = $this->users->find($userid);
 
+        //TODO что это? Почему ты определяешь айдишники юзеров?
+
         if ($userid != '1' && $userid != '2') {
             //Не используем билдер, подключаемся к модели Companys и применяем метод findAll() (все записи)
             $this->data ["usersSelectedGroup"] =
