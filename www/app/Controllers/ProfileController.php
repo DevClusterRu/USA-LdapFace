@@ -84,8 +84,8 @@ class ProfileController extends BaseController
                         'amount' => $this->request->getPost("amount"),
                         'status' => "new",
                     ]);
-            }
-            header("Location: /invoices");
+                header("Location: /invoices");
+            } header("Location: /profile");
         } elseif ($this->request->getPost("cancel")) {
             header("Location: /profile");
         }

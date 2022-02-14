@@ -38,9 +38,9 @@ class InvoiceController extends BaseController
         $userid = session()->get("userId");
         $compan = $this->users->find($userid);
 
-        if($userid!== '1' && $userid!=='2') {
+        if ($userid !== '1' && $userid !== '2') {
 
-            $this->data["invoices"]=
+            $this->data["invoices"] =
                 $this->invoices
                     ->join('users', 'invoices.user_id = users.id')
                     ->join('companys', 'users.company_id = companys.id')
@@ -50,8 +50,8 @@ class InvoiceController extends BaseController
                     ->get()
                     ->getResultArray();
 
-               } else {
-            $this->data["invoices"]=
+        } else {
+            $this->data["invoices"] =
                 $this->invoices
                     ->join('users', 'invoices.user_id = users.id')
                     ->join('companys', 'users.company_id = companys.id')
@@ -65,31 +65,52 @@ class InvoiceController extends BaseController
     }
 
 
-    public function statusInv($pay = "none")
+    public function statusInv()
     {
         //TODO Эта функция - что делает и почему нигде не вызывается?
 
         //Написать функцию одтверждения оплаты и перерасчета баланса
         //   http://localhost:85/statusInv/idInvoice_userID_actualPaymentAmount
-        //   http://localhost:85/statusInv/3_3_6000
-
-        $separator = "_";
-        list($idIn, $usID, $sumIn) = explode($separator, $pay);
-
-        $entrancePay = $this->invoices
-            ->where('id', $idIn)
-            ->where('user_id', $usID)
-            ->first(); //Возвращает строку из бд
+        //   http://localhost:85/statusInv/1_100_5000
 
 
-        $deb = $this->debets
-            ->select("SUM(amount) AS total")
-            ->where("invoice_id", $idIn)
-            ->first();
+        $pay = $this->request->getJSON();
+        $secrKey= $pay->secretKey;
+        $Key ="iukjgb5kik4h5i4h5i3k4";
 
-        $paymentVerif = $sumIn + current($deb);
-        if ($entrancePay ["id"] !== NULL) {
-            if ($entrancePay ["amount"] <= $paymentVerif) {
+
+        if ($secrKey == $Key){
+//            echo "Hello!";
+//            var_dump($s->amount);
+//            die();
+            $user_id = -1;
+            $entrancePay = $this->invoices->where('id', $pay->invoice_id)->first();
+            if (!$entrancePay) {
+//                echo "WRONG";
+                $this->debets->insert(['user_id' => $user_id, 'invoice_id' => $pay->invoice_id, 'amount' => $pay->amount]);
+                return;
+            }
+            //Возвращает строку из бд
+
+            $this->debets
+                ->insert([
+                    'user_id' => $entrancePay ["user_id"],
+                    'invoice_id' => $pay->invoice_id,
+                    'amount' => $pay->amount,
+                ]);
+
+
+            //Здель вставка в дебет поступившей оплаты
+
+
+            $deb = $this->debets
+                ->select("SUM(amount) AS total")
+                ->where("invoice_id",  $pay->invoice_id)
+                ->first();
+
+
+
+            if ((int)$entrancePay ["amount"] <= (int) $deb["total"]) {
                 $this->invoices
                     ->update($entrancePay ["id"], [
                         'status' => "paid",
@@ -100,22 +121,7 @@ class InvoiceController extends BaseController
                         'status' => "partially paid",
                     ]);
             }
-            $this->debets
-                ->insert([
-                    'user_id' => $entrancePay ["user_id"],
-                    'invoice_id' => $idIn,
-                    'amount' => $sumIn,
-                ]);
-            $this->debitcredit();
-
-            session()->set([
-                'userId' => $entrancePay["user_id"],
-            ]);
-            header("Location: /profile");
-            exit();
         }
-        header("Location: /login");
-        exit();
     }
 
 }

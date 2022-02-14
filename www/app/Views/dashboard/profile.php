@@ -112,22 +112,35 @@
 
                                     <div class="form-group">
                                         <!--                                    <label for="exampleInputUsername1">Пополнить баланс счета</label>-->
-                                        <input name="amount"
-                                               value="<?php ?>"
+                                        <input onkeyup="checkNumeric();" name="amount"
+                                               value="<?php  ?>"
                                                type="number" class="form-control"
-                                               id="exampleInputUsername1"
+                                               id="amountBox"
                                                placeholder="Сумма пополнения">
                                     </div>
-                                    <button name="addButton" value="1" type="submit"
-                                            class="btn btn-gradient-primary me-2">Пополнить баланс
+                                    <button disabled name="addButton" value="1" type="submit"
+                                            class="btn btn-gradient-primary me-2 addInvoiceButton">Пополнить баланс
                                     </button>
                                     <button name="cancel" value="2" class="btn btn-light">Очистить
                                     </button>
+
                                 </form>
                             </div>
                         </div>
                     </div>
                     <?php //if(session()->get("userRole")>1 && session()->get("userRole")<3 ){?>
+
+<script>
+
+    function checkNumeric(){
+        if ($("#amountBox").val()!=""){
+            $(".addInvoiceButton").prop("disabled", false);
+        } else {
+            $(".addInvoiceButton").prop("disabled", true);
+        }
+    }
+</script>
+
 
                     <div class="card" style="margin-top: 20px">
                         <div class="card-body">

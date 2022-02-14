@@ -1,0 +1,179 @@
+CRITICAL - 2022-02-14 01:23:48 --> syntax error, unexpected '}'
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-14 01:39:29 --> syntax error, unexpected '='
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/profi...', Array, true)
+#2 /var/www/html/app/Controllers/ProfileController.php(40): view('dashboard/profi...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-14 01:42:34 --> syntax error, unexpected 'if' (T_IF)
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/profi...', Array, true)
+#2 /var/www/html/app/Controllers/ProfileController.php(40): view('dashboard/profi...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-14 01:45:59 --> Cannot use [] for reading
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-02-14 01:48:04 --> Can't use method return value in write context
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-02-14 01:48:05 --> Can't use method return value in write context
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-02-14 01:48:51 --> syntax error, unexpected '='
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/profi...', Array, true)
+#2 /var/www/html/app/Controllers/ProfileController.php(40): view('dashboard/profi...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-14 01:49:52 --> syntax error, unexpected '='
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/profi...', Array, true)
+#2 /var/www/html/app/Controllers/ProfileController.php(40): view('dashboard/profi...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-14 01:49:53 --> syntax error, unexpected '='
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/profi...', Array, true)
+#2 /var/www/html/app/Controllers/ProfileController.php(40): view('dashboard/profi...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-14 01:49:53 --> syntax error, unexpected '='
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/profi...', Array, true)
+#2 /var/www/html/app/Controllers/ProfileController.php(40): view('dashboard/profi...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-14 01:49:55 --> syntax error, unexpected '='
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/profi...', Array, true)
+#2 /var/www/html/app/Controllers/ProfileController.php(40): view('dashboard/profi...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-14 01:49:55 --> syntax error, unexpected '='
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/profi...', Array, true)
+#2 /var/www/html/app/Controllers/ProfileController.php(40): view('dashboard/profi...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-14 01:49:55 --> syntax error, unexpected '='
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/profi...', Array, true)
+#2 /var/www/html/app/Controllers/ProfileController.php(40): view('dashboard/profi...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-14 01:49:57 --> syntax error, unexpected '='
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/profi...', Array, true)
+#2 /var/www/html/app/Controllers/ProfileController.php(40): view('dashboard/profi...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-14 01:49:57 --> syntax error, unexpected '='
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/profi...', Array, true)
+#2 /var/www/html/app/Controllers/ProfileController.php(40): view('dashboard/profi...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-14 01:49:58 --> syntax error, unexpected '='
+#0 /var/www/html/system/View/View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 /var/www/html/system/Common.php(1097): CodeIgniter\View\View->render('dashboard/profi...', Array, true)
+#2 /var/www/html/app/Controllers/ProfileController.php(40): view('dashboard/profi...', Array)
+#3 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->index()
+#4 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#5 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-02-14 01:55:03 --> Argument 2 passed to view() must be of the type array, string given, called in /var/www/html/app/Controllers/ProfileController.php on line 90
+#0 /var/www/html/app/Controllers/ProfileController.php(90): view('Location: /prof...', '\xD0\x9E\xD1\x88\xD0\xB8\xD0\xB1\xD0\xBA\xD0\xB0! \xD0...')
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->аddInvoice()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-14 01:55:55 --> Argument 2 passed to view() must be of the type array, string given, called in /var/www/html/app/Controllers/ProfileController.php on line 90
+#0 /var/www/html/app/Controllers/ProfileController.php(90): view('dashboard/profi...', '\xD0\x9E\xD1\x88\xD0\xB8\xD0\xB1\xD0\xBA\xD0\xB0! \xD0...')
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->аddInvoice()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-14 01:58:19 --> Argument 2 passed to view() must be of the type array, string given, called in /var/www/html/app/Controllers/ProfileController.php on line 90
+#0 /var/www/html/app/Controllers/ProfileController.php(90): view('dashboard/profi...', '\xD0\x9E\xD1\x88\xD0\xB8\xD0\xB1\xD0\xBA\xD0\xB0! \xD0...')
+#1 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->аddInvoice()
+#2 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#3 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-02-14 04:59:58 --> syntax error, unexpected end of file, expecting function (T_FUNCTION) or const (T_CONST)
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-14 05:00:00 --> syntax error, unexpected end of file, expecting function (T_FUNCTION) or const (T_CONST)
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-02-14 05:00:04 --> syntax error, unexpected end of file, expecting function (T_FUNCTION) or const (T_CONST)
+#0 /var/www/html/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/a...')
+#1 /var/www/html/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 /var/www/html/system/CodeIgniter.php(789): class_exists('\\App\\Controller...', true)
+#5 /var/www/html/system/CodeIgniter.php(397): CodeIgniter\CodeIgniter->startController()
+#6 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2022-02-14 06:21:51 --> Column 'amount' cannot be null
