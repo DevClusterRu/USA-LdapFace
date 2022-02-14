@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use \App\Models\User;
+use App\Libraries\Finances;
 
 
 class HomeController extends BaseController
@@ -35,6 +36,7 @@ class HomeController extends BaseController
             'userName' => self::shortName($auth["username"]),
             'userCompany'=>$auth["company_id"],
         ]);
+        session()->set("balance", Finances::debetCredit($auth["id"]));
     }
 
     public function tryAuth()

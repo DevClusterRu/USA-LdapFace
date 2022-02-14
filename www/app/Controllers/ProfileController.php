@@ -1,5 +1,6 @@
 <?php namespace App\Controllers;
 
+use App\Libraries\Finances;
 use App\Models\Service;
 use App\Models\User;
 use App\Models\UserSelectedService;
@@ -100,7 +101,7 @@ class ProfileController extends BaseController
 //    }
 
     function activateServices(){ //кнопка активировать сервисы у директора
-
+       // Finances::debetCredit($auth["id"])
 
     }
 

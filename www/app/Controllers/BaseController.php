@@ -35,6 +35,7 @@ class BaseController extends Controller
     protected $helpers = [];
     protected $log;
     protected $debets;
+    protected $credits;
 
     /**
      * Constructor.
@@ -56,6 +57,7 @@ class BaseController extends Controller
 
     public static function ddd($var)
     {
+
         echo "<pre>";
         var_dump($var);
         die();
@@ -66,33 +68,6 @@ class BaseController extends Controller
     {
         $this->log = new Log(); //свойство лог стало равно объекту
         $this->log->insert(["log" => $logStroke]);
-    }
-
-    public function debitcredit()
-    {
-        $this->debets = new Debet();
-        $this->credits = new Credit();
-
-        $user = session()->get("userId");
-
-        $deb = $this->debets
-            ->select("SUM(amount) AS total")
-            ->where("user_id", $user)
-            ->first();
-        if ($deb == NULL) {
-            $deb = "0";
-        }
-        $cred = $this->credits
-            ->select("SUM(amount) AS total")
-            ->where("user_id", $user)
-            //->selectSum("amount")
-            ->first();
-        if ($cred["total"] == NULL) {
-            $cred["total"] = "0";
-        }
-        $balance = $deb["total"] - $cred["total"];
-
-        session()->set("balance", $balance);
     }
 
 

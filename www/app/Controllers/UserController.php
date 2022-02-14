@@ -4,6 +4,7 @@ use App\Models\MailBuffer;
 use App\Models\User;
 use App\Models\Company;
 use App\Models\Role;
+use App\Libraries\Finances;
 
 class UserController extends BaseController
 {
@@ -92,7 +93,7 @@ class UserController extends BaseController
         ]);
 
         $this->logMessage("Пользователь " . $oldName . " зашел под пользователем " . session()->get("userName")); // в лог зумирования
-        $this->debitcredit();
+        session()->set("balance",  Finances::debetCredit($user_id));
 
         header("Location: /profile");
 
