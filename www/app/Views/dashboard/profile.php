@@ -64,8 +64,8 @@
                                                     <label for="exampleInputPassword2"
                                                            class="col-sm-3 col-form-label">Пароль</label>
                                                     <div class="col-sm-9">
-                                                        <input name="password1" type="password" class="form-control"
-                                                               id="exampleInputPassword2" placeholder="Password">
+                                                        <input onkeyup="checkPass1();" name="password1" type="password" class="form-control"
+                                                               id="exampleInputPassword1" placeholder="Password">
                                                         <div class="invalid-feedback pass_feedback">
                                                         </div>
                                                     </div>
@@ -75,14 +75,14 @@
                                                            class="col-sm-3 col-form-label">Введите
                                                         повторно пароль</label>
                                                     <div class="col-sm-9">
-                                                        <input name="password2" type="password" class="form-control"
+                                                        <input  onkeyup="checkPass1();" name="password2" type="password" class="form-control changePass2Button"
                                                                id="exampleInputConfirmPassword2" placeholder="Password">
-                                                        <div class="invalid-feedback pass_feedback">
+                                                        <div class="invalid-feedback pass_feedback ">
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <button type="button" class="btn btn-gradient-primary me-2 pass_change">
+                                                <button disabled type="button" class="btn btn-gradient-primary me-2 pass_change changePassButton">
                                                     Изменить
                                                     пароль
                                                 </button>
@@ -96,6 +96,17 @@
 
                     </div>
                 </div>
+
+                <script>
+
+                    function checkPass1(){
+                        if ($("#exampleInputPassword1").val()!="" && $(".changePass2Button").val()!=""){
+                            $(".changePassButton").prop("disabled", false);
+                        } else {
+                            $(".changePassButton").prop("disabled", true);
+                        }
+                    }
+                </script>
 
                 <?php if (session()->get("userRole") > 1 && session()->get("userRole") < 3) { ?>  <!--условие для ограничения просмотров, разрешение-->
                     <!-- Здесь начало третей таблицы-->
