@@ -35,7 +35,7 @@ class GroupPolicyController extends BaseController
         $this->isAuth();
         $this->data["groupPolicy"] = $this->groupPolicy
             ->join('companys', 'group_policy.company_id = companys.id')
-            ->select('group_policy.id, group_policy.group_name, group_policy.group_description, companys.name as company_name')
+            ->select('group_policy.id, group_policy.group_name, group_policy.dn, group_policy.group_description, companys.name as company_name')
             ->where('group_policy.deleted_at IS NULL')
             ->get()
             ->getResultArray();
@@ -63,6 +63,7 @@ class GroupPolicyController extends BaseController
                     ->update($this->request->getPost("id"), [
                         'group_name' => $this->request->getPost("group_name"),
                         'company_id' => $this->request->getPost("company"),
+                        'dn' => $this->request->getPost("dn"),
                         'group_description' => $this->request->getPost("group_description"),
                     ]);
                 header("Location: /groupPolicy");
@@ -71,6 +72,7 @@ class GroupPolicyController extends BaseController
                     ->insert([
                         'group_name' => $this->request->getPost("group_name"),
                         'company_id' => $this->request->getPost("company"),
+                        'dn' => $this->request->getPost("dn"),
                         'group_description' => $this->request->getPost("group_description"),
                     ]);
                 header("Location: /groupPolicy");
@@ -86,7 +88,7 @@ class GroupPolicyController extends BaseController
             $this->data ["groupPolicy"] =
                 $this->groupPolicy
                     ->join('companys', 'group_policy.company_id = companys.id')
-                    ->select('group_policy.id, group_policy.group_name, group_policy.group_description, companys.name as company_name')
+                    ->select('group_policy.id, group_policy.group_name, group_policy.dn, group_policy.group_description, companys.name as company_name')
                     ->where('group_policy.deleted_at IS NULL')
                     ->get()
                     ->getResultArray();

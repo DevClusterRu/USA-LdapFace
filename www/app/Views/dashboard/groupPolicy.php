@@ -45,6 +45,14 @@
 <!--                                --><?php //} ?><!-- -->
                                 <!--конец условия для ограничения просмотров-->
                                 <div class="form-group">
+                                    <label for="exampleInputUsername1">DN</label>
+                                    <input name="dn"
+                                           value="<?php if (isset($curGroup)) echo $curGroup["dn"] ?>"
+                                           type="text" class="form-control"
+                                           id="exampleInputUsername1"
+                                           placeholder="DN">
+                                </div>
+                                <div class="form-group">
                                     <label for="exampleInputUsername1">Описание GPO</label>
                                     <input name="group_description"
                                            value="<?php if (isset($curGroup)) echo $curGroup["group_description"] ?>"
@@ -70,6 +78,7 @@
                                     <tr>
                                         <th> Имя GPO</th>
                                         <th> Название Юридического лица</th>
+                                        <th> DN </th>
                                         <th> Описание GPO</th>
                                         <!--                                        <th>Дата регистрации</th>-->
                                         <!--                                        <th>Последний вход</th>-->
@@ -83,6 +92,7 @@
                                         <tr>
                                             <td><?php echo $element["group_name"] ?></td>
                                             <td><?php echo $element["company_name"] ?></td>
+                                            <td><?php echo $element["dn"] ?></td>
                                             <td><?php echo $element["group_description"] ?></td>
                                             <td>
                                                 <button name="updating" type="submit"

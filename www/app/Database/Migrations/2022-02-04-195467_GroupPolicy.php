@@ -22,6 +22,10 @@ class GroupPolicy extends Migration
                 'type' => 'INT',
                 'unsigned' => true,
             ],
+            'dn' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
             'group_description' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
@@ -46,24 +50,28 @@ class GroupPolicy extends Migration
                 'id'=>1,
                 'group_name' => "accounting",
                 'company_id' => 1,
+                'dn' => "CN=Users,DC=test,DC=lab",
                 'group_description' => "accounting",
             ),
             array(
                 'id'=>2,
                 'group_name' => "engineers",
                 'company_id' => 2,
+                'dn' => "CN=Users,DC=test,DC=lab",
                 'group_description' => "engineers",
             ),
             array(
                 'id' => 3,
                 'group_name' => "constructors",
                 'company_id' => 2,
+                'dn' => "CN=Users,DC=test,DC=lab",
                 'group_description' => "constructors",
             ),
             array(
                 'id' => 4,
                 'group_name' => "accounting",
                 'company_id' => 2,
+                'dn' => "CN=Users,DC=test,DC=lab",
                 'group_description' => "accounting",
             ),
         );

@@ -9,7 +9,7 @@ class Group extends Model
     protected $table = 'group_policy';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['group_name', 'company_id','group_description'];
+    protected $allowedFields = ['group_name', 'company_id','dn','group_description'];
     protected $useSoftDeletes = false;
     // Dates
     protected $useTimestamps = true;
