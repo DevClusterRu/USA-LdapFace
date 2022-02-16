@@ -32,33 +32,33 @@
                                                 <input name="domain"
                                                        value="<?php if (isset($curServer)) echo $curServer["domain"] ?>"
                                                        type="text" class="form-control" id="exampleInputUsername1"
-                                                       placeholder="Domain">
+                                                       placeholder="Domain" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputUsername1">URLs: перечислите через запятую</label>
                                                 <input name="url"
                                                        value="<?php if (isset($curServer)) echo $curServer["url"] ?>"
                                                        type="text" class="form-control" id="exampleInputUsername1"
-                                                       placeholder="URLs: перечислите через запятую">
+                                                       placeholder="URLs: перечислите через запятую" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputUsername1">Login</label>
                                                 <input name="login"
                                                        value="<?php if (isset($curServer)) echo $curServer["login"] ?>"
                                                        type="text" class="form-control" id="exampleInputUsername1"
-                                                       placeholder="Login">
+                                                       placeholder="Login" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputUsername1">Password</label>
                                                 <input name="password"
                                                        value="<?php if (isset($curServer)) echo $curServer["password"] ?>"
                                                        type="text" class="form-control" id="exampleInputUsername1"
-                                                       placeholder="Password">
+                                                       placeholder="Password" required>
                                             </div>
                                             <button name="addEdit" value="1" type="submit"
                                                     class="btn btn-gradient-primary me-2">Принять
                                             </button>
-                                            <button type="button" onClick='location.href="/servers"' name="cancel" value="2" class="btn btn-light">Отмена <!--событие он клик-->
+                                            <button type="button" onClick='location.href="/serversV"' name="cancel" value="2" class="btn btn-light">Отмена <!--событие он клик-->
                                             </form>
                                     </form>
                             </div>

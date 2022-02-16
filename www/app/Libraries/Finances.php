@@ -39,5 +39,4 @@ class Finances
         return $balance;
     }
 
-
 }

@@ -9,7 +9,7 @@ class Company extends Model
     protected $table = 'companys';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['name', 'inn', 'kpp'];
+    protected $allowedFields = ['name', 'inn','kpp', 'server_id'];
     protected $useSoftDeletes = true;
     // Dates
     protected $useTimestamps = true;

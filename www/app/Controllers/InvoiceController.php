@@ -70,8 +70,6 @@ class InvoiceController extends BaseController
         //TODO Эта функция - что делает и почему нигде не вызывается?
 
         //Написать функцию одтверждения оплаты и перерасчета баланса
-        //   http://localhost:85/statusInv/idInvoice_userID_actualPaymentAmount
-        //   http://localhost:85/statusInv/1_100_5000
 
 
         $pay = $this->request->getJSON();

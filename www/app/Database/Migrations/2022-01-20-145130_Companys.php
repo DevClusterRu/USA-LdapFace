@@ -27,7 +27,10 @@ class Companys extends Migration
             'kpp' => [
                 'type' => 'VARCHAR',
                 'constraint' => 9,
-
+            ],
+            'server_id' => [
+                'type' => 'INT',
+                'unsigned' => true,
             ],
             'created_at' => [
                 'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP'
@@ -50,6 +53,7 @@ class Companys extends Migration
                 'name' => "ITL",
                 'inn' => "1",
                 'kpp' => "1",
+                'server_id' => "1"
             ),
 
             array(
@@ -57,18 +61,21 @@ class Companys extends Migration
                 'name' => "Audi",
                 'inn' => "1",
                 'kpp' => "1",
+                'server_id' => "3"
             ),
             array(
                 'id' => 3,
                 'name' => "Sosiski",
                 'inn' => "1",
                 'kpp' => "1",
+                'server_id' => "4"
             ),
             array(
                 'id' => 4,
                 'name' => "ItTech",
                 'inn' => "1",
                 'kpp' => "1",
+                'server_id' => "2"
             ),
         );
         $this->db->table("companys")->insertBatch($data);

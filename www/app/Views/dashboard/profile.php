@@ -29,10 +29,13 @@
                                                     <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Ваша
                                                         почта</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="email"
+                                                        <input onkeyup="checkСontactDetails();" type="email" class="form-control" name="email"
                                                                value="<?php echo $userInfo["email"] ?>"
                                                                id="exampleInputUsername2"
-                                                               placeholder="Email">
+                                                               placeholder="Email"  required >
+<!--                                                        <div id="validationServer03Feedback" class="invalid-feedback"> aria-describedby="validationServer03Feedback" -->
+<!--                                                            Укажите ваш email.-->
+<!--                                                        </div>-->
                                                     </div>
                                                 </div>
 
@@ -40,20 +43,21 @@
                                                     <label for="exampleInputMobile" class="col-sm-3 col-form-label">Контактный
                                                         телефон</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="phone"
+                                                        <input onkeyup="checkСontactDetails();" type="tel" class="form-control" name="phone"
                                                                value="<?php echo $userInfo["phone"] ?>"
                                                                id="exampleInputMobile"
-                                                               placeholder="Mobile number">
+                                                               placeholder="Mobile number"
+                                                               pattern="[+]{1}[7]{1}-[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                                                        <small class="text-muted">Формат: +7-123-456-7890</small>
                                                     </div>
                                                 </div>
-
-
-                                                <button type="submit" class="btn btn-gradient-primary me-2">Применить
+                                                <button disabled type="submit" class="btn btn-gradient-primary me-2 changeСontactDetailsButton">Применить
                                                 </button>
-                                                <button class="btn btn-light">Отмена</button>
+                                                <button formnovalidate class="btn btn-light">Отмена</button>
                                             </form>
-
                                         </div>
+
+
 
                                         <div class="col-md-6">
                                             <form id="password_changer" class="forms-sample" method="post"
@@ -65,7 +69,7 @@
                                                            class="col-sm-3 col-form-label">Пароль</label>
                                                     <div class="col-sm-9">
                                                         <input onkeyup="checkPass1();" name="password1" type="password" class="form-control"
-                                                               id="exampleInputPassword1" placeholder="Password">
+                                                               id="exampleInputPassword1" placeholder="Password" required>
                                                         <div class="invalid-feedback pass_feedback">
                                                         </div>
                                                     </div>
@@ -76,7 +80,7 @@
                                                         повторно пароль</label>
                                                     <div class="col-sm-9">
                                                         <input  onkeyup="checkPass1();" name="password2" type="password" class="form-control changePass2Button"
-                                                               id="exampleInputConfirmPassword2" placeholder="Password">
+                                                               id="exampleInputConfirmPassword2" placeholder="Password" required>
                                                         <div class="invalid-feedback pass_feedback ">
                                                         </div>
                                                     </div>
@@ -86,7 +90,7 @@
                                                     Изменить
                                                     пароль
                                                 </button>
-                                                <button class="btn btn-light">Отмена</button>
+                                                <button formnovalidate class="btn btn-light">Отмена</button>
                                             </form>
                                         </div>
                                     </div>
@@ -97,16 +101,7 @@
                     </div>
                 </div>
 
-                <script>
 
-                    function checkPass1(){
-                        if ($("#exampleInputPassword1").val()!="" && $(".changePass2Button").val()!=""){
-                            $(".changePassButton").prop("disabled", false);
-                        } else {
-                            $(".changePassButton").prop("disabled", true);
-                        }
-                    }
-                </script>
 
                 <?php if (session()->get("userRole") > 1 && session()->get("userRole") < 3) { ?>  <!--условие для ограничения просмотров, разрешение-->
                     <!-- Здесь начало третей таблицы-->
@@ -127,12 +122,12 @@
                                                value="<?php  ?>"
                                                type="number" class="form-control"
                                                id="amountBox"
-                                               placeholder="Сумма пополнения">
+                                               placeholder="Сумма пополнения" required>
                                     </div>
                                     <button disabled name="addButton" value="1" type="submit"
                                             class="btn btn-gradient-primary me-2 addInvoiceButton">Пополнить баланс
                                     </button>
-                                    <button name="cancel" value="2" class="btn btn-light">Очистить
+                                    <button formnovalidate name="cancel" value="2" class="btn btn-light">Очистить
                                     </button>
 
                                 </form>
@@ -141,16 +136,7 @@
                     </div>
                     <?php //if(session()->get("userRole")>1 && session()->get("userRole")<3 ){?>
 
-<script>
 
-    function checkNumeric(){
-        if ($("#amountBox").val()!=""){
-            $(".addInvoiceButton").prop("disabled", false);
-        } else {
-            $(".addInvoiceButton").prop("disabled", true);
-        }
-    }
-</script>
 
 
                     <div class="card" style="margin-top: 20px">
@@ -276,6 +262,36 @@
 <!--    });-->
 <!---->
 <!--</script>-->
+
+
+<script>
+
+    function checkСontactDetails(){
+        if ($("#exampleInputUsername2").val()!="" || $("#exampleInputMobile").val()!=""){
+            $(".changeСontactDetailsButton").prop("disabled", false);
+        } else {
+            $(".changeСontactDetailsButton").prop("disabled", true);
+        }
+    }
+
+    function checkPass1(){
+        if ($("#exampleInputPassword1").val()!="" && $(".changePass2Button").val()!=""){
+            $(".changePassButton").prop("disabled", false);
+        } else {
+            $(".changePassButton").prop("disabled", true);
+        }
+    }
+
+    function checkNumeric(){
+        if ($("#amountBox").val()!=""){
+            $(".addInvoiceButton").prop("disabled", false);
+        } else {
+            $(".addInvoiceButton").prop("disabled", true);
+        }
+    }
+</script>
+
+
 
 
 <script>
