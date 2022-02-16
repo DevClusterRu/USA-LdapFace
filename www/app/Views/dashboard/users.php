@@ -195,5 +195,14 @@
     </div>
 </div>
 
+<!--резултат проверки на стороне сервера-->
+<?php
+if ($_GET["error"]=="userExists"){?>
+    <script>
+        alert("Такой пользователь уже существует");
+        location.href="/users";
+    </script>
+
+<?php }?>
 <?php echo $this->endSection() ?>
 

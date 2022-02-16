@@ -33,6 +33,7 @@ class ProfileController extends BaseController
 //         var_dump(LdapChannelLibrary::curlRequest()); //курл ,вставить после приглашения
 //        die();
 
+        //LdapChannelLibrary::createOrganization("test.lab","DC=test,DC=lab","xSpase");
         $this->isAuth();
         $this->data["userInfo"] = $this->userModel->find(session()->get("userId"));
         $this->data["servicesAll"] = $this->serviceModel->get()->getResultArray();

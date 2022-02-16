@@ -1,5 +1,6 @@
 <?php namespace App\Controllers;
 
+use App\Libraries\LdapChannelLibrary;
 use App\Models\MailBuffer;
 use App\Models\User;
 use App\Models\Company;
@@ -147,6 +148,14 @@ class UserController extends BaseController
                 header("Location: /users");
             } else {
 
+                //здесь отправить запрос в лдап на создание пользователя
+                $resp = LdapChannelLibrary::createUser("","",$this->request->getPost("username"));
+                $respJson = json_decode($resp);
+                if ($respJson->status == false){
+                    header("Location: /users?error=userExists");
+                    exit();
+                }
+
                 $this->users
                     ->insert([
                         'username' => $this->request->getPost("username"),
@@ -157,6 +166,10 @@ class UserController extends BaseController
                         'role_id' => $this->request->getPost("role"),
                     ]);
                 header("Location: /users");
+
+                //{"status":true, "response":"ok"}
+
+
             }
         }
 
