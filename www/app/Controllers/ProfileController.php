@@ -36,8 +36,8 @@ class ProfileController extends BaseController
         //LdapChannelLibrary::createOrganization("test.lab","DC=test,DC=lab","xSpase");
         $this->isAuth();
         $this->data["userInfo"] = $this->userModel->find(session()->get("userId"));
-        $this->data["servicesAll"] = $this->serviceModel->get()->getResultArray();
-        $this->data["userServicesList"] = $this->userSelectedService->where("user_id", session()->get("userId"))->get()->getResultArray();
+        $this->data["servicesAll"] = $this->serviceModel->findAll();
+        $this->data["userServicesList"] = $this->userSelectedService->where("user_id", session()->get("userId"))->findAll();
         $this->data["invoices"] = $this->invoices->findAll();
         return view('dashboard/profile', $this->data);
     }
