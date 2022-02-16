@@ -1,12 +1,15 @@
 <?php namespace App\Controllers;
 
 use \App\Models\Company;
+use \App\Models\Server;
+
 
 class CompanyController extends BaseController
 {
     //Здесь мы создаем свойство класса companys  оно будет содержать модель таблицы companys
     protected $companys;
     protected $data;
+    protected $servers;
 
     //Метод __construct() - это конструктор класса, этот метод вызывается 1 раз при обращении к классу (при создании объекта класса)
     public function __construct()
@@ -17,14 +20,22 @@ class CompanyController extends BaseController
         }
         //Заполняем companys объектом таблицы
         $this->companys = new Company();
+        $this->servers = new server();
         $this->data["page_name"] = "Компании";
+        $this->data ["servers"] = $this->servers->findAll();
     }
 
     public function index()
     {
         $this->isAuth();
         //Не используем билдер, подключаемся к модели Companys и применяем метод findAll() (все записи)
-        $this->data ["companys"] = $this->companys->findAll();
+        $this->data ["companys"] = $this->companys
+            ->join('servers', 'companys.server_id = servers.id')
+            ->select('companys.id, companys.name, companys.inn, companys.kpp, companys.server_id, servers.domain as server_domain')
+            ->where('companys.deleted_at IS NULL')
+            ->get()
+            ->getResultArray();
+
         return view('dashboard/companys', $this->data);
     }
 
@@ -49,6 +60,7 @@ class CompanyController extends BaseController
                         'name' => $this->request->getPost("name"),
                         'inn' => $this->request->getPost("inn"),
                         'kpp' => $this->request->getPost("kpp"),
+                        'server_id' => $this->request->getPost("server"),
                     ]);
                 header("Location: /companys");
             } else {
@@ -57,6 +69,7 @@ class CompanyController extends BaseController
                         'name' => $this->request->getPost("name"),
                         'inn' => $this->request->getPost("inn"),
                         'kpp' => $this->request->getPost("kpp"),
+                        'server_id' => $this->request->getPost("server"),
                     ]);
                 header("Location: /companys");
             }

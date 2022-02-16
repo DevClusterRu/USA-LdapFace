@@ -30,7 +30,7 @@
                                            value="<?php if (isset($curGroup)) echo $curGroup["group_name"] ?>"
                                            type="text" class="form-control"
                                            id="exampleInputUsername1"
-                                           placeholder="Имя GPO">
+                                           placeholder="Имя GPO" required>
                                 </div>
 <!--                                --><?php //if(session()->get("userRole")>2){?><!--  -->
                                     <!--условие для ограничения просмотров, разрешение-->
@@ -50,7 +50,7 @@
                                            value="<?php if (isset($curGroup)) echo $curGroup["dn"] ?>"
                                            type="text" class="form-control"
                                            id="exampleInputUsername1"
-                                           placeholder="DN">
+                                           placeholder="DN" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Описание GPO</label>
@@ -58,12 +58,12 @@
                                            value="<?php if (isset($curGroup)) echo $curGroup["group_description"] ?>"
                                            type="text" class="form-control"
                                            id="exampleInputUsername1"
-                                           placeholder="Oписание GPO">
+                                           placeholder="Oписание GPO" required>
                                 </div>
                                 <button name="addEdit" value="1" type="submit"
                                         class="btn btn-gradient-primary me-2">Принять
                                 </button>
-                                <button type="button" onClick='location.href="/groupPolicy"' name="cancel" value="2" class="btn btn-light">Отмена <!--событие он клик-->
+                                <button  type="button" onClick='location.href="/groupPolicy"' name="cancel" value="2" class="btn btn-light">Отмена <!--событие он клик-->
                             </form>
                         </div>
                     </div>

@@ -30,28 +30,37 @@
                                            value="<?php if (isset($curCompany)) echo $curCompany["name"] ?>"
                                            type="text" class="form-control"
                                            id="exampleInputUsername1"
-                                           placeholder="Название ЮЛ">
+                                           placeholder="Название ЮЛ" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">ИНН</label>
                                     <input name="inn"
                                            value="<?php if (isset($curCompany)) echo $curCompany["inn"] ?>"
-                                           type="text" class="form-control"
+                                           type="number" class="form-control"
                                            id="exampleInputUsername1"
-                                           placeholder="ИНН">
+                                           placeholder="ИНН"
+                                           required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">КПП</label>
                                     <input name="kpp"
                                            value="<?php if (isset($curCompany)) echo $curCompany["kpp"] ?>"
-                                           type="text" class="form-control"
+                                           type="number" class="form-control"
                                            id="exampleInputUsername1"
                                            placeholder="КПП">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Server</label>
+                                    <select name="server" class="form-control">
+                                        <?php foreach ($servers as $server) { ?>
+                                            <option value="<?php echo $server["id"] ?>"><?php echo $server["domain"] ?></option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
                                 <button name="addEdit" value="1" type="submit"
                                         class="btn btn-gradient-primary me-2">Принять
                                 </button>
-                                <button name="cancel" value="2" type="submit"
+                                <button  formnovalidate name="cancel" value="2" type="submit"
                                         class="btn btn-light">Отмена
                                 </button>
                             </form>
@@ -70,6 +79,7 @@
                                         <th>Название ЮЛ</th>
                                         <th>ИНН</th>
                                         <th>КПП</th>
+                                        <th>Server</th>
                                         <th>Редактирование</th>
                                         <th>Удаление</th>
                                     </tr>
@@ -81,6 +91,7 @@
                                             <td><?php echo $element["name"] ?></td>
                                             <td><?php echo $element["inn"] ?></td>
                                             <td><?php echo $element["kpp"] ?></td>
+                                            <td><?php echo $element["server_domain"] ?></td>
                                             <td>
                                                 <button name="updating" type="submit"
                                                         value="<?php echo $element["id"] ?>"
@@ -100,6 +111,7 @@
                                         </tr>
                                     <?php endforeach; ?>
                                     <tr>
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>

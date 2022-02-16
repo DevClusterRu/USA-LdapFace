@@ -30,7 +30,7 @@
                                            value="<?php if (isset($curService)) echo $curService["name"] ?>"
                                            type="text" class="form-control"
                                            id="exampleInputUsername1"
-                                           placeholder="Название услуги">
+                                           placeholder="Название услуги" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Тип услуги</label>
@@ -46,9 +46,9 @@
                                     <label for="exampleInputUsername1">Стоимость</label>
                                     <input name="cost"
                                            value="<?php if (isset($curService)) echo $curService["cost"] ?>"
-                                           type="text" class="form-control"
+                                           type="number" class="form-control"
                                            id="exampleInputUsername1"
-                                           placeholder="Стоимость">
+                                           placeholder="Стоимость" required>
                                 </div>
 
 

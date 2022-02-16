@@ -50,6 +50,7 @@ $routes->post('/servers', 'ServerController::operation');                   //  
 $routes->post('/usersOperation', 'UserController::operation');
 $routes->post('/servicesOperation', 'ServiceController::operation');
 $routes->post('/gPOUsers/bindGPtoUser', 'UserGPOController::bindGPtoUser');///
+$routes->post('/delroles', 'RoleController::operation');
 
 $routes->post('/', 'HomeController::tryAuth');
 $routes->post('/profile/update', 'ProfileController::changeUserInfo');
@@ -63,7 +64,6 @@ $routes->post('/profile/autoUpdateToUser', 'ServiceController::autoUpdateToUser'
 $routes->get('/zoom/(:any)', 'UserController::zoom/$1'); //зумирование
 $routes->get('/zoomout', 'UserController::zoomOut'); //выход из зумирования
 
-$routes->post('/delroles', 'RolesController::delRoles');
 $routes->post('/serverlistOperation2', 'ServerListController::serverlistOperation2');
 $routes->post('/usersOperation1', 'UsersController::usersOperation1');
 $routes->post('/usersOperation2', 'UsersController::usersOperation2');

@@ -30,7 +30,7 @@
                                            value="<?php if (isset($curUser)) echo $curUser["username"] ?>"
                                            type="text" class="form-control"
                                            id="exampleInputUsername1"
-                                           placeholder="Пользователь">
+                                           placeholder="Пользователь" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">E-Mail</label>
@@ -38,7 +38,7 @@
                                            value="<?php if (isset($curUser)) echo $curUser["email"] ?>"
                                            type="email" class="form-control"
                                            id="exampleInputUsername1"
-                                           placeholder="E-Mail">
+                                           placeholder="E-Mail" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Контактный номер
@@ -47,7 +47,10 @@
                                            value="<?php if (isset($curUser)) echo $curUser["phone"] ?>"
                                            type="text" class="form-control"
                                            id="exampleInputUsername1"
-                                           placeholder="Контактный номер">
+                                           placeholder="Контактный номер"
+                                           pattern="[+]{1}[7]{1}-[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                                           required>
+                                    <small class="text-muted">Формат: +7-123-456-7890</small>
                                 </div>
 
                                 <?php if(session()->get("userRole")>2){?>  <!--условие для ограничения просмотров, разрешение-->
@@ -74,7 +77,7 @@
                                 <button name="addEdit" value="1" type="submit"
                                         class="btn btn-gradient-primary me-2">Принять
                                 </button>
-                                <button name="cancel" value="2" class="btn btn-light">Очистить
+                                <button formnovalidate name="cancel" value="2" class="btn btn-light">Очистить
                                 </button>
                             </form>
                         </div>

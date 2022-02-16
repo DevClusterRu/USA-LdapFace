@@ -24,12 +24,12 @@
 <!--                                            <th> Статус</th>-->
                                             <th>Создана</th>
                                             <th>Изменена</th>
-                                            <th>Редактировать</th>
-                                            <th>Удалить</th>
+<!--                                            <th>Редактировать</th>-->
+<!--                                            <th>Удалить</th>-->
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php foreach ($usersAll as $element):?>
+                                        <?php foreach ($allroles as $element):?>
                                         <tr>
                                             <td>
 
@@ -43,20 +43,21 @@
 <!--                                            </td>-->
                                             <td><?php echo $element["created_at"] ?></td>
                                             <td><?php echo $element["updated_at"] ?></td>
-                                            <td>
-                                                <button type="button" class="btn btn-gradient-primary me-2">
-                                                    Редактировать
-                                                </button>
-                                            </td>
-                                            <td>
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        <input value="<?php echo $element["id"] ?>" type="checkbox" class="form-check-input" name="checkboxDel[]">Удалить
-                                                        <i class="input-helper"></i>
-                                                    </label>
-                                                </div>
-                                            </td>
-                                        </tr>
+<!--                                            <td>-->
+<!--                                                <button type="button" class="btn btn-gradient-primary me-2">-->
+<!--                                                    Редактировать-->
+<!--                                                </button>-->
+<!--                                            </td>-->
+<!--                                            <td>-->
+<!--                                                <div class="form-check">-->
+<!--                                                    <label class="form-check-label">-->
+<!--                                                        <input value="--><?php //echo $element["id"] ?><!--" type="checkbox"-->
+<!--                                                               class="form-check-input" name="checkboxDel[]">Удалить<i-->
+<!--                                                                class="input-helper"></i>-->
+<!--                                                    </label>-->
+<!--                                                </div>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
                                         <?php endforeach;?>
                                         <tr>
                                             <td></td>
@@ -64,12 +65,13 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td> <div class="butDelUsers">
-                                                    <button type="submit" class="btn btn-gradient-primary me-2 ">Удалить</button>
-                                                </div></td>
+<!--                                            <td> <div class="butDelUsers">-->
+<!--                                                    <button type="submit" value="del" name="delete" class="btn btn-gradient-primary me-2 ">Удалить</button>-->
+<!--                                                </div></td>-->
                                         </tr>
                                         </tbody>
-                                    </table></form>
+                                    </table>
+                                    </form>
                                 </div>
                             </div>
                         </div>
