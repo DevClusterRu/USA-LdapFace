@@ -1,5 +1,6 @@
 <?php namespace App\Controllers;
 
+use App\Libraries\LdapChannelLibrary;
 use \App\Models\Company;
 use \App\Models\Server;
 
@@ -31,7 +32,7 @@ class CompanyController extends BaseController
         //Не используем билдер, подключаемся к модели Companys и применяем метод findAll() (все записи)
         $this->data ["companys"] = $this->companys
             ->join('servers', 'companys.server_id = servers.id')
-            ->select('companys.id, companys.name, companys.inn, companys.kpp, companys.server_id, servers.domain as server_domain')
+            ->select('companys.id, companys.name, companys.inn, companys.kpp, companys.server_id, servers.domain as server_domain, servers.baseDn as server_baseDn')
             ->where('companys.deleted_at IS NULL')
             ->get()
             ->getResultArray();
@@ -64,6 +65,38 @@ class CompanyController extends BaseController
                     ]);
                 header("Location: /companys");
             } else {
+
+                $servInfo = $this->servers->where('id',$this->request->getPost("server"))->first();
+
+                //Creating company in LDAP
+                $checkOne = LdapChannelLibrary::createOrganization($servInfo["domain"],$servInfo["baseDn"],$this->request->getPost("name"));
+                //check answer!
+
+                $checkOneJson = json_decode($checkOne->getBody());
+
+                if ($checkOneJson->result == false){
+                    header("Location: /companys?error=companyExists");
+                    exit();
+                }
+                $checkTwo = LdapChannelLibrary::createOrganization($servInfo["domain"],"OU=".$this->request->getPost("name").",".$servInfo["baseDn"],$this->request->getPost("name")." - Группы доступа");
+                //check answer!
+//                                echo "<pre>";
+//                var_dump($checkTwo->getBody());
+//                die();
+
+                $checkTwoJson = json_decode($checkTwo->getBody());
+                if ($checkTwoJson->result == false){
+                    header("Location: /companys?error=companyExists");
+                    exit();
+                }
+                $checkThree = LdapChannelLibrary::createOrganization($servInfo["domain"],"OU=".$this->request->getPost("name").",".$servInfo["baseDn"],$this->request->getPost("name")." - Пользователи");
+                 $checkThreeJson = json_decode($checkThree->getBody());
+                if ($checkThreeJson->result == false){
+                    header("Location: /companys?error=companyExists");
+                    exit();
+                }
+
+
                 $this->companys
                     ->insert([
                         'name' => $this->request->getPost("name"),

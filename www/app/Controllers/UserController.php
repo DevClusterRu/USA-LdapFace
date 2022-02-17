@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Company;
 use App\Models\Role;
 use App\Libraries\Finances;
+use \App\Models\Server;
 
 class UserController extends BaseController
 {
@@ -14,6 +15,7 @@ class UserController extends BaseController
     protected $allroles;
     protected $mail_buffers;
     protected $data;
+    protected $servers;
 
     public function __construct()
     {
@@ -21,9 +23,12 @@ class UserController extends BaseController
         $this->companys = new Company();
         $this->allroles = new Role();
         $this->mail_buffers = new MailBuffer();
+        $this->servers = new server();
         $this->data["page_name"] = "Пользователи";
         $this->data["companys"] = $this->companys->findAll();
         $this->data["roles"] = $this->allroles->findAll();
+        $this->data ["servers"] = $this->servers->findAll();
+
     }
 
     public function index()
@@ -39,6 +44,7 @@ class UserController extends BaseController
             $this->data["users"] = $this->users
                 ->join('roles', 'users.role_id = roles.id')
                 ->join('companys', 'users.company_id = companys.id')
+                ->join('servers', 'companys.server_id = servers.id')
                 ->select('users.id, users.role_id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name, invite_hash')
                 ->where('users.deleted_at IS NULL')
                 ->where('users.role_id < 4')
@@ -148,9 +154,23 @@ class UserController extends BaseController
                 header("Location: /users");
             } else {
 
+                $UserInfo = $this->request->getPost();
+                $CompanInfo = $this->companys->where('id',$this->request->getPost("company"))->first();
+                  $servInfo = $this->servers->where('id',$CompanInfo["server_id"])->first();
+//                                var_dump($UserInfo ["phone"]);
+//                                             die();
+
                 //здесь отправить запрос в лдап на создание пользователя
-                $resp = LdapChannelLibrary::createUser("","",$this->request->getPost("username"));
-                $respJson = json_decode($resp);
+//              $resp = LdapChannelLibrary::createUser($servInfo["domain"],"OU=".$CompanInfo["name"]." - Пользователи".","."OU=".$CompanInfo["name"].",".$servInfo["baseDn"],$UserInfo ["username"], $UserInfo ["phone"], $UserInfo ["email"]);
+           $resp = LdapChannelLibrary::createUser($UserInfo ["username"], $UserInfo ["phone"], $UserInfo ["email"],"OU=".$CompanInfo["name"]." - Пользователи".","."OU=".$CompanInfo["name"].",".$servInfo["baseDn"],$servInfo["domain"]);
+
+
+
+              $respJson = json_decode($resp->getBody());
+
+//                echo "<pre>";
+//                var_dump($respJson);
+//                die();
                 if ($respJson->status == false){
                     header("Location: /users?error=userExists");
                     exit();
@@ -177,17 +197,30 @@ class UserController extends BaseController
             $row = $this->users
                 ->where(["id" => $this->request->getPost("updating")])
                 ->first();
-
-            $this->data["users"] = $this->users
-                ->join('roles', 'users.role_id = roles.id')
-                ->join('companys', 'users.company_id = companys.id')
-                ->select('users.id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name')
-                ->where('users.deleted_at IS NULL')
-                ->where('users.role_id < 4')
-                ->get()
-                ->getResultArray();
-            $this->data["curUser"] = $row; //Роли и компании уже находятся в $this->data (через констракт)
-
+            $userid = session()->get("userId");
+            $compan = $this->users->find($userid);
+            if ($this->isAdmin()) {
+                $this->data["users"] = $this->users
+                    ->join('roles', 'users.role_id = roles.id')
+                    ->join('companys', 'users.company_id = companys.id')
+                    ->select('users.id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name')
+                    ->where('users.deleted_at IS NULL')
+                    ->where('users.role_id < 4')
+                    ->get()
+                    ->getResultArray();
+                $this->data["curUser"] = $row; //Роли и компании уже находятся в $this->data (через констракт)
+            } elseif ( $this->isDirector()){
+                    $this->data["users"] = $this->users
+                        ->join('roles', 'users.role_id = roles.id')
+                        ->join('companys', 'users.company_id = companys.id')
+                        ->select('users.id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name')
+                        ->where('users.deleted_at IS NULL')
+                        ->where('users.company_id', $compan['company_id'])
+                        ->where('users.role_id < 3')
+                        ->get()
+                        ->getResultArray();
+                    $this->data["curUser"] = $row;
+            }
             return view('dashboard/users', $this->data);
         }
 

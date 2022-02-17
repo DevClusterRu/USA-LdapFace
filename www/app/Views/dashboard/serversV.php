@@ -55,6 +55,13 @@
                                                        type="text" class="form-control" id="exampleInputUsername1"
                                                        placeholder="Password" required>
                                             </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputUsername1">baseDn</label>
+                                                <input name="baseDn"
+                                                       value="<?php if (isset($curServer)) echo $curServer["baseDn"] ?>"
+                                                       type="text" class="form-control" id="exampleInputUsername1"
+                                                       placeholder="baseDn" required>
+                                            </div>
                                             <button name="addEdit" value="1" type="submit"
                                                     class="btn btn-gradient-primary me-2">Принять
                                             </button>
@@ -79,6 +86,7 @@
                                             <th>URL</th>
                                             <th>Login</th>
                                             <th>Password</th>
+                                            <th>baseDn</th>
                                             <th>Редактирование</th>
                                             <th>Удаление</th>
                                         </tr>
@@ -93,6 +101,7 @@
                                                 <td><?php echo $element["url"] ?></td>
                                                 <td><?php echo $element["login"] ?></td>
                                                 <td><?php echo $element["password"] ?></td>
+                                                <td><?php echo $element["baseDn"] ?></td>
 
                                                 <td>
                                                     <button name="updating" type="submit"
@@ -113,6 +122,7 @@
                                             </tr>
                                         <?php endforeach; ?>
                                         <tr>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>

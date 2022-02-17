@@ -62,3 +62,4 @@ CRITICAL - 2022-02-16 07:38:19 --> Call to a member function getResultArray() on
 #2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
 #4 {main}
+ERROR - 2022-02-16 22:13:26 --> Unknown column 'invoice_num' in 'field list'

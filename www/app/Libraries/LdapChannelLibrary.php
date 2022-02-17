@@ -34,15 +34,17 @@ class LdapChannelLibrary
                 "user" => $user,
             ]]);
     }
-
-    public static function createUser($domain, $baseDn, $name)
+    public static function createUser($name, $phone, $email, $baseDn, $domain )
+//    public static function createUser($domain, $baseDn, $name, $phone, $email)
     {
         return self::curlRequest(
             ['json' => [
                 "command" => "CreateUser",
                 "domain" => $domain,
                 "baseDN" => $baseDn,
-                "name" => $name
+                "name" => $name,
+                "phone" => $phone,
+                "email" => $email
             ]]);
     }
 

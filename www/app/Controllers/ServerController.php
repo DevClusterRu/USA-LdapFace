@@ -46,6 +46,8 @@ class ServerController extends BaseController
                         'url' => $this->request->getPost("url"),
                         'login' => $this->request->getPost("login"),
                         'password' => $this->request->getPost("password"),
+                        'baseDn' => $this->request->getPost("baseDn"),
+
                     ]);
                 header("Location: /serversV");
             } else {
@@ -55,6 +57,7 @@ class ServerController extends BaseController
                         'url' => $this->request->getPost("url"),
                         'login' => $this->request->getPost("login"),
                         'password' => $this->request->getPost("password"),
+                        'baseDn' => $this->request->getPost("baseDn"),
                     ]);
                 header("Location: /serversV");
             }

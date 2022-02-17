@@ -9,7 +9,7 @@ class Server extends Model
     protected $table = 'servers';
     protected $primaryKey  = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['domain', 'url', 'login', 'password'];
+    protected $allowedFields = ['domain', 'url', 'login', 'password','baseDn'];
     protected $useSoftDeletes = true;
 
     // Dates
