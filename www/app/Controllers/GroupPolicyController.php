@@ -1,9 +1,11 @@
 <?php namespace App\Controllers;
 
+use App\Libraries\LdapChannelLibrary;
 use App\Models\User;
 use App\Models\Company;
 use App\Models\Role;
 use App\Models\Group;
+use App\Models\Server;
 
 class GroupPolicyController extends BaseController
 {
@@ -11,12 +13,14 @@ class GroupPolicyController extends BaseController
     protected $companys;
     protected $allroles;
     protected $groupPolicy;
+    protected $servers;
     protected $data;
 
     public function __construct()
     {
         $this->users = new User();
         $this->companys = new Company();
+        $this->servers = new Server();
         $this->allroles = new Role();
         $this->groupPolicy = new Group();
         $this->data["page_name"] = "Групповые политики";
@@ -68,6 +72,28 @@ class GroupPolicyController extends BaseController
                     ]);
                 header("Location: /groupPolicy");
             } else {
+
+
+              $groupInfo = $this->request->getPost();
+                $companInfo = $this->companys->where('id',$this->request->getPost("company"))->first();
+              $servInfo = $this->servers->where('id',$companInfo["server_id"])->first();
+//
+//                                     echo "<pre>";
+//                                var_dump();
+//                                             die();
+
+
+              $resp = LdapChannelLibrary::createGroup($servInfo["domain"], "OU=".$companInfo["name"]." - Группы доступа".","."OU=".$companInfo["name"].",".$servInfo["baseDn"],$groupInfo["group_name"]);
+
+                $respJson = json_decode($resp->getBody());
+//                echo "<pre>";
+//                var_dump($respJson);
+//                die();
+                if ($respJson->result == false){
+                    header("Location: /groupPolicy?error=gpExists");
+                    exit();
+                }
+
                 $this->groupPolicy
                     ->insert([
                         'group_name' => $this->request->getPost("group_name"),

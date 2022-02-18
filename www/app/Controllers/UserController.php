@@ -154,20 +154,15 @@ class UserController extends BaseController
                 header("Location: /users");
             } else {
 
-                $UserInfo = $this->request->getPost();
-                $CompanInfo = $this->companys->where('id',$this->request->getPost("company"))->first();
-                  $servInfo = $this->servers->where('id',$CompanInfo["server_id"])->first();
+                $userInfo = $this->request->getPost();
+                $companInfo = $this->companys->where('id',$this->request->getPost("company"))->first();
+                  $servInfo = $this->servers->where('id',$companInfo["server_id"])->first();
 //                                var_dump($UserInfo ["phone"]);
 //                                             die();
 
                 //здесь отправить запрос в лдап на создание пользователя
-//              $resp = LdapChannelLibrary::createUser($servInfo["domain"],"OU=".$CompanInfo["name"]." - Пользователи".","."OU=".$CompanInfo["name"].",".$servInfo["baseDn"],$UserInfo ["username"], $UserInfo ["phone"], $UserInfo ["email"]);
-           $resp = LdapChannelLibrary::createUser($UserInfo ["username"], $UserInfo ["phone"], $UserInfo ["email"],"OU=".$CompanInfo["name"]." - Пользователи".","."OU=".$CompanInfo["name"].",".$servInfo["baseDn"],$servInfo["domain"]);
-
-
-
+           $resp = LdapChannelLibrary::createUser($userInfo ["username"], $userInfo ["phone"], $userInfo ["email"],"OU=".$companInfo["name"]." - Пользователи".","."OU=".$companInfo["name"].",".$servInfo["baseDn"],$servInfo["domain"]);
               $respJson = json_decode($resp->getBody());
-
 
 //                echo "<pre>";
 //                var_dump($respJson);

@@ -139,5 +139,15 @@
     </div>
 </div>
 
+<?php
+if ($_GET["error"]=="gpExists"){?>
+    <script>
+        alert("Ошибка создания");
+        location.href="/groupPolicy";
+    </script>
+
+<?php }?>
+
+
 <?php echo $this->endSection() ?>
 

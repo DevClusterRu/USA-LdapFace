@@ -1,10 +1,12 @@
 <?php namespace App\Controllers;
 
+use App\Libraries\LdapChannelLibrary;
 use \App\Models\User;
 use \App\Models\Group;
 use \App\Models\UserSelectedGroup;
 use App\Models\Role;
 use \App\Models\Company;
+use App\Models\Server;
 
 
 class UserGPOController extends BaseController
@@ -16,7 +18,8 @@ class UserGPOController extends BaseController
     protected $usersSelectedGroup;
     protected $allroles;
     protected $data;
-    protected static $companys;
+    protected $companys;
+    protected $servers;
 
     //Метод __construct() - это конструктор класса, этот метод вызывается 1 раз при обращении к классу (при создании объекта класса)
     public function __construct()
@@ -29,6 +32,7 @@ class UserGPOController extends BaseController
         $this->users = new User();
         $this->allroles = new Role();
         $this->groupPolicy = new Group();
+        $this->servers = new Server();
         $this->usersSelectedGroup = new UserSelectedGroup();
         $this->data["page_name"] = "Политики";
 
@@ -89,13 +93,46 @@ class UserGPOController extends BaseController
 
     function bindGPtoUser()
     {
+
         $checkboxSelected = $this->request->getPost("checkboxGP");//получаем айди сервиса ( номер строчки)
         $checkboxSelectedDo = $this->request->getPost("doCheckbox");//получаем вид действия, строку сет или ансет
         $arr = explode("_", $checkboxSelected);
         if ($checkboxSelectedDo == "set") {
 
+
+            $userInfo = $this->users->where('id', $arr[0])->first();
+            $groupInfo = $this->groupPolicy->where('id', $arr[1])->first();
+//            var_dump($userInfo);
+//            die();
+//
+
+            $companInfo = $this->companys->where('id',$userInfo["company_id"])->first();
+           $servInfo = $this->servers->where('id',$companInfo["server_id"])->first();
+//                                var_dump($UserInfo ["phone"]);
+//                                             die();
+
+            //здесь отправить запрос в лдап на создание пользователя
+            $resp = LdapChannelLibrary::assignUser($servInfo["domain"], "CN=".$groupInfo["group_name"].","."OU=".$companInfo["name"]." - Группы доступа".","."OU=".$companInfo["name"].",".$servInfo["baseDn"],
+                "CN=".$userInfo ["username"].","."OU=".$companInfo["name"]." - Пользователи".","."OU=".$companInfo["name"].",".$servInfo["baseDn"]);
+
+
+            $respJson = json_decode($resp->getBody());
+
+////                echo "<pre>";
+////                var_dump($respJson);
+////                die();
+            if ($respJson->result == false){
+                header("Location: /gPOUsers?error=gpUsExists");
+                exit();
+            }
+
+
+
+
             $this->usersSelectedGroup->insert(["user_id" => $arr[0], "group_id" => $arr[1]]);
         } else {
+
+
                         $this->usersSelectedGroup
                 ->where(["user_id" => $arr[0], "group_id" => $arr[1]])
                 ->delete();

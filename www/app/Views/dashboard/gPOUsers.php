@@ -81,6 +81,14 @@
     </div>
 </div>
 
+<?php
+if ($_GET["error"]=="gpUsExists"){?>
+    <script>
+        alert("Такой пользователь уже существует");
+        location.href="/gPOUsers.php";
+    </script>
+
+<?php }?>
 
 <script>
 

@@ -14,7 +14,7 @@ class LdapChannelLibrary
         return $response;// возвращает объект ответа
     }
 
-    public static function createOrganization($domain, $baseDn, $groupName)
+    public static function createOrganization($domain, $baseDn, $groupName)    //Done
     {
         return self::curlRequest(
             ['json' => [
@@ -34,8 +34,7 @@ class LdapChannelLibrary
                 "user" => $user,
             ]]);
     }
-    public static function createUser($name, $phone, $email, $baseDn, $domain )
-//    public static function createUser($domain, $baseDn, $name, $phone, $email)
+    public static function createUser($name, $phone, $email, $baseDn, $domain )    //Done
     {
         return self::curlRequest(
             ['json' => [
@@ -48,7 +47,7 @@ class LdapChannelLibrary
             ]]);
     }
 
-    public static function createGroup($domain, $baseDn, $group)
+    public static function createGroup($domain, $baseDn, $group)      //Done
     {
         return self::curlRequest(
             ['json' => [
@@ -56,6 +55,7 @@ class LdapChannelLibrary
                 "domain" => $domain,
                 "baseDN" => $baseDn,
                 "group" => $group
+
             ]]);
     }
 
