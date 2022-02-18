@@ -168,10 +168,11 @@ class UserController extends BaseController
 
               $respJson = json_decode($resp->getBody());
 
+
 //                echo "<pre>";
 //                var_dump($respJson);
 //                die();
-                if ($respJson->status == false){
+                if ($respJson->result == false){
                     header("Location: /users?error=userExists");
                     exit();
                 }
