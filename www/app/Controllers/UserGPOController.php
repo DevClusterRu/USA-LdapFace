@@ -99,39 +99,21 @@ class UserGPOController extends BaseController
         $arr = explode("_", $checkboxSelected);
         if ($checkboxSelectedDo == "set") {
 
-
             $userInfo = $this->users->where('id', $arr[0])->first();
             $groupInfo = $this->groupPolicy->where('id', $arr[1])->first();
-//            var_dump($userInfo);
-//            die();
-//
-
             $companInfo = $this->companys->where('id',$userInfo["company_id"])->first();
-           $servInfo = $this->servers->where('id',$companInfo["server_id"])->first();
-//                                var_dump($UserInfo ["phone"]);
-//                                             die();
-
-            //здесь отправить запрос в лдап на создание пользователя
+            $servInfo = $this->servers->where('id',$companInfo["server_id"])->first();
+            //здесь отправить запрос в лдап
             $resp = LdapChannelLibrary::assignUser($servInfo["domain"], "CN=".$groupInfo["group_name"].","."OU=".$companInfo["name"]." - Группы доступа".","."OU=".$companInfo["name"].",".$servInfo["baseDn"],
                 "CN=".$userInfo ["username"].","."OU=".$companInfo["name"]." - Пользователи".","."OU=".$companInfo["name"].",".$servInfo["baseDn"]);
 
-
             $respJson = json_decode($resp->getBody());
-
-////                echo "<pre>";
-////                var_dump($respJson);
-////                die();
             if ($respJson->result == false){
                 header("Location: /gPOUsers?error=gpUsExists");
                 exit();
             }
-
-
-
-
             $this->usersSelectedGroup->insert(["user_id" => $arr[0], "group_id" => $arr[1]]);
         } else {
-
 
                         $this->usersSelectedGroup
                 ->where(["user_id" => $arr[0], "group_id" => $arr[1]])

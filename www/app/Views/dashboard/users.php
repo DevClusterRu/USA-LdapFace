@@ -207,5 +207,15 @@ if ($_GET["error"]=="userExists"){?>
     </script>
 
 <?php }?>
+
+<?php
+if ($_GET["error"]=="delUserExists"){?>
+    <script>
+        alert("Не удалось удалить пользователя!");
+        location.href="/users";
+    </script>
+
+<?php }?>
+
 <?php echo $this->endSection() ?>
 

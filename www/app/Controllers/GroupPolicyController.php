@@ -39,7 +39,7 @@ class GroupPolicyController extends BaseController
         $this->isAuth();
         $this->data["groupPolicy"] = $this->groupPolicy
             ->join('companys', 'group_policy.company_id = companys.id')
-            ->select('group_policy.id, group_policy.group_name, group_policy.dn, group_policy.group_description, companys.name as company_name')
+            ->select('group_policy.id, group_policy.group_name, group_policy.group_description, companys.name as company_name')
             ->where('group_policy.deleted_at IS NULL')
             ->get()
             ->getResultArray();
@@ -56,6 +56,21 @@ class GroupPolicyController extends BaseController
                 exit();
             }
             foreach ($this->request->getPost("checkboxDel") as $item) {
+
+                $groupInfo = $this->groupPolicy->where('id', $item)->first();
+                $companInfo = $this->companys->where('id', $groupInfo["company_id"])->first();
+               $servInfo = $this->servers->where('id',$companInfo["server_id"])->first();
+//
+//                //здесь отправить запрос в лдап на удаление GP
+                //                deleteObject($domain, $name)
+                $resp = LdapChannelLibrary::deleteObject($servInfo["domain"],"CN=".$groupInfo["group_name"].","."OU=".$companInfo["name"]." - Группы доступа".","."OU=".$companInfo["name"].",".$servInfo["baseDn"]);
+
+                $respJson = json_decode($resp->getBody());
+
+                if ($respJson->result == false){
+                    header("Location: /groupPolicy?error=delGPExists");
+                    exit();
+                }
                 $this->groupPolicy->delete($item);
             }
             header("Location: /groupPolicy");
@@ -67,7 +82,6 @@ class GroupPolicyController extends BaseController
                     ->update($this->request->getPost("id"), [
                         'group_name' => $this->request->getPost("group_name"),
                         'company_id' => $this->request->getPost("company"),
-                        'dn' => $this->request->getPost("dn"),
                         'group_description' => $this->request->getPost("group_description"),
                     ]);
                 header("Location: /groupPolicy");
@@ -77,18 +91,9 @@ class GroupPolicyController extends BaseController
               $groupInfo = $this->request->getPost();
                 $companInfo = $this->companys->where('id',$this->request->getPost("company"))->first();
               $servInfo = $this->servers->where('id',$companInfo["server_id"])->first();
-//
-//                                     echo "<pre>";
-//                                var_dump();
-//                                             die();
-
-
               $resp = LdapChannelLibrary::createGroup($servInfo["domain"], "OU=".$companInfo["name"]." - Группы доступа".","."OU=".$companInfo["name"].",".$servInfo["baseDn"],$groupInfo["group_name"]);
-
                 $respJson = json_decode($resp->getBody());
-//                echo "<pre>";
-//                var_dump($respJson);
-//                die();
+
                 if ($respJson->result == false){
                     header("Location: /groupPolicy?error=gpExists");
                     exit();
@@ -98,7 +103,6 @@ class GroupPolicyController extends BaseController
                     ->insert([
                         'group_name' => $this->request->getPost("group_name"),
                         'company_id' => $this->request->getPost("company"),
-                        'dn' => $this->request->getPost("dn"),
                         'group_description' => $this->request->getPost("group_description"),
                     ]);
                 header("Location: /groupPolicy");
@@ -114,7 +118,7 @@ class GroupPolicyController extends BaseController
             $this->data ["groupPolicy"] =
                 $this->groupPolicy
                     ->join('companys', 'group_policy.company_id = companys.id')
-                    ->select('group_policy.id, group_policy.group_name, group_policy.dn, group_policy.group_description, companys.name as company_name')
+                    ->select('group_policy.id, group_policy.group_name, group_policy.group_description, companys.name as company_name')
                     ->where('group_policy.deleted_at IS NULL')
                     ->get()
                     ->getResultArray();

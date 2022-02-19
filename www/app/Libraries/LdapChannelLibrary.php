@@ -25,7 +25,7 @@ class LdapChannelLibrary
             ]]);
     }
 
-    public static function dropPassword($domain, $user)
+    public static function dropPassword($domain, $user)          //Done
     {
         return self::curlRequest(
             ['json' => [
@@ -59,7 +59,7 @@ class LdapChannelLibrary
             ]]);
     }
 
-    public static function assignUser($domain, $targetGroup, $user)
+    public static function assignUser($domain, $targetGroup, $user)     //Done
     {
         return self::curlRequest(
             ['json' => [
@@ -70,7 +70,7 @@ class LdapChannelLibrary
             ]]);
     }
 
-    public static function deleteObject($domain, $name)
+    public static function deleteObject($domain, $name)           // groupPolicy-Done, users - Done, companys ,
     {
         return self::curlRequest(
             ['json' => [

@@ -136,6 +136,18 @@ class UserController extends BaseController
                 exit();
             }
             foreach ($this->request->getPost("checkboxDel") as $item) {
+
+               $userInfo = $this->users->where('id', $item)->first();
+                $companInfo = $this->companys->where('id',$userInfo["company_id"])->first();
+                 $servInfo = $this->servers->where('id',$companInfo["server_id"])->first();
+//                //здесь отправить запрос в лдап на удаление пользователя
+                //                deleteObject($domain, $name)
+                $resp = LdapChannelLibrary::deleteObject($servInfo["domain"],"CN=".$userInfo ["username"].","."OU=".$companInfo["name"]." - Пользователи".","."OU=".$companInfo["name"].",".$servInfo["baseDn"]);
+                $respJson = json_decode($resp->getBody());
+                if ($respJson->result == false){
+                    header("Location: /users?error=delUserExists");
+                    exit();
+                }
                 $this->users->delete($item);
             }
             header("Location: /users");

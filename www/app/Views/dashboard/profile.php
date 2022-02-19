@@ -358,4 +358,13 @@
 
 </script>
 
+<?php
+if ($_GET["error"]=="passExists"){?>
+    <script>
+        alert("Ошибка смены пароля");
+        location.href="/profile";
+    </script>
+
+<?php }?>
+
 <?php echo $this->endSection() ?>

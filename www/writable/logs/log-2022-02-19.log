@@ -1,0 +1,6 @@
+CRITICAL - 2022-02-19 03:05:10 --> Cannot use object of type App\Models\User as array
+#0 /var/www/html/system/CodeIgniter.php(824): App\Controllers\ProfileController->changeUserPassword()
+#1 /var/www/html/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#2 /var/www/html/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /var/www/html/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}

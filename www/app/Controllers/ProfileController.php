@@ -5,6 +5,8 @@ use App\Models\Service;
 use App\Models\User;
 use App\Models\UserSelectedService;
 use App\Models\Invoice;
+use \App\Models\Server;
+use App\Models\Company;
 use App\Libraries\LdapChannelLibrary;
 
 use CodeIgniter\HTTP\RequestInterface;
@@ -16,6 +18,8 @@ class ProfileController extends BaseController
     protected $userSelectedService;
     protected $invoices;
     protected $data;
+    protected $companys;
+    protected $servers;
 
 
     public function __construct()
@@ -24,6 +28,8 @@ class ProfileController extends BaseController
         $this->serviceModel = new Service();
         $this->userSelectedService = new UserSelectedService();
         $this->invoices = new Invoice();
+        $this->companys = new Company();
+        $this->servers = new server();
         $this->data["page_name"] = "Профайл";
     }
 
@@ -66,6 +72,20 @@ class ProfileController extends BaseController
         $user = new \App\Models\User(); //объект таблицы бд юзер
 
         if ($password1 == $password2) {
+
+            $userInfo = $this->userModel->where('id',session()->get("userId"))->first();
+            $companInfo = $this->companys->where('id', $userInfo["company_id"])->first();
+            $servInfo = $this->servers->where('id',$companInfo["server_id"])->first();
+
+            //здесь отправить запрос в лдап на замену пароля
+          $resp = LdapChannelLibrary::dropPassword($servInfo["domain"],"CN=".$userInfo ["username"].","."OU=".$companInfo["name"]." - Пользователи".","."OU=".$companInfo["name"].",".$servInfo["baseDn"]);
+
+            $respJson = json_decode($resp->getBody());
+
+            if ($respJson->result == false){
+                header("Location: /profile?error=passExists");
+                exit();
+            }
             $dataPassword = [
                 'password' => password_hash($password1, PASSWORD_BCRYPT) //запись в бд значения переменной
             ];

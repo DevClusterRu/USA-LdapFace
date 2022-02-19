@@ -49,6 +49,33 @@ class CompanyController extends BaseController
                 header("Location: /companys");
             }
             foreach ($this->request->getPost("checkboxDel") as $item) {
+
+                $companInfo = $this->companys->where('id',$item)->first();
+                $servInfo = $this->servers->where('id',$companInfo["server_id"])->first();
+//                //здесь отправить запрос в лдап на удаление компании
+//                echo "<pre>";
+//                var_dump($servInfo["domain"],"OU=".$companInfo["name"].",".$servInfo["baseDn"]);
+//                die();
+
+                $resp1 = LdapChannelLibrary::deleteObject($servInfo["domain"],"OU=".$companInfo["name"]." - Группы доступа".","."OU=".$companInfo["name"].",".$servInfo["baseDn"]);
+                $resp1Json = json_decode($resp1->getBody());
+                if ($resp1Json->result == false){
+                    header("Location: /companys?error=delCompanyExists");
+                    exit();
+                }
+                $resp2 = LdapChannelLibrary::deleteObject($servInfo["domain"],"OU=".$companInfo["name"]." - Пользователи".","."OU=".$companInfo["name"].",".$servInfo["baseDn"]);
+                $resp2Json = json_decode($resp2->getBody());
+                if ($resp2Json->result == false){
+                    header("Location: /companys?error=delCompanyExists");
+                    exit();
+                }
+
+                $resp3 = LdapChannelLibrary::deleteObject($servInfo["domain"],"OU=".$companInfo["name"].",".$servInfo["baseDn"]);
+                $resp3Json = json_decode($resp3->getBody());
+                if ($resp3Json->result == false){
+                    header("Location: /companys?error=delCompanyExists");
+                    exit();
+                }
                 $this->companys->delete($item);
             }
             header("Location: /companys");

@@ -146,6 +146,15 @@ if ($_GET["error"]=="companyExists"){?>
 
 <?php }?>
 
+<?php
+if ($_GET["error"]=="delCompanyExists"){?>
+    <script>
+        alert("Не удалось удалить компанию!");
+        location.href="/companys";
+    </script>
+
+<?php }?>
+
 <?php echo $this->endSection() ?>
 
 
