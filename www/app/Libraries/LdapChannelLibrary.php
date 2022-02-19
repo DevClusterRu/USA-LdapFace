@@ -70,7 +70,7 @@ class LdapChannelLibrary
             ]]);
     }
 
-    public static function deleteObject($domain, $name)           // groupPolicy-Done, users - Done, companys ,
+    public static function deleteObject($domain, $name)           // groupPolicy-Done, users - Done, companys Done
     {
         return self::curlRequest(
             ['json' => [
