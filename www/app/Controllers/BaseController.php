@@ -64,11 +64,7 @@ class BaseController extends Controller
     }
 
 
-    public function logMessage($logStroke = "")
-    {
-        $this->log = new Log(); //свойство лог стало равно объекту
-        $this->log->insert(["log" => $logStroke]);
-    }
+
 
 
     //////////////////////////////////////// Методы - хэлперы для определения уровня доступа ///////////////////////

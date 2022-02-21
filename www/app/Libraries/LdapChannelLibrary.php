@@ -2,6 +2,7 @@
 
 namespace App\Libraries;
 
+
 class LdapChannelLibrary
 {
 //профайл контроллер лежит вызов функции.
@@ -11,8 +12,16 @@ class LdapChannelLibrary
 //        $response = $client->request("GET", "https://lesovskie.com"); //клиент становится  объектом и записываем в респон ответ
         $response = $client->request('POST', 'http://10.175.255.30:8085/ldap', $body);//этот реквест отправляет,
         //то что ответил сервер ( реквест клиент) возвращается в респонс
+
+        $resp1Json = json_decode($response->getBody());
+        if ($resp1Json->result == false) {  //логирование
+            Logging::logMessage($resp1Json->response);
+
+        }
         return $response;// возвращает объект ответа
+
     }
+
 
     public static function createOrganization($domain, $baseDn, $groupName)    //Done
     {
@@ -34,7 +43,8 @@ class LdapChannelLibrary
                 "user" => $user,
             ]]);
     }
-    public static function createUser($name, $phone, $email, $baseDn, $domain )    //Done
+
+    public static function createUser($name, $phone, $email, $baseDn, $domain)    //Done
     {
         return self::curlRequest(
             ['json' => [
@@ -90,13 +100,13 @@ class LdapChannelLibrary
             ]]);
     }
 
-public  static function userDisabling($domain, $name)
-{
-    return self::curlRequest(
-        ['json' => [
-            "command" => "UserDisabling",
-            "domain" => $domain,
-            "name" => $name
-        ]]);
-}
+    public static function userDisabling($domain, $name)
+    {
+        return self::curlRequest(
+            ['json' => [
+                "command" => "UserDisabling",
+                "domain" => $domain,
+                "name" => $name
+            ]]);
+    }
 }

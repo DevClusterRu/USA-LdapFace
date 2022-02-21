@@ -202,7 +202,7 @@
 <?php
 if ($_GET["error"]=="userExists"){?>
     <script>
-        alert("Такой пользователь уже существует");
+        alert("Не удалось создать пользователя");
         location.href="/users";
     </script>
 

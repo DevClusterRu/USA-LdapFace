@@ -50,29 +50,30 @@ class CompanyController extends BaseController
             }
             foreach ($this->request->getPost("checkboxDel") as $item) {
 
-                $companInfo = $this->companys->where('id',$item)->first();
-                $servInfo = $this->servers->where('id',$companInfo["server_id"])->first();
+                $companInfo = $this->companys->where('id', $item)->first();
+                $servInfo = $this->servers->where('id', $companInfo["server_id"])->first();
 //                //здесь отправить запрос в лдап на удаление компании
 //                echo "<pre>";
 //                var_dump($servInfo["domain"],"OU=".$companInfo["name"].",".$servInfo["baseDn"]);
 //                die();
 
-                $resp1 = LdapChannelLibrary::deleteObject($servInfo["domain"],"OU=".$companInfo["name"]." - Группы доступа".","."OU=".$companInfo["name"].",".$servInfo["baseDn"]);
+                $resp1 = LdapChannelLibrary::deleteObject($servInfo["domain"], "OU=" . $companInfo["name"] . " - Группы доступа" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"]);
                 $resp1Json = json_decode($resp1->getBody());
-                if ($resp1Json->result == false){
+                if ($resp1Json->result == false) {  //логирование
+
                     header("Location: /companys?error=delCompanyExists");
                     exit();
                 }
-                $resp2 = LdapChannelLibrary::deleteObject($servInfo["domain"],"OU=".$companInfo["name"]." - Пользователи".","."OU=".$companInfo["name"].",".$servInfo["baseDn"]);
+                $resp2 = LdapChannelLibrary::deleteObject($servInfo["domain"], "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"]);
                 $resp2Json = json_decode($resp2->getBody());
-                if ($resp2Json->result == false){
+                if ($resp2Json->result == false) {
                     header("Location: /companys?error=delCompanyExists");
                     exit();
                 }
 
-                $resp3 = LdapChannelLibrary::deleteObject($servInfo["domain"],"OU=".$companInfo["name"].",".$servInfo["baseDn"]);
+                $resp3 = LdapChannelLibrary::deleteObject($servInfo["domain"], "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"]);
                 $resp3Json = json_decode($resp3->getBody());
-                if ($resp3Json->result == false){
+                if ($resp3Json->result == false) {
                     header("Location: /companys?error=delCompanyExists");
                     exit();
                 }
@@ -93,32 +94,32 @@ class CompanyController extends BaseController
                 header("Location: /companys");
             } else {
 
-                $servInfo = $this->servers->where('id',$this->request->getPost("server"))->first();
+                $servInfo = $this->servers->where('id', $this->request->getPost("server"))->first();
 
                 //Creating company in LDAP
-                $checkOne = LdapChannelLibrary::createOrganization($servInfo["domain"],$servInfo["baseDn"],$this->request->getPost("name"));
+                $checkOne = LdapChannelLibrary::createOrganization($servInfo["domain"], $servInfo["baseDn"], $this->request->getPost("name"));
                 //check answer!
 
                 $checkOneJson = json_decode($checkOne->getBody());
 
-                if ($checkOneJson->result == false){
+                if ($checkOneJson->result == false) {
                     header("Location: /companys?error=companyExists");
                     exit();
                 }
-                $checkTwo = LdapChannelLibrary::createOrganization($servInfo["domain"],"OU=".$this->request->getPost("name").",".$servInfo["baseDn"],$this->request->getPost("name")." - Группы доступа");
+                $checkTwo = LdapChannelLibrary::createOrganization($servInfo["domain"], "OU=" . $this->request->getPost("name") . "," . $servInfo["baseDn"], $this->request->getPost("name") . " - Группы доступа");
                 //check answer!
 //                                echo "<pre>";
 //                var_dump($checkTwo->getBody());
 //                die();
 
                 $checkTwoJson = json_decode($checkTwo->getBody());
-                if ($checkTwoJson->result == false){
+                if ($checkTwoJson->result == false) {
                     header("Location: /companys?error=companyExists");
                     exit();
                 }
-                $checkThree = LdapChannelLibrary::createOrganization($servInfo["domain"],"OU=".$this->request->getPost("name").",".$servInfo["baseDn"],$this->request->getPost("name")." - Пользователи");
-                 $checkThreeJson = json_decode($checkThree->getBody());
-                if ($checkThreeJson->result == false){
+                $checkThree = LdapChannelLibrary::createOrganization($servInfo["domain"], "OU=" . $this->request->getPost("name") . "," . $servInfo["baseDn"], $this->request->getPost("name") . " - Пользователи");
+                $checkThreeJson = json_decode($checkThree->getBody());
+                if ($checkThreeJson->result == false) {
                     header("Location: /companys?error=companyExists");
                     exit();
                 }
@@ -139,8 +140,8 @@ class CompanyController extends BaseController
             $row = $this->companys
                 ->where(["id" => $this->request->getPost("updating")])
                 ->first();
-            $this->data["companys"]= $this ->companys->findAll();
-            $this->data["curCompany"]= $row;
+            $this->data["companys"] = $this->companys->findAll();
+            $this->data["curCompany"] = $row;
 
             return view('dashboard/companys', $this->data);
         }
