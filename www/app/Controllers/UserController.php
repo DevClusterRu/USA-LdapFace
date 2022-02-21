@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Libraries\LdapChannelLibrary;
+use App\Libraries\Logging;
 use App\Models\MailBuffer;
 use App\Models\User;
 use App\Models\Company;
@@ -99,7 +100,7 @@ class UserController extends BaseController
             'zoom_id' => session()->get("userId"),// айди предыдущего пользователя
         ]);
 
-        $this->logMessage("Пользователь " . $oldName . " зашел под пользователем " . session()->get("userName")); // в лог зумирования
+        Logging::logMessage("Пользователь " . $oldName . " зашел под пользователем " . session()->get("userName"));// в лог зумирования
         session()->set("balance",  Finances::debetCredit($user_id));
 
         header("Location: /profile");
@@ -120,7 +121,7 @@ class UserController extends BaseController
         ]);
         session()->remove("zoom_id");
 
-        $this->logMessage("Пользователь " . session()->get("userName") . " вышел из под пользователя " . $oldName); // в лог  выход зумирования
+        Logging::logMessage("Пользователь " . session()->get("userName") . " вышел из под пользователя " . $oldName); // в лог  выход зумирования
 
         header("Location: /profile");
         exit();

@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Libraries\Finances;
+use App\Models\Credit;
 use App\Models\Service;
 use App\Models\User;
 use App\Models\UserSelectedService;
@@ -20,10 +21,12 @@ class ProfileController extends BaseController
     protected $data;
     protected $companys;
     protected $servers;
-
+    protected $services;
+    protected $credits;
 
     public function __construct()
     {
+        $this->credits = new Credit();
         $this->userModel = new User();
         $this->serviceModel = new Service();
         $this->userSelectedService = new UserSelectedService();
@@ -31,6 +34,7 @@ class ProfileController extends BaseController
         $this->companys = new Company();
         $this->servers = new server();
         $this->data["page_name"] = "Профайл";
+        $this->services = new Service();
     }
 
     function index()
@@ -45,7 +49,12 @@ class ProfileController extends BaseController
         $this->data["servicesAll"] = $this->serviceModel->findAll();
         $this->data["userServicesList"] = $this->userSelectedService->where("user_id", session()->get("userId"))->findAll();
         $this->data["invoices"] = $this->invoices->findAll();
+        $this->data["credits"]=$this->credits
+            ->where("UNIX_TIMESTAMP(created_at) >= UNIX_TIMESTAMP() - 86400")
+            ->where("user_id",session()->get("userId"))
+            ->findAll();
         return view('dashboard/profile', $this->data);
+        //SELECT * FROM `credits` WHERE user_id = 100 AND UNIX_TIMESTAMP(created_at) >= UNIX_TIMESTAMP() - 86400;
     }
 
 
@@ -73,16 +82,16 @@ class ProfileController extends BaseController
 
         if ($password1 == $password2) {
 
-            $userInfo = $this->userModel->where('id',session()->get("userId"))->first();
+            $userInfo = $this->userModel->where('id', session()->get("userId"))->first();
             $companInfo = $this->companys->where('id', $userInfo["company_id"])->first();
-            $servInfo = $this->servers->where('id',$companInfo["server_id"])->first();
+            $servInfo = $this->servers->where('id', $companInfo["server_id"])->first();
 
             //здесь отправить запрос в лдап на замену пароля
-          $resp = LdapChannelLibrary::dropPassword($servInfo["domain"],"CN=".$userInfo ["username"].","."OU=".$companInfo["name"]." - Пользователи".","."OU=".$companInfo["name"].",".$servInfo["baseDn"]);
+            $resp = LdapChannelLibrary::dropPassword($servInfo["domain"], "CN=" . $userInfo ["username"] . "," . "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"]);
 
             $respJson = json_decode($resp->getBody());
 
-            if ($respJson->result == false){
+            if ($respJson->result == false) {
                 header("Location: /profile?error=passExists");
                 exit();
             }
@@ -107,7 +116,8 @@ class ProfileController extends BaseController
                         'status' => "new",
                     ]);
                 header("Location: /invoices");
-            } header("Location: /profile");
+            }
+            header("Location: /profile");
         } elseif ($this->request->getPost("cancel")) {
             header("Location: /profile");
         }
@@ -121,10 +131,49 @@ class ProfileController extends BaseController
 //        return $builder->get()->getResultArray();
 //    }
 
-    function activateServices(){ //кнопка активировать сервисы у директора
-       // Finances::debetCredit($auth["id"])
+    function activateServices() //на кнопку
+    { //кнопка активировать сервисы у директора
+        // Finances::debetCredit($auth["id"])
+
+        //foreach ($this->request->getPost("checkboxDel") as $item) {
+        $services = $this->request->getPost("checkboxService");
+        if (!$services){
+            header("Location: /profile");
+            exit();
+        }
+
+        $totalCost = 0;
+        $balance= Finances::debetCredit(session()->get("userId"));//сколько на счету денег у директора
+        foreach ($services as $item) {
+
+            $serviceRow = $this->services
+                ->where("id", $item) //айди равно выделенному чекбоксу
+                ->first();
+
+            $totalCost += $serviceRow["cost"];//цена текущей услуги
+            if ($balance-$totalCost<0){
+                header("Location: /profile?error=lowBalance");
+                exit();
+            }
+            $this->credits
+                ->insert([
+                    "user_id"=>session()->get("userId"),
+                    "service_id"=>$serviceRow["id"],
+                    "amount"=>$serviceRow["cost"],
+                ]);
+
+        }//выделенные сервисы в итем
+      //$totalCost - сумма выбранных сервисов через чекбоксы
+
+
+
+         session()->set($balance);
+        header("Location: /profile");
+        //session()->set("balance", Finances::debetCredit($auth["id"]));//устанавливаем новый баланс директору
 
     }
+
+
 
 
 }

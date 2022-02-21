@@ -29,13 +29,14 @@
                                                     <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Ваша
                                                         почта</label>
                                                     <div class="col-sm-9">
-                                                        <input onkeyup="checkСontactDetails();" type="email" class="form-control" name="email"
+                                                        <input onkeyup="checkСontactDetails();" type="email"
+                                                               class="form-control" name="email"
                                                                value="<?php echo $userInfo["email"] ?>"
                                                                id="exampleInputUsername2"
-                                                               placeholder="Email"  required >
-<!--                                                        <div id="validationServer03Feedback" class="invalid-feedback"> aria-describedby="validationServer03Feedback" -->
-<!--                                                            Укажите ваш email.-->
-<!--                                                        </div>-->
+                                                               placeholder="Email" required>
+                                                        <!--                                                        <div id="validationServer03Feedback" class="invalid-feedback"> aria-describedby="validationServer03Feedback" -->
+                                                        <!--                                                            Укажите ваш email.-->
+                                                        <!--                                                        </div>-->
                                                     </div>
                                                 </div>
 
@@ -43,20 +44,23 @@
                                                     <label for="exampleInputMobile" class="col-sm-3 col-form-label">Контактный
                                                         телефон</label>
                                                     <div class="col-sm-9">
-                                                        <input onkeyup="checkСontactDetails();" type="tel" class="form-control" name="phone"
+                                                        <input onkeyup="checkСontactDetails();" type="tel"
+                                                               class="form-control" name="phone"
                                                                value="<?php echo $userInfo["phone"] ?>"
                                                                id="exampleInputMobile"
                                                                placeholder="Mobile number"
-                                                               pattern="[+]{1}[7]{1}-[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                                                               pattern="[+]{1}[7]{1}-[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                                                               required>
                                                         <small class="text-muted">Формат: +7-123-456-7890</small>
                                                     </div>
                                                 </div>
-                                                <button disabled type="submit" class="btn btn-gradient-primary me-2 changeСontactDetailsButton">Применить
+                                                <button disabled type="submit"
+                                                        class="btn btn-gradient-primary me-2 changeСontactDetailsButton">
+                                                    Применить
                                                 </button>
                                                 <button formnovalidate class="btn btn-light">Отмена</button>
                                             </form>
                                         </div>
-
 
 
                                         <div class="col-md-6">
@@ -68,8 +72,10 @@
                                                     <label for="exampleInputPassword2"
                                                            class="col-sm-3 col-form-label">Пароль</label>
                                                     <div class="col-sm-9">
-                                                        <input onkeyup="checkPass1();" name="password1" type="password" class="form-control"
-                                                               id="exampleInputPassword1" placeholder="Password" required>
+                                                        <input onkeyup="checkPass1();" name="password1" type="password"
+                                                               class="form-control"
+                                                               id="exampleInputPassword1" placeholder="Password"
+                                                               required>
                                                         <div class="invalid-feedback pass_feedback">
                                                         </div>
                                                     </div>
@@ -79,14 +85,17 @@
                                                            class="col-sm-3 col-form-label">Введите
                                                         повторно пароль</label>
                                                     <div class="col-sm-9">
-                                                        <input  onkeyup="checkPass1();" name="password2" type="password" class="form-control changePass2Button"
-                                                               id="exampleInputConfirmPassword2" placeholder="Password" required>
+                                                        <input onkeyup="checkPass1();" name="password2" type="password"
+                                                               class="form-control changePass2Button"
+                                                               id="exampleInputConfirmPassword2" placeholder="Password"
+                                                               required>
                                                         <div class="invalid-feedback pass_feedback ">
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <button disabled type="button" class="btn btn-gradient-primary me-2 pass_change changePassButton">
+                                                <button disabled type="button"
+                                                        class="btn btn-gradient-primary me-2 pass_change changePassButton">
                                                     Изменить
                                                     пароль
                                                 </button>
@@ -100,7 +109,6 @@
 
                     </div>
                 </div>
-
 
 
                 <?php if (session()->get("userRole") > 1 && session()->get("userRole") < 3) { ?>  <!--условие для ограничения просмотров, разрешение-->
@@ -119,7 +127,7 @@
                                     <div class="form-group">
                                         <!--                                    <label for="exampleInputUsername1">Пополнить баланс счета</label>-->
                                         <input onkeyup="checkNumeric();" name="amount"
-                                               value="<?php  ?>"
+                                               value="<?php ?>"
                                                type="number" class="form-control"
                                                id="amountBox"
                                                placeholder="Сумма пополнения" required>
@@ -135,8 +143,6 @@
                         </div>
                     </div>
                     <?php //if(session()->get("userRole")>1 && session()->get("userRole")<3 ){?>
-
-
 
 
                     <div class="card" style="margin-top: 20px">
@@ -188,11 +194,22 @@
                                                                         }
                                                                     }
                                                                 }
-                                                                echo $checked
-                                                                ?>
 
+                                                                $checkedDisabled = "";
+                                                                foreach ($credits as $credRow){
+                                                                    if ($element["id"] == $credRow["service_id"]){
+                                                                        $checkedDisabled=" checked disabled";
+                                                                    }
+                                                                }
+
+                                                                if ($checkedDisabled==""){
+                                                                    echo $checked;
+                                                                }else echo $checkedDisabled;
+
+
+                                                                ?>
                                                                    class="form-check-input servicesSelector"
-                                                                   name="checkboxService"><i
+                                                                   name="checkboxService[]"><i
                                                                     class="input-helper"></i>
                                                         </label>
                                                     </div>
@@ -266,32 +283,30 @@
 
 <script>
 
-    function checkСontactDetails(){
-        if ($("#exampleInputUsername2").val()!="" || $("#exampleInputMobile").val()!=""){
+    function checkСontactDetails() {
+        if ($("#exampleInputUsername2").val() != "" || $("#exampleInputMobile").val() != "") {
             $(".changeСontactDetailsButton").prop("disabled", false);
         } else {
             $(".changeСontactDetailsButton").prop("disabled", true);
         }
     }
 
-    function checkPass1(){
-        if ($("#exampleInputPassword1").val()!="" && $(".changePass2Button").val()!=""){
+    function checkPass1() {
+        if ($("#exampleInputPassword1").val() != "" && $(".changePass2Button").val() != "") {
             $(".changePassButton").prop("disabled", false);
         } else {
             $(".changePassButton").prop("disabled", true);
         }
     }
 
-    function checkNumeric(){
-        if ($("#amountBox").val()!=""){
+    function checkNumeric() {
+        if ($("#amountBox").val() != "") {
             $(".addInvoiceButton").prop("disabled", false);
         } else {
             $(".addInvoiceButton").prop("disabled", true);
         }
     }
 </script>
-
-
 
 
 <script>
@@ -359,12 +374,13 @@
 </script>
 
 <?php
-if ($_GET["error"]=="passExists"){?>
+if ($_GET["error"] == "passExists") {
+    ?>
     <script>
         alert("Ошибка смены пароля");
-        location.href="/profile";
+        location.href = "/profile";
     </script>
 
-<?php }?>
+<?php } ?>
 
 <?php echo $this->endSection() ?>
