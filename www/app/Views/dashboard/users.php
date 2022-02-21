@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Компания</label>
                                     <select name="company" class="form-control">
-                                        <?php foreach ($companys as $company) { ?>
+                                         <?php foreach ($companys as $company) { ?>
                                             <option value="<?php echo $company["id"] ?>"><?php echo $company["name"] ?></option>
                                         <?php } ?>
                                     </select>
@@ -68,7 +68,8 @@
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Роль</label>
                                     <select name="role" class="form-control">
-                                        <?php foreach ($roles as $role) { ?>
+                                         <?php foreach ($roles as $role) { ?>
+<!--                                        --><?php //if(session()->get("userRole")==2){ if ($role["role_id"] > 2) continue;} ?>
                                             <option value="<?php echo $role["role_id"] ?>"><?php echo $role["role_name"] ?></option>
                                         <?php } ?>
                                     </select>
