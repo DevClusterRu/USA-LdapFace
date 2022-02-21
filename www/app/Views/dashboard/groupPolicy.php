@@ -65,6 +65,20 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <form method="post" enctype="application/x-www-form-urlencoded" action="/groupPolicyOperation">
+                                <div class="card-body">
+<!--                                <div class="form-group">-->
+                                    <h4>   <label for="exampleInputUsername1">Выберите Юридическое лицо</label>  </h4>
+                                        <select name="choiceCompanyTru" class="form-control" id="choiceCom" >
+                                        <?php foreach ($companys as $choiceCompany) { ?>
+                                            <option  value="<?php echo $choiceCompany["id"] ?>"><?php echo $choiceCompany["name"] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                    <button name="choice" value="1" type="submit"
+                                            class="btn btn-gradient-primary me-2">Принять
+                                    </button>
+<!--                                </div>-->
+
                                 <table class="table" style="margin-top: 20px">
                                     <thead>
                                     <tr>
@@ -73,17 +87,21 @@
                                         <th> Описание GPO</th>
                                         <!--                                        <th>Дата регистрации</th>-->
                                         <!--                                        <th>Последний вход</th>-->
-                                        <th>Редактирование</th>
+                                        <th>Реfдактирование</th>
                                         <th>Удаление</th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
-                                    <?php foreach ($groupPolicy as $element): ?>
+
+                                    <?php   foreach ( $groupPolicy as $element): ?>
+<!--                                    --><?php //   if( $element ["company_name"] == $choiRow ){  ?>
+
                                         <tr>
                                             <td><?php echo $element["group_name"] ?></td>
                                             <td><?php echo $element["company_name"] ?></td>
                                             <td><?php echo $element["group_description"] ?></td>
+
                                             <td>
                                                 <button name="updating" type="submit"
                                                         value="<?php echo $element["id"] ?>"
@@ -101,6 +119,7 @@
                                                 </div>
                                             </td>
                                             </tr>
+<!--                                        --><?php //} ?>
                                     <?php endforeach; ?>
                                     <tr>
                                         <td></td>

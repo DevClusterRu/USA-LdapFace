@@ -16,6 +16,7 @@ class GroupPolicyController extends BaseController
     protected $servers;
     protected $data;
 
+
     public function __construct()
     {
         $this->users = new User();
@@ -37,14 +38,22 @@ class GroupPolicyController extends BaseController
         }
 
         $this->isAuth();
+//        $choice=$this->request->getPost("choiceCompany");
+
+//        $choicerow = $this->companys
+//            ->where(["id" => $this->request->getPost("choiceCompanyTru")])
+//            ->first();
+
         $this->data["groupPolicy"] = $this->groupPolicy
             ->join('companys', 'group_policy.company_id = companys.id')
             ->select('group_policy.id, group_policy.group_name, group_policy.group_description, companys.name as company_name')
+//            ->where('companys.name', $choicerow)
             ->where('group_policy.deleted_at IS NULL')
             ->get()
             ->getResultArray();
 
         return view('dashboard/groupPolicy', $this->data);
+
     }
 
     public function operation()
@@ -78,6 +87,7 @@ class GroupPolicyController extends BaseController
 
         if ($this->request->getPost("addEdit")) {
             if ($this->request->getPost("id")) {
+
                 $this->groupPolicy
                     ->update($this->request->getPost("id"), [
                         'group_name' => $this->request->getPost("group_name"),
@@ -126,6 +136,24 @@ class GroupPolicyController extends BaseController
 
             return view('dashboard/groupPolicy',  $this->data);
         }
+
+        if ($this->request->getPost("choice")) {
+            $choicerow = $this->companys
+                ->where(["id" => $this->request->getPost("choiceCompanyTru")])
+                ->first();
+
+
+            $this->data["groupPolicy"] = $this->groupPolicy
+                ->join('companys', 'group_policy.company_id = companys.id')
+                ->select('group_policy.id, group_policy.group_name, group_policy.group_description, companys.name as company_name')
+                ->where('group_policy.company_id', $choicerow["id"])
+                ->where('group_policy.deleted_at IS NULL')
+                ->get()
+                ->getResultArray();
+            $this->data ["choiCompany"]=$choicerow["name"];
+            return view('dashboard/groupPolicy', $this->data);
+          }
+
         header("Location: /groupPolicy");
     }
 

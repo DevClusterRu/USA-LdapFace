@@ -26,7 +26,11 @@ class UserController extends BaseController
         $this->servers = new server();
         $this->data["page_name"] = "Пользователи";
         $this->data["companys"] = $this->companys->findAll();
-        $this->data["roles"] = $this->allroles->findAll();
+        if ($this->isDirector()) {
+            $this->data["roles"] = $this->allroles->where('role_id < 3')->findAll();
+        } else {
+            $this->data["roles"] = $this->allroles->findAll();
+        }
         $this->data ["servers"] = $this->servers->findAll();
 
     }
@@ -40,7 +44,7 @@ class UserController extends BaseController
 
         $this->isAuth();
 
-        if ($this->isAdmin()){
+        if ($this->isAdmin()) {
             $this->data["users"] = $this->users
                 ->join('roles', 'users.role_id = roles.id')
                 ->join('companys', 'users.company_id = companys.id')
@@ -50,19 +54,17 @@ class UserController extends BaseController
                 ->where('users.role_id < 4')
                 ->get()
                 ->getResultArray();
-        } elseif ( $this->isDirector()){
+        } elseif ($this->isDirector()) {
             $this->data["users"] = $this->users
                 ->join('roles', 'users.role_id = roles.id')
                 ->join('companys', 'users.company_id = companys.id')
                 ->select('users.id, users.role_id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name, invite_hash')
                 ->where('users.deleted_at IS NULL')
                 ->where('users.role_id < 2')
-                ->where('users.company_id = ',session()->get("userCompany"))
+                ->where('users.company_id = ', session()->get("userCompany"))
                 ->get()
                 ->getResultArray();
         }
-
-
 
 
         $this->data["mail_buffers"] = $this->mail_buffers->findAll();
@@ -73,7 +75,7 @@ class UserController extends BaseController
 
     public function zoom($user_id = 0) //айди приходит с роута от зумирования
     {
-        if ($this->isClient)  { //условия для ограничения просмотра роута, запретить
+        if ($this->isClient) { //условия для ограничения просмотра роута, запретить
             header("Location: /");
             exit();
         }
@@ -100,7 +102,7 @@ class UserController extends BaseController
         ]);
 
         $this->logMessage("Пользователь " . $oldName . " зашел под пользователем " . session()->get("userName")); // в лог зумирования
-        session()->set("balance",  Finances::debetCredit($user_id));
+        session()->set("balance", Finances::debetCredit($user_id));
 
         header("Location: /profile");
 
@@ -137,14 +139,14 @@ class UserController extends BaseController
             }
             foreach ($this->request->getPost("checkboxDel") as $item) {
 
-               $userInfo = $this->users->where('id', $item)->first();
-                $companInfo = $this->companys->where('id',$userInfo["company_id"])->first();
-                 $servInfo = $this->servers->where('id',$companInfo["server_id"])->first();
+                $userInfo = $this->users->where('id', $item)->first();
+                $companInfo = $this->companys->where('id', $userInfo["company_id"])->first();
+                $servInfo = $this->servers->where('id', $companInfo["server_id"])->first();
 //                //здесь отправить запрос в лдап на удаление пользователя
                 //                deleteObject($domain, $name)
-                $resp = LdapChannelLibrary::deleteObject($servInfo["domain"],"CN=".$userInfo ["username"].","."OU=".$companInfo["name"]." - Пользователи".","."OU=".$companInfo["name"].",".$servInfo["baseDn"]);
+                $resp = LdapChannelLibrary::deleteObject($servInfo["domain"], "CN=" . $userInfo ["username"] . "," . "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"]);
                 $respJson = json_decode($resp->getBody());
-                if ($respJson->result == false){
+                if ($respJson->result == false) {
                     header("Location: /users?error=delUserExists");
                     exit();
                 }
@@ -167,19 +169,19 @@ class UserController extends BaseController
             } else {
 
                 $userInfo = $this->request->getPost();
-                $companInfo = $this->companys->where('id',$this->request->getPost("company"))->first();
-                  $servInfo = $this->servers->where('id',$companInfo["server_id"])->first();
+                $companInfo = $this->companys->where('id', $this->request->getPost("company"))->first();
+                $servInfo = $this->servers->where('id', $companInfo["server_id"])->first();
 //                                var_dump($UserInfo ["phone"]);
 //                                             die();
 
                 //здесь отправить запрос в лдап на создание пользователя
-           $resp = LdapChannelLibrary::createUser($userInfo ["username"], $userInfo ["phone"], $userInfo ["email"],"OU=".$companInfo["name"]." - Пользователи".","."OU=".$companInfo["name"].",".$servInfo["baseDn"],$servInfo["domain"]);
-              $respJson = json_decode($resp->getBody());
+                $resp = LdapChannelLibrary::createUser($userInfo ["username"], $userInfo ["phone"], $userInfo ["email"], "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"], $servInfo["domain"]);
+                $respJson = json_decode($resp->getBody());
 
 //                echo "<pre>";
 //                var_dump($respJson);
 //                die();
-                if ($respJson->result == false){
+                if ($respJson->result == false) {
                     header("Location: /users?error=userExists");
                     exit();
                 }
@@ -217,17 +219,17 @@ class UserController extends BaseController
                     ->get()
                     ->getResultArray();
                 $this->data["curUser"] = $row; //Роли и компании уже находятся в $this->data (через констракт)
-            } elseif ( $this->isDirector()){
-                    $this->data["users"] = $this->users
-                        ->join('roles', 'users.role_id = roles.id')
-                        ->join('companys', 'users.company_id = companys.id')
-                        ->select('users.id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name')
-                        ->where('users.deleted_at IS NULL')
-                        ->where('users.company_id', $compan['company_id'])
-                        ->where('users.role_id < 3')
-                        ->get()
-                        ->getResultArray();
-                    $this->data["curUser"] = $row;
+            } elseif ($this->isDirector()) {
+                $this->data["users"] = $this->users
+                    ->join('roles', 'users.role_id = roles.id')
+                    ->join('companys', 'users.company_id = companys.id')
+                    ->select('users.id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name')
+                    ->where('users.deleted_at IS NULL')
+                    ->where('users.company_id', $compan['company_id'])
+                    ->where('users.role_id < 3')
+                    ->get()
+                    ->getResultArray();
+                $this->data["curUser"] = $row;
             }
             return view('dashboard/users', $this->data);
         }
