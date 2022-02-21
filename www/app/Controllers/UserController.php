@@ -222,11 +222,9 @@ class UserController extends BaseController
                         ->join('roles', 'users.role_id = roles.id')
                         ->join('companys', 'users.company_id = companys.id')
                         ->select('users.id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name')
-                        ->where('users.deleted_at IS NULL')
                         ->where('users.company_id', $compan['company_id'])
                         ->where('users.role_id < 3')
-                        ->get()
-                        ->getResultArray();
+                        ->findAll();
                     $this->data["curUser"] = $row;
             }
             return view('dashboard/users', $this->data);
