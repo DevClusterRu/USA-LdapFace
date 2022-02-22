@@ -160,6 +160,28 @@ class UserController extends BaseController
 
         if ($this->request->getPost("addEdit")) {
             if ($this->request->getPost("id")) {
+
+
+
+//                $userInfo = $this->users->where('id', $this->request->getPost("id"))->first();
+//                $companInfo = $this->companys->where('id', $userInfo["company_id"])->first();
+//                $servInfo = $this->servers->where('id', $companInfo["server_id"])->first();
+//
+////                echo "<pre>";
+////                var_dump("CN=" . $userInfo ["username"] . "," . "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"], $servInfo["baseDn"],$userInfo ["phone"], $userInfo ["email"], $servInfo["domain"]);
+////                die();
+//                //здесь отправить запрос в лдап на создание пользователя    . "," . $servInfo["baseDn"]
+//                $resp = LdapChannelLibrary::editUser("CN=" . $userInfo ["username"] . "," . "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"], $servInfo["baseDn"],
+//                    $this->request->getPost("phone"),$this->request->getPost("email"), $servInfo["domain"]);
+//                $respJson = json_decode($resp->getBody());
+//
+//
+//                if ($respJson->result == false) {
+//                    header("Location: /users?error=editUserExists");
+//                    exit();
+//                }
+
+
                 $this->users
                     ->update($this->request->getPost("id"), [
                         'username' => $this->request->getPost("username"),

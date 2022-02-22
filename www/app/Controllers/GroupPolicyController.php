@@ -38,16 +38,9 @@ class GroupPolicyController extends BaseController
         }
 
         $this->isAuth();
-//        $choice=$this->request->getPost("choiceCompany");
-
-//        $choicerow = $this->companys
-//            ->where(["id" => $this->request->getPost("choiceCompanyTru")])
-//            ->first();
-
         $this->data["groupPolicy"] = $this->groupPolicy
             ->join('companys', 'group_policy.company_id = companys.id')
             ->select('group_policy.id, group_policy.group_name, group_policy.group_description, companys.name as company_name')
-//            ->where('companys.name', $choicerow)
             ->where('group_policy.deleted_at IS NULL')
             ->get()
             ->getResultArray();
@@ -138,6 +131,12 @@ class GroupPolicyController extends BaseController
         }
 
         if ($this->request->getPost("choice")) {
+
+            session()->set("filterCompany",$this->request->getPost("choiceCompanyTru") );
+
+//            var_dump(session()->get());
+//            die();
+
             $choicerow = $this->companys
                 ->where(["id" => $this->request->getPost("choiceCompanyTru")])
                 ->first();

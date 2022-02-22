@@ -89,6 +89,31 @@ class LdapChannelLibrary
                 "name" => $name
             ]]);
     }
+//    EditUser ("name", "baseDN", "domain", "phone", "email")
+    public static function editUser ($name,$baseDn,$domain, $phone, $email)
+    {
+        return self::curlRequest(
+            ['json' => [
+                "command" => "EditUser",
+                "name" => $name,
+                "baseDN" => $baseDn,
+                "domain" => $domain,
+                "phone" => $phone,
+                "email" => $email
+            ]]);
+    }
+
+//UnassignUser ("targetGroup", "user", "domain")
+    public static function unassignUser($domain, $targetGroup, $user)   //Done
+    {
+        return self::curlRequest(
+            ['json' => [
+                "command" => "UnassignUser",
+                "domain" => $domain,
+                "targetGroup" => $targetGroup,
+                "user" => $user
+            ]]);
+    }
 
     public static function userActivation($domain, $name)
     {

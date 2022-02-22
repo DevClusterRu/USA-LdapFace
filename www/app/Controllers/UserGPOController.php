@@ -115,6 +115,19 @@ class UserGPOController extends BaseController
             $this->usersSelectedGroup->insert(["user_id" => $arr[0], "group_id" => $arr[1]]);
         } else {
 
+            $userInfo = $this->users->where('id', $arr[0])->first();
+            $groupInfo = $this->groupPolicy->where('id', $arr[1])->first();
+            $companInfo = $this->companys->where('id',$userInfo["company_id"])->first();
+            $servInfo = $this->servers->where('id',$companInfo["server_id"])->first();
+            //здесь отправить запрос в лдап
+            $resp = LdapChannelLibrary::unassignUser($servInfo["domain"], "CN=".$groupInfo["group_name"].","."OU=".$companInfo["name"]." - Группы доступа".","."OU=".$companInfo["name"].",".$servInfo["baseDn"],
+                "CN=".$userInfo ["username"].","."OU=".$companInfo["name"]." - Пользователи".","."OU=".$companInfo["name"].",".$servInfo["baseDn"]);
+
+            $respJson = json_decode($resp->getBody());
+            if ($respJson->result == false){
+                header("Location: /gPOUsers?error=gpUNotExists");
+                exit();
+            }
                         $this->usersSelectedGroup
                 ->where(["user_id" => $arr[0], "group_id" => $arr[1]])
                 ->delete();

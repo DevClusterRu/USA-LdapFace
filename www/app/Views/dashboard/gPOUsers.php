@@ -82,9 +82,18 @@
 </div>
 
 <?php
+if ($_GET["error"]=="gpUNotExists"){?>
+    <script>
+        alert("Ошибка, пользователь не добавлен в группу");
+        location.href="/gPOUsers.php";
+    </script>
+
+<?php }?>
+
+<?php
 if ($_GET["error"]=="gpUsExists"){?>
     <script>
-        alert("Такой пользователь уже существует");
+        alert("Ошибка, пользователь не добавлен в группу");
         location.href="/gPOUsers.php";
     </script>
 

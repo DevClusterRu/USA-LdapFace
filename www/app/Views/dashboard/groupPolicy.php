@@ -14,7 +14,7 @@
                     <div class="card-body">
                         <h4>Добавить / отредактировать Group Policy<div class="hidder" object="addForm">-</div></h4>
 
-                        <div class="hidden addForm">
+                        <div class="<?php echo session()->get("gpoUpDown")?> addForm">
                             <form method="post" enctype="application/x-www-form-urlencoded" action="/groupPolicyOperation">
                                 <!--                           <p class="card-description"> Basic form layout </p>    -->
                                 <div class="form-group">
@@ -70,7 +70,8 @@
                                     <h4>   <label for="exampleInputUsername1">Выберите Юридическое лицо</label>  </h4>
                                         <select name="choiceCompanyTru" class="form-control" id="choiceCom" >
                                         <?php foreach ($companys as $choiceCompany) { ?>
-                                            <option  value="<?php echo $choiceCompany["id"] ?>"><?php echo $choiceCompany["name"] ?></option>
+                                            <?php $selected=""; if (session()->get("filterCompany") == $choiceCompany["id"]) $selected = " selected "?>
+                                            <option <?php echo $selected?> value="<?php echo $choiceCompany["id"] ?>"><?php echo $choiceCompany["name"] ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>

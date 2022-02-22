@@ -210,6 +210,15 @@ if ($_GET["error"]=="userExists"){?>
 <?php }?>
 
 <?php
+if ($_GET["error"]=="editUserExists"){?>
+    <script>
+        alert("Не удалось изменить пользователя!");
+        location.href="/users";
+    </script>
+
+<?php }?>
+
+<?php
 if ($_GET["error"]=="delUserExists"){?>
     <script>
         alert("Не удалось удалить пользователя!");

@@ -36,6 +36,7 @@ class HomeController extends BaseController
             'userRole' => $auth["role_id"],
             'userName' => self::shortName($auth["username"]),
             'userCompany'=>$auth["company_id"],
+            'gpoUpDown'=> "hidden",
         ]);
         session()->set("balance", Finances::debetCredit($auth["id"]));//устанавливаем новый баланс директору
     }
