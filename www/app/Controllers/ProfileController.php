@@ -164,10 +164,7 @@ class ProfileController extends BaseController
 
         }//выделенные сервисы в итем
       //$totalCost - сумма выбранных сервисов через чекбоксы
-
-
-
-         session()->set($balance);
+        session()->set("balance", Finances::debetCredit(session()->get("userId")));
         header("Location: /profile");
         //session()->set("balance", Finances::debetCredit($auth["id"]));//устанавливаем новый баланс директору
 

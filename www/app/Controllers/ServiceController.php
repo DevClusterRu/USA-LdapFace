@@ -56,6 +56,7 @@ class ServiceController extends BaseController
                         'name' => $this->request->getPost("name"),
                         'type_service' => $this->request->getPost("typeservice"),
                         'cost' => $this->request->getPost("cost"),
+                        'length' => $this->request->getPost("length"),
                     ]);
                 header("Location: /services");
             } else { //создание
@@ -65,6 +66,7 @@ class ServiceController extends BaseController
                         'name' => $this->request->getPost("name"),
                         'type_service' => $this->request->getPost("typeservice"),
                         'cost' => $this->request->getPost("cost"),
+                        'length' => $this->request->getPost("length"),
                     ]);
                 header("Location: /services");
             }

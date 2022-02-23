@@ -126,13 +126,14 @@ class GroupPolicyController extends BaseController
                     ->get()
                     ->getResultArray();
             $this->data ["curGroup"] = $row;
-
+            session()->set( ['gpoUpDown'=> "",]);
             return view('dashboard/groupPolicy',  $this->data);
         }
 
         if ($this->request->getPost("choice")) {
 
             session()->set("filterCompany",$this->request->getPost("choiceCompanyTru") );
+
 
 //            var_dump(session()->get());
 //            die();

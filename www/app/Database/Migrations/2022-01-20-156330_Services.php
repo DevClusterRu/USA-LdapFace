@@ -28,6 +28,11 @@ class Services extends Migration
                 'unsigned' => true,
 
             ],
+            'length' => [
+                'type' => 'FLOAT',
+                'unsigned' => true,
+
+            ],
             'created_at' => [
                 'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP'
             ],
@@ -49,24 +54,28 @@ class Services extends Migration
                 'name' => "Переустановить систему",
                 'type_service' => "once",
                 'cost' => "2000",
+                'length' =>"1.5",
 
             ),
             array(
                 'name' => "Обжать провода",
                 'type_service' => "once",
                 'cost' => "1500",
+                'length' =>"1.5",
 
             ),
             array(
                 'name' => "Переустановить систему",
                 'type_service' => "once",
                 'cost' => "390",
+                'length' =>"1.5",
 
             ),
             array(
                 'name' => "Базовое обслуживание",
                 'type_service' => "notonce",
                 'cost' => "3000",
+                'length' =>"1.5",
 
             ),
         );

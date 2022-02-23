@@ -140,7 +140,12 @@ class CompanyController extends BaseController
             $row = $this->companys
                 ->where(["id" => $this->request->getPost("updating")])
                 ->first();
-            $this->data["companys"] = $this->companys->findAll();
+            $this->data["companys"] = $this->companys
+                ->join('servers', 'companys.server_id = servers.id')
+                ->select('companys.id, companys.name, companys.inn, companys.kpp, companys.server_id, servers.domain as server_domain, servers.baseDn as server_baseDn')
+                ->where('companys.deleted_at IS NULL')
+                ->get()
+                ->getResultArray();
             $this->data["curCompany"] = $row;
 
             return view('dashboard/companys', $this->data);

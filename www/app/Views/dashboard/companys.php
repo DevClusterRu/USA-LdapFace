@@ -53,7 +53,8 @@
                                     <label for="exampleInputUsername1">Server</label>
                                     <select name="server" class="form-control">
                                         <?php foreach ($servers as $server) { ?>
-                                            <option value="<?php echo $server["id"] ?>"><?php echo $server["domain"] ?></option>
+                                            <?php $selected=""; if ($curCompany["server_id"] == $server["id"]) $selected = " selected "?>
+                                            <option <?php echo $selected?> value="<?php echo $server["id"] ?>"><?php echo $server["domain"] ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>

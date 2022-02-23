@@ -12,7 +12,9 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h4>Добавить / отредактировать услуги<div class="hidder" object="addForm">-</div></h4>
+                        <h4>Добавить / отредактировать услуги
+                            <div class="hidder" object="addForm">-</div>
+                        </h4>
 
                         <div class="hidden addForm">
                             <form method="post" enctype="application/x-www-form-urlencoded" action="/servicesOperation">
@@ -36,11 +38,19 @@
                                     <label for="exampleInputUsername1">Тип услуги</label>
 
                                     <select name="typeservice" class="form-control"> <!--выпадашка-->
-                                     <option value="once">Разовая оплата</option>
-                                     <option value="continue">Абонимет</option>
+                                        <?php if (isset($curService)) {
+                                            if ($curService["type_service"] == "once") { ?>
+                                                <option value="once">Разовая оплата</option>
+                                                <option value="continue">Абонимет</option>
+                                            <?php } else { ?>?>
+                                                <option value="continue">Абонимет</option>
+                                                <option value="once">Разовая оплата</option>
+                                            <?php }
+                                        } else { ?>
+                                            <option value="once">Разовая оплата</option>
+                                            <option value="continue">Абонимет</option>
+                                        <?php } ?>
                                     </select>
-
-
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Стоимость</label>
@@ -50,13 +60,21 @@
                                            id="exampleInputUsername1"
                                            placeholder="Стоимость" required>
                                 </div>
-
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Продолжительность</label>
+                                    <input name="length"
+                                           value="<?php if (isset($curService)) echo $curService["length"] ?>"
+                                           type="text" class="form-control"
+                                           id="exampleInputUsername1"
+                                           placeholder="Продолжительность" required>
+                                </div>
 
 
                                 <button name="addEdit" value="1" type="submit"
                                         class="btn btn-gradient-primary me-2">Принять
                                 </button>
-                                <button type="button" onClick='location.href="/services"' name="cancel" value="2" class="btn btn-light">Отмена <!--событие он клик-->
+                                <button type="button" onClick='location.href="/services"' name="cancel" value="2"
+                                        class="btn btn-light">Отмена <!--событие он клик-->
                                 </button>
                             </form>
                         </div>
@@ -74,6 +92,7 @@
                                         <th>Название услуги</th>
                                         <th>Тип услуги</th>
                                         <th>Стоимость</th>
+                                        <th>Продолжительность</th>
                                         <th>Редактирование</th>
                                         <th>Удаление</th>
 
@@ -82,35 +101,39 @@
                                     <tbody>
 
 
-                                    <?php foreach ($services as $element): ?>
-                                        <tr>
-                                            <td><?php echo $element["name"] ?></td>
-                                            <td><?php
-                                                if ($element["type_service"]== "once")
-                                                echo "Разовая оплата";
-                                                else
-                                                    echo "Абониментская оплата";
-                                                ?></td>
-                                            <td><?php echo $element["cost"] ?></td>
-                                            <td>
-                                                <button name="updating" type="submit"
-                                                        value="<?php echo $element["id"] ?>"
-                                                        class="btn btn-gradient-primary me-2">
-                                                    Редактировать
-                                                </button>
-                                            </td>
-                                            <td>
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        <input value="<?php echo $element["id"] ?>" type="checkbox"
-                                                               class="form-check-input" name="checkboxDel[]">Удалить<i
-                                                                class="input-helper"></i>
-                                                    </label>
-                                                </div>
-                                            </td>
+                                    <?php foreach ($services
 
-                                    <?php endforeach; ?>
+                                    as $element): ?>
                                     <tr>
+                                        <td><?php echo $element["name"] ?></td>
+                                        <td><?php
+                                            if ($element["type_service"] == "once")
+                                                echo "Разовая оплата";
+                                            else
+                                                echo "Абониментская оплата";
+                                            ?></td>
+                                        <td><?php echo $element["cost"] ?></td>
+                                        <td><?php echo $element["length"] ?></td>
+                                        <td>
+                                            <button name="updating" type="submit"
+                                                    value="<?php echo $element["id"] ?>"
+                                                    class="btn btn-gradient-primary me-2">
+                                                Редактировать
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input value="<?php echo $element["id"] ?>" type="checkbox"
+                                                           class="form-check-input" name="checkboxDel[]">Удалить<i
+                                                            class="input-helper"></i>
+                                                </label>
+                                            </div>
+                                        </td>
+
+                                        <?php endforeach; ?>
+                                    <tr>
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>

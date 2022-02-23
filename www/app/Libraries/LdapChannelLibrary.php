@@ -90,6 +90,7 @@ class LdapChannelLibrary
             ]]);
     }
 //    EditUser ("name", "baseDN", "domain", "phone", "email")
+
     public static function editUser ($name,$baseDn,$domain, $phone, $email)
     {
         return self::curlRequest(
@@ -103,7 +104,6 @@ class LdapChannelLibrary
             ]]);
     }
 
-//UnassignUser ("targetGroup", "user", "domain")
     public static function unassignUser($domain, $targetGroup, $user)   //Done
     {
         return self::curlRequest(
