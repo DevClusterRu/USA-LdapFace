@@ -10,7 +10,7 @@
         console.log(status);
 
         $.ajax({
-            url: '/gPOUsers/bindGPtoUser', //роут незаметный
+            url: '/rollUpWindows', //роут незаметный
             method: 'post',
             data: {param: obj, action: status}
         });

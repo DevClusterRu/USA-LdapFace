@@ -256,6 +256,7 @@ class UserController extends BaseController
                     $this->data["curUser"] = $row;
 
             }
+            session()->set(['userUpDown' => "",]);
             return view('dashboard/users', $this->data);
         }
 

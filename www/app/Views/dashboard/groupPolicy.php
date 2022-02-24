@@ -12,9 +12,8 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h4>Добавить / отредактировать Group Policy<div class="hidder" object="addForm">-</div></h4>
-
-                        <div class="<?php echo session()->get("addForm")?> addForm">
+                        <h4>Добавить / отредактировать Group Policy<div class="hidder" object="addFormGP">-</div></h4>
+                              <div class="<?php echo session()->get("gpoUpDown")?> addFormGP">
                             <form method="post" enctype="application/x-www-form-urlencoded" action="/groupPolicyOperation">
                                 <!--                           <p class="card-description"> Basic form layout </p>    -->
                                 <div class="form-group">
@@ -154,25 +153,6 @@
         </div>
     </div>
 </div>
-
-<script>
-
-    $(".user_group_selector").click(function () { //класс и событие
-        doCheckbox = "set";
-        if (!$(this).prop("checked")) doCheckbox = "unset";
-
-        userGPSet = $(this).val(); //вэлью от чекбокса хтмл
-        $.ajax({
-            url: '/gPOUsers/bindGPtoUser', //роут незаметный
-            method: 'post',
-            // dataType: 'html',
-            data: {checkboxGP: userGPSet, doCheckbox: doCheckbox}// ключ-нейм необязательный ,значение -вэлью от чекбокса
-            // success: function(data){ //вывод результата от контроллера через роут
-            //     alert(data);
-            // }
-        });
-    })
-</script>
 
 <?php
 if ($_GET["error"]=="gpExists"){?>

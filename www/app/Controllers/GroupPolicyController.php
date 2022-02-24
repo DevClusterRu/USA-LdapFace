@@ -116,8 +116,6 @@ class GroupPolicyController extends BaseController
             $row = $this->groupPolicy
                 ->where(["id" => $this->request->getPost("updating")])
                 ->first();
-
-
             $this->data ["groupPolicy"] =
                 $this->groupPolicy
                     ->join('companys', 'group_policy.company_id = companys.id')
@@ -126,7 +124,7 @@ class GroupPolicyController extends BaseController
                     ->get()
                     ->getResultArray();
             $this->data ["curGroup"] = $row;
-            session()->set( ['gpoUpDown'=> "",]);
+            session()->set(['gpoUpDown' => "",]);
             return view('dashboard/groupPolicy',  $this->data);
         }
 
@@ -153,9 +151,7 @@ class GroupPolicyController extends BaseController
             $this->data ["choiCompany"]=$choicerow["name"];
             return view('dashboard/groupPolicy', $this->data);
           }
-
         header("Location: /groupPolicy");
     }
-
 
 }

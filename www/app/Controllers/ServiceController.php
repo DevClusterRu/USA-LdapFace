@@ -79,6 +79,7 @@ class ServiceController extends BaseController
 
             $this->data["curService"]=$row;// строчка которая пришла в форму при нажатии апдейтинг
            //на вью переменная сервисес равно списку всех элементов
+            session()->set(['serviceUpDown' => "",]);
            return view('dashboard/services', $this->data);
         }
     }

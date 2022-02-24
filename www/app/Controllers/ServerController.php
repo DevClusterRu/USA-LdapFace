@@ -69,6 +69,7 @@ class ServerController extends BaseController
                 ->first();
             $this->data["servers"]=$this->servers->findAll();
             $this->data["curServer"]=$row;
+            session()->set(['serverUpDown' => "",]);
             return view('dashboard/serversV', $this->data);
         }
     }

@@ -15,9 +15,9 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Профиль
-                                    <div class="hidder" object="addForm">-</div>
+                                    <div class="hidder" object="addFormProfile">-</div>
                                 </h4>
-                                <div class="hidden addForm">
+                                <div class="<?php echo session()->get("profileUpDown")?> addFormProfile">
                                     <div class="row">
                                         <div class="col-md-6">
 
@@ -118,10 +118,10 @@
                     <div class="card">
                         <div class="card-body">
                             <h4>Пополнить баланс счета
-                                <div class="hidder" object="addForm2">-</div>
+                                <div class="hidder" object="addFormProfileInv">-</div>
                             </h4>
 
-                            <div class="hidden addForm2">
+                            <div class="<?php echo session()->get("profileInvUpDown")?> addFormProfileInv">
                                 <form method="post" enctype="application/x-www-form-urlencoded" action="/аddInvoice">
 
                                     <div class="form-group">

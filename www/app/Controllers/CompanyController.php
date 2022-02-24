@@ -147,7 +147,7 @@ class CompanyController extends BaseController
                 ->get()
                 ->getResultArray();
             $this->data["curCompany"] = $row;
-
+            session()->set(['companyUpDown' => "",]);
             return view('dashboard/companys', $this->data);
         }
 

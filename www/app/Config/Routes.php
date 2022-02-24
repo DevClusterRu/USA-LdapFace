@@ -53,6 +53,7 @@ $routes->post('/gPOUsers/bindGPtoUser', 'UserGPOController::bindGPtoUser');///
 $routes->post('/delroles', 'RoleController::operation');
 
 $routes->post('/', 'HomeController::tryAuth');
+$routes->post('/rollUpWindows', 'HomeController::rollUpWindows');   ////////////////////////
 $routes->post('/profile/update', 'ProfileController::changeUserInfo');
 $routes->post('/profile/passwordreset', 'ProfileController::changeUserPassword');
 

@@ -12,9 +12,9 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h4>Добавить / отредактировать пользователя<div class="hidder" object="addForm">-</div></h4>
+                        <h4>Добавить / отредактировать пользователя<div class="hidder" object="addFormUser">-</div></h4>
 
-                        <div class="hidden addForm">
+                        <div class="<?php echo session()->get("userUpDown")?> addFormUser">
                             <form method="post" enctype="application/x-www-form-urlencoded" action="/usersOperation">
                                 <!--                           <p class="card-description"> Basic form layout </p>    -->
                                 <div class="form-group">
