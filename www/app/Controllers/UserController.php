@@ -30,7 +30,7 @@ class UserController extends BaseController
         if ($this->isDirector()) {
             $this->data["roles"] = $this->allroles->where('role_id < 3')->findAll();
         } else {
-            $this->data["roles"] = $this->allroles->findAll();
+            $this->data["roles"] = $this->allroles->where('role_id < 4')->findAll();
         }
         $this->data ["servers"] = $this->servers->findAll();
 
@@ -147,6 +147,8 @@ class UserController extends BaseController
                 $servInfo = $this->servers->where('id', $companInfo["server_id"])->first();
 //                //здесь отправить запрос в лдап на удаление пользователя
                 //                deleteObject($domain, $name)
+                $logg=array($servInfo["domain"], "CN=" . $userInfo ["username"] . "," . "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"]);
+                Logging::logMessage(json_encode($logg,JSON_UNESCAPED_UNICODE));
                 $resp = LdapChannelLibrary::deleteObject($servInfo["domain"], "CN=" . $userInfo ["username"] . "," . "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"]);
                 $respJson = json_decode($resp->getBody());
                 if ($respJson->result == false) {
@@ -198,15 +200,19 @@ class UserController extends BaseController
                 $servInfo = $this->servers->where('id', $companInfo["server_id"])->first();
 //                                var_dump($UserInfo ["phone"]);
 //                                             die();
-
+                    $loggg=array($userInfo ["username"], $userInfo ["phone"], $userInfo ["email"], "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"], $servInfo["domain"] );
+                Logging::logMessage(json_encode($loggg,JSON_UNESCAPED_UNICODE));
                 //здесь отправить запрос в лдап на создание пользователя
                 $resp = LdapChannelLibrary::createUser($userInfo ["username"], $userInfo ["phone"], $userInfo ["email"], "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"], $servInfo["domain"]);
                 $respJson = json_decode($resp->getBody());
+
+
 
 //                echo "<pre>";
 //                var_dump($respJson);
 //                die();
                 if ($respJson->result == false) {
+
                     header("Location: /users?error=userExists");
                     exit();
                 }

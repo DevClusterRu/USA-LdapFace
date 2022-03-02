@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Libraries\Finances;
+use App\Libraries\Logging;
 use App\Models\Credit;
 use App\Models\Service;
 use App\Models\User;
@@ -87,6 +88,10 @@ class ProfileController extends BaseController
             $servInfo = $this->servers->where('id', $companInfo["server_id"])->first();
 
             //здесь отправить запрос в лдап на замену пароля
+
+            $loggg1=array($servInfo["domain"], "CN=" . $userInfo ["username"] . "," . "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"]);
+            Logging::logMessage(json_encode($loggg1,JSON_UNESCAPED_UNICODE));
+
             $resp = LdapChannelLibrary::dropPassword($servInfo["domain"], "CN=" . $userInfo ["username"] . "," . "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"]);
 
             $respJson = json_decode($resp->getBody());
@@ -169,8 +174,5 @@ class ProfileController extends BaseController
         //session()->set("balance", Finances::debetCredit($auth["id"]));//устанавливаем новый баланс директору
 
     }
-
-
-
 
 }

@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Libraries\LdapChannelLibrary;
+use App\Libraries\Logging;
 use App\Models\User;
 use App\Models\Company;
 use App\Models\Role;
@@ -65,6 +66,9 @@ class GroupPolicyController extends BaseController
 //
 //                //здесь отправить запрос в лдап на удаление GP
                 //                deleteObject($domain, $name)
+                $loggg1=array($servInfo["domain"],"CN=".$groupInfo["group_name"].","."OU=".$companInfo["name"]." - Группы доступа".","."OU=".$companInfo["name"].",".$servInfo["baseDn"]);
+                                Logging::logMessage(json_encode($loggg1,JSON_UNESCAPED_UNICODE));
+
                 $resp = LdapChannelLibrary::deleteObject($servInfo["domain"],"CN=".$groupInfo["group_name"].","."OU=".$companInfo["name"]." - Группы доступа".","."OU=".$companInfo["name"].",".$servInfo["baseDn"]);
 
                 $respJson = json_decode($resp->getBody());
@@ -94,6 +98,9 @@ class GroupPolicyController extends BaseController
               $groupInfo = $this->request->getPost();
                 $companInfo = $this->companys->where('id',$this->request->getPost("company"))->first();
               $servInfo = $this->servers->where('id',$companInfo["server_id"])->first();
+                $loggg2=array($servInfo["domain"], "OU=".$companInfo["name"]." - Группы доступа".","."OU=".$companInfo["name"].",".$servInfo["baseDn"],$groupInfo["group_name"]);
+                Logging::logMessage(json_encode($loggg2,JSON_UNESCAPED_UNICODE));
+
               $resp = LdapChannelLibrary::createGroup($servInfo["domain"], "OU=".$companInfo["name"]." - Группы доступа".","."OU=".$companInfo["name"].",".$servInfo["baseDn"],$groupInfo["group_name"]);
                 $respJson = json_decode($resp->getBody());
 

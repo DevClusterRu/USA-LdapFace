@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Libraries\LdapChannelLibrary;
+use App\Libraries\Logging;
 use \App\Models\Company;
 use \App\Models\Server;
 
@@ -56,6 +57,12 @@ class CompanyController extends BaseController
 //                echo "<pre>";
 //                var_dump($servInfo["domain"],"OU=".$companInfo["name"].",".$servInfo["baseDn"]);
 //                die();
+                $logg1=array($servInfo["domain"], "OU=" . $companInfo["name"] . " - Группы доступа" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"] );
+                $logg2=array($servInfo["domain"], "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"]);
+                $logg3=array($servInfo["domain"], "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"] );
+                Logging::logMessage(json_encode($logg1,JSON_UNESCAPED_UNICODE));
+                Logging::logMessage(json_encode($logg2,JSON_UNESCAPED_UNICODE));
+                Logging::logMessage(json_encode($logg3,JSON_UNESCAPED_UNICODE));
 
                 $resp1 = LdapChannelLibrary::deleteObject($servInfo["domain"], "OU=" . $companInfo["name"] . " - Группы доступа" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"]);
                 $resp1Json = json_decode($resp1->getBody());
@@ -97,6 +104,13 @@ class CompanyController extends BaseController
                 $servInfo = $this->servers->where('id', $this->request->getPost("server"))->first();
 
                 //Creating company in LDAP
+                $loggg1=array($servInfo["domain"], $servInfo["baseDn"], $this->request->getPost("name"));
+                $loggg2=array($servInfo["domain"], "OU=" . $this->request->getPost("name") . "," . $servInfo["baseDn"], $this->request->getPost("name") . " - Группы доступа");
+                $loggg3=array($servInfo["domain"], "OU=" . $this->request->getPost("name") . "," . $servInfo["baseDn"], $this->request->getPost("name") . " - Пользователи" );
+                Logging::logMessage(json_encode($loggg1,JSON_UNESCAPED_UNICODE));
+                Logging::logMessage(json_encode($loggg2,JSON_UNESCAPED_UNICODE));
+                Logging::logMessage(json_encode($loggg3,JSON_UNESCAPED_UNICODE));
+
                 $checkOne = LdapChannelLibrary::createOrganization($servInfo["domain"], $servInfo["baseDn"], $this->request->getPost("name"));
                 //check answer!
 

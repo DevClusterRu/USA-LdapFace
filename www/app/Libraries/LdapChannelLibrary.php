@@ -23,7 +23,7 @@ class LdapChannelLibrary
     }
 
 
-    public static function createOrganization($domain, $baseDn, $groupName)    //Done
+    public static function createOrganization($domain, $baseDn, $groupName)    //Done *
     {
         return self::curlRequest(
             ['json' => [
@@ -44,7 +44,7 @@ class LdapChannelLibrary
             ]]);
     }
 
-    public static function createUser($name, $phone, $email, $baseDn, $domain)    //Done
+    public static function createUser($name, $phone, $email, $baseDn, $domain)    //Done  *
     {
         return self::curlRequest(
             ['json' => [
@@ -57,7 +57,7 @@ class LdapChannelLibrary
             ]]);
     }
 
-    public static function createGroup($domain, $baseDn, $group)      //Done
+    public static function createGroup($domain, $baseDn, $group)      //Done  *
     {
         return self::curlRequest(
             ['json' => [
@@ -69,7 +69,7 @@ class LdapChannelLibrary
             ]]);
     }
 
-    public static function assignUser($domain, $targetGroup, $user)     //Done
+    public static function assignUser($domain, $targetGroup, $user)     //Done *
     {
         return self::curlRequest(
             ['json' => [
@@ -80,7 +80,7 @@ class LdapChannelLibrary
             ]]);
     }
 
-    public static function deleteObject($domain, $name)           // groupPolicy-Done, users - Done, companys Done
+    public static function deleteObject($domain, $name)           // groupPolicy-Done *, users - Done *, companys Done *
     {
         return self::curlRequest(
             ['json' => [
@@ -104,7 +104,7 @@ class LdapChannelLibrary
             ]]);
     }
 
-    public static function unassignUser($domain, $targetGroup, $user)   //Done
+    public static function unassignUser($domain, $targetGroup, $user)   //Done *
     {
         return self::curlRequest(
             ['json' => [

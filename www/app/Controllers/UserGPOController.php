@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Libraries\LdapChannelLibrary;
+use App\Libraries\Logging;
 use \App\Models\User;
 use \App\Models\Group;
 use \App\Models\UserSelectedGroup;
@@ -104,6 +105,11 @@ class UserGPOController extends BaseController
             $companInfo = $this->companys->where('id',$userInfo["company_id"])->first();
             $servInfo = $this->servers->where('id',$companInfo["server_id"])->first();
             //здесь отправить запрос в лдап
+
+            $loggg1=array($servInfo["domain"], "CN=".$groupInfo["group_name"].","."OU=".$companInfo["name"]." - Группы доступа".","."OU=".$companInfo["name"].",".$servInfo["baseDn"],
+                "CN=".$userInfo ["username"].","."OU=".$companInfo["name"]." - Пользователи".","."OU=".$companInfo["name"].",".$servInfo["baseDn"]);
+            Logging::logMessage(json_encode($loggg1,JSON_UNESCAPED_UNICODE));
+
             $resp = LdapChannelLibrary::assignUser($servInfo["domain"], "CN=".$groupInfo["group_name"].","."OU=".$companInfo["name"]." - Группы доступа".","."OU=".$companInfo["name"].",".$servInfo["baseDn"],
                 "CN=".$userInfo ["username"].","."OU=".$companInfo["name"]." - Пользователи".","."OU=".$companInfo["name"].",".$servInfo["baseDn"]);
 
@@ -120,6 +126,11 @@ class UserGPOController extends BaseController
             $companInfo = $this->companys->where('id',$userInfo["company_id"])->first();
             $servInfo = $this->servers->where('id',$companInfo["server_id"])->first();
             //здесь отправить запрос в лдап
+
+            $loggg2=array($servInfo["domain"], "CN=".$groupInfo["group_name"].","."OU=".$companInfo["name"]." - Группы доступа".","."OU=".$companInfo["name"].",".$servInfo["baseDn"],
+                "CN=".$userInfo ["username"].","."OU=".$companInfo["name"]." - Пользователи".","."OU=".$companInfo["name"].",".$servInfo["baseDn"]);
+            Logging::logMessage(json_encode($loggg2,JSON_UNESCAPED_UNICODE));
+
             $resp = LdapChannelLibrary::unassignUser($servInfo["domain"], "CN=".$groupInfo["group_name"].","."OU=".$companInfo["name"]." - Группы доступа".","."OU=".$companInfo["name"].",".$servInfo["baseDn"],
                 "CN=".$userInfo ["username"].","."OU=".$companInfo["name"]." - Пользователи".","."OU=".$companInfo["name"].",".$servInfo["baseDn"]);
 
