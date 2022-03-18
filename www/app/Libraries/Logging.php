@@ -8,7 +8,6 @@ use CodeIgniter\Model;
 class Logging
 {
 
-
     public static function logMessage($logStroke = "")
     {
         $log = new Log(); //свойство лог стало равно объекту

@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Libraries\Logging;
+use App\Libraries\Mailer;
 use \App\Models\User;
 use App\Libraries\Finances;
 
@@ -10,6 +11,12 @@ class HomeController extends BaseController
 
     public function index()
     {
+        $m = new Mailer();
+        $answer = $m->mailme();
+
+        die();
+
+
         $this->isAuth();
         header("Location: /profile");
         exit();
