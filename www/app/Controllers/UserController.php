@@ -293,11 +293,15 @@ class UserController extends BaseController
                     'letter' => config("App")->baseURL.'/invite/' . $hash,
                 ];
                 if ($existsMail == "0") {
+                    echo "INSERT";
                     $this->mail_buffers->insert($send);
                 } else {
+                    echo "UPDATE";
                     $this->mail_buffers->update($this->mail_buffers->where('email_buff', $dfg["email"]), $send);
                 }
-                header("Location: /users");
+
+
+                //header("Location: /users");
                 //  break;
             }
         }
