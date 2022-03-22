@@ -271,7 +271,7 @@ class UserController extends BaseController
                     echo "UPDATE";
                     $this->mail_buffers->update($this->mail_buffers->where('email_buff', $dfg["email"]), $send);
                 }
-
+                header("Location: /users");
             }
         }
 
