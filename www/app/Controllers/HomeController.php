@@ -11,7 +11,7 @@ class HomeController extends BaseController
 
     public function index()
     {
-        var_dump(config("App")["baseURL"]);
+        var_dump(config("App"));
 
         die();
 
