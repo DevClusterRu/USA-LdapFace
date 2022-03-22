@@ -287,16 +287,8 @@ class UserController extends BaseController
         //$hash = "8f3a61740ad5b1b95713c09399947bc1";
         $entranceUs = $this->users->where('invite_hash', $hash)->first(); //Возвращает строку из бд
 
-        var_dump($entranceUs);
-
-        die();
-
-
         if ($entranceUs ["id"] !== NULL) {
-            $this->users
-                ->update($entranceUs ["id"], [
-                    'invite_hash' => "",
-                ]);
+            $this->users->update($entranceUs["id"], ['invite_hash' => ""]);
 
             session()->set([
                 'userId' => $entranceUs["id"],
