@@ -104,7 +104,7 @@ class UserController extends BaseController
 
 
         Logging::logMessage("Пользователь " . $oldName . " зашел под пользователем " . session()->get("userName"));// в лог зумирования
-        session()->set("balance",  Finances::debetCredit($user_id));
+        session()->set("balance", Finances::debetCredit($user_id));
 
 
         header("Location: /profile");
@@ -147,8 +147,8 @@ class UserController extends BaseController
                 $servInfo = $this->servers->where('id', $companInfo["server_id"])->first();
 //                //здесь отправить запрос в лдап на удаление пользователя
                 //                deleteObject($domain, $name)
-                $logg=array($servInfo["domain"], "CN=" . $userInfo ["username"] . "," . "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"]);
-                Logging::logMessage(json_encode($logg,JSON_UNESCAPED_UNICODE));
+                $logg = array($servInfo["domain"], "CN=" . $userInfo ["username"] . "," . "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"]);
+                Logging::logMessage(json_encode($logg, JSON_UNESCAPED_UNICODE));
                 $resp = LdapChannelLibrary::deleteObject($servInfo["domain"], "CN=" . $userInfo ["username"] . "," . "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"]);
                 $respJson = json_decode($resp->getBody());
                 if ($respJson->result == false) {
@@ -162,28 +162,6 @@ class UserController extends BaseController
 
         if ($this->request->getPost("addEdit")) {
             if ($this->request->getPost("id")) {
-
-
-
-//                $userInfo = $this->users->where('id', $this->request->getPost("id"))->first();
-//                $companInfo = $this->companys->where('id', $userInfo["company_id"])->first();
-//                $servInfo = $this->servers->where('id', $companInfo["server_id"])->first();
-//
-////                echo "<pre>";
-////                var_dump("CN=" . $userInfo ["username"] . "," . "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"], $servInfo["baseDn"],$userInfo ["phone"], $userInfo ["email"], $servInfo["domain"]);
-////                die();
-//                //здесь отправить запрос в лдап на создание пользователя    . "," . $servInfo["baseDn"]
-//                $resp = LdapChannelLibrary::editUser("CN=" . $userInfo ["username"] . "," . "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"], $servInfo["baseDn"],
-//                    $this->request->getPost("phone"),$this->request->getPost("email"), $servInfo["domain"]);
-//                $respJson = json_decode($resp->getBody());
-//
-//
-//                if ($respJson->result == false) {
-//                    header("Location: /users?error=editUserExists");
-//                    exit();
-//                }
-
-
                 $this->users
                     ->update($this->request->getPost("id"), [
                         'username' => $this->request->getPost("username"),
@@ -198,21 +176,15 @@ class UserController extends BaseController
                 $userInfo = $this->request->getPost();
                 $companInfo = $this->companys->where('id', $this->request->getPost("company"))->first();
                 $servInfo = $this->servers->where('id', $companInfo["server_id"])->first();
-//                                var_dump($UserInfo ["phone"]);
-//                                             die();
-                    $loggg=array($userInfo ["username"], $userInfo ["phone"], $userInfo ["email"], "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"], $servInfo["domain"] );
-                Logging::logMessage(json_encode($loggg,JSON_UNESCAPED_UNICODE));
+
+                $loggg = array($userInfo ["username"], $userInfo ["phone"], $userInfo ["email"], "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"], $servInfo["domain"]);
+                Logging::logMessage(json_encode($loggg, JSON_UNESCAPED_UNICODE));
                 //здесь отправить запрос в лдап на создание пользователя
                 $resp = LdapChannelLibrary::createUser($userInfo ["username"], $userInfo ["phone"], $userInfo ["email"], "OU=" . $companInfo["name"] . " - Пользователи" . "," . "OU=" . $companInfo["name"] . "," . $servInfo["baseDn"], $servInfo["domain"]);
                 $respJson = json_decode($resp->getBody());
 
 
-
-//                echo "<pre>";
-//                var_dump($respJson);
-//                die();
                 if ($respJson->result == false) {
-
                     header("Location: /users?error=userExists");
                     exit();
                 }
@@ -251,15 +223,15 @@ class UserController extends BaseController
                     ->getResultArray();
                 $this->data["curUser"] = $row; //Роли и компании уже находятся в $this->data (через констракт)
 
-            } elseif ( $this->isDirector()){
-                    $this->data["users"] = $this->users
-                        ->join('roles', 'users.role_id = roles.id')
-                        ->join('companys', 'users.company_id = companys.id')
-                        ->select('users.id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name')
-                        ->where('users.company_id', $compan['company_id'])
-                        ->where('users.role_id < 3')
-                        ->findAll();
-                    $this->data["curUser"] = $row;
+            } elseif ($this->isDirector()) {
+                $this->data["users"] = $this->users
+                    ->join('roles', 'users.role_id = roles.id')
+                    ->join('companys', 'users.company_id = companys.id')
+                    ->select('users.id, users.username, users.created_at, users.updated_at, roles.role_name, companys.name as company_name')
+                    ->where('users.company_id', $compan['company_id'])
+                    ->where('users.role_id < 3')
+                    ->findAll();
+                $this->data["curUser"] = $row;
 
             }
             session()->set(['userUpDown' => "",]);
@@ -290,7 +262,7 @@ class UserController extends BaseController
 
                 $send = [
                     'email_buff' => $dfg["email"],
-                    'letter' => config("App")->baseURL.'/invite/' . $hash,
+                    'letter' => config("App")->baseURL . '/invite/' . $hash,
                 ];
                 if ($existsMail == "0") {
                     echo "INSERT";
@@ -300,9 +272,6 @@ class UserController extends BaseController
                     $this->mail_buffers->update($this->mail_buffers->where('email_buff', $dfg["email"]), $send);
                 }
 
-
-                //header("Location: /users");
-                //  break;
             }
         }
 
@@ -317,6 +286,11 @@ class UserController extends BaseController
         //   http://localhost:85/invite/8f3a61740ad5b1b95713c09399947bc1
         //$hash = "8f3a61740ad5b1b95713c09399947bc1";
         $entranceUs = $this->users->where('invite_hash', $hash)->first(); //Возвращает строку из бд
+
+        var_dump($entranceUs);
+
+        die();
+
 
         if ($entranceUs ["id"] !== NULL) {
             $this->users
