@@ -11,8 +11,7 @@ class HomeController extends BaseController
 
     public function index()
     {
-        $m = new Mailer();
-        $answer = $m->mailme();
+        var_dump(config());
 
         die();
 
