@@ -283,6 +283,9 @@ class UserController extends BaseController
     {
         //Написать функцию разового входа пользователя, если вошел - авторизуем его и отправляем на страницу сброса пароля. Сразу после этого удаляем хэш из базы, т.к. он одноразовый
 
+        $elems = explode("/",$hash);
+        $hash = $elems[count($elems)-1];
+
         //   http://localhost:85/invite/8f3a61740ad5b1b95713c09399947bc1
         //$hash = "8f3a61740ad5b1b95713c09399947bc1";
         $entranceUs = $this->users->where('invite_hash', $hash)->first(); //Возвращает строку из бд
