@@ -284,25 +284,18 @@ class UserController extends BaseController
                     if ($exists == "0") break;
                 }
 
-                $this->users
-                    ->update($item, [
-                        'invite_hash' => $hash,
-                    ]);
+                $this->users->update($item, ['invite_hash' => $hash]);
                 $dfg = $this->users->find($item);
                 $existsMail = $this->mail_buffers->where('email_buff', $dfg["email"])->countAllResults();
 
+                $send = [
+                    'email_buff' => $dfg["email"],
+                    'letter' => config("App")->baseURL.'/invite/' . $hash,
+                ];
                 if ($existsMail == "0") {
-                    $this->mail_buffers
-                        ->insert([
-                            'email_buff' => $dfg["email"],
-                            'letter' => 'localhost:85/invite/' . $hash,
-                        ]);
+                    $this->mail_buffers->insert($send);
                 } else {
-                    $this->mail_buffers
-                        ->update($this->mail_buffers->where('email_buff', $dfg["email"]), [
-                            'email_buff' => $dfg["email"],
-                            'letter' => 'localhost:85/invite/' . $hash,
-                        ]);
+                    $this->mail_buffers->update($this->mail_buffers->where('email_buff', $dfg["email"]), $send);
                 }
                 header("Location: /users");
                 //  break;
