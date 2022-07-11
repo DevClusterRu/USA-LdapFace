@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -19,12 +19,11 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="/assets/images/favicon.ico"/>
     <script src="/assets/js/jquery3.5.1.js"></script>
-
+    <script src="/assets/js/jquery-input-mask-phone-number.min.js"/></script>
 </head>
 <body>
 
-
-                <?php echo $this->renderSection('content') ?>
+<?php echo $this->renderSection('content') ?>
 
 
 <!-- plugins:js -->

@@ -37,7 +37,6 @@ class CompanyController extends BaseController
             ->where('companys.deleted_at IS NULL')
             ->get()
             ->getResultArray();
-
         return view('dashboard/companys', $this->data);
     }
 

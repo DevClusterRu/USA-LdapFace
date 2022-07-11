@@ -10,35 +10,45 @@
                         <div class="brand-logo">
                             <img src="/assets/images/logo.svg">
                         </div>
-                        <h4><?php echo lang('Auth.hello')?></h4>
-                        <h6 class="font-weight-light"><?php echo lang('Auth.signAndGo')?></h6>
+                        <h4><?php echo lang('Auth.hello') ?></h4>
+                        <h6 class="font-weight-light"><?php echo lang('Auth.signAndGo') ?></h6>
                         <form action="/" class="pt-3" method="post">
                             <div class="form-group">
-                                <input name="username" type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="<?php echo lang('Auth.usernamelogin')?>">
+                                <input name="phone" type="text" class="form-control form-control-lg ph"
+                                       placeholder="<?php echo lang('Auth.usernamePhone') ?>">
                             </div>
+
+                            <script>
+                                $('.ph').usPhoneFormat({
+                                    format: '(xxx) xxx-xxxx',
+                                });
+                            </script>
+
                             <div class="form-group">
-                                <input name="password" type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="<?php echo lang('Auth.password')?>">
+                                <button style="width: 100%" class="btn btn-gradient-success btn-md auth-form-btn">
+                                    <i class="mdi mdi-upload btn-icon-prepend"></i>
+                                    <?php echo lang('Auth.codeRequest') ?>
+                                </button>
+                            </div>
+
+
+                            <div class="form-group">
+                                <input name="password" type="password" class="form-control form-control-lg"
+                                       id="exampleInputPassword1" placeholder="<?php echo lang('Auth.smsCode') ?>">
                             </div>
                             <div class="mt-3">
-                                <input class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" type="submit" value="<?php echo lang('Auth.doAuth')?>">
+                                <input class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn"
+                                       type="submit" value="<?php echo lang('Auth.doAuth') ?>">
                             </div>
-                            <div class="my-2 d-flex justify-content-between align-items-center">
-                                <div class="form-check">
-                                    <label class="form-check-label text-muted">
-                                        <input type="checkbox" class="form-check-input"> <?php echo lang('Auth.keepme')?> </label>
-                                </div>
-                                <a href="#" class="auth-link text-black"><?php echo lang('Auth.forgotPassword')?></a>
-                            </div>
-<!--                            <div class="text-center mt-4 font-weight-light"> --><?php //echo lang('Auth.dontHaveAcc')?><!-- <a href="/register" class="text-primary">--><?php //echo lang('Auth.create')?><!--</a>-->
-                            </div>
-                        </form>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
-        <!-- content-wrapper ends -->
     </div>
-    <!-- page-body-wrapper ends -->
+    <!-- content-wrapper ends -->
+</div>
+<!-- page-body-wrapper ends -->
 </div>
 <?php echo $this->endSection() ?>
 

@@ -1,3 +1,0 @@
-ERROR - 2022-01-22 15:32:44 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0) VALUES (('superadmin','1','mail@mail.ru','+7','4'))' at line 1
-ERROR - 2022-01-22 15:33:43 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0) VALUES (('superadmin','1','mail@mail.ru','+7',4))' at line 1
-ERROR - 2022-01-22 15:40:52 --> Unknown table 'ldap.companys'

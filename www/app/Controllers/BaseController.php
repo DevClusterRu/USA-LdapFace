@@ -55,18 +55,6 @@ class BaseController extends Controller
         return $name;
     }
 
-    public static function ddd($var)
-    {
-
-        echo "<pre>";
-        var_dump($var);
-        die();
-    }
-
-
-
-
-
     //////////////////////////////////////// Методы - хэлперы для определения уровня доступа ///////////////////////
     ///
 
