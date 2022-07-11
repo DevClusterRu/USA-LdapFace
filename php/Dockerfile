@@ -19,8 +19,14 @@ RUN apt-get install -y p7zip \
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+
+
 RUN mkdir /var/www/html/writable
-#RUN mkdir /var/www/html/bootstrap/cache
+RUN mkdir /var/www/html/writable/cache/
+RUN mkdir /var/www/html/writable/session/
+
+
 WORKDIR /var/www/html/
 
 RUN chown -R www-data:www-data \

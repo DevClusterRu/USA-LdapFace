@@ -2,7 +2,5 @@
 /mysql/
 /logs
 /www/.env
-/www/writable/cache/*
-/www/writable/logs/*
-/www/writable/session/*
+/www/writable
 
